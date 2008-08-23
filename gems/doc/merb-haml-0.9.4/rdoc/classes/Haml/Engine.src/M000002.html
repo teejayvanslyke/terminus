@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>def_method (Haml::Engine)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-haml/template.rb, line 46</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">def_method</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">local_names</span>)
+      <span class="ruby-identifier">method</span> = <span class="ruby-identifier">object</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Module</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">:module_eval</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:instance_eval</span>
+
+      <span class="ruby-identifier">setup</span> = <span class="ruby-value str">&quot;@_engine = 'haml'&quot;</span>
+
+      <span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>, <span class="ruby-node">&quot;def #{name}(_haml_locals = {}); #{setup}; #{precompiled_with_ambles(local_names)}; end&quot;</span>,
+                  <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:filename</span>], <span class="ruby-value">0</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

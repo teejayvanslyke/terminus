@@ -1,0 +1,27 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Defines a method for calling a specific HAML template.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<String>:"
+    body: Path to the template file.
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_s>:"
+    body: The name of the template method.
+  - !ruby/struct:SM::Flow::LI 
+    label: "mod<Class, Module>:"
+    body: The class or module wherein this method should be defined.
+  type: :NOTE
+full_name: Merb::Template::Haml::compile_template
+is_singleton: true
+name: compile_template
+params: (io, name, mod)
+visibility: public

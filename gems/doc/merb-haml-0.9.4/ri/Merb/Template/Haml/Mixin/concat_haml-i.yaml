@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "string<String>:"
+    body: The string to add to the HAML buffer.
+  - !ruby/struct:SM::Flow::LI 
+    label: "binding<Binding>:"
+    body: Not used by HAML, but is necessary to conform to the concat_* interface.
+  type: :NOTE
+full_name: Merb::Template::Haml::Mixin#concat_haml
+is_singleton: false
+name: concat_haml
+params: (string, binding)
+visibility: public

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>compile_template (Merb::Template::Haml)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-haml/template.rb, line 12</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">compile_template</span>(<span class="ruby-identifier">io</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">mod</span>)
+      <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">io</span>.<span class="ruby-identifier">path</span>)
+      <span class="ruby-identifier">config</span> = (<span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:haml</span>] <span class="ruby-operator">||</span> {}).<span class="ruby-identifier">inject</span>({}) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span>, (<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>)<span class="ruby-operator">|</span>
+        <span class="ruby-identifier">c</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">v</span>
+        <span class="ruby-identifier">c</span>
+      <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">:filename</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>
+      <span class="ruby-identifier">template</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Haml</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">io</span>.<span class="ruby-identifier">read</span>, <span class="ruby-identifier">config</span>)
+      <span class="ruby-identifier">template</span>.<span class="ruby-identifier">def_method</span>(<span class="ruby-identifier">mod</span>, <span class="ruby-identifier">name</span>)
+      <span class="ruby-identifier">name</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

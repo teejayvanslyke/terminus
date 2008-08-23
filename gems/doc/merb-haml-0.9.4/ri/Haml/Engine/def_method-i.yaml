@@ -1,0 +1,25 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "object<Class, Module>:"
+    body: The class or module wherein this method should be defined.
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_s>:"
+    body: The name of the template method.
+  - !ruby/struct:SM::Flow::LI 
+    label: "*local_names:"
+    body: Local names to define in the HAML template.
+  type: :NOTE
+full_name: Haml::Engine#def_method
+is_singleton: false
+name: def_method
+params: (object, name, *local_names)
+visibility: public
