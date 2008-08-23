@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Deletes the session by emptying stored data.
+full_name: Merb::MemCacheSession#delete
+is_singleton: false
+name: delete
+params: ()
+visibility: public

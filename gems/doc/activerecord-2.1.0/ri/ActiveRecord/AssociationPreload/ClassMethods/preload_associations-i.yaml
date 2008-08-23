@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Loads the named associations for the activerecord record (or records) given preload_options is passed only one level deep: don't pass to the child associations when associations is a Hash"
+full_name: ActiveRecord::AssociationPreload::ClassMethods#preload_associations
+is_singleton: false
+name: preload_associations
+params: (records, associations, preload_options={})
+visibility: protected

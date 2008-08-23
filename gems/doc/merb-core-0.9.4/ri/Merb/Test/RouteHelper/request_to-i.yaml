@@ -1,0 +1,34 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<~to_string>:"
+    body: The URL of the request.
+  - !ruby/struct:SM::Flow::LI 
+    label: "method<~to_sym>:"
+    body: HTTP request method.
+  - !ruby/struct:SM::Flow::LI 
+    label: "env<Hash>:"
+    body: Additional parameters for the request.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash:"
+    body: A hash containing the controller and action along with any parameters
+  type: :NOTE
+full_name: Merb::Test::RouteHelper#request_to
+is_singleton: false
+name: request_to
+params: (path, method = :get, env = {})
+visibility: public

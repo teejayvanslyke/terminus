@@ -1,0 +1,31 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "string<String>:"
+    body: The string in which to count parentheses.
+  - !ruby/struct:SM::Flow::LI 
+    label: "pos<Fixnum>:"
+    body: The last character for counting.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Fixnum:"
+    body: The number of open parentheses in string, up to and including pos.
+  type: :NOTE
+full_name: Merb::Router::Behavior::count_parens_up_to
+is_singleton: true
+name: count_parens_up_to
+params: (string, pos)
+visibility: public

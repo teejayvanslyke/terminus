@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Helpers::Form#obj_from_ivar_or_sym
+is_singleton: false
+name: obj_from_ivar_or_sym
+params: (obj)
+visibility: public

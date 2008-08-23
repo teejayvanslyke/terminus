@@ -1,0 +1,180 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: _benchmarks
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: _thrown_content
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: action_name
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: body
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Stub so content-type support in RenderMixin doesn't throw errors
+  name: content_type
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _reset_template_roots
+- !ruby/object:RI::MethodSummary 
+  name: _template_root=
+- !ruby/object:RI::MethodSummary 
+  name: _template_roots
+- !ruby/object:RI::MethodSummary 
+  name: _template_roots=
+- !ruby/object:RI::MethodSummary 
+  name: add_path_to_template_cache
+- !ruby/object:RI::MethodSummary 
+  name: after
+- !ruby/object:RI::MethodSummary 
+  name: before
+- !ruby/object:RI::MethodSummary 
+  name: controller_name
+- !ruby/object:RI::MethodSummary 
+  name: inherited
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: reset_template_path_cache!
+- !ruby/object:RI::MethodSummary 
+  name: skip_after
+- !ruby/object:RI::MethodSummary 
+  name: skip_before
+- !ruby/object:RI::MethodSummary 
+  name: subclasses_list
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Why do we use Underscores?
+- !ruby/struct:SM::Flow::P 
+  body: In Merb, views are actually methods on controllers. This provides not-insignificant speed benefits, as well as preventing us from needing to copy over instance variables, which we think is proof that everything belongs in one class to begin with.
+- !ruby/struct:SM::Flow::P 
+  body: Unfortunately, this means that view helpers need to be included into the &lt;strong&gt;Controller&lt;/strong&gt; class. To avoid causing confusion when your helpers potentially conflict with our instance methods, we use an _ to disambiguate. As long as you don't begin your helper methods with _, you only need to worry about conflicts with Merb methods that are part of the public API.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Filters
+- !ruby/struct:SM::Flow::P 
+  body: "#before is a class method that allows you to specify before filters in your controllers. Filters can either be a symbol or string that corresponds to a method name to call, or a proc object. if it is a method name that method will be called and if it is a proc it will be called with an argument of self where self is the current controller object. When you use a proc as a filter it needs to take one parameter."
+- !ruby/struct:SM::Flow::P 
+  body: "#after is identical, but the filters are run after the action is invoked."
+- !ruby/struct:SM::Flow::H 
+  level: 5
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  before :some_filter\n  before :authenticate, :exclude =&gt; [:login, :signup]\n  before :has_role, :with =&gt; [&quot;Admin&quot;], :exclude =&gt; [:index,:show]\n  before Proc.new {|c| c.some_method }, :only =&gt; :foo\n  before :authorize, :unless =&gt; logged_in?\n"
+- !ruby/struct:SM::Flow::P 
+  body: You can use either :only =&gt; :actionname or :exclude =&gt; [:this, :that] but not both at once. :only will only run before the listed actions and :exclude will run for every action that is not listed.
+- !ruby/struct:SM::Flow::P 
+  body: "Merb's before filter chain is very flexible. To halt the filter chain you use throw :halt. If throw is called with only one argument of :halt the return of the method filters_halted will be what is rendered to the view. You can overide filters_halted in your own controllers to control what it outputs. But the throw construct is much more powerful then just that. throw :halt can also take a second argument. Here is what that second arg can be and the behavior each type can have:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "<tt>String</tt>: when the second arg is a string then that string will be what is rendered to the browser. Since merb's render method returns a string you can render a template or just use a plain string:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  throw :halt, &quot;You don't have permissions to do that!&quot;\n  throw :halt, render(:action =&gt; :access_denied)\n"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "<tt>Symbol</tt>: If the second arg is a symbol then the method named after that symbol will be called"
+  - !ruby/struct:SM::Flow::P 
+    body: throw :halt, :must_click_disclaimer
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "<tt>Proc</tt>:"
+  - !ruby/struct:SM::Flow::P 
+    body: "If the second arg is a Proc, it will be called and its return value will be what is rendered to the browser:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  throw :halt, proc {|c| c.access_denied }\n  throw :halt, proc {|c| Tidy.new(c.index) }\n"
+  type: :BULLET
+- !ruby/struct:SM::Flow::H 
+  level: 5
+  text: Filter Options (.before, .after, .add_filter, .if, .unless)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":only<Symbol, Array[Symbol]>:"
+    body: A list of actions that this filter should apply to
+  - !ruby/struct:SM::Flow::LI 
+    label: ":exclude<Symbol, Array[Symbol]:"
+    body: A list of actions that this filter should <b>not</b> apply to
+  - !ruby/struct:SM::Flow::LI 
+    label: ":if<Symbol, Proc>:"
+    body: Only apply the filter if the method named after the symbol or calling the proc evaluates to true
+  - !ruby/struct:SM::Flow::LI 
+    label: ":unless<Symbol, Proc>:"
+    body: Only apply the filter if the method named after the symbol or calling the proc evaluates to false
+  - !ruby/struct:SM::Flow::LI 
+    label: ":with<Array[Object]>:"
+    body: Arguments to be passed to the filter. Since we are talking method/proc calls, filter method or Proc should to have the same arity as number of elements in Array you pass to this option.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 5
+  text: Types (shortcuts for use in this file)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Filter:"
+    body: "&lt;Array[Symbol, (Symbol, String, Proc)]&gt;"
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: params[:action] and params[:controller] deprecated
+- !ruby/struct:SM::Flow::P 
+  body: params[:action] and params[:controller] have been deprecated as of the 0.9.0 release. They are no longer set during dispatch, and have been replaced by action_name and controller_name respectively.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: FILTER_OPTIONS
+  value: "[:only, :exclude, :if, :unless, :with]"
+full_name: Merb::AbstractController
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Merb::RenderMixin
+- !ruby/object:RI::IncludedModule 
+  name: Merb::InlineTemplates
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _absolute_template_location
+- !ruby/object:RI::MethodSummary 
+  name: _call_action
+- !ruby/object:RI::MethodSummary 
+  name: _call_filter_for_action?
+- !ruby/object:RI::MethodSummary 
+  name: _call_filters
+- !ruby/object:RI::MethodSummary 
+  name: _dispatch
+- !ruby/object:RI::MethodSummary 
+  name: _evaluate_condition
+- !ruby/object:RI::MethodSummary 
+  name: _filter_condition_met?
+- !ruby/object:RI::MethodSummary 
+  name: _filters_halted
+- !ruby/object:RI::MethodSummary 
+  name: _template_location
+- !ruby/object:RI::MethodSummary 
+  name: absolute_url
+- !ruby/object:RI::MethodSummary 
+  name: capture
+- !ruby/object:RI::MethodSummary 
+  name: concat
+- !ruby/object:RI::MethodSummary 
+  name: controller_name
+- !ruby/object:RI::MethodSummary 
+  name: finalize_session
+- !ruby/object:RI::MethodSummary 
+  name: relative_url
+- !ruby/object:RI::MethodSummary 
+  name: setup_session
+- !ruby/object:RI::MethodSummary 
+  name: url
+name: AbstractController
+superclass: Object

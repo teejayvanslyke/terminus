@@ -1,0 +1,29 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: (obj.errors)
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a HTML formatted display of resource errors in an unordered list with a h2 form submission error
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "+build_li+:"
+    body: Block for generating a list item for an error. It receives an instance of the error.
+  - !ruby/struct:SM::Flow::LI 
+    label: "+html_class+:"
+    body: Set for custom error div class default is &lt;tt&gt;submission_failed&lt;tt&gt;
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &lt;%= error_messages_for :person %&gt;\n  &lt;%= error_messages_for :person {|errors| &quot;You can has probs nao: #{errors.size} of em!&quot;}\n  &lt;%= error_messages_for :person, lambda{|error| &quot;&lt;li class='aieeee'&gt;#{error.join(' ')}&quot;} %&gt;\n  &lt;%= error_messages_for :person, nil, 'bad_mojo' %&gt;\n"
+full_name: Merb::Helpers::Form#error_messages_for
+is_singleton: false
+name: error_messages_for
+params: (obj, build_li = nil, html_class='error') {|obj.errors| ...}
+visibility: public

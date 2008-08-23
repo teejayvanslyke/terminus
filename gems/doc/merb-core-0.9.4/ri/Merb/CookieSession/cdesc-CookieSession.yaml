@@ -1,0 +1,47 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: data
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: If you have more than 4K of session data or don't want your data to be visible to the user, pick another session store.
+- !ruby/struct:SM::Flow::P 
+  body: CookieOverflow is raised if you attempt to store more than 4K of data. TamperedWithCookie is raised if the data integrity check fails.
+- !ruby/struct:SM::Flow::P 
+  body: "A message digest is included with the cookie to ensure data integrity: a user cannot alter session data without knowing the secret key included in the hash."
+- !ruby/struct:SM::Flow::P 
+  body: To use Cookie Sessions, set in config/merb.yml
+- !ruby/struct:SM::Flow::VERB 
+  body: " :session_secret_key - your secret digest key\n :session_store: cookie\n"
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Cookies can typically store 4096 bytes.
+  name: MAX
+  value: "4096"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DIGEST
+  value: OpenSSL::Digest::Digest.new('SHA1')
+full_name: Merb::CookieSession
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: read_cookie
+name: CookieSession
+superclass: Object

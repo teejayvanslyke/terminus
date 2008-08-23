@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Setup the Merb Rack App or read a rackup file located at Merb::Config[:rackup] with the same syntax as the rackup tool that comes with rack. Automatically evals the file in the context of a Rack::Builder.new { } block. Allows for mounting additional apps or middleware.
+full_name: Merb::BootLoader::RackUpApplication::run
+is_singleton: true
+name: run
+params: ()
+visibility: public

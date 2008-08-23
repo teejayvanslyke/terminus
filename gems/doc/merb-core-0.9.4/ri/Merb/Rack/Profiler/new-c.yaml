@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Rack::Profiler::new
+is_singleton: true
+name: new
+params: (app, min=1, iter=1)
+visibility: public

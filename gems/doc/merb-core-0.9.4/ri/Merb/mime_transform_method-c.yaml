@@ -1,0 +1,37 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "key<Symbol>:"
+    body: The key that represents the mime-type.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Symbol:"
+    body: The transform method for the mime type, e.g. :to_json.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Raises
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "ArgumentError:"
+    body: The requested mime type is not valid.
+  type: :NOTE
+full_name: Merb::mime_transform_method
+is_singleton: true
+name: mime_transform_method
+params: (key)
+visibility: public

@@ -1,0 +1,33 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Generates URL using route segments and given parameters. If parameter value responds to :to_param, it is called.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: Optional parameters for the route.
+  - !ruby/struct:SM::Flow::LI 
+    label: "fallback<Hash>:"
+    body: Optional parameters for the fallback route.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The URL corresponding to the params, using the stored route segments for reconstruction of the URL.
+  type: :NOTE
+full_name: Merb::Router::Route#generate
+is_singleton: false
+name: generate
+params: (params = {}, fallback = {})
+visibility: public

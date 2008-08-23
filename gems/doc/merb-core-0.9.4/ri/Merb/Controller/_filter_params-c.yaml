@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This is a stub method so plugins can implement param filtering if they want.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash{Symbol => String}>:"
+    body: A list of params
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash{Symbol => String}:"
+    body: A new list of params, filtered as desired
+  type: :NOTE
+full_name: Merb::Controller::_filter_params
+is_singleton: true
+name: _filter_params
+params: (params)
+visibility: public

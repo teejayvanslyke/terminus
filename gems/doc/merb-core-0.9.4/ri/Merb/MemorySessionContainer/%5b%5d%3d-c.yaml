@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "key<String>:"
+    body: ID of the session to set.
+  - !ruby/struct:SM::Flow::LI 
+    label: "val<MemorySession>:"
+    body: The session to set.
+  type: :NOTE
+full_name: Merb::MemorySessionContainer::[]=
+is_singleton: true
+name: "[]="
+params: (key, val)
+visibility: public

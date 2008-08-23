@@ -1,0 +1,76 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Renders an object using to registered transform method based on the negotiated content-type, if a template does not exist. For instance, if the content-type is :json, Merb will first look for current_action.json.*. Failing that, it will run object.to_json.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameter
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "object<Object>:"
+    body: An object that responds_to? the transform method registered for the negotiated mime-type.
+  - !ruby/struct:SM::Flow::LI 
+    label: "thing<String, Symbol>:"
+    body: "The thing to attempt to render via #render before calling the transform method on the object. Defaults to nil."
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: "An options hash that will be used for rendering (passed on to #render or serialization methods like #to_json or #to_xml)"
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The rendered template or if no template is found, the transformed object.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Raises
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "NotAcceptable:"
+    body: If there is no transform method for the specified mime-type or the object does not respond to the transform method.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: "A string in the second parameter will be interpreted as a template:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  display @object, &quot;path/to/foo&quot;\n  #=&gt; display @object, nil, :template =&gt; &quot;path/to/foo&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: "A hash in the second parameters will be interpreted as opts:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  display @object, :layout =&gt; &quot;zoo&quot;\n  #=&gt; display @object, nil, :layout =&gt; &quot;zoo&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: If you need to pass extra parameters to serialization method, for instance, to exclude some of attributes or serialize associations, just pass options for it. For instance,
+- !ruby/struct:SM::Flow::P 
+  body: display @locations, :except =&gt; [:locatable_type, :locatable_id], :include =&gt; [:locatable]
+- !ruby/struct:SM::Flow::P 
+  body: serializes object with polymorphic association, not raw locatable_* attributes.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options
+- !ruby/struct:SM::Flow::P 
+  body: ":template a template to use for rendering :layout a layout to use for rendering :status the status code to return (defaults to 200) :location the value of the Location header"
+- !ruby/struct:SM::Flow::P 
+  body: all other options options that will be pass to serialization method
+- !ruby/struct:SM::Flow::VERB 
+  body: "                         like #to_json or #to_xml\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: The transformed object will not be used in a layout unless a :layout is explicitly passed in the opts.
+full_name: Merb::RenderMixin#display
+is_singleton: false
+name: display
+params: (object, thing = nil, opts = {})
+visibility: public

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>call (Merb::Rack::Static)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/rack/middleware/static.rb, line 10</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)        
+        <span class="ruby-identifier">path</span> = <span class="ruby-identifier">env</span>[<span class="ruby-value str">'PATH_INFO'</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">env</span>[<span class="ruby-value str">'PATH_INFO'</span>].<span class="ruby-identifier">chomp</span>(<span class="ruby-value str">'/'</span>) <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-identifier">cached_path</span> = (<span class="ruby-identifier">path</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-value">? </span><span class="ruby-value str">'index'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">path</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">'.html'</span>
+        
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file_exist?</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">env</span>[<span class="ruby-value str">'REQUEST_METHOD'</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/GET|HEAD/</span> <span class="ruby-comment cmt"># Serve the file if it's there and the request method is GET or HEAD</span>
+          <span class="ruby-identifier">serve_static</span>(<span class="ruby-identifier">env</span>)
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">file_exist?</span>(<span class="ruby-identifier">cached_path</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">env</span>[<span class="ruby-value str">'REQUEST_METHOD'</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/GET|HEAD/</span> <span class="ruby-comment cmt"># Serve the page cache if it's there and the request method is GET or HEAD</span>
+          <span class="ruby-identifier">env</span>[<span class="ruby-value str">'PATH_INFO'</span>] = <span class="ruby-identifier">cached_path</span>
+          <span class="ruby-identifier">serve_static</span>(<span class="ruby-identifier">env</span>)
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/favicon\.ico/</span>
+          <span class="ruby-keyword kw">return</span> [<span class="ruby-value">404</span>, {<span class="ruby-value str">&quot;Content-Type&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;text/html&quot;</span>}, <span class="ruby-value str">&quot;404 Not Found.&quot;</span>]
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

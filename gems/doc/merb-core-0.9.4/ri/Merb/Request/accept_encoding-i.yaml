@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The accepted encodings.
+  type: :NOTE
+full_name: Merb::Request#accept_encoding
+is_singleton: false
+name: accept_encoding
+params: ()
+visibility: public

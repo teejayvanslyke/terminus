@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Calculate the Levenshtein distance between two strings +str1+ and +str2+. +str1+ and +str2+ should be ASCII, UTF-8, or a one-byte-per character encoding such as ISO-8859-*.
+- !ruby/struct:SM::Flow::P 
+  body: The strings will be treated as UTF-8 if $KCODE is set appropriately (i.e. 'u'). Otherwise, the comparison will be performed byte-by-byte. There is no specific support for Shift-JIS or EUC strings.
+- !ruby/struct:SM::Flow::P 
+  body: When using Unicode text, be aware that this algorithm does not perform normalisation. If there is a possibility of different normalised forms being used, normalisation should be performed beforehand.
+full_name: English::Levenshtein#distance
+is_singleton: false
+name: distance
+params: (str1, str2)
+visibility: public

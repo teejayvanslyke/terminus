@@ -1,0 +1,47 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: new_behavior if block_given?
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a Route from one or more Behavior objects, unless a <tt>block</tt> is passed in.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: The parameters the route maps to.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: "Optional block. A new Behavior object is yielded and further #to operations may be called in the block."
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Block parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "new_behavior<Behavior>:"
+    body: The child behavior.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Route:"
+    body: It registers a new route and returns it.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  r.match('/:controller/:id).to(:action =&gt; 'show')\n\n  r.to :controller =&gt; 'simple' do |s|\n    s.match('/test').to(:action =&gt; 'index')\n    s.match('/other').to(:action =&gt; 'other')\n  end\n"
+full_name: Merb::Router::Behavior#to
+is_singleton: false
+name: to
+params: (params = {}, &block) {|new_behavior if block_given?| ...}
+visibility: public

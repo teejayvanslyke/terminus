@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "expected<Symbol>:"
+    body: A format to check
+  type: :NOTE
+full_name: Merb::Test::Rspec::ControllerMatchers::Provide::new
+is_singleton: true
+name: new
+params: (expected)
+visibility: public

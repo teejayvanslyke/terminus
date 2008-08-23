@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: DEFAULT_TEMPLATE = ::Merb::Dispatcher::DEFAULT_ERROR_TEMPLATE
+full_name: Merb::ControllerExceptions::InternalServerError::new
+is_singleton: true
+name: new
+params: (exception = nil)
+visibility: public

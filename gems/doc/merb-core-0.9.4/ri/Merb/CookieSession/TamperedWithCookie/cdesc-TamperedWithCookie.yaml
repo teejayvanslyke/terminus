@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Raised when the cookie fails its integrity check.
+constants: []
+
+full_name: Merb::CookieSession::TamperedWithCookie
+includes: []
+
+instance_methods: []
+
+name: TamperedWithCookie
+superclass: StandardError

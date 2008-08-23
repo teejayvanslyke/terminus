@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a HTML checkbox input based on a resource attribute. This is generally used within a resource block such as <tt>form_for</tt>.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "    &lt;%= checkbox_control :is_activated, :label =&gt; &quot;Activated?&quot; %&gt;\n"
+full_name: Merb::Helpers::Form#checkbox_control
+is_singleton: false
+name: checkbox_control
+params: (col, attrs = {}, hidden_attrs={})
+visibility: public

@@ -1,0 +1,48 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sends a file over HTTP. When given a path to a file, it will set the right headers so that the static file is served directly.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "file<String>:"
+    body: Path to file to send to the client.
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: Options for sending the file (see below).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opts)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":disposition<String>:"
+    body: The disposition of the file send. Defaults to &quot;attachment&quot;.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":filename<String>:"
+    body: The name to use for the file. Defaults to the filename of file.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":type<String>:"
+    body: The content type.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "IO:"
+    body: An I/O stream for the file.
+  type: :NOTE
+full_name: Merb::ControllerMixin#send_file
+is_singleton: false
+name: send_file
+params: (file, opts={})
+visibility: public

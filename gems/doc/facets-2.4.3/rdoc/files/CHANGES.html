@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: CHANGES</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>CHANGES</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>CHANGES
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 18 22:34:50 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Change History</h1>
+<h2>2.4.3 / 2008-08-14</h2>
+<ul>
+<li>Fixed Time#hence changed years when changing months.
+
+</li>
+<li>Deprecate Hash#keys_to_s and Hash#keys_to_sym.
+
+</li>
+<li>Renamed Class#to_pathname and to_methodname to pathize and methodize.
+
+</li>
+<li>Added Sting#pathize and String#methodize.
+
+</li>
+<li>Deprecated Console:: namespace for <a
+href="../classes/ANSICode.html">ANSICode</a>.
+
+</li>
+<li>Added Time#trunc and Time#round to Core.
+
+</li>
+<li>Added Ken Bloom&#8216;s <a
+href="../classes/DictionaryMatcher.html">DictionaryMatcher</a> class (will
+be renamed in future version)
+
+</li>
+<li>IMPORTANT! Changed <a href="../classes/File.html#M000018">File#rewrite</a>
+to not use the inplace change of the string.
+
+</li>
+<li>Added Array#recursively and fixed bug in Hash#recursively.
+
+</li>
+<li>Fixed Time#hence to flip year correctly when adding months.
+
+</li>
+<li>Added optional argument to <a
+href="../classes/Dictionary.html#M000177">Dictionary#first</a> and last.
+
+</li>
+<li>Added kernel/instance method which provides a fluent interface to private
+object space.
+
+</li>
+<li>Moved Mentalguy&#8216;s lazy.rb to core!
+
+</li>
+<li>Added <a href="../classes/Stackable.html">Stackable</a> and <a
+href="../classes/Indexable.html">Indexable</a> to core.
+
+</li>
+<li>Removed ruby.rb, which was a sort 1.9 compatibility lib. The methods are
+now in core.
+
+</li>
+<li>Improved <a href="../classes/File.html#M000020">File#rootname</a>
+&#8212;much more robust now.
+
+</li>
+<li>Made <a href="../classes/FileUtils.html#M000963">FileUtils#whereis</a> a
+module_function again.
+
+</li>
+<li>Although not perceptable to the end user, there are now three libs
+(lib/core, lib/lore, lib/more).
+
+</li>
+<li>Created Lore library to house extensions to Ruby&#8216;s standard library.
+
+</li>
+</ul>
+<h2>2.4.2 / 2008-08-12</h2>
+<ul>
+<li>See 2.4.3. This was just a test release that was available for only one
+day.
+
+</li>
+</ul>
+<h2>2.4.1 / 2008-04-03</h2>
+<ul>
+<li>Comparing to ActiveSupport, found 63 extension clashes, but most are due to
+1.9 features and the rest should be compatible.
+
+</li>
+<li>A much improved paramix.rb has been returned to the library; but please
+note it&#8216;s not quite finished yet.
+
+</li>
+<li>Reatomized a number of Kernel and String methods. Reatomization is nearly
+complete.
+
+</li>
+<li>Deprecated behavior.rb. <a href="../classes/It.html">It</a> was not robust.
+
+</li>
+<li>Added basex.rb, library for working in any encoding base using any
+character set (base62 is the default).
+
+</li>
+</ul>
+<h2>2.4.0 / 2008-03-24</h2>
+<ul>
+<li>String#to_re and String#to_rx have swapped default behaviors. to_rx
+escapes, to_re does not.
+
+</li>
+<li>The Console namespace is being deprecated. command.rb and arguments.rb now
+use <a href="../classes/CLI.html">CLI</a> naemspace.
+
+</li>
+<li>compare_on and equate_on are now &quot;mixin methods&quot; <a
+href="../classes/Comparable.html">Comparable</a>() and Equateable().
+
+</li>
+<li>Enumerable#product, combintations and permutations have change to be Ruby
+1.9 compatible.
+
+</li>
+<li>thread.rb, map_send, et al, block is passed to send instead of yielding on
+result.
+
+</li>
+<li>namespace.rb has been renamed to methodspace.rb.
+
+</li>
+<li>Ruby 1.9 defined a new <a
+href="../classes/Proc.html#M000439">Proc#curry</a> method, so Facets
+version has been made compatible.
+
+</li>
+<li>The old curry method is now called partial, as in &quot;partial
+application&quot;.
+
+</li>
+<li>Deprecated interface.rb. Perhaps a better approach but nonetheless
+extraneous.
+
+</li>
+<li>Deprecated paramix.rb. A better way is to use a capitialized methods.
+(Perhaps a lib for that?)
+
+</li>
+<li>Brought back a few web related libs, htmlfilter.rb and cssfilter.rb in
+particular.
+
+</li>
+<li>camelcase and snakecase are core extensions. For specialized styles use
+String#style in style.rb.
+
+</li>
+<li>This was a fairly large and fast-paced update, so unfortunately not all
+changes are listed this time.
+
+</li>
+</ul>
+<h2>2.3.0 / 2008-02-01</h2>
+<ul>
+<li>Reorganized library into smaller groups: core, more, class and mixin.
+
+</li>
+<li>Added tracepoint.rb back to the library.
+
+</li>
+<li>Fixed multiglob_r bug, so it will NOT follow symlinks.
+
+</li>
+</ul>
+<h2>2.2.1 / 2007-12-22</h2>
+<ul>
+<li>Got rid of methods subdir. All method redirects are in core/.
+
+</li>
+</ul>
+<h2>2.2.0 / 2007-12-13</h2>
+<ul>
+<li>A lot of rdoc updates to core extensions &#8212;as promised ;)
+
+</li>
+<li>Just about every method now has at least a brief explinaiton and an
+example.
+
+</li>
+<li>integer/bitmask.rb has changed a bit &#8212;pun intended ;) Deprecated some
+methods and now use &quot;~&quot; instead of &quot;-&quot; to clear bits.
+
+</li>
+<li>The name Array#unzip didn&#8216;t makes sense, it was renamed to modulate
+(though collate seems better?)
+
+</li>
+<li>Renamed Enumerable#collate to mash (Map hASH); collate and graph remain
+aliases for the time being.
+
+</li>
+<li>Deprecated Module#include_and_extend. Just use both silly.
+
+</li>
+<li>More lib pp_s.rb has been removed. Use pretty_inspect instead.
+
+</li>
+<li>Split binding extensions up a bit more finely &#8212;eval.rb sprouted
+here.rb, self.rb and defined.rb.
+
+</li>
+<li>Move Time#stamp out of conversion.rb and into time/ dir, and remove to_s
+alias.
+
+</li>
+<li>Preliminary addition of Matthew Harris&#8217; excellent duration.rb lib
+(will integrate with times.rb better in future).
+
+</li>
+<li>Added if clauses to handle upcoming Ruby 1.9 gracefully. Facets should now
+be just about ready for use with 1.9.
+
+</li>
+</ul>
+<h2>2.1.3 / 2007-11-28</h2>
+<ul>
+<li>Fixed minor oddity in <a
+href="../classes/Enumerable.html">Enumerable</a>/collate.
+
+</li>
+<li>Fixed major issue with 2.1.2 where it would not core facets correctly.
+
+</li>
+</ul>
+<h2>2.1.2 / 2007-11-22</h2>
+<ul>
+<li>Dir::multiglob no longer handels -/+ modifiers. Use <a
+href="../classes/FileList.html">FileList</a> instead.
+
+</li>
+<li>Fixed task/install script.
+
+</li>
+<li>Improved task/changes.
+
+</li>
+</ul>
+<h2>2.1.1 / 2007-11-16</h2>
+<ul>
+<li>Fixed bug in command.rb that clobbered options.
+
+</li>
+<li>Added kernel/ergo.rb.
+
+</li>
+</ul>
+<h2>2.1.0 / 2007-11-10</h2>
+<ul>
+<li>command.rb has been completely rewritten. The API has changed completely!
+
+</li>
+<li>There is no longer a Commmand::Optoins class. Use Console::Arguments
+instead.
+
+</li>
+<li>Added <a href="../classes/BiCrypt.html">BiCrypt</a> class to crypt.rb for
+simple two-way encyrption.
+
+</li>
+<li>module/attr.rb now has attr_reader!, attr_writer! and attr_accessor!
+
+</li>
+<li>All attr_xxx methods have coresponding alias_xxx methods.
+
+</li>
+<li>Fixed bug in <a
+href="../classes/Enumerable.html#M001113">Enumerable#cluster_by</a> which
+returned nil instead of [].
+
+</li>
+</ul>
+<h2>2.0.5 / 2007-11-07</h2>
+<ul>
+<li>Added final methods Gavin Sinclair&#8216;s Extensions project (contributed
+by Noah Gibbs).
+
+</li>
+<li>Fixes bug with Dictionary#initialize
+
+</li>
+<li>Fixes bug with Hash#-
+
+</li>
+<li>Also improves changelog production.
+
+</li>
+<li>Made alias_method_chain compatible with current ActiveSupport version.
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

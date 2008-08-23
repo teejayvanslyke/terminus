@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Boolean:"
+    body: True if fixation is allowed.
+  type: :NOTE
+full_name: Merb::Router::Route#allow_fixation?
+is_singleton: false
+name: allow_fixation?
+params: ()
+visibility: public

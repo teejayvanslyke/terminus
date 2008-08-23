@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[String, String]:"
+    body: The query and the content type.
+  type: :NOTE
+full_name: Merb::Test::MultipartRequestHelper::Post#to_multipart
+is_singleton: false
+name: to_multipart
+params: ()
+visibility: public

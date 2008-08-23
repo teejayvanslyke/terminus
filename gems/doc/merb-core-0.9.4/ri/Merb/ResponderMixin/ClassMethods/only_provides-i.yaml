@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This class should only provide the formats listed here, despite any other definitions previously or in superclasses.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*formats<Symbol>:"
+    body: Registered mime-types.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[Symbol]:"
+    body: List of formats passed in.
+  type: :NOTE
+full_name: Merb::ResponderMixin::ClassMethods#only_provides
+is_singleton: false
+name: only_provides
+params: (*formats)
+visibility: public

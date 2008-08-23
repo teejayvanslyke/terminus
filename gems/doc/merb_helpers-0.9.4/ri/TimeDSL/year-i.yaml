@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: years
+block_params: 
+comment: 
+full_name: TimeDSL#year
+is_singleton: false
+name: year
+params: ()
+visibility: public

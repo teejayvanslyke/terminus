@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>compiled_params (Merb::Router::Behavior)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/router/behavior.rb, line 829</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compiled_params</span>(<span class="ruby-identifier">params</span> = <span class="ruby-identifier">merged_params</span>, <span class="ruby-identifier">placeholders</span> = <span class="ruby-identifier">merged_placeholders</span>)
+        <span class="ruby-identifier">compiled</span> = {}
+        <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
+            <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;param value for #{key.to_s} must be string (#{value.inspect})&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">result</span> = []
+          <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">dup</span>
+          <span class="ruby-identifier">match</span> = <span class="ruby-keyword kw">true</span>
+          <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">match</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">match</span> = <span class="ruby-constant">SEGMENT_REGEXP_WITH_BRACKETS</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">value</span>)
+              <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">pre_match</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">pre_match</span>.<span class="ruby-identifier">empty?</span>
+              <span class="ruby-identifier">ph_key</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>][<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">intern</span>
+              <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>] <span class="ruby-comment cmt"># has brackets, e.g. :path[2]</span>
+                <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{ph_key}#{match[3]}&quot;</span><span class="ruby-node">&quot;#{ph_key}#{match[3]}&quot;</span>
+              <span class="ruby-keyword kw">else</span> <span class="ruby-comment cmt"># no brackets, e.g. a named placeholder such as :controller</span>
+                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">place</span> = <span class="ruby-identifier">placeholders</span>[<span class="ruby-identifier">ph_key</span>]
+                  <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{place[0]}#{place[1]}&quot;</span><span class="ruby-node">&quot;#{place[0]}#{place[1]}&quot;</span>
+                <span class="ruby-keyword kw">else</span>
+                  <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Placeholder not found while compiling routes: :#{ph_key}&quot;</span>
+                <span class="ruby-keyword kw">end</span>
+              <span class="ruby-keyword kw">end</span>
+              <span class="ruby-identifier">value</span> = <span class="ruby-identifier">match</span>.<span class="ruby-identifier">post_match</span>
+            <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">match</span> = <span class="ruby-constant">JUST_BRACKETS</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">value</span>)
+              <span class="ruby-comment cmt"># This is a reference to :path</span>
+              <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">pre_match</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">pre_match</span>.<span class="ruby-identifier">empty?</span>
+              <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;path#{match[1]}&quot;</span><span class="ruby-node">&quot;path#{match[1]}&quot;</span>
+              <span class="ruby-identifier">value</span> = <span class="ruby-identifier">match</span>.<span class="ruby-identifier">post_match</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">empty?</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">compiled</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-constant">Behavior</span>.<span class="ruby-identifier">array_to_code</span>(<span class="ruby-identifier">result</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;\\_&quot;</span>, <span class="ruby-value str">&quot;_&quot;</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">compiled</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

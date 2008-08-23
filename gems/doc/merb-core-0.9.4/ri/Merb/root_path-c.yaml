@@ -1,0 +1,33 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*path:"
+    body: The relative path (or list of path components) to a directory under the root of the application.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The full path including the root.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Merb.root = &quot;/home/merb/app&quot;\n  Merb.path(&quot;images&quot;) # =&gt; &quot;/home/merb/app/images&quot;\n  Merb.path(&quot;views&quot;, &quot;admin&quot;) # =&gt; &quot;/home/merb/app/views/admin&quot;\n"
+full_name: Merb::root_path
+is_singleton: true
+name: root_path
+params: (*path)
+visibility: public

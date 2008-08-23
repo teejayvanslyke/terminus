@@ -1,0 +1,42 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "condition<Symbol, Proc>:"
+    body: The condition to evaluate.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Raises
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "ArgumentError:"
+    body: condition not a Symbol or Proc.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Boolean:"
+    body: True if the condition is met.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If condition is a symbol, it will be send'ed. If it is a Proc it will be called directly with self as an argument.
+full_name: Merb::AbstractController#_evaluate_condition
+is_singleton: false
+name: _evaluate_condition
+params: (condition)
+visibility: public

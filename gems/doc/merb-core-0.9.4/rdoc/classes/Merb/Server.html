@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Merb::Server</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Merb::Server</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/merb-core/server_rb.html">
+                lib/merb-core/server.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="Server.html">Server</a> encapsulates the management of <a
+href="../Merb.html">Merb</a> daemons.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002891">_change_privilege</a>&nbsp;&nbsp;
+      <a href="#M002883">alive?</a>&nbsp;&nbsp;
+      <a href="#M002886">change_privilege</a>&nbsp;&nbsp;
+      <a href="#M002885">daemonize</a>&nbsp;&nbsp;
+      <a href="#M002884">kill</a>&nbsp;&nbsp;
+      <a href="#M002889">pid_file</a>&nbsp;&nbsp;
+      <a href="#M002890">pid_files</a>&nbsp;&nbsp;
+      <a href="#M002887">remove_pid_file</a>&nbsp;&nbsp;
+      <a href="#M002882">start</a>&nbsp;&nbsp;
+      <a href="#M002888">store_pid</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002891" class="method-detail">
+        <a name="M002891"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002891.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002891.html');return false;">
+          <span class="method-name">_change_privilege</span><span class="method-args">(user, group=user)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Change privileges of the process to the specified user and group.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">user&lt;<a href="../String.html">String</a>&gt;:</td><td>The user who should own the server process.
+
+</td></tr>
+<tr><td valign="top">group&lt;<a href="../String.html">String</a>&gt;:</td><td>The group who should own the server process.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+If group is left out, the user will be used as the group.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002883" class="method-detail">
+        <a name="M002883"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002883.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002883.html');return false;">
+          <span class="method-name">alive?</span><span class="method-args">(port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">port&lt;~to_s&gt;:</td><td>The port to check for <a href="../Merb.html">Merb</a> instances on.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Boolean:</td><td>True if <a href="../Merb.html">Merb</a> is running on the specified port.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002886" class="method-detail">
+        <a name="M002886"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002886.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002886.html');return false;">
+          <span class="method-name">change_privilege</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M002885" class="method-detail">
+        <a name="M002885"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002885.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002885.html');return false;">
+          <span class="method-name">daemonize</span><span class="method-args">(port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">port&lt;~to_s&gt;:</td><td>The port of the <a href="../Merb.html">Merb</a> process to <a
+href="Server.html#M002885">daemonize</a>.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002884" class="method-detail">
+        <a name="M002884"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002884.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002884.html');return false;">
+          <span class="method-name">kill</span><span class="method-args">(port, sig=9)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">port&lt;~to_s&gt;:</td><td>The port of the <a href="../Merb.html">Merb</a> process to <a
+href="Server.html#M002884">kill</a>.
+
+</td></tr>
+<tr><td valign="top">sig&lt;~to_s&gt;:</td><td>The signal to send to the process. Defaults to 9.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+If you pass &quot;all&quot; as the port, the signal will be sent to all <a
+href="../Merb.html">Merb</a> processes.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002889" class="method-detail">
+        <a name="M002889"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002889.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002889.html');return false;">
+          <span class="method-name">pid_file</span><span class="method-args">(port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Gets the pid file for the specified port.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">port&lt;~to_s&gt;:</td><td>The port of the <a href="../Merb.html">Merb</a> process to whom the the PID
+file belongs to.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>Location of pid file for specified port. If clustered and <a
+href="Server.html#M002889">pid_file</a> option is specified, it adds the
+port value to the path.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002890" class="method-detail">
+        <a name="M002890"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002890.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002890.html');return false;">
+          <span class="method-name">pid_files</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get a list of the pid files.
+</p>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Array:</td><td>List of pid file paths. If not clustered, array contains a single path.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002887" class="method-detail">
+        <a name="M002887"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002887.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002887.html');return false;">
+          <span class="method-name">remove_pid_file</span><span class="method-args">(port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Removes a PID file used by the server from the filesystem. This uses :<a
+href="Server.html#M002889">pid_file</a> options from configuration when
+provided or merb.&lt;port&gt;.pid in log directory by default.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">port&lt;~to_s&gt;:</td><td>The port of the <a href="../Merb.html">Merb</a> process to whom the the PID
+file belongs to.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+If <a href="Config.html">Merb::Config</a>[:<a
+href="Server.html#M002889">pid_file</a>] has been specified, that will be
+used instead of the port based PID file.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002882" class="method-detail">
+        <a name="M002882"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002882.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002882.html');return false;">
+          <span class="method-name">start</span><span class="method-args">(port, cluster=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Start a <a href="../Merb.html">Merb</a> server, in either foreground,
+daemonized or cluster mode.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">port&lt;~to_i&gt;:</td><td>The port to which the first server instance should bind to. Subsequent
+server instances bind to the immediately following ports.
+
+</td></tr>
+<tr><td valign="top">cluster&lt;~to_i&gt;:</td><td>Number of servers to run in a cluster.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+If cluster is left out, then one process will be started. This process will
+be daemonized if <a href="Config.html">Merb::Config</a>[:<a
+href="Server.html#M002885">daemonize</a>] is true.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002888" class="method-detail">
+        <a name="M002888"></a>
+
+        <div class="method-heading">
+          <a href="Server.src/M002888.html" target="Code" class="method-signature"
+            onclick="popupCode('Server.src/M002888.html');return false;">
+          <span class="method-name">store_pid</span><span class="method-args">(port)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Stores a PID file on the filesystem. This uses :<a
+href="Server.html#M002889">pid_file</a> options from configuration when
+provided or merb.&lt;port&gt;.pid in log directory by default.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">port&lt;~to_s&gt;:</td><td>The port of the <a href="../Merb.html">Merb</a> process to whom the the PID
+file belongs to.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+If <a href="Config.html">Merb::Config</a>[:<a
+href="Server.html#M002889">pid_file</a>] has been specified, that will be
+used instead of the port based PID file.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

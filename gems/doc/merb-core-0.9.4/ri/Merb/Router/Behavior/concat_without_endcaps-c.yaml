@@ -1,0 +1,31 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "string1<String>:"
+    body: The string to concatenate with.
+  - !ruby/struct:SM::Flow::LI 
+    label: "string2<String>:"
+    body: The string to concatenate.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: the concatenated string with regexp end caps removed.
+  type: :NOTE
+full_name: Merb::Router::Behavior::concat_without_endcaps
+is_singleton: true
+name: concat_without_endcaps
+params: (string1, string2)
+visibility: public

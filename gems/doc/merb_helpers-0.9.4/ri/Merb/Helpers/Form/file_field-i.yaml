@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a HTML file input
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "    &lt;% file_field :name =&gt; &quot;file&quot;, :label =&gt; &quot;File&quot; %&gt;\n"
+full_name: Merb::Helpers::Form#file_field
+is_singleton: false
+name: file_field
+params: (attrs = {})
+visibility: public

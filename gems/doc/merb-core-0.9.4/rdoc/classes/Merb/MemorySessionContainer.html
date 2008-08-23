@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Merb::MemorySessionContainer</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Merb::MemorySessionContainer</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/merb-core/dispatch/session/memory_rb.html">
+                lib/merb-core/dispatch/session/memory.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Used for handling multiple <a
+href="MemorySessionContainer.html#M002840">sessions</a> stored in memory.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002835">[]</a>&nbsp;&nbsp;
+      <a href="#M002836">[]=</a>&nbsp;&nbsp;
+      <a href="#M002834">create</a>&nbsp;&nbsp;
+      <a href="#M002837">delete</a>&nbsp;&nbsp;
+      <a href="#M002838">reap_old_sessions</a>&nbsp;&nbsp;
+      <a href="#M002840">sessions</a>&nbsp;&nbsp;
+      <a href="#M002833">setup</a>&nbsp;&nbsp;
+      <a href="#M002839">start_timer</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002835" class="method-detail">
+        <a name="M002835"></a>
+
+        <div class="method-heading">
+          <a href="MemorySessionContainer.src/M002835.html" target="Code" class="method-signature"
+            onclick="popupCode('MemorySessionContainer.src/M002835.html');return false;">
+          <span class="method-name">[]</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">key&lt;<a href="../String.html">String</a>&gt;:</td><td>ID of the session to retrieve.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="MemorySession.html">MemorySession</a>:</td><td>The session corresponding to the ID.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002836" class="method-detail">
+        <a name="M002836"></a>
+
+        <div class="method-heading">
+          <a href="MemorySessionContainer.src/M002836.html" target="Code" class="method-signature"
+            onclick="popupCode('MemorySessionContainer.src/M002836.html');return false;">
+          <span class="method-name">[]=</span><span class="method-args">(key, val)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">key&lt;<a href="../String.html">String</a>&gt;:</td><td>ID of the session to set.
+
+</td></tr>
+<tr><td valign="top">val&lt;<a href="MemorySession.html">MemorySession</a>&gt;:</td><td>The session to set.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002834" class="method-detail">
+        <a name="M002834"></a>
+
+        <div class="method-heading">
+          <a href="MemorySessionContainer.src/M002834.html" target="Code" class="method-signature"
+            onclick="popupCode('MemorySessionContainer.src/M002834.html');return false;">
+          <span class="method-name">create</span><span class="method-args">(opts={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a new session based on the options.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>The session options (see below).
+
+</td></tr>
+</table>
+<h4>Options (opts)</h4>
+<table>
+<tr><td valign="top">:session_id&lt;<a href="../String.html">String</a>&gt;:</td><td>ID of the session to <a
+href="MemorySessionContainer.html#M002834">create</a> in the container.
+
+</td></tr>
+<tr><td valign="top">:data&lt;<a href="MemorySession.html">MemorySession</a>&gt;:</td><td>The session to <a href="MemorySessionContainer.html#M002834">create</a> in
+the container.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002837" class="method-detail">
+        <a name="M002837"></a>
+
+        <div class="method-heading">
+          <a href="MemorySessionContainer.src/M002837.html" target="Code" class="method-signature"
+            onclick="popupCode('MemorySessionContainer.src/M002837.html');return false;">
+          <span class="method-name">delete</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">key&lt;<a href="../String.html">String</a>&gt;:</td><td>ID of the session to <a
+href="MemorySessionContainer.html#M002837">delete</a>.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002838" class="method-detail">
+        <a name="M002838"></a>
+
+        <div class="method-heading">
+          <a href="MemorySessionContainer.src/M002838.html" target="Code" class="method-signature"
+            onclick="popupCode('MemorySessionContainer.src/M002838.html');return false;">
+          <span class="method-name">reap_old_sessions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Deletes any <a href="MemorySessionContainer.html#M002840">sessions</a> that
+have reached their maximum validity.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002840" class="method-detail">
+        <a name="M002840"></a>
+
+        <div class="method-heading">
+          <a href="MemorySessionContainer.src/M002840.html" target="Code" class="method-signature"
+            onclick="popupCode('MemorySessionContainer.src/M002840.html');return false;">
+          <span class="method-name">sessions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Array:</td><td>The <a href="MemorySessionContainer.html#M002840">sessions</a> stored in
+this container.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002833" class="method-detail">
+        <a name="M002833"></a>
+
+        <div class="method-heading">
+          <a href="MemorySessionContainer.src/M002833.html" target="Code" class="method-signature"
+            onclick="popupCode('MemorySessionContainer.src/M002833.html');return false;">
+          <span class="method-name">setup</span><span class="method-args">(ttl=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">ttl&lt;Fixnum&gt;:</td><td>Session validity time in seconds. Defaults to 1 hour.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="MemorySessionContainer.html">MemorySessionContainer</a>:</td><td>The new session container.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002839" class="method-detail">
+        <a name="M002839"></a>
+
+        <div class="method-heading">
+          <a href="MemorySessionContainer.src/M002839.html" target="Code" class="method-signature"
+            onclick="popupCode('MemorySessionContainer.src/M002839.html');return false;">
+          <span class="method-name">start_timer</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Starts the timer that will eventually reap outdated <a
+href="MemorySessionContainer.html#M002840">sessions</a>.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

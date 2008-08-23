@@ -1,0 +1,36 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a generic HTML select.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "+prompt+:"
+    body: Adds an additional option tag with the provided string with no value.
+  - !ruby/struct:SM::Flow::LI 
+    label: "+selected+:"
+    body: The value of a selected object, which may be either a string or an array.
+  - !ruby/struct:SM::Flow::LI 
+    label: "+include_blank+:"
+    body: Adds an additional blank option tag with no value.
+  - !ruby/struct:SM::Flow::LI 
+    label: "+collection+:"
+    body: The collection for the select options
+  - !ruby/struct:SM::Flow::LI 
+    label: "+text_method+:"
+    body: "Method to determine text of an option (as a symbol). Ex: :text_method =&gt; :name will call .name on your record object for what text to display."
+  - !ruby/struct:SM::Flow::LI 
+    label: "+value_method+:"
+    body: Method to determine value of an option (as a symbol).
+  type: :NOTE
+full_name: Merb::Helpers::Form#select_field
+is_singleton: false
+name: select_field
+params: (attrs = {})
+visibility: public

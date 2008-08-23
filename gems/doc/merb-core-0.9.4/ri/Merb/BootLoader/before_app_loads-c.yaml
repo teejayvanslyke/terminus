@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: A block to be added to the callbacks that will be executed before the app loads.
+  type: :NOTE
+full_name: Merb::BootLoader::before_app_loads
+is_singleton: true
+name: before_app_loads
+params: (&block)
+visibility: public

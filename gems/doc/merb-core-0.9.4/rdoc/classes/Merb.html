@@ -1,0 +1,1834 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Merb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Merb</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/merb-core/autoload_rb.html">
+                lib/merb-core/autoload.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/bootloader_rb.html">
+                lib/merb-core/bootloader.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/config_rb.html">
+                lib/merb-core/config.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/constants_rb.html">
+                lib/merb-core/constants.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/controller/exceptions_rb.html">
+                lib/merb-core/controller/exceptions.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/controller/mime_rb.html">
+                lib/merb-core/controller/mime.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/controller/mixins/controller_rb.html">
+                lib/merb-core/controller/mixins/controller.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/controller/mixins/responder_rb.html">
+                lib/merb-core/controller/mixins/responder.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/cookies_rb.html">
+                lib/merb-core/dispatch/cookies.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/default_exception/default_exception_rb.html">
+                lib/merb-core/dispatch/default_exception/default_exception.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/dispatcher_rb.html">
+                lib/merb-core/dispatch/dispatcher.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/request_rb.html">
+                lib/merb-core/dispatch/request.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/router/behavior_rb.html">
+                lib/merb-core/dispatch/router/behavior.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/router/cached_proc_rb.html">
+                lib/merb-core/dispatch/router/cached_proc.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/router/route_rb.html">
+                lib/merb-core/dispatch/router/route.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/router_rb.html">
+                lib/merb-core/dispatch/router.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/session/cookie_rb.html">
+                lib/merb-core/dispatch/session/cookie.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/session/memcached_rb.html">
+                lib/merb-core/dispatch/session/memcached.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/session/memory_rb.html">
+                lib/merb-core/dispatch/session/memory.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/session_rb.html">
+                lib/merb-core/dispatch/session.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/dispatch/worker_rb.html">
+                lib/merb-core/dispatch/worker.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/logger_rb.html">
+                lib/merb-core/logger.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/plugins_rb.html">
+                lib/merb-core/plugins.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/ebb_rb.html">
+                lib/merb-core/rack/adapter/ebb.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/evented_mongrel_rb.html">
+                lib/merb-core/rack/adapter/evented_mongrel.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/fcgi_rb.html">
+                lib/merb-core/rack/adapter/fcgi.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/irb_rb.html">
+                lib/merb-core/rack/adapter/irb.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/mongrel_rb.html">
+                lib/merb-core/rack/adapter/mongrel.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/runner_rb.html">
+                lib/merb-core/rack/adapter/runner.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/swiftiplied_mongrel_rb.html">
+                lib/merb-core/rack/adapter/swiftiplied_mongrel.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/thin_rb.html">
+                lib/merb-core/rack/adapter/thin.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/thin_turbo_rb.html">
+                lib/merb-core/rack/adapter/thin_turbo.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter/webrick_rb.html">
+                lib/merb-core/rack/adapter/webrick.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/adapter_rb.html">
+                lib/merb-core/rack/adapter.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/application_rb.html">
+                lib/merb-core/rack/application.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/handler/mongrel_rb.html">
+                lib/merb-core/rack/handler/mongrel.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/middleware/path_prefix_rb.html">
+                lib/merb-core/rack/middleware/path_prefix.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/middleware/profiler_rb.html">
+                lib/merb-core/rack/middleware/profiler.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/middleware/static_rb.html">
+                lib/merb-core/rack/middleware/static.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack/middleware_rb.html">
+                lib/merb-core/rack/middleware.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/rack_rb.html">
+                lib/merb-core/rack.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/server_rb.html">
+                lib/merb-core/server.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/test/helpers/controller_helper_rb.html">
+                lib/merb-core/test/helpers/controller_helper.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/test/helpers/request_helper_rb.html">
+                lib/merb-core/test/helpers/request_helper.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/test/helpers/route_helper_rb.html">
+                lib/merb-core/test/helpers/route_helper.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/test/helpers/view_helper_rb.html">
+                lib/merb-core/test/helpers/view_helper.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/test_rb.html">
+                lib/merb-core/test.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core/version_rb.html">
+                lib/merb-core/version.rb
+                </a>
+        <br />
+                <a href="../files/lib/merb-core_rb.html">
+                lib/merb-core.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h4>Public <a href="Merb.html">Merb</a> <a href="Merb/Logger.html">Logger</a> API</h4>
+<p>
+To replace an existing logger with a new one:
+</p>
+<pre>
+ Merb::Logger.set_log(log{String, IO},level{Symbol, String})
+</pre>
+<p>
+Available logging levels are
+</p>
+<pre>
+  Merb::Logger::{ Fatal, Error, Warn, Info, Debug }
+</pre>
+<p>
+Logging via:
+</p>
+<pre>
+  Merb.logger.fatal(message&lt;String&gt;,&amp;block)
+  Merb.logger.error(message&lt;String&gt;,&amp;block)
+  Merb.logger.warn(message&lt;String&gt;,&amp;block)
+  Merb.logger.info(message&lt;String&gt;,&amp;block)
+  Merb.logger.debug(message&lt;String&gt;,&amp;block)
+</pre>
+<p>
+Logging with autoflush:
+</p>
+<pre>
+  Merb.logger.fatal!(message&lt;String&gt;,&amp;block)
+  Merb.logger.error!(message&lt;String&gt;,&amp;block)
+  Merb.logger.warn!(message&lt;String&gt;,&amp;block)
+  Merb.logger.info!(message&lt;String&gt;,&amp;block)
+  Merb.logger.debug!(message&lt;String&gt;,&amp;block)
+</pre>
+<p>
+Flush the buffer to
+</p>
+<pre>
+  Merb.logger.flush
+</pre>
+<p>
+Remove the current log object
+</p>
+<pre>
+  Merb.logger.close
+</pre>
+<h4>Private <a href="Merb.html">Merb</a> <a href="Merb/Logger.html">Logger</a> API</h4>
+<p>
+To initialize the logger you create a new object, proxies to set_log.
+</p>
+<pre>
+  Merb::Logger.new(log{String, IO},level{Symbol, String})
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002577">add_generators</a>&nbsp;&nbsp;
+      <a href="#M002538">add_mime_type</a>&nbsp;&nbsp;
+      <a href="#M002576">add_rakefiles</a>&nbsp;&nbsp;
+      <a href="#M002537">available_mime_types</a>&nbsp;&nbsp;
+      <a href="#M002569">config</a>&nbsp;&nbsp;
+      <a href="#M002556">deferred_actions</a>&nbsp;&nbsp;
+      <a href="#M002548">dir_for</a>&nbsp;&nbsp;
+      <a href="#M002570">disable</a>&nbsp;&nbsp;
+      <a href="#M002573">disabled?</a>&nbsp;&nbsp;
+      <a href="#M002572">disabled_components</a>&nbsp;&nbsp;
+      <a href="#M002571">disabled_components=</a>&nbsp;&nbsp;
+      <a href="#M002568">env?</a>&nbsp;&nbsp;
+      <a href="#M002536">exception</a>&nbsp;&nbsp;
+      <a href="#M002557">flat!</a>&nbsp;&nbsp;
+      <a href="#M002555">framework_root</a>&nbsp;&nbsp;
+      <a href="#M002563">frozen!</a>&nbsp;&nbsp;
+      <a href="#M002562">frozen?</a>&nbsp;&nbsp;
+      <a href="#M002560">generator_scope</a>&nbsp;&nbsp;
+      <a href="#M002575">generators</a>&nbsp;&nbsp;
+      <a href="#M002549">glob_for</a>&nbsp;&nbsp;
+      <a href="#M002564">load_config</a>&nbsp;&nbsp;
+      <a href="#M002565">load_dependencies</a>&nbsp;&nbsp;
+      <a href="#M002553">log_file</a>&nbsp;&nbsp;
+      <a href="#M002554">log_path</a>&nbsp;&nbsp;
+      <a href="#M002542">merge_env</a>&nbsp;&nbsp;
+      <a href="#M002541">mime_by_request_header</a>&nbsp;&nbsp;
+      <a href="#M002540">mime_transform_method</a>&nbsp;&nbsp;
+      <a href="#M002558">orm_generator_scope</a>&nbsp;&nbsp;
+      <a href="#M002546">push_path</a>&nbsp;&nbsp;
+      <a href="#M002574">rakefiles</a>&nbsp;&nbsp;
+      <a href="#M002561">register_session_type</a>&nbsp;&nbsp;
+      <a href="#M002566">reload</a>&nbsp;&nbsp;
+      <a href="#M002539">remove_mime_type</a>&nbsp;&nbsp;
+      <a href="#M002547">remove_paths</a>&nbsp;&nbsp;
+      <a href="#M002545">restart_environment</a>&nbsp;&nbsp;
+      <a href="#M002550">root</a>&nbsp;&nbsp;
+      <a href="#M002551">root=</a>&nbsp;&nbsp;
+      <a href="#M002552">root_path</a>&nbsp;&nbsp;
+      <a href="#M002543">start</a>&nbsp;&nbsp;
+      <a href="#M002544">start_environment</a>&nbsp;&nbsp;
+      <a href="#M002559">test_framework_generator_scope</a>&nbsp;&nbsp;
+      <a href="#M002567">testing?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="Merb/AuthenticationMixin.html" class="link">Merb::AuthenticationMixin</a><br />
+Module <a href="Merb/Const.html" class="link">Merb::Const</a><br />
+Module <a href="Merb/ControllerExceptions.html" class="link">Merb::ControllerExceptions</a><br />
+Module <a href="Merb/ControllerMixin.html" class="link">Merb::ControllerMixin</a><br />
+Module <a href="Merb/GlobalHelpers.html" class="link">Merb::GlobalHelpers</a><br />
+Module <a href="Merb/InlineTemplates.html" class="link">Merb::InlineTemplates</a><br />
+Module <a href="Merb/Plugins.html" class="link">Merb::Plugins</a><br />
+Module <a href="Merb/Rack.html" class="link">Merb::Rack</a><br />
+Module <a href="Merb/RenderMixin.html" class="link">Merb::RenderMixin</a><br />
+Module <a href="Merb/ResponderMixin.html" class="link">Merb::ResponderMixin</a><br />
+Module <a href="Merb/SessionMixin.html" class="link">Merb::SessionMixin</a><br />
+Module <a href="Merb/Template.html" class="link">Merb::Template</a><br />
+Module <a href="Merb/Test.html" class="link">Merb::Test</a><br />
+Class <a href="Merb/AbstractController.html" class="link">Merb::AbstractController</a><br />
+Class <a href="Merb/AcceptType.html" class="link">Merb::AcceptType</a><br />
+Class <a href="Merb/BootLoader.html" class="link">Merb::BootLoader</a><br />
+Class <a href="Merb/Config.html" class="link">Merb::Config</a><br />
+Class <a href="Merb/Controller.html" class="link">Merb::Controller</a><br />
+Class <a href="Merb/CookieSession.html" class="link">Merb::CookieSession</a><br />
+Class <a href="Merb/Cookies.html" class="link">Merb::Cookies</a><br />
+Class <a href="Merb/Dispatcher.html" class="link">Merb::Dispatcher</a><br />
+Class <a href="Merb/Logger.html" class="link">Merb::Logger</a><br />
+Class <a href="Merb/MemCacheSession.html" class="link">Merb::MemCacheSession</a><br />
+Class <a href="Merb/MemorySession.html" class="link">Merb::MemorySession</a><br />
+Class <a href="Merb/MemorySessionContainer.html" class="link">Merb::MemorySessionContainer</a><br />
+Class <a href="Merb/Request.html" class="link">Merb::Request</a><br />
+Class <a href="Merb/Responder.html" class="link">Merb::Responder</a><br />
+Class <a href="Merb/Router.html" class="link">Merb::Router</a><br />
+Class <a href="Merb/Server.html" class="link">Merb::Server</a><br />
+Class <a href="Merb/Worker.html" class="link">Merb::Worker</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">VERSION</td>
+          <td>=</td>
+          <td class="context-item-value">'0.9.4' unless defined?(Merb::VERSION)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">RELEASE</td>
+          <td>=</td>
+          <td class="context-item-value">'dev' unless defined?(Merb::RELEASE)</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Merb::RELEASE meanings: &#8216;dev&#8217; : unreleased &#8216;pre&#8217; :
+pre-release Gem candidates
+
+<pre>
+ nil    : released
+</pre>
+<p>
+You should never check in to trunk with this changed. It should stay
+&#8216;dev&#8217;. Change it to nil in release tags.
+</p>
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">environment</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">env</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">started</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">started?</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">adapter</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">environment</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">environment_info</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">frozen</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">generator_scope</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Set up default variables under <a href="Merb.html">Merb</a>
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">klass_hashes</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Set up default variables under <a href="Merb.html">Merb</a>
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">load_paths</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">logger</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+<a href="Merb/Logger.html">Logger</a> settings
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">logger</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">orm_generator_scope</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Set up default variables under <a href="Merb.html">Merb</a>
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">registered_session_types</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">started</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">test_framework_generator_scope</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Set up default variables under <a href="Merb.html">Merb</a>
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002577" class="method-detail">
+        <a name="M002577"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002577.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002577.html');return false;">
+          <span class="method-name">add_generators</span><span class="method-args">(*generators)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">*<a href="Merb.html#M002575">generators</a>:</td><td>Generator paths to add to the list of <a
+href="Merb.html#M002575">generators</a>.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+Recommended way to add Generator load paths for plugin authors.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002538" class="method-detail">
+        <a name="M002538"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002538.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002538.html');return false;">
+          <span class="method-name">add_mime_type</span><span class="method-args">(key, transform_method, mimes, new_response_headers = {}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Any specific outgoing headers should be included here. These are not the
+content-type header but anything in addition to it.
+<tt>transform_method</tt> should be set to a symbol of the method used to
+transform a resource into this mime type. For example for the :xml mime
+type an object might be transformed by calling :to_xml, or for the :js mime
+type, :to_json. If there is no transform method, use nil.
+</p>
+<h4>Autogenerated Methods</h4>
+<p>
+Adding a mime-type adds a render_type method that sets the content type and
+calls render.
+</p>
+<p>
+By default this does: def render_all, def render_yaml, def render_text, def
+render_html, def render_xml, def render_js, and def render_yaml
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">key&lt;Symbol&gt;:</td><td>The name of the mime-type. This is used by the provides API
+
+</td></tr>
+<tr><td valign="top">transform_method&lt;~to_s&gt;:</td><td>The associated method to call on objects to convert them to the appropriate
+mime-type. For instance, :json would use :to_json as its transform_method.
+
+</td></tr>
+<tr><td valign="top">mimes&lt;Array[<a href="String.html">String</a>]&gt;:</td><td>A list of possible values sent in the Accept header, such as text/html,
+that should be associated with this content-type.
+
+</td></tr>
+<tr><td valign="top">new_response_headers&lt;Hash&gt;:</td><td>The response headers to set for the the mime type. For example:
+&#8216;Content-Type&#8217; =&gt; &#8216;application/json;
+charset=utf-8&#8217;; As a shortcut for the common charset option, use
+:charset =&gt; &#8216;utf-8&#8217;, which will be correctly appended to the
+mimetype itself.
+
+</td></tr>
+<tr><td valign="top">&amp;block:</td><td>a block which recieves the current controller when the format
+
+</td></tr>
+</table>
+<pre>
+  is set (in the controller's #content_type method)
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002576" class="method-detail">
+        <a name="M002576"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002576.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002576.html');return false;">
+          <span class="method-name">add_rakefiles</span><span class="method-args">(*rakefiles)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">*<a href="Merb.html#M002574">rakefiles</a>:</td><td>Rakefile pathss to add to the list of Rakefiles.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+Recommended way to add Rakefiles load path for plugins authors.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002537" class="method-detail">
+        <a name="M002537"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002537.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002537.html');return false;">
+          <span class="method-name">available_mime_types</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Hash:</td><td>The available mime types.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002569" class="method-detail">
+        <a name="M002569"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002569.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002569.html');return false;">
+          <span class="method-name">config</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+If block was given configures using the block.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">&amp;block:</td><td>Configuration parameter block, see example below.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Hash:</td><td>The current configuration.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+See Merb::GlobalHelpers.load_config for configuration options list.
+</p>
+<h4>Examples</h4>
+<pre>
+  Merb.config do
+    beer               &quot;good&quot;
+    hashish            :foo =&gt; &quot;bar&quot;
+    environment        &quot;development&quot;
+    log_level          &quot;debug&quot;
+    use_mutex          false
+    session_store      &quot;cookie&quot;
+    session_secret_key &quot;0d05a226affa226623eb18700&quot;
+    exception_details  true
+    reload_classes     true
+    reload_time        0.5
+  end
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002556" class="method-detail">
+        <a name="M002556"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002556.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002556.html');return false;">
+          <span class="method-name">deferred_actions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">RegExp:</td><td>Regular expression against which deferred actions are matched by <a
+href="Merb/Rack.html">Rack</a> application handler.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+Concatenates :<a href="Merb.html#M002556">deferred_actions</a>
+configuration option values.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002548" class="method-detail">
+        <a name="M002548"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002548.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002548.html');return false;">
+          <span class="method-name">dir_for</span><span class="method-args">(type)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">type&lt;Symbol&gt;:</td><td>The type of path to retrieve directory for, e.g. :view.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="String.html">String</a>:</td><td>The directory for the requested type.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002570" class="method-detail">
+        <a name="M002570"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002570.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002570.html');return false;">
+          <span class="method-name">disable</span><span class="method-args">(*components)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Disables the given core components, like a Gem for example.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">*args:</td><td>One or more symbols of <a href="Merb.html">Merb</a> internal components.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002573" class="method-detail">
+        <a name="M002573"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002573.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002573.html');return false;">
+          <span class="method-name">disabled?</span><span class="method-args">(*components)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Boolean:</td><td>True if all components (or just one) are disabled.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002572" class="method-detail">
+        <a name="M002572"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002572.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002572.html');return false;">
+          <span class="method-name">disabled_components</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Array:</td><td>All components that have been disabled.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002571" class="method-detail">
+        <a name="M002571"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002571.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002571.html');return false;">
+          <span class="method-name">disabled_components=</span><span class="method-args">(components)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">Array:</td><td>All components that should be disabled.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002568" class="method-detail">
+        <a name="M002568"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002568.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002568.html');return false;">
+          <span class="method-name">env?</span><span class="method-args">(env)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Ask the question about which environment you&#8216;re in.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">env&lt;Symbol, <a href="String.html">String</a>&gt;:</td><td>Name of the environment to query
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<p>
+Merb.env #=&gt; production Merb.env?(:production) #=&gt; true
+Merb.env?(:development) #=&gt; false
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002536" class="method-detail">
+        <a name="M002536"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002536.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002536.html');return false;">
+          <span class="method-name">exception</span><span class="method-args">(e)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Required to show exceptions in the log file
+</p>
+<table>
+<tr><td valign="top">e&lt;<a href="Exception.html">Exception</a>&gt;:</td><td>The <a href="Merb.html#M002536">exception</a> that a message is being
+generated for
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002557" class="method-detail">
+        <a name="M002557"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002557.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002557.html');return false;">
+          <span class="method-name">flat!</span><span class="method-args">(framework = {}) {|r| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Allows flat apps by setting no default framework directories and yielding a
+<a href="Merb/Router.html">Merb::Router</a> instance. This is optional
+since the router will automatically configure the app with default routes.
+</p>
+<h4>Block parameters</h4>
+<table>
+<tr><td valign="top">r&lt;<a href="Merb/Router/Behavior.html">Merb::Router::Behavior</a>&gt;:</td><td>The <a href="Merb.html#M002550">root</a> behavior upon which new routes can
+be added.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002555" class="method-detail">
+        <a name="M002555"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002555.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002555.html');return false;">
+          <span class="method-name">framework_root</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="String.html">String</a>:</td><td>The path of <a href="Merb.html#M002550">root</a> directory of the <a
+href="Merb.html">Merb</a> framework.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002563" class="method-detail">
+        <a name="M002563"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002563.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002563.html');return false;">
+          <span class="method-name">frozen!</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Used by merb-freezer and other freezers to mark <a
+href="Merb.html">Merb</a> as frozen. See Merb::GlobalHelpers.frozen? for
+more details on framework freezing.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002562" class="method-detail">
+        <a name="M002562"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002562.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002562.html');return false;">
+          <span class="method-name">frozen?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Boolean:</td><td>True if <a href="Merb.html">Merb</a> is running via merb-freezer or other
+freezer.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+Freezing means bundling framework libraries with your application making it
+independent from environment it runs in. This is a good practice to freeze
+application framework and gems it uses and very useful when application is
+run in some sort of sandbox, for instance, shared hosting with
+preconfigured gems.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002560" class="method-detail">
+        <a name="M002560"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002560.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002560.html');return false;">
+          <span class="method-name">generator_scope</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns all registered <a href="Merb.html#M002575">generators</a> plus <a
+href="Merb.html">Merb</a> generator.
+</p>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">&lt;Array(Symbol&gt;:</td><td>all registered <a href="Merb.html#M002575">generators</a>, inc. needed by
+<a href="Merb.html">Merb</a> itself.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002575" class="method-detail">
+        <a name="M002575"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002575.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002575.html');return false;">
+          <span class="method-name">generators</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h3>Returns</h3>
+<table>
+<tr><td valign="top">Array(<a href="String.html">String</a>):</td><td>Paths <a href="Merb.html#M002575">generators</a> are loaded from
+
+</td></tr>
+</table>
+<h3>Notes</h3>
+<p>
+Recommended way to find out what paths <a
+href="Merb.html#M002575">generators</a> are loaded from.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002549" class="method-detail">
+        <a name="M002549"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002549.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002549.html');return false;">
+          <span class="method-name">glob_for</span><span class="method-args">(type)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">type&lt;Symbol&gt;:</td><td>The type of path to retrieve glob for, e.g. :view.
+
+</td></tr>
+</table>
+<h5>Returns</h5>
+<table>
+<tr><td valign="top"><a href="String.html">String</a>:</td><td>The pattern with which to match files within the type directory.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002564" class="method-detail">
+        <a name="M002564"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002564.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002564.html');return false;">
+          <span class="method-name">load_config</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Load configuration and assign logger.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">options&lt;Hash&gt;:</td><td>Options to pass on to the <a href="Merb.html">Merb</a> <a
+href="Merb.html#M002569">config</a>.
+
+</td></tr>
+</table>
+<h4>Options</h4>
+<table>
+<tr><td valign="top">:host&lt;<a href="String.html">String</a>&gt;:</td><td>host to bind to, default is 0.0.0.0.
+
+</td></tr>
+<tr><td valign="top">:port&lt;Fixnum&gt;:</td><td>port to run <a href="Merb.html">Merb</a> application on, default is 4000.
+
+</td></tr>
+<tr><td valign="top">:adapter&lt;<a href="String.html">String</a>&gt;:</td><td>name of <a href="Merb/Rack.html">Rack</a> adapter to use, default is
+&quot;runner&quot;
+
+</td></tr>
+<tr><td valign="top">:rackup&lt;<a href="String.html">String</a>&gt;:</td><td>name of <a href="Merb/Rack.html">Rack</a> init file to use, default is
+&quot;rack.rb&quot;
+
+</td></tr>
+<tr><td valign="top">:reload_classes&lt;Boolean&gt;:</td><td>whether <a href="Merb.html">Merb</a> should <a
+href="Merb.html#M002566">reload</a> classes on each request, default is
+true
+
+</td></tr>
+<tr><td valign="top">:environment&lt;<a href="String.html">String</a>&gt;:</td><td>name of environment to use, default is development
+
+</td></tr>
+<tr><td valign="top">:merb_root&lt;<a href="String.html">String</a>&gt;:</td><td><a href="Merb.html">Merb</a> application <a
+href="Merb.html#M002550">root</a>, default is Dir.pwd
+
+</td></tr>
+<tr><td valign="top">:use_mutex&lt;Boolean&gt;:</td><td>turns action dispatch synchronization on or off, default is on (true)
+
+</td></tr>
+<tr><td valign="top">:session_id_key&lt;<a href="String.html">String</a>&gt;:</td><td>session identifier, default is _session_id
+
+</td></tr>
+<tr><td valign="top">:session_store&lt;<a href="String.html">String</a>&gt;:</td><td>session store to use (one of cookies, memcache or memory)
+
+</td></tr>
+<tr><td valign="top">:log_delimiter&lt;<a href="String.html">String</a>&gt;:</td><td>what <a href="Merb.html">Merb</a> logger uses as delimiter between message
+sections, default is &quot; ~ &quot;
+
+</td></tr>
+<tr><td valign="top">:log_auto_flush&lt;Boolean&gt;:</td><td>whether the log should automatically flush after new messages are added,
+defaults to true.
+
+</td></tr>
+<tr><td valign="top">:<a href="Merb.html#M002553">log_file</a>&lt;IO&gt;:</td><td>IO for logger. Default is STDOUT.
+
+</td></tr>
+<tr><td valign="top">:log_level&lt;Symbol&gt;:</td><td>logger level, default is :warn
+
+</td></tr>
+<tr><td valign="top">:<a href="Merb.html#M002572">disabled_components</a>&lt;Array[Symbol]&gt;:</td><td>array of disabled component names, for instance, to <a
+href="Merb.html#M002570">disable</a> json gem, specify :json. Default is
+empty array.
+
+</td></tr>
+<tr><td valign="top">:<a href="Merb.html#M002556">deferred_actions</a>&lt;Array(Symbol, <a href="String.html">String</a>)]&gt;:</td><td>names of actions that should be deferred no matter what controller they
+belong to. Default is empty array.
+
+</td></tr>
+</table>
+<p>
+Some of these options come from command line on <a
+href="Merb.html">Merb</a> application <a
+href="Merb.html#M002543">start</a>, some of them are set in <a
+href="Merb.html">Merb</a> init file or environment-specific.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002565" class="method-detail">
+        <a name="M002565"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002565.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002565.html');return false;">
+          <span class="method-name">load_dependencies</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Load all basic dependencies (selected BootLoaders only). This sets up <a
+href="Merb.html">Merb</a> framework component paths (directories for
+models, controllers, etc) using framework.rb or default layout, loads init
+file and dependencies specified in it and runs before_app_loads hooks.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">options&lt;Hash&gt;:</td><td>Options to pass on to the <a href="Merb.html">Merb</a> <a
+href="Merb.html#M002569">config</a>.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002553" class="method-detail">
+        <a name="M002553"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002553.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002553.html');return false;">
+          <span class="method-name">log_file</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="String.html">String</a>:</td><td>The path to the log file. If this <a href="Merb.html">Merb</a> instance is
+running as a daemon this will return <tt>STDOUT</tt>.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002554" class="method-detail">
+        <a name="M002554"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002554.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002554.html');return false;">
+          <span class="method-name">log_path</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="String.html">String</a>:</td><td>Path to directory that contains the log file.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002542" class="method-detail">
+        <a name="M002542"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002542.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002542.html');return false;">
+          <span class="method-name">merge_env</span><span class="method-args">(env,use_db=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Merge environment settings Can allow you to have a &quot;localdev&quot;
+that runs like your &quot;development&quot;
+</p>
+<pre>
+  OR
+</pre>
+<p>
+A &quot;staging&quot; environment that runs like your
+&quot;production&quot;
+</p>
+<h4>Examples</h4>
+<p>
+From any environment <a href="Merb.html#M002569">config</a> file (ie,
+development.rb, custom.rb, localdev.rb, etc)
+</p>
+<pre>
+  staging.rb:
+    Merb.merge_env &quot;production&quot;         #We want to use all the settings production uses
+    Merb::Config.use { |c|
+      c[:log_level]         = &quot;debug&quot;   #except we want debug log level
+      c[:exception_details] = true      #and we want to see exception details
+    }
+</pre>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">env&lt;~<a href="String.html">String</a>&gt;:</td><td>Environment to run like
+
+</td></tr>
+<tr><td valign="top">use_db&lt;~Boolean&gt;:</td><td>Should <a href="Merb.html">Merb</a> use the merged environments DB
+connection
+
+</td></tr>
+</table>
+<pre>
+    Defaults to +false+
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002541" class="method-detail">
+        <a name="M002541"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002541.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002541.html');return false;">
+          <span class="method-name">mime_by_request_header</span><span class="method-args">(header)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The mime-type for a particular inbound Accepts header.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">header&lt;<a href="String.html">String</a>&gt;:</td><td>The name of the header to find the mime-type for.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Hash:</td><td>The mime type information.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002540" class="method-detail">
+        <a name="M002540"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002540.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002540.html');return false;">
+          <span class="method-name">mime_transform_method</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">key&lt;Symbol&gt;:</td><td>The key that represents the mime-type.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Symbol:</td><td>The transform method for the mime type, e.g. :to_json.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top">ArgumentError:</td><td>The requested mime type is not valid.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002558" class="method-detail">
+        <a name="M002558"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002558.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002558.html');return false;">
+          <span class="method-name">orm_generator_scope</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns registered ORM <a href="Merb.html#M002575">generators</a> as
+symbols, for instance, :datamapper.
+</p>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">&lt;Array(Symbol&gt;:</td><td>registered ORM <a href="Merb.html#M002575">generators</a>.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002546" class="method-detail">
+        <a name="M002546"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002546.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002546.html');return false;">
+          <span class="method-name">push_path</span><span class="method-args">(type, path, file_glob = &quot;**/*.rb&quot;)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is the core mechanism for setting up your application layout. There
+are three application layouts in <a href="Merb.html">Merb</a>:
+</p>
+<p>
+Regular app/:type layout of Ruby on Rails fame:
+</p>
+<p>
+app/models for models app/mailers for mailers (special type of controllers)
+app/parts for parts, <a href="Merb.html">Merb</a> components app/views for
+templates app/controllers for controller lib for libraries
+</p>
+<p>
+Flat application layout:
+</p>
+<p>
+application.rb for models, controllers, mailers, etc config/init.rb for
+initialization and router configuration config/framework.rb for framework
+and dependencies configuration views for views
+</p>
+<p>
+and Camping-style &quot;very flat&quot; application layout, where the whole
+<a href="Merb.html">Merb</a> application and configs fit into a single
+file.
+</p>
+<h4>Notes</h4>
+<p>
+Autoloading for lib uses empty glob by default. If you want to have your
+libraries under lib use autoload, add the following to <a
+href="Merb.html">Merb</a> init file:
+</p>
+<p>
+<a href="Merb.html#M002546">Merb.push_path</a>(:lib, <a
+href="Merb.html#M002550">Merb.root</a> / &quot;lib&quot;,
+&quot;**/*.rb&quot;) # glob set explicity.
+</p>
+<p>
+Then lib/magicwand/lib/magicwand.rb with MagicWand module will be
+autoloaded when you first access that constant.
+</p>
+<h4>Examples</h4>
+<p>
+This method gives you a way to build up your own application structure, for
+instance, to reflect the structure Rails uses to simplify transition of
+legacy application, you can set it up like this:
+</p>
+<p>
+<a href="Merb.html#M002546">Merb.push_path</a>(:model, <a
+href="Merb.html#M002550">Merb.root</a> / &quot;app&quot; /
+&quot;models&quot;, &quot;**/*.rb&quot;) <a
+href="Merb.html#M002546">Merb.push_path</a>(:mailer, <a
+href="Merb.html#M002550">Merb.root</a> / &quot;app&quot; /
+&quot;models&quot;, &quot;**/*.rb&quot;) <a
+href="Merb.html#M002546">Merb.push_path</a>(:controller, <a
+href="Merb.html#M002550">Merb.root</a> / &quot;app&quot; /
+&quot;controllers&quot;, &quot;**/*.rb&quot;) <a
+href="Merb.html#M002546">Merb.push_path</a>(:view, <a
+href="Merb.html#M002550">Merb.root</a> / &quot;app&quot; /
+&quot;views&quot;, &quot;**/*.rb&quot;)
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">type&lt;Symbol&gt;:</td><td>The type of path being registered (i.e. :view)
+
+</td></tr>
+<tr><td valign="top">path&lt;<a href="String.html">String</a>&gt;:</td><td>The full path
+
+</td></tr>
+<tr><td valign="top">file_glob&lt;<a href="String.html">String</a>&gt;:</td><td>A glob that will be used to autoload files under the path. Defaults to
+&quot;**/*.rb&quot;.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002574" class="method-detail">
+        <a name="M002574"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002574.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002574.html');return false;">
+          <span class="method-name">rakefiles</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Array(<a href="String.html">String</a>):</td><td>Paths Rakefiles are loaded from.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+Recommended way to find out what paths Rakefiles are loaded from.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002561" class="method-detail">
+        <a name="M002561"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002561.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002561.html');return false;">
+          <span class="method-name">register_session_type</span><span class="method-args">(name, file, description = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">name&lt;~to_s&gt;:</td><td>Name of the session type to register.
+
+</td></tr>
+<tr><td valign="top">file&lt;<a href="String.html">String</a>&gt;:</td><td>The file that defines this session type.
+
+</td></tr>
+<tr><td valign="top">description&lt;<a href="String.html">String</a>&gt;:</td><td>An optional description of the session type.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+<a href="Merb.html">Merb</a> currently supports memory, cookie and memcache
+session types.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002566" class="method-detail">
+        <a name="M002566"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002566.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002566.html');return false;">
+          <span class="method-name">reload</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Reload application and framework classes. See <a
+href="Merb/BootLoader/ReloadClasses.html">Merb::BootLoader::ReloadClasses</a>
+for details.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002539" class="method-detail">
+        <a name="M002539"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002539.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002539.html');return false;">
+          <span class="method-name">remove_mime_type</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Removes a MIME-type from the mime-type list.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">key&lt;Symbol&gt;:</td><td>The key that represents the mime-type to remove.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+:all is the key for */*; It can&#8216;t be removed.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002547" class="method-detail">
+        <a name="M002547"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002547.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002547.html');return false;">
+          <span class="method-name">remove_paths</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Removes given types of application components from load path <a
+href="Merb.html">Merb</a> uses for autoloading.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">*args&lt;Array(Symbol)&gt;:</td><td>components names, for instance, :views, :models
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<p>
+Using this combined with Merb::GlobalHelpers.push_path you can make your <a
+href="Merb.html">Merb</a> application use legacy Rails application
+components.
+</p>
+<p>
+<a href="Merb.html#M002550">Merb.root</a> =
+&quot;path/to/legacy/app/root&quot; <a
+href="Merb.html#M002547">Merb.remove_paths</a>(:mailer) <a
+href="Merb.html#M002546">Merb.push_path</a>(:mailer, <a
+href="Merb.html#M002550">Merb.root</a> / &quot;app&quot; /
+&quot;models&quot;, &quot;**/*.rb&quot;)
+</p>
+<p>
+Will make <a href="Merb.html">Merb</a> use app/models for mailers just like
+Ruby on Rails does.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002545" class="method-detail">
+        <a name="M002545"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002545.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002545.html');return false;">
+          <span class="method-name">restart_environment</span><span class="method-args">(argv={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Restart the <a href="Merb.html">Merb</a> environment explicitly.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">argv&lt;<a href="String.html">String</a>, Hash&gt;:</td><td>The <a href="Merb.html#M002569">config</a> arguments to restart <a
+href="Merb.html">Merb</a> with. Defaults to +<a
+href="Merb/Config.html">Merb::Config</a>+.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002550" class="method-detail">
+        <a name="M002550"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002550.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002550.html');return false;">
+          <span class="method-name">root</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="String.html">String</a>:</td><td>The <a href="Merb.html">Merb</a> <a href="Merb.html#M002550">root</a> path.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002551" class="method-detail">
+        <a name="M002551"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002551.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002551.html');return false;">
+          <span class="method-name">root=</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">value&lt;<a href="String.html">String</a>&gt;:</td><td>Path to the <a href="Merb.html#M002550">root</a> directory.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002552" class="method-detail">
+        <a name="M002552"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002552.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002552.html');return false;">
+          <span class="method-name">root_path</span><span class="method-args">(*path)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">*path:</td><td>The relative path (or list of path components) to a directory under the <a
+href="Merb.html#M002550">root</a> of the application.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="String.html">String</a>:</td><td>The full path including the <a href="Merb.html#M002550">root</a>.
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<pre>
+  Merb.root = &quot;/home/merb/app&quot;
+  Merb.path(&quot;images&quot;) # =&gt; &quot;/home/merb/app/images&quot;
+  Merb.path(&quot;views&quot;, &quot;admin&quot;) # =&gt; &quot;/home/merb/app/views/admin&quot;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002543" class="method-detail">
+        <a name="M002543"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002543.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002543.html');return false;">
+          <span class="method-name">start</span><span class="method-args">(argv=ARGV)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Startup <a href="Merb.html">Merb</a> by setting up the <a
+href="Merb/Config.html">Config</a> and starting the server. This is where
+<a href="Merb.html">Merb</a> application environment and <a
+href="Merb.html#M002550">root</a> path are set.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">argv&lt;<a href="String.html">String</a>, Hash&gt;:</td><td>The <a href="Merb.html#M002569">config</a> arguments to <a
+href="Merb.html#M002543">start</a> <a href="Merb.html">Merb</a> with.
+Defaults to <tt>ARGV</tt>.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002544" class="method-detail">
+        <a name="M002544"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002544.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002544.html');return false;">
+          <span class="method-name">start_environment</span><span class="method-args">(argv=ARGV)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Start the <a href="Merb.html">Merb</a> environment, but only if it
+hasn&#8216;t been loaded yet.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">argv&lt;<a href="String.html">String</a>, Hash&gt;:</td><td>The <a href="Merb.html#M002569">config</a> arguments to <a
+href="Merb.html#M002543">start</a> <a href="Merb.html">Merb</a> with.
+Defaults to <tt>ARGV</tt>.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002559" class="method-detail">
+        <a name="M002559"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002559.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002559.html');return false;">
+          <span class="method-name">test_framework_generator_scope</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns registered test framework <a
+href="Merb.html#M002575">generators</a>.
+</p>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">&lt;Array(Symbol&gt;:</td><td>registred test framework <a href="Merb.html#M002575">generators</a>.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002567" class="method-detail">
+        <a name="M002567"></a>
+
+        <div class="method-heading">
+          <a href="Merb.src/M002567.html" target="Code" class="method-signature"
+            onclick="popupCode('Merb.src/M002567.html');return false;">
+          <span class="method-name">testing?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Boolean:</td><td>True if <a href="Merb.html">Merb</a> environment is testing for instance,
+
+</td></tr>
+</table>
+<p>
+<a href="Merb.html">Merb</a> is running with RSpec, Test::Unit of other
+testing facility.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

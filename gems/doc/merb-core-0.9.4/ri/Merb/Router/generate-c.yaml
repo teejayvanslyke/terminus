@@ -1,0 +1,41 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Generates a URL based on passed options.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_sym, Hash>:"
+    body: The name of the route to generate.
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash, Fixnum, Object>:"
+    body: The params to use in the route generation.
+  - !ruby/struct:SM::Flow::LI 
+    label: "fallback<Hash>:"
+    body: Parameters for generating a fallback URL.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The generated URL.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If name is a hash, it will be merged with params and passed on to generate_for_default_route along with fallback.
+full_name: Merb::Router::generate
+is_singleton: true
+name: generate
+params: (name, params = {}, fallback = {})
+visibility: public

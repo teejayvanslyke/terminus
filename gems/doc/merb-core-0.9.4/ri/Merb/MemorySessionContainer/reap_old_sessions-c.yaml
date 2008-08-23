@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Deletes any sessions that have reached their maximum validity.
+full_name: Merb::MemorySessionContainer::reap_old_sessions
+is_singleton: true
+name: reap_old_sessions
+params: ()
+visibility: public

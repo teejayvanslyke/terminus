@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>update_session_cookie_attributes (Merb::BootLoader::Dependencies)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 282</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">update_session_cookie_attributes</span>
+    <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Controller</span>.<span class="ruby-identifier">_session_expiry</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:session_expiry</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Const</span><span class="ruby-operator">::</span><span class="ruby-constant">WEEK</span> <span class="ruby-operator">*</span> <span class="ruby-value">2</span>
+    <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Controller</span>.<span class="ruby-identifier">_session_cookie_domain</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:session_cookie_domain</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

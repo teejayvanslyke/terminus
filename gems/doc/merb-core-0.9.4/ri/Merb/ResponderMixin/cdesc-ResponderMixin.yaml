@@ -1,0 +1,74 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: included
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The ResponderMixin adds methods that help you manage what formats your controllers have available, determine what format(s) the client requested and is capable of handling, and perform content negotiation to pick the proper content format to deliver.
+- !ruby/struct:SM::Flow::P 
+  body: If you hear someone say &quot;Use provides&quot; they're talking about the Responder. If you hear someone ask &quot;What happened to respond_to?&quot; it was replaced by provides and the other Responder methods.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: A simple example
+- !ruby/struct:SM::Flow::P 
+  body: "The best way to understand how all of these pieces fit together is with an example. Here's a simple web-service ready resource that provides a list of all the widgets we know about. The widget list is available in 3 formats: :html (the default), plus :xml and :text."
+- !ruby/struct:SM::Flow::VERB 
+  body: "    class Widgets &lt; Application\n      provides :html   # This is the default, but you can\n                       # be explicit if you like.\n      provides :xml, :text\n\n      def index\n        @widgets = Widget.fetch\n        render @widgets\n      end\n    end\n"
+- !ruby/struct:SM::Flow::P 
+  body: Let's look at some example requests for this list of widgets. We'll assume they're all GET requests, but that's only to make the examples easier; this works for the full set of RESTful methods.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "1."
+    body: The simplest case, /widgets.html Since the request includes a specific format (.html) we know what format to return. Since :html is in our list of provided formats, that's what we'll return. <tt>render</tt> will look for an index.html.erb (or another template format like index.html.mab; see the documentation on Template engines)
+  - !ruby/struct:SM::Flow::LI 
+    label: "2."
+    body: Almost as simple, /widgets.xml This is very similar. They want :xml, we have :xml, so that's what they get. If <tt>render</tt> doesn't find an index.xml.builder or similar template, it will call <tt>to_xml</tt> on @widgets. This may or may not do something useful, but you can see how it works.
+  - !ruby/struct:SM::Flow::LI 
+    label: "3."
+    body: "A browser request for /widgets This time the URL doesn't say what format is being requested, so we'll look to the HTTP Accept: header. If it's '*/*' (anything), we'll use the first format on our list, :html by default."
+  - !ruby/struct:SM::Flow::P 
+    body: "If it parses to a list of accepted formats, we'll look through them, in order, until we find one we have available. If we find one, we'll use that. Otherwise, we can't fulfill the request: they asked for a format we don't have. So we raise 406: Not Acceptable."
+  type: :NUMBER
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: A more complex example
+- !ruby/struct:SM::Flow::P 
+  body: Sometimes you don't have the same code to handle each available format. Sometimes you need to load different data to serve /widgets.xml versus /widgets.txt. In that case, you can use <tt>content_type</tt> to determine what format will be delivered.
+- !ruby/struct:SM::Flow::VERB 
+  body: "    class Widgets &lt; Application\n      def action1\n        if content_type == :text\n          Widget.load_text_formatted(params[:id])\n        else\n          render\n        end\n      end\n\n      def action2\n        case content_type\n        when :html\n          handle_html()\n        when :xml\n          handle_xml()\n        when :text\n          handle_text()\n        else\n          render\n        end\n      end\n    end\n"
+- !ruby/struct:SM::Flow::P 
+  body: You can do any standard Ruby flow control using <tt>content_type</tt>. If you don't call it yourself, it will be called (triggering content negotiation) by <tt>render</tt>.
+- !ruby/struct:SM::Flow::P 
+  body: Once <tt>content_type</tt> has been called, the output format is frozen, and none of the provides methods can be used.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: TYPES
+  value: Dictionary.new
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MIMES
+  value: "{}"
+full_name: Merb::ResponderMixin
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _perform_content_negotiation
+- !ruby/object:RI::MethodSummary 
+  name: _provided_formats
+- !ruby/object:RI::MethodSummary 
+  name: content_type
+- !ruby/object:RI::MethodSummary 
+  name: content_type=
+- !ruby/object:RI::MethodSummary 
+  name: does_not_provide
+- !ruby/object:RI::MethodSummary 
+  name: only_provides
+- !ruby/object:RI::MethodSummary 
+  name: provides
+name: ResponderMixin
+superclass: 

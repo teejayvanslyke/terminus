@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: BigDuration</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">BigDuration</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/more/facets/duration_rb.html">
+                lib/more/facets/duration.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Duration.html">
+                Duration
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="BigDuration.html">BigDuration</a> is a variant of <a
+href="Duration.html">Duration</a> that supports years and months. Support
+for months is not accurate, as a month is assumed to be 30 days so use at
+your own risk.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000236">each</a>&nbsp;&nbsp;
+      <a href="#M000239">months=</a>&nbsp;&nbsp;
+      <a href="#M000234">new</a>&nbsp;&nbsp;
+      <a href="#M000237">seconds</a>&nbsp;&nbsp;
+      <a href="#M000235">strftime</a>&nbsp;&nbsp;
+      <a href="#M000238">years=</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">YEAR</td>
+          <td>=</td>
+          <td class="context-item-value">60 * 60 * 24 * 30 * 12</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">MONTH</td>
+          <td>=</td>
+          <td class="context-item-value">60 * 60 * 24 * 30</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">months</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">years</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000234" class="method-detail">
+        <a name="M000234"></a>
+
+        <div class="method-heading">
+          <a href="#M000234" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(seconds_or_attr = 0)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Similar to <a href="Duration.html#M000543">Duration.new</a> except that <a
+href="BigDuration.html#M000234">BigDuration.new</a> supports `:years&#8217;
+and `:months&#8217; and will also handle years and months correctly when
+breaking down the <a href="BigDuration.html#M000237">seconds</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000234-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000234-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 366</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">seconds_or_attr</span> = <span class="ruby-value">0</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">seconds_or_attr</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Hash</span>
+            <span class="ruby-comment cmt"># Part-&gt;time map table.</span>
+            <span class="ruby-identifier">h</span> =\
+            {<span class="ruby-identifier">:years</span>    =<span class="ruby-operator">&gt;</span>  <span class="ruby-constant">YEAR</span>  ,
+             <span class="ruby-identifier">:months</span>   =<span class="ruby-operator">&gt;</span>  <span class="ruby-constant">MONTH</span> ,
+             <span class="ruby-identifier">:weeks</span>    =<span class="ruby-operator">&gt;</span>  <span class="ruby-constant">WEEK</span>  ,
+             <span class="ruby-identifier">:days</span>     =<span class="ruby-operator">&gt;</span>  <span class="ruby-constant">DAY</span>   ,
+             <span class="ruby-identifier">:hours</span>    =<span class="ruby-operator">&gt;</span>  <span class="ruby-constant">HOUR</span>  ,
+             <span class="ruby-identifier">:minutes</span>  =<span class="ruby-operator">&gt;</span>  <span class="ruby-constant">MINUTE</span>,
+             <span class="ruby-identifier">:seconds</span>  =<span class="ruby-operator">&gt;</span>  <span class="ruby-constant">SECOND</span>}
+
+            <span class="ruby-comment cmt"># Loop through each valid part, ignore all others.</span>
+            <span class="ruby-identifier">seconds</span> = <span class="ruby-identifier">seconds_or_attr</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sec</span>, <span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+                <span class="ruby-comment cmt"># Grab the part of the duration (week, day, whatever) and the number of seconds for it.</span>
+                <span class="ruby-identifier">part</span>, <span class="ruby-identifier">time</span> = <span class="ruby-identifier">args</span>
+
+                <span class="ruby-comment cmt"># Map each part to their number of seconds and the given value.</span>
+                <span class="ruby-comment cmt"># {:weeks =&gt; 2} maps to h[:weeks] -- so... weeks = WEEK * 2</span>
+                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">prt</span> = <span class="ruby-identifier">part</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_sym</span>) <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">sec</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">time</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">prt</span>] <span class="ruby-keyword kw">else</span> <span class="ruby-value">0</span> <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">seconds</span> = <span class="ruby-identifier">seconds_or_attr</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-ivar">@total</span>, <span class="ruby-identifier">array</span> = <span class="ruby-identifier">seconds</span>.<span class="ruby-identifier">to_f</span>.<span class="ruby-identifier">round</span>, []
+        <span class="ruby-ivar">@seconds</span> = [<span class="ruby-constant">YEAR</span>, <span class="ruby-constant">MONTH</span>, <span class="ruby-constant">WEEK</span>, <span class="ruby-constant">DAY</span>, <span class="ruby-constant">HOUR</span>, <span class="ruby-constant">MINUTE</span>].<span class="ruby-identifier">inject</span>(<span class="ruby-ivar">@total</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">left</span>, <span class="ruby-identifier">part</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">array</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">left</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">part</span>; <span class="ruby-identifier">left</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">part</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-ivar">@years</span>, <span class="ruby-ivar">@months</span>, <span class="ruby-ivar">@weeks</span>, <span class="ruby-ivar">@days</span>, <span class="ruby-ivar">@hours</span>, <span class="ruby-ivar">@minutes</span> = <span class="ruby-identifier">array</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000236" class="method-detail">
+        <a name="M000236"></a>
+
+        <div class="method-heading">
+          <a href="#M000236" class="method-signature">
+          <span class="method-name">each</span><span class="method-args">() {|part, time| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Similar to <a href="Duration.html#M000546">Duration#each</a> except
+includes years and months in the interation.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000236-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000236-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 413</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+        [[<span class="ruby-value str">'years'</span>   ,  <span class="ruby-ivar">@years</span>  ],
+         [<span class="ruby-value str">'months'</span>  ,  <span class="ruby-ivar">@months</span> ],
+         [<span class="ruby-value str">'weeks'</span>   ,  <span class="ruby-ivar">@weeks</span>  ],
+         [<span class="ruby-value str">'days'</span>    ,  <span class="ruby-ivar">@days</span>   ],
+         [<span class="ruby-value str">'hours'</span>   ,  <span class="ruby-ivar">@hours</span>  ],
+         [<span class="ruby-value str">'minutes'</span> ,  <span class="ruby-ivar">@minutes</span>],
+         [<span class="ruby-value str">'seconds'</span> ,  <span class="ruby-ivar">@seconds</span>]].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">part</span>, <span class="ruby-identifier">time</span><span class="ruby-operator">|</span>
+             <span class="ruby-comment cmt"># Yield to block</span>
+            <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">part</span>, <span class="ruby-identifier">time</span>
+        <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000239" class="method-detail">
+        <a name="M000239"></a>
+
+        <div class="method-heading">
+          <a href="#M000239" class="method-signature">
+          <span class="method-name">months=</span><span class="method-args">(n)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Set.html">Set</a> the number of months in the <a
+href="BigDuration.html">BigDuration</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000239-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000239-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 445</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">months=</span>(<span class="ruby-identifier">n</span>)
+        <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">:months</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">n</span>, <span class="ruby-identifier">:seconds</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@total</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">seconds</span>(<span class="ruby-identifier">:months</span>))
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000237" class="method-detail">
+        <a name="M000237"></a>
+
+        <div class="method-heading">
+          <a href="#M000237" class="method-signature">
+          <span class="method-name">seconds</span><span class="method-args">(part = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Derived from <a href="Duration.html#M000545">Duration#seconds</a>, but
+supports `:years&#8217; and `:months&#8217; as well.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000237-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000237-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 428</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">seconds</span>(<span class="ruby-identifier">part</span> = <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-identifier">h</span> = {<span class="ruby-identifier">:years</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">YEAR</span>, <span class="ruby-identifier">:months</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MONTH</span>}
+        <span class="ruby-keyword kw">if</span> [<span class="ruby-identifier">:years</span>, <span class="ruby-identifier">:months</span>].<span class="ruby-identifier">include?</span> <span class="ruby-identifier">part</span>
+            <span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">part</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">part</span>]
+        <span class="ruby-keyword kw">else</span>
+            <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">part</span>)
+        <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000235" class="method-detail">
+        <a name="M000235"></a>
+
+        <div class="method-heading">
+          <a href="#M000235" class="method-signature">
+          <span class="method-name">strftime</span><span class="method-args">(fmt)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="BigDuration.html">BigDuration</a> variant of <a
+href="Duration.html#M000544">Duration#strftime</a>.
+</p>
+<p>
+*Identifiers: <a href="BigDuration.html">BigDuration</a>*
+</p>
+<pre>
+    %y -- Number of years
+    %m -- Number of months
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000235-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000235-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 406</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">strftime</span>(<span class="ruby-identifier">fmt</span>)
+        <span class="ruby-identifier">h</span> = {<span class="ruby-value str">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@years</span>, <span class="ruby-value str">'M'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@months</span>}
+        <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">fmt</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/%?%(y|M)/</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">match</span><span class="ruby-operator">|</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">match</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">match</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]] })
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000238" class="method-detail">
+        <a name="M000238"></a>
+
+        <div class="method-heading">
+          <a href="#M000238" class="method-signature">
+          <span class="method-name">years=</span><span class="method-args">(n)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Set.html">Set</a> the number of years in the <a
+href="BigDuration.html">BigDuration</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000238-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000238-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 439</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">years=</span>(<span class="ruby-identifier">n</span>)
+        <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">:years</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">n</span>, <span class="ruby-identifier">:seconds</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@total</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">seconds</span>(<span class="ruby-identifier">:years</span>))
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

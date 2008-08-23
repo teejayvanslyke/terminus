@@ -1,0 +1,36 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts a query string snippet to a hash and adds it to existing parameters.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "parms<Hash>:"
+    body: Parameters to add the normalized parameters to.
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<String>:"
+    body: The key of the parameter to normalize.
+  - !ruby/struct:SM::Flow::LI 
+    label: "val<String>:"
+    body: The value of the parameter.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash:"
+    body: Normalized parameters
+  type: :NOTE
+full_name: Merb::Request::normalize_params
+is_singleton: true
+name: normalize_params
+params: (parms, name, val=nil)
+visibility: public

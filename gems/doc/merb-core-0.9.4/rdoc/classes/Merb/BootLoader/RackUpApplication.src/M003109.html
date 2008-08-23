@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Merb::BootLoader::RackUpApplication)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 659</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run</span>
+    <span class="ruby-identifier">require</span> <span class="ruby-value str">'rack'</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:config</span>) <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;rack.rb&quot;</span>)
+      <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:rackup</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:config</span>) <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;rack.rb&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:rackup</span>]
+      <span class="ruby-identifier">rackup_code</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:rackup</span>])
+      <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:app</span>] = <span class="ruby-identifier">eval</span>(<span class="ruby-node">&quot;::Rack::Builder.new {( #{rackup_code}\n )}.to_app&quot;</span>, <span class="ruby-constant">TOPLEVEL_BINDING</span>, <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:rackup</span>])
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:app</span>] = <span class="ruby-operator">::</span><span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span> {
+         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prefix</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:path_prefix</span>]
+           <span class="ruby-identifier">use</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">PathPrefix</span>, <span class="ruby-identifier">prefix</span>
+         <span class="ruby-keyword kw">end</span>
+         <span class="ruby-identifier">use</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Static</span>, <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:public</span>)
+         <span class="ruby-identifier">run</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Application</span>.<span class="ruby-identifier">new</span>
+       }.<span class="ruby-identifier">to_app</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

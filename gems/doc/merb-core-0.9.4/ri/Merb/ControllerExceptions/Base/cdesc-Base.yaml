@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: inherited
+- !ruby/object:RI::MethodSummary 
+  name: status
+- !ruby/object:RI::MethodSummary 
+  name: status=
+- !ruby/object:RI::MethodSummary 
+  name: status?
+comment: 
+constants: []
+
+full_name: Merb::ControllerExceptions::Base
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: status
+- !ruby/object:RI::MethodSummary 
+  name: to_i
+- !ruby/object:RI::MethodSummary 
+  name: to_i
+name: Base
+superclass: StandardError

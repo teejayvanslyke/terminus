@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: Value of HTTP_KEEP_ALIVE.
+  type: :NOTE
+full_name: Merb::Request#keep_alive
+is_singleton: false
+name: keep_alive
+params: ()
+visibility: public

@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: singularize
+block_params: 
+comment: 
+full_name: String#singular
+is_singleton: false
+name: singular
+params: ()
+visibility: public

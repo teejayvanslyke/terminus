@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Controller::subclasses_list
+is_singleton: true
+name: subclasses_list
+params: ()
+visibility: public

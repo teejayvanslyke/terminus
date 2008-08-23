@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Merb::Test::Rspec::ControllerMatchers</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Merb::Test::Rspec::ControllerMatchers</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/merb-core/test/matchers/controller_matchers_rb.html">
+                lib/merb-core/test/matchers/controller_matchers.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002747">be_client_error</a>&nbsp;&nbsp;
+      <a href="#M002746">be_error</a>&nbsp;&nbsp;
+      <a href="#M002745">be_missing</a>&nbsp;&nbsp;
+      <a href="#M002740">be_redirection</a>&nbsp;&nbsp;
+      <a href="#M002742">be_redirection_to</a>&nbsp;&nbsp;
+      <a href="#M002744">be_successful</a>&nbsp;&nbsp;
+      <a href="#M002748">provide</a>&nbsp;&nbsp;
+      <a href="#M002739">redirect</a>&nbsp;&nbsp;
+      <a href="#M002741">redirect_to</a>&nbsp;&nbsp;
+      <a href="#M002743">respond_successfully</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="ControllerMatchers/BeError.html" class="link">Merb::Test::Rspec::ControllerMatchers::BeError</a><br />
+Class <a href="ControllerMatchers/BeMissing.html" class="link">Merb::Test::Rspec::ControllerMatchers::BeMissing</a><br />
+Class <a href="ControllerMatchers/BeRedirect.html" class="link">Merb::Test::Rspec::ControllerMatchers::BeRedirect</a><br />
+Class <a href="ControllerMatchers/BeSuccess.html" class="link">Merb::Test::Rspec::ControllerMatchers::BeSuccess</a><br />
+Class <a href="ControllerMatchers/Provide.html" class="link">Merb::Test::Rspec::ControllerMatchers::Provide</a><br />
+Class <a href="ControllerMatchers/RedirectTo.html" class="link">Merb::Test::Rspec::ControllerMatchers::RedirectTo</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002747" class="method-detail">
+        <a name="M002747"></a>
+
+        <div class="method-heading">
+          <span class="method-name">be_client_error</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="ControllerMatchers.html#M002745">be_missing</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002746" class="method-detail">
+        <a name="M002746"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMatchers.src/M002746.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMatchers.src/M002746.html');return false;">
+          <span class="method-name">be_error</span><span class="method-args">(expected)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M002745" class="method-detail">
+        <a name="M002745"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMatchers.src/M002745.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMatchers.src/M002745.html');return false;">
+          <span class="method-name">be_missing</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Passes if the request that generated the target was missing, or the target
+is a client-side error (400 level) response code.
+</p>
+<h4>Examples</h4>
+<pre>
+  # Passes if the controller call was unknown or not understood
+  controller.should be_missing
+
+  # Also passes if the target is a response code
+  controller.status.should be_missing
+</pre>
+<h4>Notes</h4>
+<p>
+valid HTTP Client Error codes:
+</p>
+<ul>
+<li>400: Bad <a href="../../Request.html">Request</a>
+
+</li>
+<li>401: Unauthorized
+
+</li>
+<li>402: Payment Required
+
+</li>
+<li>403: Forbidden
+
+</li>
+<li>404: Not Found
+
+</li>
+<li>405: Method Not Allowed
+
+</li>
+<li>406: Not Acceptable
+
+</li>
+<li>407: Proxy Authentication Required
+
+</li>
+<li>408: <a href="../../Request.html">Request</a> Timeout
+
+</li>
+<li>409: Conflict
+
+</li>
+<li>410: Gone
+
+</li>
+<li>411: Length Required
+
+</li>
+<li>412: Precondition Failed
+
+</li>
+<li>413: <a href="../../Request.html">Request</a> Entity Too Large
+
+</li>
+<li>414: <a href="../../Request.html">Request</a>-URI Too Long
+
+</li>
+<li>415: Unsupported Media Type
+
+</li>
+<li>416: Requested Range Not Satisfiable
+
+</li>
+<li>417: Expectation Failed
+
+</li>
+<li>422: Unprocessable Entity
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M002740" class="method-detail">
+        <a name="M002740"></a>
+
+        <div class="method-heading">
+          <span class="method-name">be_redirection</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="ControllerMatchers.html#M002739">redirect</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002742" class="method-detail">
+        <a name="M002742"></a>
+
+        <div class="method-heading">
+          <span class="method-name">be_redirection_to</span><span class="method-args">(expected, options = {})</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="ControllerMatchers.html#M002741">redirect_to</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002744" class="method-detail">
+        <a name="M002744"></a>
+
+        <div class="method-heading">
+          <span class="method-name">be_successful</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a
+href="ControllerMatchers.html#M002743">respond_successfully</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002748" class="method-detail">
+        <a name="M002748"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMatchers.src/M002748.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMatchers.src/M002748.html');return false;">
+          <span class="method-name">provide</span><span class="method-args">( expected )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Passes if the controller actually provides the target format
+</p>
+<h3>Parameters</h3>
+<table>
+<tr><td valign="top">expected&lt;Symbol&gt;:</td><td>A format to check
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<pre>
+  ControllerClass.should provide( :html )
+  controller_instance.should provide( :xml )
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002739" class="method-detail">
+        <a name="M002739"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMatchers.src/M002739.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMatchers.src/M002739.html');return false;">
+          <span class="method-name">redirect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Passes if the target was redirected, or the target is a redirection (300
+level) response code.
+</p>
+<h4>Examples</h4>
+<pre>
+  # Passes if the controller was redirected
+  controller.should redirect
+
+  # Also works if the target is the response code
+  controller.status.should redirect
+</pre>
+<h4>Notes</h4>
+<p>
+valid HTTP Redirection codes:
+</p>
+<ul>
+<li>300: Multiple Choices
+
+</li>
+<li>301: Moved Permanently
+
+</li>
+<li>302: Moved Temporarily (HTTP/1.0)
+
+</li>
+<li>302: Found (HTTP/1.1)
+
+</li>
+<li>303: See Other (HTTP/1.1)
+
+</li>
+<li>304: Not Modified
+
+</li>
+<li>305: Use Proxy
+
+</li>
+<li>307: Temporary Redirect
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <div id="method-M002741" class="method-detail">
+        <a name="M002741"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMatchers.src/M002741.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMatchers.src/M002741.html');return false;">
+          <span class="method-name">redirect_to</span><span class="method-args">(expected, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Passes if the target was redirected to the expected location.
+</p>
+<h4>Paramters</h4>
+<table>
+<tr><td valign="top">expected&lt;<a href="../../../String.html">String</a>&gt;:</td><td>A relative or absolute url.
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<pre>
+  # Passes if the controller was redirected to http://example.com/
+  controller.should redirect_to('http://example.com/')
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002743" class="method-detail">
+        <a name="M002743"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMatchers.src/M002743.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMatchers.src/M002743.html');return false;">
+          <span class="method-name">respond_successfully</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Passes if the request that generated the target was successful, or the
+target is a success (200 level) response code.
+</p>
+<h4>Examples</h4>
+<pre>
+  # Passes if the controller call was successful
+  controller.should respond_successfully
+
+  # Also works if the target is the response code
+  controller.status.should respond_successfully
+</pre>
+<h4>Notes</h4>
+<p>
+valid HTTP Success codes:
+</p>
+<ul>
+<li>200: OK
+
+</li>
+<li>201: Created
+
+</li>
+<li>202: Accepted
+
+</li>
+<li>203: Non-Authoritative Information
+
+</li>
+<li>204: No Content
+
+</li>
+<li>205: Reset Content
+
+</li>
+<li>206: Partial Content
+
+</li>
+<li>207: Multi-Status
+
+</li>
+</ul>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

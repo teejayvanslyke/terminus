@@ -1,0 +1,36 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: The params to compile. Defaults to merged_params.
+  - !ruby/struct:SM::Flow::LI 
+    label: "placeholders<Hash>:"
+    body: The route placeholders for this behavior. Defaults to merged_placeholders.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The params hash in an eval'able form.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  compiled_params({ :controller =&gt; &quot;admin/:controller&quot; })\n    # =&gt; { :controller =&gt; &quot;'admin/' + matches[:path][1]&quot; }\n"
+full_name: Merb::Router::Behavior#compiled_params
+is_singleton: false
+name: compiled_params
+params: (params = merged_params, placeholders = merged_placeholders)
+visibility: protected

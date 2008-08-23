@@ -1,0 +1,62 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: next_level.match("/
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Behavior#<tt>resources</tt> is a route helper for defining a collection of RESTful resources. It yields to a block for child routes.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<String, Symbol>:"
+    body: The name of the resources
+  - !ruby/struct:SM::Flow::LI 
+    label: "options<Hash>:"
+    body: Ovverides and parameters to be associated with the route
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (options)
+- !ruby/struct:SM::Flow::P 
+  body: ":namespace&lt;~to_s&gt;: The namespace for this route. :name_prefix&lt;~to_s&gt;:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  A prefix for the named routes. If a namespace is passed and there\n  isn't a name prefix, the namespace will become the prefix.\n"
+- !ruby/struct:SM::Flow::P 
+  body: ":controller&lt;~to_s&gt;: The controller for this route :collection&lt;~to_s&gt;: Special settings for the collections routes :member&lt;Hash&gt;:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Special settings and resources related to a specific member of this\n  resource.\n"
+- !ruby/struct:SM::Flow::P 
+  body: ":keys&lt;Array&gt;:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  A list of the keys to be used instead of :id with the resource in the order of the url.\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Block parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "next_level<Behavior>:"
+    body: The child behavior.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array:"
+    body: Routes which will define the specified RESTful collection of resources
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: " r.resources :posts # will result in the typical RESTful CRUD\n   # lists resources\n   # GET     /posts/?(\\.:format)?      :action =&gt; &quot;index&quot;\n   # GET     /posts/index(\\.:format)?  :action =&gt; &quot;index&quot;\n\n   # shows new resource form\n   # GET     /posts/new                :action =&gt; &quot;new&quot;\n\n   # creates resource\n   # POST    /posts/?(\\.:format)?,     :action =&gt; &quot;create&quot;\n\n   # shows resource\n   # GET     /posts/:id(\\.:format)?    :action =&gt; &quot;show&quot;\n\n   # shows edit form\n   # GET     /posts/:id/edit        :action =&gt; &quot;edit&quot;\n\n   # updates resource\n   # PUT     /posts/:id(\\.:format)?    :action =&gt; &quot;update&quot;\n\n   # shows deletion confirmation page\n   # GET     /posts/:id/delete      :action =&gt; &quot;delete&quot;\n\n   # destroys resources\n   # DELETE  /posts/:id(\\.:format)?    :action =&gt; &quot;destroy&quot;\n\n # Nesting resources\n r.resources :posts do |posts|\n   posts.resources :comments\n end\n"
+full_name: Merb::Router::Behavior#resources
+is_singleton: false
+name: resources
+params: (name, options = {}) {|next_level.match("/| ...}
+visibility: public

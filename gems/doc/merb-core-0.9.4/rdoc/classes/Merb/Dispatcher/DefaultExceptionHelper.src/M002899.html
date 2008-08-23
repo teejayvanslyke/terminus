@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>render_source (Merb::Dispatcher::DefaultExceptionHelper)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/default_exception/default_exception.rb, line 58</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_source</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">line</span>)
+        <span class="ruby-identifier">line</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-identifier">ret</span>   =  []
+        <span class="ruby-identifier">ret</span>   <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;tr class='source'&gt;&quot;</span>
+        <span class="ruby-identifier">ret</span>   <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;  &lt;td class='collapse'&gt;&lt;/td&gt;&quot;</span>
+        <span class="ruby-identifier">str</span>   =  <span class="ruby-value str">&quot;  &lt;td class='code' colspan='2'&gt;&lt;div&gt;&quot;</span>
+        
+        <span class="ruby-identifier">__caller_lines__</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">line</span>, <span class="ruby-value">5</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lline</span>, <span class="ruby-identifier">lcode</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;a href='txmt://open?url=file://#{filename}&amp;amp;line=#{lline}'&gt;#{lline}&lt;/a&gt;&quot;</span>
+          <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;em&gt;&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">lline</span>
+          <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Erubis</span><span class="ruby-operator">::</span><span class="ruby-constant">XmlHelper</span>.<span class="ruby-identifier">escape_xml</span>(<span class="ruby-identifier">lcode</span>)
+          <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;/em&gt;&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">lline</span>
+          <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">str</span>   <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;/div&gt;&lt;/td&gt;&quot;</span>
+        <span class="ruby-identifier">ret</span>   <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">str</span>
+        <span class="ruby-identifier">ret</span>   <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;/tr&gt;&quot;</span>
+        <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,42 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "filter_set<Array[Filter]>:"
+    body: A set of filters in the form [[:filter, rule], [:filter, rule]]
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Symbol:"
+    body: ":filter_chain_completed."
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: Filter rules can be Symbols, Strings, or Procs.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Symbols or Strings:"
+    body: Call the method represented by the <tt>Symbol</tt> or <tt>String</tt>.
+  - !ruby/struct:SM::Flow::LI 
+    label: "Procs:"
+    body: Execute the <tt>Proc</tt>, in the context of the controller (self will be the controller)
+  type: :NOTE
+full_name: Merb::AbstractController#_call_filters
+is_singleton: false
+name: _call_filters
+params: (filter_set)
+visibility: public

@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: days
+block_params: 
+comment: 
+full_name: TimeDSL#day
+is_singleton: false
+name: day
+params: ()
+visibility: public

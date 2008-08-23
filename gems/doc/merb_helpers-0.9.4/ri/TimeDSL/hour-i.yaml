@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: hours
+block_params: 
+comment: 
+full_name: TimeDSL#hour
+is_singleton: false
+name: hour
+params: ()
+visibility: public

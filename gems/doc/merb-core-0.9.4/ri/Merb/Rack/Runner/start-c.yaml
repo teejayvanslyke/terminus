@@ -1,0 +1,33 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: Options for the runner (see below).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opts)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":runner_code<String>:"
+    body: The code to run.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: If opts[:runner_code] matches a filename, that file will be read and the contents executed. Otherwise the code will be executed directly.
+full_name: Merb::Rack::Runner::start
+is_singleton: true
+name: start
+params: (opts={})
+visibility: public

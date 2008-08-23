@@ -1,0 +1,29 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Start a Merb server, in either foreground, daemonized or cluster mode.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "port<~to_i>:"
+    body: The port to which the first server instance should bind to. Subsequent server instances bind to the immediately following ports.
+  - !ruby/struct:SM::Flow::LI 
+    label: "cluster<~to_i>:"
+    body: Number of servers to run in a cluster.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If cluster is left out, then one process will be started. This process will be daemonized if Merb::Config[:daemonize] is true.
+full_name: Merb::Server::start
+is_singleton: true
+name: start
+params: (port, cluster=nil)
+visibility: public

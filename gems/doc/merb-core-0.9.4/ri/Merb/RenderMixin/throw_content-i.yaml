@@ -1,0 +1,41 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Called in templates to store up content for later use. Takes a string and/or a block. First, the string is evaluated, and then the block is captured using the capture() helper provided by the template languages. The two are concatenated together.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "obj<Object>:"
+    body: The key in the thrown_content hash.
+  - !ruby/struct:SM::Flow::LI 
+    label: "string<String>:"
+    body: Textual content. Defaults to nil.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: A block to be evaluated and concatenated to string.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Raises
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "ArgumentError:"
+    body: Neither string nor block given.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  throw_content(:foo, &quot;Foo&quot;)\n  catch_content(:foo) #=&gt; &quot;Foo&quot;\n"
+full_name: Merb::RenderMixin#throw_content
+is_singleton: false
+name: throw_content
+params: (obj, string = nil, &block)
+visibility: public

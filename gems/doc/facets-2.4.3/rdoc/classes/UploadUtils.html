@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: UploadUtils</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">UploadUtils</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/more/facets/uploadutils_rb.html">
+                lib/more/facets/uploadutils.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="UploadUtils.html">UploadUtils</a></h1>
+<p>
+Upload <a href="UploadUtils.html#M001050">files</a> to host. These means of
+uploading are current supported: <a
+href="UploadUtils.html#M001046">ftp</a>, <a
+href="UploadUtils.html#M001047">sftp</a>, scp and <a
+href="UploadUtils.html#M001048">rsync</a>.
+</p>
+<pre>
+    user       Username for host.
+    host       Host server's domain name.
+    root       Document root path on host.
+    copy       Directory of files to publish, or
+               Files to publish using from and to.
+
+    dryrun     If true only pretend to upload.
+    quiet      Supress all output.
+    verbose    Provide extra details.
+</pre>
+<p>
+The copy parameter allows you to simply specify a file or directory which
+will be published to host&#8216;s document root location.
+</p>
+<p>
+If you need more control over which <a
+href="UploadUtils.html#M001050">files</a> to publish where, you can use the
+copy parameter instead. Provide an array of pattern strings in the form of
+&quot;{from} {to}&quot;. If the desitination is the host&#8216;s document
+root you do not need to specify the {to} part. For example:
+</p>
+<pre>
+    copy = [ 'web/*', 'doc/api/* doc/api' ]
+</pre>
+<p>
+The first copies the <a href="UploadUtils.html#M001050">files</a> under
+your project&#8216;s web directory to the host&#8216;s document root. The
+second copies your projects doc/api <a
+href="UploadUtils.html#M001050">files</a> to the doc/api location on the
+host.
+</p>
+<p>
+The internal template used for the outbound destination is
+&#8216;username@host:root/&#8217;.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001050">files</a>&nbsp;&nbsp;
+      <a href="#M001046">ftp</a>&nbsp;&nbsp;
+      <a href="#M001048">rsync</a>&nbsp;&nbsp;
+      <a href="#M001047">sftp</a>&nbsp;&nbsp;
+      <a href="#M001052">stage_linkdir</a>&nbsp;&nbsp;
+      <a href="#M001051">stage_transfer</a>&nbsp;&nbsp;
+      <a href="#M001045">upload</a>&nbsp;&nbsp;
+      <a href="#M001049">upload_parameters</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001050" class="method-detail">
+        <a name="M001050"></a>
+
+        <div class="method-heading">
+          <a href="#M001050" class="method-signature">
+          <span class="method-name">files</span><span class="method-args">( dir, copy )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Put together the list of <a href="UploadUtils.html#M001050">files</a> to
+copy.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001050-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001050-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/uploadutils.rb, line 280</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">files</span>( <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">copy</span> )
+    <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">dir</span>) <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">del</span>, <span class="ruby-identifier">add</span> = <span class="ruby-identifier">copy</span>.<span class="ruby-identifier">partition</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-regexp re">/^[-]/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">f</span> }
+
+      <span class="ruby-comment cmt"># remove - and + prefixes</span>
+      <span class="ruby-identifier">del</span>.<span class="ruby-identifier">collect!</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/^[-]/</span>,<span class="ruby-value str">''</span>) }
+      <span class="ruby-identifier">add</span>.<span class="ruby-identifier">collect!</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/^[+]/</span>,<span class="ruby-value str">''</span>) }
+
+      <span class="ruby-comment cmt">#del.concat(must_exclude)</span>
+
+      <span class="ruby-identifier">files</span> = []
+      <span class="ruby-identifier">add</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">g</span><span class="ruby-operator">|</span> <span class="ruby-identifier">files</span> <span class="ruby-operator">+=</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">multiglob</span>(<span class="ruby-identifier">g</span>) }
+      <span class="ruby-identifier">del</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">g</span><span class="ruby-operator">|</span> <span class="ruby-identifier">files</span> <span class="ruby-operator">-=</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">multiglob</span>(<span class="ruby-identifier">g</span>) }
+
+      <span class="ruby-identifier">files</span>.<span class="ruby-identifier">collect!</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/^\//</span>,<span class="ruby-value str">''</span>) }
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">files</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001046" class="method-detail">
+        <a name="M001046"></a>
+
+        <div class="method-heading">
+          <a href="#M001046" class="method-signature">
+          <span class="method-name">ftp</span><span class="method-args">( keys )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Use <a href="UploadUtils.html#M001046">ftp</a> to <a
+href="UploadUtils.html#M001045">upload</a> <a
+href="UploadUtils.html#M001050">files</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001046-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001046-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/uploadutils.rb, line 116</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ftp</span>( <span class="ruby-identifier">keys</span> )
+    <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">upload_parameters</span>(<span class="ruby-identifier">keys</span>)
+
+    <span class="ruby-comment cmt"># set transfer rules</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">stage</span>
+      <span class="ruby-identifier">trans</span> = <span class="ruby-identifier">stage_transfer</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">stage</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">files</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">from</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">trans</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">from</span>,<span class="ruby-identifier">from</span>]
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># append location of publication dir to from</span>
+    <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dir</span>
+    <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">collect!</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">from</span>,<span class="ruby-identifier">to</span><span class="ruby-operator">|</span> [<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>,<span class="ruby-identifier">from</span>), <span class="ruby-identifier">to</span>] }
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dryrun</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;ftp open #{keys.user}@#{keys.host}:#{keys.root}/&quot;</span>
+      <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">trans</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>, <span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;ftp put #{f} #{t}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-value str">'net/ftp'</span>
+      <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">FTP</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">host</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ftp</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">ftp</span>.<span class="ruby-identifier">login</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">user</span>) <span class="ruby-comment cmt">#password?</span>
+        <span class="ruby-identifier">ftp</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">root</span>)
+        <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">trans</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>, <span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;ftp #{f} #{t}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">quiet</span>
+          <span class="ruby-identifier">ftp</span>.<span class="ruby-identifier">putbinaryfile</span>( <span class="ruby-identifier">f</span>, <span class="ruby-identifier">t</span>, <span class="ruby-value">1024</span> )
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001048" class="method-detail">
+        <a name="M001048"></a>
+
+        <div class="method-heading">
+          <a href="#M001048" class="method-signature">
+          <span class="method-name">rsync</span><span class="method-args">( keys )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Use <a href="UploadUtils.html#M001048">rsync</a> to <a
+href="UploadUtils.html#M001045">upload</a> <a
+href="UploadUtils.html#M001050">files</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001048-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001048-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/uploadutils.rb, line 192</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rsync</span>( <span class="ruby-identifier">keys</span> )
+    <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">upload_parameters</span>(<span class="ruby-identifier">keys</span>)
+
+    <span class="ruby-identifier">flags</span> = []
+    <span class="ruby-identifier">flags</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;-n&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dryrun</span>
+    <span class="ruby-identifier">flags</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;-q&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">quiet</span>
+    <span class="ruby-identifier">flags</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;-v&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">verbose</span>
+    <span class="ruby-identifier">flags</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;--progress&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">quiet</span>
+    <span class="ruby-identifier">flags</span> = <span class="ruby-identifier">flags</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">' '</span>).<span class="ruby-identifier">strip</span>
+    <span class="ruby-identifier">flags</span> = <span class="ruby-value str">' '</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">flags</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">flags</span>.<span class="ruby-identifier">empty?</span>
+
+    <span class="ruby-identifier">manfile</span> = <span class="ruby-value str">'Publish.txt'</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">stage</span>
+      <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">stage_linkdir</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">stage</span>)
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">dir</span>) <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">cpy</span> = <span class="ruby-identifier">files</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">manifest</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>,<span class="ruby-identifier">manfile</span>)
+      <span class="ruby-identifier">cmd</span> = <span class="ruby-node">%{rsync#{flags} -L -arz --files-from='#{manifest}' #{dir} #{keys.user}@#{keys.host}:/#{keys.root}}</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dir</span>
+      <span class="ruby-identifier">cpy</span> = <span class="ruby-identifier">files</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span>)
+      <span class="ruby-identifier">manifest</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>,<span class="ruby-identifier">manfile</span>)
+      <span class="ruby-identifier">cmd</span> = <span class="ruby-node">%{rsync#{flags} -arz --files-from='#{manifest}' #{dir} #{keys.user}@#{keys.host}:/#{keys.root}}</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt">#Dir.chdir(keys.dir) do</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">manifest</span>, <span class="ruby-value str">'w'</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">cpy</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>) }
+        <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'RSYNC_PASSWORD'</span>] = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">pass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">pass</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">cmd</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">quiet</span>
+        <span class="ruby-identifier">system</span> <span class="ruby-identifier">cmd</span>
+      <span class="ruby-keyword kw">ensure</span>
+        <span class="ruby-constant">ENV</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'RSYNC_PASSWORD'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">pass</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt">#end</span>
+
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001047" class="method-detail">
+        <a name="M001047"></a>
+
+        <div class="method-heading">
+          <a href="#M001047" class="method-signature">
+          <span class="method-name">sftp</span><span class="method-args">( keys )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Use <a href="UploadUtils.html#M001047">sftp</a> to <a
+href="UploadUtils.html#M001045">upload</a> <a
+href="UploadUtils.html#M001050">files</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001047-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001047-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/uploadutils.rb, line 154</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sftp</span>( <span class="ruby-identifier">keys</span> )
+    <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">upload_parameters</span>(<span class="ruby-identifier">keys</span>)
+
+    <span class="ruby-comment cmt"># set transfer rules</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">stage</span>
+      <span class="ruby-identifier">trans</span> = <span class="ruby-identifier">stage_transfer</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">stage</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">files</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">from</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">trans</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">from</span>,<span class="ruby-identifier">from</span>]
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># append location of publication dir to from</span>
+    <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dir</span>
+    <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">collect!</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">from</span>,<span class="ruby-identifier">to</span><span class="ruby-operator">|</span> [<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>,<span class="ruby-identifier">from</span>), <span class="ruby-identifier">to</span>] }
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dryrun</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;sftp open #{keys.user}@#{keys.host}:#{keys.root}/&quot;</span>
+      <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">trans</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>,<span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;sftp put #{f} #{t}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-value str">'net/sftp'</span>
+      <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SFTP</span>.<span class="ruby-identifier">start</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">host</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">user</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">pass</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sftp</span><span class="ruby-operator">|</span>
+        <span class="ruby-comment cmt">#sftp.login( user )</span>
+        <span class="ruby-identifier">sftp</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">root</span>)
+        <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">trans</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span>,<span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;sftp #{f} #{t}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">quiet</span>
+          <span class="ruby-identifier">sftp</span>.<span class="ruby-identifier">put_file</span>(<span class="ruby-identifier">f</span>,<span class="ruby-identifier">t</span>) <span class="ruby-comment cmt">#, 1024 )</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001052" class="method-detail">
+        <a name="M001052"></a>
+
+        <div class="method-heading">
+          <a href="#M001052" class="method-signature">
+          <span class="method-name">stage_linkdir</span><span class="method-args">( dir, list )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+When using stage options this will create temporary linked location.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001052-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001052-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/uploadutils.rb, line 326</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stage_linkdir</span>( <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">list</span> )
+    <span class="ruby-identifier">folder</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">tmpdir</span>, <span class="ruby-value str">'ratchets'</span>, <span class="ruby-value str">'project'</span>, <span class="ruby-identifier">object_id</span>.<span class="ruby-identifier">abs</span>.<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">folder</span>)
+
+    <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">dir</span>) <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">stage_transfer</span>(<span class="ruby-identifier">list</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span>, <span class="ruby-identifier">to</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">link</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">folder</span>,<span class="ruby-identifier">to</span>)
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">ln_s</span>(<span class="ruby-identifier">link</span>,<span class="ruby-identifier">file</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">folder</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001051" class="method-detail">
+        <a name="M001051"></a>
+
+        <div class="method-heading">
+          <a href="#M001051" class="method-signature">
+          <span class="method-name">stage_transfer</span><span class="method-args">( list )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Combine three part stage list into a two part from-&gt;to list.
+</p>
+<p>
+Using the stage list of three space separated fields.
+</p>
+<pre>
+  fromdir file todir
+</pre>
+<p>
+This is used to generate a from -&gt; to list of the form:
+</p>
+<pre>
+ fromdir/file todir/file
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001051-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001051-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/uploadutils.rb, line 311</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stage_transfer</span>( <span class="ruby-identifier">list</span> )
+    <span class="ruby-identifier">trans</span> = []
+    <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">trans</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Shellwords</span>.<span class="ruby-identifier">shellwords</span>(<span class="ruby-identifier">line</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">trans</span>.<span class="ruby-identifier">collect!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">from</span>, <span class="ruby-identifier">base</span>, <span class="ruby-identifier">to</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">from</span>,<span class="ruby-identifier">base</span>)
+      <span class="ruby-identifier">to</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">to</span>,<span class="ruby-identifier">base</span>)
+      [<span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>]
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001045" class="method-detail">
+        <a name="M001045"></a>
+
+        <div class="method-heading">
+          <a href="#M001045" class="method-signature">
+          <span class="method-name">upload</span><span class="method-args">( protocol, opts )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Upload via given protocol.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001045-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001045-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/uploadutils.rb, line 108</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">upload</span>( <span class="ruby-identifier">protocol</span>, <span class="ruby-identifier">opts</span> )
+    <span class="ruby-identifier">send</span>(<span class="ruby-identifier">protocol</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>,<span class="ruby-identifier">opts</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001049" class="method-detail">
+        <a name="M001049"></a>
+
+        <div class="method-heading">
+          <a href="#M001049" class="method-signature">
+          <span class="method-name">upload_parameters</span><span class="method-args">( keys )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+parse publishing options.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001049-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001049-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/uploadutils.rb, line 236</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">upload_parameters</span>( <span class="ruby-identifier">keys</span> )
+    <span class="ruby-identifier">keys</span> = <span class="ruby-constant">OpenObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">keys</span>)
+
+    <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span> <span class="ruby-operator">||</span> <span class="ruby-value str">'**/*'</span>
+    <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">host</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">host</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">domain</span>
+    <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">user</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">user</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">username</span>
+    <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">root</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">root</span> <span class="ruby-operator">||</span> <span class="ruby-value str">'/'</span>
+    <span class="ruby-comment cmt">#keys.pass = keys.pass || keys.password</span>
+
+    <span class="ruby-comment cmt"># validate</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;missing publish parameter -- dir&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">dir</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;missing publish parameter -- host&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">host</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;missing publish parameter -- user&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">user</span>
+    <span class="ruby-comment cmt">#raise ArgumentError, &quot;missing publish parameter -- copy&quot; unless keys.copy</span>
+    <span class="ruby-comment cmt">#raise ArgumentError, &quot;missing publish parameter -- root&quot; unless keys.root</span>
+
+    <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">root</span> = <span class="ruby-value str">''</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp re">/^\//</span>,<span class="ruby-value str">''</span>)
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span><span class="ruby-operator">===</span><span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span> <span class="ruby-keyword kw">and</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span>)
+      <span class="ruby-identifier">copy</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span>, <span class="ruby-value str">'*'</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span> = [<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">copy</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>
+
+<span class="ruby-comment cmt">#     trans = []</span>
+<span class="ruby-comment cmt">#     keys.copy.each do |from|</span>
+<span class="ruby-comment cmt">#       #from, to = *Shellwords.shellwords(c)</span>
+<span class="ruby-comment cmt">#       #to = from if to.nil?</span>
+<span class="ruby-comment cmt">#       #to = to[1..-1] if to[0,1] == '/'</span>
+<span class="ruby-comment cmt">#       from.sub('*','**/*') unless from =~ /\*\*/</span>
+<span class="ruby-comment cmt">#       files = Dir.glob(from)</span>
+<span class="ruby-comment cmt">#       files.each do |f|</span>
+<span class="ruby-comment cmt">#         #t = File.join(to,File.basename(f))</span>
+<span class="ruby-comment cmt">#         #t = t[1..-1] if t[0,1] == '/'</span>
+<span class="ruby-comment cmt">#         trans &lt;&lt; [f,f]</span>
+<span class="ruby-comment cmt">#       end</span>
+<span class="ruby-comment cmt">#     end</span>
+<span class="ruby-comment cmt">#     keys.trans = trans</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">keys</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

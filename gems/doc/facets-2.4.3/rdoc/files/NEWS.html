@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: NEWS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>NEWS</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>NEWS
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 18 22:34:51 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Release Notes</h1>
+<p>
+Facets 2.4.3 is now out in the wild. The release is primarily a maintenance
+release &#8212;fixing a handful of small bugs and adding some small feature
+improvements, but a few significant changes are also present. Here&#8216;s
+an overview:
+</p>
+<h2>Major Changes</h2>
+<ul>
+<li>Changed <a href="../classes/File.html#M000018">File#rewrite</a> to not use
+the in-place change of the string.
+
+</li>
+<li>Deprecate Hash#keys_to_s and Hash#keys_to_sym.
+
+</li>
+<li>Renamed Class#to_pathname and to_methodname to pathize and methodize.
+
+</li>
+<li>Deprecated Console:: namespace for <a
+href="../classes/ANSICode.html">ANSICode</a>.
+
+</li>
+<li>Added Time#trunc and Time#round to Core.
+
+</li>
+<li>Added Ken Bloom&#8216;s <a
+href="../classes/DictionaryMatcher.html">DictionaryMatcher</a> class (will
+be renamed in future version)
+
+</li>
+<li>Added Array#recursively and fixed bug in Hash#recursively.
+
+</li>
+<li>Added kernel/instance method which provides a fluent interface to private
+object space.
+
+</li>
+<li>Moved Mentalguy&#8216;s lazy.rb to core!
+
+</li>
+<li>Added <a href="../classes/Indexable.html">Indexable</a> and <a
+href="../classes/Stackable.html">Stackable</a> to core.
+
+</li>
+<li>Deprecated ruby.rb, which was a sort 1.9 compatibility layer.
+
+</li>
+<li>The ruby.rb methods were moved to core, wrapped in a 1.9 condition.
+
+</li>
+</ul>
+<h2>Minor Changes</h2>
+<ul>
+<li>Fixed Time#hence changed years when changing months.
+
+</li>
+<li>Fixed Time#hence to flip year correctly when adding months.
+
+</li>
+<li>Added optional argument to <a
+href="../classes/Dictionary.html#M000177">Dictionary#first</a> and last.
+
+</li>
+<li>Improved <a href="../classes/File.html#M000020">File#rootname</a> &#8212;it
+is now more robust.
+
+</li>
+<li>Made <a href="../classes/FileUtils.html#M000963">FileUtils#whereis</a> a
+module_function again.
+
+</li>
+<li>Although not perceptible to the end user, there are now three divisions
+lib/core, lib/lore, lib/more.
+
+</li>
+<li>Created Lore library to house extensions to Ruby&#8216;s standard library.
+
+</li>
+</ul>
+<p>
+Note that this release does not include a setup.rb script. We are working
+on a new version of this script, which we plan to include in the next
+release.
+</p>
+<p>
+Special thanks to:
+</p>
+<ul>
+<li>Ken Bloom
+
+</li>
+<li>Nick Caruso
+
+</li>
+<li>Evgeniy Dolzhenko
+
+</li>
+<li>Andy Freeman
+
+</li>
+<li>Tomasz Muras
+
+</li>
+<li>Dave Myron
+
+</li>
+</ul>
+<p>
+And of course, to anyone else I failed to mention that has contributed.
+</p>
+<p>
+As a REMINDER, Facets 2.4+ now encourages:
+</p>
+<pre>
+  require 'facets'
+</pre>
+<p>
+This is better than cherry-picking methods. <a
+href="../classes/It.html">It</a> may seem counter-intuitive, but it
+actually proves more advantages to do this for the sake of improved
+interoperability. The practice of cherry-picking can become problematic if
+other dependent libraries have cherry-picked different methods. In those
+cases these distinctions go unaccounted and untested.
+</p>
+<p>
+Facets is almost fully interoperable with ActiveSupport and Ruby 1.9. We
+will continue to improve this interoperability in upcoming releases.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

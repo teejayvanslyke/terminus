@@ -1,0 +1,31 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "css_query<String>:"
+    body: A CSS query to find the elements for.
+  - !ruby/struct:SM::Flow::LI 
+    label: "output<DocumentOutput>:"
+    body: The output to look for the elements in. Defaults to process_output.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[Hpricot::Elem]:"
+    body: All tags matching the query.
+  type: :NOTE
+full_name: Merb::Test::ViewHelper#elements
+is_singleton: false
+name: elements
+params: (css_query, output = process_output)
+visibility: public

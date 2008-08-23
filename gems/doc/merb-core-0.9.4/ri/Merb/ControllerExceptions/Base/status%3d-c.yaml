@@ -1,0 +1,23 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set the actual status-code for an Exception class.
+- !ruby/struct:SM::Flow::P 
+  body: If possible, set the STATUS constant, and update any previously registered (inherited) status-code.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "num<~to_i>:"
+    body: The status code
+  type: :NOTE
+full_name: Merb::ControllerExceptions::Base::status=
+is_singleton: true
+name: status=
+params: (num)
+visibility: public

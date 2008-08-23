@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>compile (Merb::Router::Route)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/router/route.rb, line 310</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compile</span>(<span class="ruby-identifier">first</span> = <span class="ruby-keyword kw">false</span>)
+        <span class="ruby-identifier">code</span> = <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-identifier">default_params</span> = { <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;index&quot;</span> }
+        <span class="ruby-identifier">get_value</span> = <span class="ruby-identifier">proc</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default_params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">key</span>][<span class="ruby-value">0</span>] <span class="ruby-operator">!=</span> <span class="ruby-value">?&quot;</span>
+            <span class="ruby-node">&quot;#{params[key]} || \&quot;#{default_params[key]}\&quot;&quot;</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-node">&quot;#{params[key]}&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">params_as_string</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k.inspect} =&gt; #{get_value[k]}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>)
+        <span class="ruby-identifier">code</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;  els&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">first</span>
+        <span class="ruby-identifier">code</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;if  # #{@behavior.merged_original_conditions.inspect}  \n&quot;</span>
+        <span class="ruby-identifier">code</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">if_conditions</span>(<span class="ruby-identifier">params_as_string</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; &amp;&amp; &quot;</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span>
+        <span class="ruby-identifier">code</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;    # then\n&quot;</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@conditional_block</span>
+          <span class="ruby-identifier">code</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    [#{@index.inspect}, block_result]\n&quot;</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">code</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    [#{@index.inspect}, {#{params_as_string}}]\n&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

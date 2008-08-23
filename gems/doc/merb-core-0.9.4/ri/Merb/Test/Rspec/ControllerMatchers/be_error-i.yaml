@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Test::Rspec::ControllerMatchers#be_error
+is_singleton: false
+name: be_error
+params: (expected)
+visibility: public

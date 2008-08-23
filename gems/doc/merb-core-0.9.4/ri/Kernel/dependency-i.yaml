@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Loads the given string as a gem. Execution is deferred until after the logger has been instantiated and the framework directory structure is defined.
+- !ruby/struct:SM::Flow::P 
+  body: If that has already happened, the gem will be activated immediately.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/struct:SM::Flow::P 
+  body: "@param name&lt;String&gt; The name of the gem to load. @param *ver&lt;Gem::Requirement, Gem::Version, Array, #to_str&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Version requirements to be passed to Gem.activate.\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[String, Array[Gem::Requirement, Gem::Version, Array, #to_str]]:"
+    body: The name and version information that was passed in.
+  type: :NOTE
+full_name: Kernel#dependency
+is_singleton: false
+name: dependency
+params: (name, *ver)
+visibility: public

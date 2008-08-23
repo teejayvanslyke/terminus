@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Setup the class reloader if it's been specified in config.
+full_name: Merb::BootLoader::ReloadClasses::run
+is_singleton: true
+name: run
+params: ()
+visibility: public

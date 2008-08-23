@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a closing tag
+full_name: Merb::Helpers::Tag#close_tag
+is_singleton: false
+name: close_tag
+params: (name)
+visibility: public

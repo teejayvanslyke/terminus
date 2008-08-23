@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>create_local_database (lib/active_record/merbtasks.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/active_record/merbtasks.rb, line 21</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_local_database</span>(<span class="ruby-identifier">config</span>)
+    <span class="ruby-comment cmt"># Only connect to local databases</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:host</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'localhost'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:host</span>].<span class="ruby-identifier">blank?</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">establish_connection</span>(<span class="ruby-identifier">config</span>)
+        <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>
+      <span class="ruby-keyword kw">rescue</span>
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:adapter</span>]
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'mysql'</span>
+          <span class="ruby-ivar">@charset</span>   = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'CHARSET'</span>]   <span class="ruby-operator">||</span> <span class="ruby-value str">'utf8'</span>
+          <span class="ruby-ivar">@collation</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'COLLATION'</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">'utf8_general_ci'</span>
+          <span class="ruby-keyword kw">begin</span>
+            <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">establish_connection</span>(<span class="ruby-identifier">config</span>.<span class="ruby-identifier">merge</span>({<span class="ruby-identifier">:database</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>}))
+            <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">create_database</span>(<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:database</span>], {<span class="ruby-identifier">:charset</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:charset</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@charset</span>), <span class="ruby-identifier">:collation</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:collation</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@collation</span>)})
+            <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">establish_connection</span>(<span class="ruby-identifier">config</span>)
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;MySQL #{config[:database]} database successfully created&quot;</span>
+          <span class="ruby-keyword kw">rescue</span>
+            <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Couldn't create database for #{config.inspect}, charset: #{config[:charset] || @charset}, collation: #{config[:collation] || @collation} (if you set the charset manually, make sure you have a matching collation)&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'postgresql'</span>
+          <span class="ruby-node">`createdb &quot;#{config[:database]}&quot; -E utf8`</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'sqlite'</span>
+          <span class="ruby-node">`sqlite &quot;#{config[:database]}&quot;`</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'sqlite3'</span>
+          <span class="ruby-node">`sqlite3 &quot;#{config[:database]}&quot;`</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{config[:database]} already exists&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;This task only creates local databases. #{config[:database]} is on a remote host.&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

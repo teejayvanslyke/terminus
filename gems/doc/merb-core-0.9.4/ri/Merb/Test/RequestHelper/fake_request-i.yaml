@@ -1,0 +1,48 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "env<Hash>:"
+    body: A hash of environment keys to be merged into the default list.
+  - !ruby/struct:SM::Flow::LI 
+    label: "opt<Hash>:"
+    body: A hash of options (see below).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opt)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":post_body<String>:"
+    body: The post body for the request.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":req<String>:"
+    body: The request string. This will only be used if :post_body is left out.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "FakeRequest:"
+    body: A Request object that is built based on the parameters.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: If you pass a post body, the content-type will be set to URL-encoded.
+full_name: Merb::Test::RequestHelper#fake_request
+is_singleton: false
+name: fake_request
+params: (env = {}, opt = {})
+visibility: public

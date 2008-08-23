@@ -1,0 +1,161 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: def env def session def route_params
+  name: env
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: def env def session def route_params
+  name: exceptions
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: def env def session def route_params
+  name: route
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: route_params
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: def env def session def route_params
+  name: session
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: escape
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: normalize_params
+- !ruby/object:RI::MethodSummary 
+  name: params_to_query_string
+- !ruby/object:RI::MethodSummary 
+  name: parse_multipart
+- !ruby/object:RI::MethodSummary 
+  name: query_parse
+- !ruby/object:RI::MethodSummary 
+  name: unescape
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: METHODS
+  value: "%w{get post put delete head options}"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NAME_REGEX
+  value: /Content-Disposition:.* name="?([^\";]*)"?/ni.freeze
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CONTENT_TYPE_REGEX
+  value: "/Content-Type: (.*)\\r\\n/ni.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: FILENAME_REGEX
+  value: /Content-Disposition:.* filename="?([^\";]*)"?/ni.freeze
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CRLF
+  value: "\"\\r\\n\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: EOL
+  value: CRLF
+full_name: Merb::Request
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: accept
+- !ruby/object:RI::MethodSummary 
+  name: accept_charset
+- !ruby/object:RI::MethodSummary 
+  name: accept_encoding
+- !ruby/object:RI::MethodSummary 
+  name: accept_language
+- !ruby/object:RI::MethodSummary 
+  name: ajax?
+- !ruby/object:RI::MethodSummary 
+  name: cache_control
+- !ruby/object:RI::MethodSummary 
+  name: connection
+- !ruby/object:RI::MethodSummary 
+  name: content_length
+- !ruby/object:RI::MethodSummary 
+  name: content_type
+- !ruby/object:RI::MethodSummary 
+  name: controller
+- !ruby/object:RI::MethodSummary 
+  name: cookies
+- !ruby/object:RI::MethodSummary 
+  name: domain
+- !ruby/object:RI::MethodSummary 
+  name: find_route!
+- !ruby/object:RI::MethodSummary 
+  name: full_uri
+- !ruby/object:RI::MethodSummary 
+  name: gateway
+- !ruby/object:RI::MethodSummary 
+  name: host
+- !ruby/object:RI::MethodSummary 
+  name: keep_alive
+- !ruby/object:RI::MethodSummary 
+  name: message
+- !ruby/object:RI::MethodSummary 
+  name: method
+- !ruby/object:RI::MethodSummary 
+  name: params
+- !ruby/object:RI::MethodSummary 
+  name: path
+- !ruby/object:RI::MethodSummary 
+  name: path_info
+- !ruby/object:RI::MethodSummary 
+  name: port
+- !ruby/object:RI::MethodSummary 
+  name: protocol
+- !ruby/object:RI::MethodSummary 
+  name: query_string
+- !ruby/object:RI::MethodSummary 
+  name: raw_post
+- !ruby/object:RI::MethodSummary 
+  name: redirect_status
+- !ruby/object:RI::MethodSummary 
+  name: redirect_url
+- !ruby/object:RI::MethodSummary 
+  name: redirects?
+- !ruby/object:RI::MethodSummary 
+  name: referer
+- !ruby/object:RI::MethodSummary 
+  name: remote_ip
+- !ruby/object:RI::MethodSummary 
+  name: reset_params!
+- !ruby/object:RI::MethodSummary 
+  name: script_name
+- !ruby/object:RI::MethodSummary 
+  name: server_name
+- !ruby/object:RI::MethodSummary 
+  name: server_software
+- !ruby/object:RI::MethodSummary 
+  name: ssl?
+- !ruby/object:RI::MethodSummary 
+  name: subdomains
+- !ruby/object:RI::MethodSummary 
+  name: uri
+- !ruby/object:RI::MethodSummary 
+  name: user_agent
+- !ruby/object:RI::MethodSummary 
+  name: version
+- !ruby/object:RI::MethodSummary 
+  name: xhr?
+- !ruby/object:RI::MethodSummary 
+  name: xml_http_request?
+name: Request
+superclass: Object

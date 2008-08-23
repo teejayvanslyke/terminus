@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Called in templates to test for the existence of previously thrown content.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "obj<Object>:"
+    body: The key in the thrown_content hash. Defaults to :for_layout.
+  type: :NOTE
+full_name: Merb::RenderMixin#thrown_content?
+is_singleton: false
+name: thrown_content?
+params: (obj = :for_layout)
+visibility: public

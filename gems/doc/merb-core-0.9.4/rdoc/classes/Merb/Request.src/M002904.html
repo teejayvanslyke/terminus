@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>method (Merb::Request)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/request.rb, line 68</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method</span>
+      <span class="ruby-ivar">@method</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">request_method</span> = <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'REQUEST_METHOD'</span>].<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">to_sym</span>
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">request_method</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:get</span>, <span class="ruby-identifier">:head</span>, <span class="ruby-identifier">:put</span>, <span class="ruby-identifier">:delete</span>, <span class="ruby-identifier">:options</span>
+          <span class="ruby-identifier">request_method</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:post</span>
+          <span class="ruby-identifier">m</span> = <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">http_method_overrides</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">m</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>); <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">m</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">m</span>.<span class="ruby-identifier">downcase!</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">m</span>
+          <span class="ruby-constant">METHODS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">m</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:post</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Unknown REQUEST_METHOD: #{@env['REQUEST_METHOD']}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

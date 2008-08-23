@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash:"
+    body: The configuration loaded from Merb.root / &quot;config/plugins.yml&quot; or, if the load fails, an empty hash whose default value is another Hash.
+  type: :NOTE
+full_name: Merb::Plugins::config
+is_singleton: true
+name: config
+params: ()
+visibility: public

@@ -1,0 +1,58 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MAJOR
+  value: "1"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MINOR
+  value: "1"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: TINY
+  value: "4"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: RELEASE_CANDIDATE
+  value: nil
+- !ruby/object:RI::Constant 
+  comment: 
+  name: BUILD_TIME_UTC
+  value: "20080526202855"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: STRING
+  value: "[MAJOR, MINOR, TINY].join('.')"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: TAG
+  value: "\"REL_#{[MAJOR, MINOR, TINY, RELEASE_CANDIDATE].compact.join('_')}\".upcase.gsub(/\\.|-/, '_')"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: FULL_VERSION
+  value: "\"#{[MAJOR, MINOR, TINY, RELEASE_CANDIDATE].compact.join('.')} (build #{BUILD_TIME_UTC})\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NAME
+  value: "\"RSpec\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: URL
+  value: "\"http://rspec.rubyforge.org/\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DESCRIPTION
+  value: "\"#{NAME}-#{FULL_VERSION} - BDD for Ruby\\n#{URL}\""
+full_name: Spec::VERSION
+includes: []
+
+instance_methods: []
+
+name: VERSION
+superclass: 

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Dispatcher::DefaultExceptionHelper#humanize_exception
+is_singleton: false
+name: humanize_exception
+params: (e)
+visibility: public

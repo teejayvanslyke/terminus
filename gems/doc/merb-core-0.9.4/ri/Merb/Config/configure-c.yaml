@@ -1,0 +1,26 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set configuration parameters from a code block, where each method evaluates to a config parameter.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: Configuration parameter block.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # Set environment and log level.\n  Merb::Config.configure do\n    environment &quot;development&quot;\n    log_level   &quot;debug&quot;\n  end\n"
+full_name: Merb::Config::configure
+is_singleton: true
+name: configure
+params: (&block)
+visibility: public

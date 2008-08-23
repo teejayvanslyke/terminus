@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>matches? (Merb::Test::Rspec::ViewMatchers::MatchTag)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/test/matchers/view_matchers.rb, line 58</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">target</span>)
+      <span class="ruby-ivar">@errors</span> = []
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-node">&quot;&lt;#{@name}&quot;</span>)
+        <span class="ruby-ivar">@errors</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;Expected a &lt;#{@name}&gt;, but was #{target}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@attrs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-node">&quot;#{attr}=\&quot;#{val}\&quot;&quot;</span>)
+          <span class="ruby-ivar">@errors</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;Expected #{attr}=\&quot;#{val}\&quot;, but was #{target}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@content</span>
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-node">&quot;&gt;#{@content}&lt;&quot;</span>)
+          <span class="ruby-ivar">@errors</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;Expected #{target} to include #{@content}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@errors</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

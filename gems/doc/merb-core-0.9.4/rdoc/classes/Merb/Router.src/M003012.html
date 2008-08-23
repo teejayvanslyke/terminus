@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>generate (Merb::Router)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/router.rb, line 140</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">generate</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">params</span> = {}, <span class="ruby-identifier">fallback</span> = {})
+        <span class="ruby-identifier">params</span>.<span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+          <span class="ruby-identifier">name</span>.<span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> }
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">generate_for_default_route</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">params</span>), <span class="ruby-identifier">fallback</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@@named_routes</span>.<span class="ruby-identifier">key?</span> <span class="ruby-identifier">name</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Named route not found: #{name}&quot;</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-ivar">@@named_routes</span>[<span class="ruby-identifier">name</span>].<span class="ruby-identifier">generate</span>(<span class="ruby-identifier">params</span>, <span class="ruby-identifier">fallback</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

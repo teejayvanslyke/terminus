@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Parses the command line arguments and stores them in the config.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "argv<String>:"
+    body: The command line arguments. Defaults to <tt>ARGV</tt>.
+  type: :NOTE
+full_name: Merb::Config::parse_args
+is_singleton: true
+name: parse_args
+params: (argv = ARGV)
+visibility: public

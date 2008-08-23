@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: XOXO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">XOXO</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/more/facets/xoxo_rb.html">
+                lib/more/facets/xoxo.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="XOXO.html">XOXO</a></h1>
+<p>
+<a href="XOXO.html">XOXO</a> is a Ruby <a href="XOXO.html">XOXO</a> parser
+and generator. <a href="It.html">It</a> provides a Ruby API similar to
+Marshal and YAML (though more specific) to <a
+href="XOXO.html#M000918">load</a> and <a href="XOXO.html#M000919">dump</a>
+<a href="http://microformats.org/wiki/xoxo">XOXO</a>, an simple, open
+outline format written in standard XHTML and suitable for embedding in
+(X)HTML, Atom, RSS, and arbitrary XML.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000919">dump</a>&nbsp;&nbsp;
+      <a href="#M000918">load</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000919" class="method-detail">
+        <a name="M000919"></a>
+
+        <div class="method-heading">
+          <a href="#M000919" class="method-signature">
+          <span class="method-name">dump</span><span class="method-args">(struct, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return a <a href="XOXO.html">XOXO</a> string corresponding to the Ruby
+object <tt>struct</tt>, translated to the following rules:
+</p>
+<ul>
+<li>Arrays become ordered lists <tt>&lt;ol&gt;</tt>.
+
+</li>
+<li>Hashes become definition lists <tt>&lt;dl&gt;</tt>, keys are stringified
+with <tt>to_s</tt>.
+
+</li>
+<li>Everything else becomes stringified with <tt>to_s</tt> and wrapped in
+appropriate list elements (<tt>&lt;li&gt;</tt> or
+<tt>&lt;dt&gt;</tt>/<tt>&lt;dd&gt;</tt>).
+
+</li>
+</ul>
+<p>
+Additionally, you can pass these options on the <em>options</em> hash:
+</p>
+<table>
+<tr><td valign="top"><tt>:html_wrap</tt> =&gt; <tt>true</tt>:</td><td>Wrap the <a href="XOXO.html">XOXO</a> with a basic XHTML 1.0 Transitional
+header.
+
+</td></tr>
+<tr><td valign="top"><tt>:css</tt> =&gt; <em>css</em>:</td><td><a href="Reference.html">Reference</a> <em>css</em> as stylesheet for the
+wrapped <a href="XOXO.html">XOXO</a> document.
+
+</td></tr>
+</table>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000919-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000919-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/xoxo.rb, line 71</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">struct</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">struct</span> = [<span class="ruby-identifier">struct</span>]  <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">struct</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Array</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:html_wrap</span>]
+      <span class="ruby-identifier">result</span> = <span class="ruby-value str">&quot;&lt;!DOCTYPE html PUBLIC \&quot;-//W3C//DTD XHTML 1.0 Transitional//EN\nhttp://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\&quot;&gt;\n&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;head profile=\&quot;\&quot;&gt;&lt;meta http-equiv=\&quot;Content-Type\&quot; content=\&quot;text/html; charset=utf-8\&quot; /&gt;\n&quot;</span>.<span class="ruby-identifier">strip</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:css</span>]
+        <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q[&lt;style type=&quot;text/css&quot; &gt;@import &quot;#{options[:css]}&quot;;&lt;/style&gt;]</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;/head&gt;&lt;body&gt;&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">make_xoxo</span>(<span class="ruby-identifier">struct</span>, <span class="ruby-value str">'xoxo'</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;/body&gt;&lt;/html&gt;&quot;</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">make_xoxo</span>(<span class="ruby-identifier">struct</span>, <span class="ruby-value str">'xoxo'</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000918" class="method-detail">
+        <a name="M000918"></a>
+
+        <div class="method-heading">
+          <a href="#M000918" class="method-signature">
+          <span class="method-name">load</span><span class="method-args">(xoxo)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Load and return a <a href="XOXO.html">XOXO</a> structure from the String,
+IO or StringIO or <em>xoxo</em>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000918-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000918-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/xoxo.rb, line 48</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">xoxo</span>)
+    <span class="ruby-identifier">structs</span> = <span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">xoxo</span>).<span class="ruby-identifier">parse</span>.<span class="ruby-identifier">structs</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">structs</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">structs</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">structs</span> = <span class="ruby-identifier">structs</span>.<span class="ruby-identifier">first</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">structs</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

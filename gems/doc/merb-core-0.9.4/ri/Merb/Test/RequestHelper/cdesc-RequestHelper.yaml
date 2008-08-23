@@ -1,0 +1,38 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Merb::Test::RequestHelper
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: build_request
+- !ruby/object:RI::MethodSummary 
+  name: check_request_for_route
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: dispatch_request
+- !ruby/object:RI::MethodSummary 
+  name: dispatch_to
+- !ruby/object:RI::MethodSummary 
+  name: dispatch_with_basic_authentication_to
+- !ruby/object:RI::MethodSummary 
+  name: fake_request
+- !ruby/object:RI::MethodSummary 
+  name: get
+- !ruby/object:RI::MethodSummary 
+  name: merge_controller_and_action
+- !ruby/object:RI::MethodSummary 
+  name: post
+- !ruby/object:RI::MethodSummary 
+  name: put
+- !ruby/object:RI::MethodSummary 
+  name: request
+name: RequestHelper
+superclass: 

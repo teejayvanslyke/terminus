@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: Optional params for the controller.
+  type: :NOTE
+full_name: Merb::Test::MultipartRequestHelper::Post::new
+is_singleton: true
+name: new
+params: (params = {})
+visibility: public

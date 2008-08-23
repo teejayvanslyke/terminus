@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: CacheDecorator</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">CacheDecorator</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/more/facets/cachedecorator_rb.html">
+                lib/more/facets/cachedecorator.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="CacheDecorator.html">CacheDecorator</a></h1>
+<p>
+<a href="CacheDecorator.html">CacheDecorator</a> wrap objects to provide
+cached versions of method calls.
+</p>
+<h2>Usage</h2>
+<pre>
+  class X
+    def initialize ; @tick = 0 ; end
+    def tick; @tick + 1; end
+    def cached; @cache ||= CacheDecorator.new(self) ; end
+  end
+
+  x = X.new
+  x.tick  #=&gt; 1
+  x.cached.tick  #=&gt; 2
+  x.tick  #=&gt; 3
+  x.cached.tick  #=&gt; 2
+  x.tick  #=&gt; 4
+  x.cached.tick  #=&gt; 2
+</pre>
+<p>
+You can also use to <a href="CacheDecorator.html#M000790">cache</a> a
+collections of objects to gain code speed ups.
+</p>
+<pre>
+  points = points.collect{|point| Cache.cache(point)}
+</pre>
+<p>
+After our algorithm has finished using points, we want to get rid of these
+Cache objects. That&#8216;s easy:
+</p>
+<pre>
+   points = points.collect{|point| point.self }
+</pre>
+<p>
+Or if you prefer (it is ever so slightly safer):
+</p>
+<pre>
+   points = points.collect{|point| Cache.uncache(point)}
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000790">cache</a>&nbsp;&nbsp;
+      <a href="#M000788">method_missing</a>&nbsp;&nbsp;
+      <a href="#M000787">new</a>&nbsp;&nbsp;
+      <a href="#M000789">self</a>&nbsp;&nbsp;
+      <a href="#M000791">uncache</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000790" class="method-detail">
+        <a name="M000790"></a>
+
+        <div class="method-heading">
+          <a href="#M000790" class="method-signature">
+          <span class="method-name">cache</span><span class="method-args">(object)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000790-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000790-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/cachedecorator.rb, line 104</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cache</span>(<span class="ruby-identifier">object</span>)
+    <span class="ruby-constant">Cache</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">object</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000787" class="method-detail">
+        <a name="M000787"></a>
+
+        <div class="method-heading">
+          <a href="#M000787" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(object)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000787-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000787-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/cachedecorator.rb, line 92</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">object</span>)
+    <span class="ruby-ivar">@self</span> = <span class="ruby-identifier">object</span>
+    <span class="ruby-ivar">@cache</span> = {}
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000791" class="method-detail">
+        <a name="M000791"></a>
+
+        <div class="method-heading">
+          <a href="#M000791" class="method-signature">
+          <span class="method-name">uncache</span><span class="method-args">(cached_object)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000791-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000791-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/cachedecorator.rb, line 108</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">uncache</span>(<span class="ruby-identifier">cached_object</span>)
+    <span class="ruby-identifier">cached_object</span>.<span class="ruby-identifier">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000788" class="method-detail">
+        <a name="M000788"></a>
+
+        <div class="method-heading">
+          <a href="#M000788" class="method-signature">
+          <span class="method-name">method_missing</span><span class="method-args">(method_name, *args, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000788-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000788-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/cachedecorator.rb, line 97</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-comment cmt"># Not thread-safe! Speed is important in caches... ;]</span>
+    <span class="ruby-ivar">@cache</span>[[<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">args</span>, <span class="ruby-identifier">block</span>]] <span class="ruby-operator">||=</span> <span class="ruby-ivar">@self</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000789" class="method-detail">
+        <a name="M000789"></a>
+
+        <div class="method-heading">
+          <a href="#M000789" class="method-signature">
+          <span class="method-name">self</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000789-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000789-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/cachedecorator.rb, line 102</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-ivar">@self</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Merb::ControllerExceptions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Merb::ControllerExceptions</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/merb-core/controller/exceptions_rb.html">
+                lib/merb-core/controller/exceptions.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <pre>
+    def admin_access_required
+      render
+    end
+  end
+</pre>
+<p>
+In app/views/exceptions/admin_access_required.rhtml
+</p>
+<pre>
+  &lt;h1&gt;You're not an administrator!&lt;/h1&gt;
+  &lt;p&gt;You tried to access &lt;%= @tried_to_access %&gt; but that URL is
+  restricted to administrators.&lt;/p&gt;
+</pre>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="ControllerExceptions/Accepted.html" class="link">Merb::ControllerExceptions::Accepted</a><br />
+Class <a href="ControllerExceptions/ActionNotFound.html" class="link">Merb::ControllerExceptions::ActionNotFound</a><br />
+Class <a href="ControllerExceptions/BadGateway.html" class="link">Merb::ControllerExceptions::BadGateway</a><br />
+Class <a href="ControllerExceptions/BadRequest.html" class="link">Merb::ControllerExceptions::BadRequest</a><br />
+Class <a href="ControllerExceptions/Base.html" class="link">Merb::ControllerExceptions::Base</a><br />
+Class <a href="ControllerExceptions/ClientError.html" class="link">Merb::ControllerExceptions::ClientError</a><br />
+Class <a href="ControllerExceptions/Conflict.html" class="link">Merb::ControllerExceptions::Conflict</a><br />
+Class <a href="ControllerExceptions/Continue.html" class="link">Merb::ControllerExceptions::Continue</a><br />
+Class <a href="ControllerExceptions/Created.html" class="link">Merb::ControllerExceptions::Created</a><br />
+Class <a href="ControllerExceptions/ExpectationFailed.html" class="link">Merb::ControllerExceptions::ExpectationFailed</a><br />
+Class <a href="ControllerExceptions/Forbidden.html" class="link">Merb::ControllerExceptions::Forbidden</a><br />
+Class <a href="ControllerExceptions/GatewayTimeout.html" class="link">Merb::ControllerExceptions::GatewayTimeout</a><br />
+Class <a href="ControllerExceptions/Gone.html" class="link">Merb::ControllerExceptions::Gone</a><br />
+Class <a href="ControllerExceptions/HTTPVersionNotSupported.html" class="link">Merb::ControllerExceptions::HTTPVersionNotSupported</a><br />
+Class <a href="ControllerExceptions/Informational.html" class="link">Merb::ControllerExceptions::Informational</a><br />
+Class <a href="ControllerExceptions/InternalServerError.html" class="link">Merb::ControllerExceptions::InternalServerError</a><br />
+Class <a href="ControllerExceptions/LayoutNotFound.html" class="link">Merb::ControllerExceptions::LayoutNotFound</a><br />
+Class <a href="ControllerExceptions/LengthRequired.html" class="link">Merb::ControllerExceptions::LengthRequired</a><br />
+Class <a href="ControllerExceptions/MethodNotAllowed.html" class="link">Merb::ControllerExceptions::MethodNotAllowed</a><br />
+Class <a href="ControllerExceptions/MovedPermanently.html" class="link">Merb::ControllerExceptions::MovedPermanently</a><br />
+Class <a href="ControllerExceptions/MovedTemporarily.html" class="link">Merb::ControllerExceptions::MovedTemporarily</a><br />
+Class <a href="ControllerExceptions/MultiPartParseError.html" class="link">Merb::ControllerExceptions::MultiPartParseError</a><br />
+Class <a href="ControllerExceptions/MultipleChoices.html" class="link">Merb::ControllerExceptions::MultipleChoices</a><br />
+Class <a href="ControllerExceptions/NoContent.html" class="link">Merb::ControllerExceptions::NoContent</a><br />
+Class <a href="ControllerExceptions/NonAuthoritativeInformation.html" class="link">Merb::ControllerExceptions::NonAuthoritativeInformation</a><br />
+Class <a href="ControllerExceptions/NotAcceptable.html" class="link">Merb::ControllerExceptions::NotAcceptable</a><br />
+Class <a href="ControllerExceptions/NotFound.html" class="link">Merb::ControllerExceptions::NotFound</a><br />
+Class <a href="ControllerExceptions/NotImplemented.html" class="link">Merb::ControllerExceptions::NotImplemented</a><br />
+Class <a href="ControllerExceptions/NotModified.html" class="link">Merb::ControllerExceptions::NotModified</a><br />
+Class <a href="ControllerExceptions/OK.html" class="link">Merb::ControllerExceptions::OK</a><br />
+Class <a href="ControllerExceptions/PartialContent.html" class="link">Merb::ControllerExceptions::PartialContent</a><br />
+Class <a href="ControllerExceptions/PaymentRequired.html" class="link">Merb::ControllerExceptions::PaymentRequired</a><br />
+Class <a href="ControllerExceptions/PreconditionFailed.html" class="link">Merb::ControllerExceptions::PreconditionFailed</a><br />
+Class <a href="ControllerExceptions/ProxyAuthenticationRequired.html" class="link">Merb::ControllerExceptions::ProxyAuthenticationRequired</a><br />
+Class <a href="ControllerExceptions/Redirection.html" class="link">Merb::ControllerExceptions::Redirection</a><br />
+Class <a href="ControllerExceptions/RequestEntityTooLarge.html" class="link">Merb::ControllerExceptions::RequestEntityTooLarge</a><br />
+Class <a href="ControllerExceptions/RequestRangeNotSatisfiable.html" class="link">Merb::ControllerExceptions::RequestRangeNotSatisfiable</a><br />
+Class <a href="ControllerExceptions/RequestTimeout.html" class="link">Merb::ControllerExceptions::RequestTimeout</a><br />
+Class <a href="ControllerExceptions/RequestURITooLarge.html" class="link">Merb::ControllerExceptions::RequestURITooLarge</a><br />
+Class <a href="ControllerExceptions/ResetContent.html" class="link">Merb::ControllerExceptions::ResetContent</a><br />
+Class <a href="ControllerExceptions/SeeOther.html" class="link">Merb::ControllerExceptions::SeeOther</a><br />
+Class <a href="ControllerExceptions/ServerError.html" class="link">Merb::ControllerExceptions::ServerError</a><br />
+Class <a href="ControllerExceptions/ServiceUnavailable.html" class="link">Merb::ControllerExceptions::ServiceUnavailable</a><br />
+Class <a href="ControllerExceptions/Successful.html" class="link">Merb::ControllerExceptions::Successful</a><br />
+Class <a href="ControllerExceptions/SwitchingProtocols.html" class="link">Merb::ControllerExceptions::SwitchingProtocols</a><br />
+Class <a href="ControllerExceptions/TemplateNotFound.html" class="link">Merb::ControllerExceptions::TemplateNotFound</a><br />
+Class <a href="ControllerExceptions/TemporaryRedirect.html" class="link">Merb::ControllerExceptions::TemporaryRedirect</a><br />
+Class <a href="ControllerExceptions/Unauthorized.html" class="link">Merb::ControllerExceptions::Unauthorized</a><br />
+Class <a href="ControllerExceptions/UnsupportedMediaType.html" class="link">Merb::ControllerExceptions::UnsupportedMediaType</a><br />
+Class <a href="ControllerExceptions/UseProxy.html" class="link">Merb::ControllerExceptions::UseProxy</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">STATUS_CODES</td>
+          <td>=</td>
+          <td class="context-item-value">{}</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Mapping of status code names to their numeric value.
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

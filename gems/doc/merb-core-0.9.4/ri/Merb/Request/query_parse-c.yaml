@@ -1,0 +1,39 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "qs<String>:"
+    body: The query string.
+  - !ruby/struct:SM::Flow::LI 
+    label: "d<String>:"
+    body: The query string divider. Defaults to &quot;&amp;&quot;.
+  - !ruby/struct:SM::Flow::LI 
+    label: "preserve_order<Boolean>:"
+    body: Preserve order of args. Defaults to false.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Mash:"
+    body: The parsed query string (Dictionary if preserve_order is set).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  query_parse(&quot;bar=nik&amp;post[body]=heya&quot;)\n    # =&gt; { :bar =&gt; &quot;nik&quot;, :post =&gt; { :body =&gt; &quot;heya&quot; } }\n"
+full_name: Merb::Request::query_parse
+is_singleton: true
+name: query_parse
+params: (qs, d = '&;', preserve_order = false)
+visibility: public

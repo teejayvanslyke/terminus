@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Loads a file, runs it through Erubis and parses it as YAML.
+- !ruby/struct:SM::Flow::H 
+  level: 5
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "file<String>:"
+    body: The name of the file to load.
+  - !ruby/struct:SM::Flow::LI 
+    label: "binding<Binding>:"
+    body: The binding to use when evaluating the ERB tags. Defaults to the current binding.
+  type: :NOTE
+full_name: Erubis::load_yaml_file
+is_singleton: true
+name: load_yaml_file
+params: (file, binding = binding)
+visibility: public

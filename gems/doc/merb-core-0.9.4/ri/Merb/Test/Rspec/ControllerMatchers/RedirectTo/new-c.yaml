@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The expected location
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash:"
+    body: Optional hash of options (currently only :message)
+  type: :NOTE
+full_name: Merb::Test::Rspec::ControllerMatchers::RedirectTo::new
+is_singleton: true
+name: new
+params: (expected, options = {})
+visibility: public

@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash:"
+    body: The conditions of this behavior merged with the conditions of all its ancestors.
+  type: :NOTE
+full_name: Merb::Router::Behavior#merged_conditions
+is_singleton: false
+name: merged_conditions
+params: ()
+visibility: public

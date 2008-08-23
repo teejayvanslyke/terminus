@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Find route using requested URI and merges route parameters (:action, :controller and named segments) into request params hash.
+full_name: Merb::Request#find_route!
+is_singleton: false
+name: find_route!
+params: ()
+visibility: public

@@ -1,0 +1,40 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: If block was given configures using the block.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: Configuration parameter block, see example below.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash:"
+    body: The current configuration.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: See Merb::GlobalHelpers.load_config for configuration options list.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Merb.config do\n    beer               &quot;good&quot;\n    hashish            :foo =&gt; &quot;bar&quot;\n    environment        &quot;development&quot;\n    log_level          &quot;debug&quot;\n    use_mutex          false\n    session_store      &quot;cookie&quot;\n    session_secret_key &quot;0d05a226affa226623eb18700&quot;\n    exception_details  true\n    reload_classes     true\n    reload_time        0.5\n  end\n"
+full_name: Merb::config
+is_singleton: true
+name: config
+params: (&block)
+visibility: public

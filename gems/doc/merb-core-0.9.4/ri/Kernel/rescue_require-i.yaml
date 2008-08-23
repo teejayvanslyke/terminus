@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Does a basic require, and prints a message if an error occurs.
+- !ruby/struct:SM::Flow::P 
+  body: "@param library&lt;to_s&gt; The library to attempt to include. @param message&lt;String&gt; The error to add to the log upon failure. Defaults to nil."
+full_name: Kernel#rescue_require
+is_singleton: false
+name: rescue_require
+params: (library, message = nil)
+visibility: public

@@ -1,0 +1,29 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Takes a template at a particular path and inlines it into a module and adds it to the METHOD_LIST table to speed lookup later.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "io<#path>:"
+    body: "An IO that responds to #path (File or VirtualFile)"
+  - !ruby/struct:SM::Flow::LI 
+    label: "mod<Module>:"
+    body: The module to put the compiled method into. Defaults to Merb::InlineTemplates
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: Even though this method supports inlining into any module, the method must be available to instances of AbstractController that will use it.
+full_name: Merb::Template::inline_template
+is_singleton: true
+name: inline_template
+params: (io, mod = Merb::InlineTemplates)
+visibility: public

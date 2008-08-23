@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Merb::Test::MultipartRequestHelper</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Merb::Test::MultipartRequestHelper</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/merb-core/test/helpers/multipart_request_helper_rb.html">
+                lib/merb-core/test/helpers/multipart_request_helper.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002804">dispatch_multipart_to</a>&nbsp;&nbsp;
+      <a href="#M002807">multipart_fake_request</a>&nbsp;&nbsp;
+      <a href="#M002805">multipart_post</a>&nbsp;&nbsp;
+      <a href="#M002806">multipart_put</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="MultipartRequestHelper/FileParam.html" class="link">Merb::Test::MultipartRequestHelper::FileParam</a><br />
+Class <a href="MultipartRequestHelper/Param.html" class="link">Merb::Test::MultipartRequestHelper::Param</a><br />
+Class <a href="MultipartRequestHelper/Post.html" class="link">Merb::Test::MultipartRequestHelper::Post</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002804" class="method-detail">
+        <a name="M002804"></a>
+
+        <div class="method-heading">
+          <a href="MultipartRequestHelper.src/M002804.html" target="Code" class="method-signature"
+            onclick="popupCode('MultipartRequestHelper.src/M002804.html');return false;">
+          <span class="method-name">dispatch_multipart_to</span><span class="method-args">(controller_klass, action, params = {}, env = {}, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Similar to dispatch_to but allows for sending files inside params.
+</p>
+<h4>Paramters</h4>
+<table>
+<tr><td valign="top">controller_klass&lt;<a href="../Controller.html">Controller</a>&gt;:</td><td>The controller class object that the action should be dispatched to.
+
+</td></tr>
+<tr><td valign="top">action&lt;Symbol&gt;:</td><td>The action name, as a symbol.
+
+</td></tr>
+<tr><td valign="top">params&lt;Hash&gt;:</td><td>An optional hash that will end up as params in the controller instance.
+
+</td></tr>
+<tr><td valign="top">env&lt;Hash&gt;:</td><td>An optional hash that is passed to the fake request. Any request options
+should go here (see <tt>fake_request</tt>).
+
+</td></tr>
+<tr><td valign="top">&amp;blk:</td><td>The block is executed in the context of the controller.
+
+</td></tr>
+</table>
+<h4>Example</h4>
+<pre>
+  dispatch_multipart_to(MyController, :create, :my_file =&gt; @a_file ) do |controller|
+    controller.stub!(:current_user).and_return(@user)
+  end
+</pre>
+<h4>Notes</h4>
+<p>
+Set your option to contain a file object to simulate file uploads.
+</p>
+<p>
+Does not use routes.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002807" class="method-detail">
+        <a name="M002807"></a>
+
+        <div class="method-heading">
+          <a href="MultipartRequestHelper.src/M002807.html" target="Code" class="method-signature"
+            onclick="popupCode('MultipartRequestHelper.src/M002807.html');return false;">
+          <span class="method-name">multipart_fake_request</span><span class="method-args">(env = {}, params = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">env&lt;Hash&gt;:</td><td>An optional hash that is passed to the fake request. Any request options
+should go here (see <tt>fake_request</tt>).
+
+</td></tr>
+<tr><td valign="top">params&lt;Hash&gt;:</td><td>An optional hash that will end up as params in the controller instance.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">FakeRequest:</td><td>A multipart <a href="../Request.html">Request</a> object that is built
+based on the parameters.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002805" class="method-detail">
+        <a name="M002805"></a>
+
+        <div class="method-heading">
+          <a href="MultipartRequestHelper.src/M002805.html" target="Code" class="method-signature"
+            onclick="popupCode('MultipartRequestHelper.src/M002805.html');return false;">
+          <span class="method-name">multipart_post</span><span class="method-args">(path, params = {}, env = {}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+An HTTP POST request that operates through the router and uses multipart
+parameters.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">path&lt;<a href="../../String.html">String</a>&gt;:</td><td>The path that should go to the router as the request uri.
+
+</td></tr>
+<tr><td valign="top">params&lt;Hash&gt;:</td><td>An optional hash that will end up as params in the controller instance.
+
+</td></tr>
+<tr><td valign="top">env&lt;Hash&gt;:</td><td>An optional hash that is passed to the fake request. Any request options
+should go here (see <tt>fake_request</tt>).
+
+</td></tr>
+<tr><td valign="top">block&lt;Proc&gt;:</td><td>The block is executed in the context of the controller.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+To include an uploaded file, put a file object as a value in params.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002806" class="method-detail">
+        <a name="M002806"></a>
+
+        <div class="method-heading">
+          <a href="MultipartRequestHelper.src/M002806.html" target="Code" class="method-signature"
+            onclick="popupCode('MultipartRequestHelper.src/M002806.html');return false;">
+          <span class="method-name">multipart_put</span><span class="method-args">(path, params = {}, env = {}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+An HTTP PUT request that operates through the router and uses multipart
+parameters.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">path&lt;<a href="../../String.html">String</a>&gt;:</td><td>The path that should go to the router as the request uri.
+
+</td></tr>
+<tr><td valign="top">params&lt;Hash&gt;:</td><td>An optional hash that will end up as params in the controller instance.
+
+</td></tr>
+<tr><td valign="top">env&lt;Hash&gt;:</td><td>An optional hash that is passed to the fake request. Any request options
+should go here (see <tt>fake_request</tt>).
+
+</td></tr>
+<tr><td valign="top">block&lt;Proc&gt;:</td><td>The block is executed in the context of the controller.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+To include an uplaoded file, put a file object as a value in params.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

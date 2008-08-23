@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "&blk:"
+    body: A proc that should get called outside the mutex, and which will return the value to render.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Proc:"
+    body: A block that Mongrel can call later, allowing Merb to release the thread lock and render another request.
+  type: :NOTE
+full_name: Merb::ControllerMixin#render_deferred
+is_singleton: false
+name: render_deferred
+params: (&blk)
+visibility: public

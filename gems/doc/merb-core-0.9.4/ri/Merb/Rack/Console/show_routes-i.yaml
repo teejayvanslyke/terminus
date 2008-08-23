@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Prints all routes for the application.
+full_name: Merb::Rack::Console#show_routes
+is_singleton: false
+name: show_routes
+params: ()
+visibility: public

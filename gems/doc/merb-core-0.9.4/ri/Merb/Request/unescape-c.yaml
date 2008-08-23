@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameter
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "s<String>:"
+    body: String to URL unescape.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The unescaped string.
+  type: :NOTE
+full_name: Merb::Request::unescape
+is_singleton: true
+name: unescape
+params: (s)
+visibility: public

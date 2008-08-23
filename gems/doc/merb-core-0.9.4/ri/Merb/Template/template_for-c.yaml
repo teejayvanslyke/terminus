@@ -1,0 +1,29 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Get the name of the template method for a particular path.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<String>:"
+    body: A full path to find a template method for.
+  - !ruby/struct:SM::Flow::LI 
+    label: "template_stack<Array>:"
+    body: The template stack. Not used.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/struct:SM::Flow::P 
+  body: DOC
+full_name: Merb::Template::template_for
+is_singleton: true
+name: template_for
+params: (path, template_stack = [])
+visibility: public

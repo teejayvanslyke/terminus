@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::JqueryMixin#jquery
+is_singleton: false
+name: jquery
+params: (string=nil, &blk)
+visibility: public

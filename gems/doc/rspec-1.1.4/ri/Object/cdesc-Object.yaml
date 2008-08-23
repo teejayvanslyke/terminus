@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Object
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Spec::Expectations::ObjectExpectations
+- !ruby/object:RI::IncludedModule 
+  name: Spec::Mocks::Methods
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: args_and_options
+name: Object
+superclass: Object

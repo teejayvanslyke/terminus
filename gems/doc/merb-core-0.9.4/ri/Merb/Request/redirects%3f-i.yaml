@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns true if matched route does immediate redirection.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<Boolean>:"
+    body: if matched route does immediate redirection.
+  type: :NOTE
+full_name: Merb::Request#redirects?
+is_singleton: false
+name: redirects?
+params: ()
+visibility: public

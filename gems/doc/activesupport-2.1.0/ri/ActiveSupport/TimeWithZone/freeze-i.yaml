@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Neuter freeze because freezing can cause problems with lazy loading of attributes.
+full_name: ActiveSupport::TimeWithZone#freeze
+is_singleton: false
+name: freeze
+params: ()
+visibility: public

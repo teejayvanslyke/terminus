@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>form_tag (Merb::Helpers::Form)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb_helpers/form_helpers.rb, line 108</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">form_tag</span>(<span class="ruby-identifier">attrs</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+        <span class="ruby-identifier">set_multipart_attribute!</span>(<span class="ruby-identifier">attrs</span>)
+        <span class="ruby-identifier">fake_form_method</span> = <span class="ruby-identifier">set_form_method</span>(<span class="ruby-identifier">attrs</span>)
+        <span class="ruby-identifier">concat</span>(<span class="ruby-identifier">open_tag</span>(<span class="ruby-value str">&quot;form&quot;</span>, <span class="ruby-identifier">attrs</span>), <span class="ruby-identifier">block</span>.<span class="ruby-identifier">binding</span>)
+        <span class="ruby-identifier">concat</span>(<span class="ruby-identifier">generate_fake_form_method</span>(<span class="ruby-identifier">fake_form_method</span>), <span class="ruby-identifier">block</span>.<span class="ruby-identifier">binding</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fake_form_method</span>
+        <span class="ruby-identifier">concat</span>(<span class="ruby-identifier">capture</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>), <span class="ruby-identifier">block</span>.<span class="ruby-identifier">binding</span>)
+        <span class="ruby-identifier">concat</span>(<span class="ruby-value str">&quot;&lt;/form&gt;&quot;</span>, <span class="ruby-identifier">block</span>.<span class="ruby-identifier">binding</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,32 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Get the template's method name from a full path. This replaces non-alphanumeric characters with __ and &quot;.&quot; with &quot;_&quot;
+- !ruby/struct:SM::Flow::P 
+  body: "Collisions are potentially possible with something like: ~foo.bar and __foo.bar or !foo.bar."
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<String>:"
+    body: A full path to convert to a valid Ruby method name
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The template name.
+  type: :NOTE
+full_name: Merb::Template::template_name
+is_singleton: true
+name: template_name
+params: (path)
+visibility: public

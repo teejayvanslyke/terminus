@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: OrdinalizedFormatting#to_ordinalized_s
+is_singleton: false
+name: to_ordinalized_s
+params: (format = :default)
+visibility: public

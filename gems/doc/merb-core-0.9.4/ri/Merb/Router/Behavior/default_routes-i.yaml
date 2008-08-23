@@ -1,0 +1,38 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates the most common routes /:controller/:action/:id.format when called with no arguments. You can pass a hash or a block to add parameters or override the default behavior.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: This optional hash can be used to augment the default settings
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: When passing a block a new behavior is yielded and more refinement is possible.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Route:"
+    body: the default route
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # Passing an extra parameter &quot;mode&quot; to all matches\n  r.default_routes :mode =&gt; &quot;default&quot;\n\n  # specifying exceptions within a block\n  r.default_routes do |nr|\n    nr.defer_to do |request, params|\n      nr.match(:protocol =&gt; &quot;http://&quot;).to(:controller =&gt; &quot;login&quot;,\n        :action =&gt; &quot;new&quot;) if request.env[&quot;REQUEST_URI&quot;] =~ /\\/private\\//\n    end\n  end\n"
+full_name: Merb::Router::Behavior#default_routes
+is_singleton: false
+name: default_routes
+params: (params = {}, &block)
+visibility: public

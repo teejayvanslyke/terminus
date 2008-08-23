@@ -1,0 +1,29 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Passes when the actual route parameters match the expected controller class and controller action. Exposes a <tt>with</tt> method for specifying parameters.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "klass_or_name<Class, String>:"
+    body: The controller class or class name to match routes for.
+  - !ruby/struct:SM::Flow::LI 
+    label: "action<~to_s>:"
+    body: The name of the action to match routes for.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # Passes if a GET request to &quot;/&quot; is routed to the Widgets controller's\n  # index action.\n  request_to(&quot;/&quot;, :get).should route_to(Widgets, :index)\n\n  # Use the 'with' method for parameter checks\n  request_to(&quot;/123&quot;).should route_to(widgets, :show).with(:id =&gt; &quot;123&quot;)\n"
+full_name: Merb::Test::Rspec::RouteMatchers#route_to
+is_singleton: false
+name: route_to
+params: (klass_or_name, action)
+visibility: public

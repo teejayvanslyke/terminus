@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: chars
+- !ruby/object:RI::AliasName 
+  name: character
+- !ruby/object:RI::AliasName 
+  name: characters
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Character
+full_name: English::Patterns#char
+is_singleton: false
+name: char
+params: ()
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::AbstractController::_reset_template_roots
+is_singleton: true
+name: _reset_template_roots
+params: ()
+visibility: public

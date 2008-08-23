@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>remove_constant (Merb::BootLoader::LoadClasses)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 419</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_constant</span>(<span class="ruby-identifier">const</span>)
+      <span class="ruby-comment cmt"># This is to support superclasses (like AbstractController) that track</span>
+      <span class="ruby-comment cmt"># their subclasses in a class variable. Classes that wish to use this</span>
+      <span class="ruby-comment cmt"># functionality are required to alias it to _subclasses_list. Plugins</span>
+      <span class="ruby-comment cmt"># for ORMs and other libraries should keep this in mind.</span>
+      <span class="ruby-identifier">superklass</span> = <span class="ruby-identifier">const</span>
+      <span class="ruby-keyword kw">until</span> (<span class="ruby-identifier">superklass</span> = <span class="ruby-identifier">superklass</span>.<span class="ruby-identifier">superclass</span>).<span class="ruby-identifier">nil?</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">superklass</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:_subclasses_list</span>)
+          <span class="ruby-identifier">superklass</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:_subclasses_list</span>).<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">klass</span>)
+          <span class="ruby-identifier">superklass</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:_subclasses_list</span>).<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">to_s</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">parts</span> = <span class="ruby-identifier">const</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;::&quot;</span>)
+      <span class="ruby-identifier">base</span> = <span class="ruby-identifier">parts</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Object</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Object</span>.<span class="ruby-identifier">full_const_get</span>(<span class="ruby-identifier">parts</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;::&quot;</span>))
+      <span class="ruby-identifier">object</span> = <span class="ruby-identifier">parts</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">base</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:remove_const</span>, <span class="ruby-identifier">object</span>)
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;Removed constant #{object} from #{base}&quot;</span>)
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;Failed to remove constant #{object} from #{base}&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

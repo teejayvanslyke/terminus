@@ -1,0 +1,36 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: Behavior.new({}, { :action => 'index' })
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Prepares new routes and adds them to existing routes.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "first<Array>:"
+    body: An array of routes to add before the generated routes.
+  - !ruby/struct:SM::Flow::LI 
+    label: "last<Array>:"
+    body: An array of routes to add after the generated routes.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: A block that generates new routes.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Block parameters (&amp;block)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "new_behavior<Behavior>:"
+    body: Behavior for child routes.
+  type: :NOTE
+full_name: Merb::Router::prepare
+is_singleton: true
+name: prepare
+params: (first = [], last = [], &block) {|Behavior.new({}, { :action => 'index' })| ...}
+visibility: public

@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Merb::ControllerMixin</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Merb::ControllerMixin</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/merb-core/controller/mixins/controller_rb.html">
+                lib/merb-core/controller/mixins/controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Module that is mixed in to all implemented controllers.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002687">delete_cookie</a>&nbsp;&nbsp;
+      <a href="#M002688">escape_xml</a>&nbsp;&nbsp;
+      <a href="#M002689">h</a>&nbsp;&nbsp;
+      <a href="#M002690">html_escape</a>&nbsp;&nbsp;
+      <a href="#M002681">message</a>&nbsp;&nbsp;
+      <a href="#M002685">nginx_send_file</a>&nbsp;&nbsp;
+      <a href="#M002680">redirect</a>&nbsp;&nbsp;
+      <a href="#M002676">render_chunked</a>&nbsp;&nbsp;
+      <a href="#M002678">render_deferred</a>&nbsp;&nbsp;
+      <a href="#M002679">render_then_call</a>&nbsp;&nbsp;
+      <a href="#M002675">run_later</a>&nbsp;&nbsp;
+      <a href="#M002677">send_chunk</a>&nbsp;&nbsp;
+      <a href="#M002683">send_data</a>&nbsp;&nbsp;
+      <a href="#M002682">send_file</a>&nbsp;&nbsp;
+      <a href="#M002686">set_cookie</a>&nbsp;&nbsp;
+      <a href="#M002684">stream_file</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002687" class="method-detail">
+        <a name="M002687"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002687.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002687.html');return false;">
+          <span class="method-name">delete_cookie</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Marks a cookie as deleted and gives it an expires stamp in the past. This
+method is used primarily internally in <a href="../Merb.html">Merb</a>.
+</p>
+<p>
+Use the <tt>cookies</tt> hash to manipulate cookies instead.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">name&lt;~to_s&gt;:</td><td>A name for the cookie to delete.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002688" class="method-detail">
+        <a name="M002688"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002688.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002688.html');return false;">
+          <span class="method-name">escape_xml</span><span class="method-args">(obj)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Escapes the string representation of <tt>obj</tt> and escapes it for use in
+XML.
+</p>
+<h4>Parameter</h4>
+<table>
+<tr><td valign="top">obj&lt;~to_s&gt;:</td><td>The object to escape for use in XML.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The escaped object.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002689" class="method-detail">
+        <a name="M002689"></a>
+
+        <div class="method-heading">
+          <span class="method-name">h</span><span class="method-args">(obj)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="ControllerMixin.html#M002688">escape_xml</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002690" class="method-detail">
+        <a name="M002690"></a>
+
+        <div class="method-heading">
+          <span class="method-name">html_escape</span><span class="method-args">(obj)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="ControllerMixin.html#M002688">escape_xml</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002681" class="method-detail">
+        <a name="M002681"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002681.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002681.html');return false;">
+          <span class="method-name">message</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M002685" class="method-detail">
+        <a name="M002685"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002685.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002685.html');return false;">
+          <span class="method-name">nginx_send_file</span><span class="method-args">(file)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Uses the nginx specific +X-Accel-Redirect+ header to send a file directly
+from nginx. For more information, see the nginx wiki: <a
+href="http://wiki.codemongers.com/NginxXSendfile">wiki.codemongers.com/NginxXSendfile</a>
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">file&lt;<a href="../String.html">String</a>&gt;:</td><td>Path to file to send to the client.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002680" class="method-detail">
+        <a name="M002680"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002680.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002680.html');return false;">
+          <span class="method-name">redirect</span><span class="method-args">(url, opts = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">url&lt;<a href="../String.html">String</a>&gt;:</td><td>URL to <a href="ControllerMixin.html#M002680">redirect</a> to. It can be
+either a relative or fully-qualified URL.
+
+</td></tr>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>An options hash (see below)
+
+</td></tr>
+</table>
+<h4>Options (opts)</h4>
+<table>
+<tr><td valign="top">:<a href="ControllerMixin.html#M002681">message</a>&lt;Hash&gt;:</td><td>Messages to pass in url query string as value for &quot;_message&quot;
+
+</td></tr>
+<tr><td valign="top">:permanent&lt;Boolean&gt;:</td><td>When true, return status 301 Moved Permanently
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>Explanation of <a href="ControllerMixin.html#M002680">redirect</a>.
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<pre>
+  redirect(&quot;/posts/34&quot;)
+  redirect(&quot;/posts/34&quot;, :message =&gt; { :notice =&gt; 'Post updated successfully!' })
+  redirect(&quot;http://www.merbivore.com/&quot;)
+  redirect(&quot;http://www.merbivore.com/&quot;, :permanent =&gt; true)
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002676" class="method-detail">
+        <a name="M002676"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002676.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002676.html');return false;">
+          <span class="method-name">render_chunked</span><span class="method-args">(&amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Renders the block given as a parameter using chunked encoding.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">&amp;blk:</td><td>A block that, when called, will use send_chunks to send chunks of data down
+to the server. The chunking will terminate once the block returns.
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<pre>
+  def stream
+    prefix = '&lt;p&gt;'
+    suffix = &quot;&lt;/p&gt;\r\n&quot;
+    render_chunked do
+      IO.popen(&quot;cat /tmp/test.log&quot;) do |io|
+        done = false
+        until done
+          sleep 0.3
+          line = io.gets.chomp
+
+          if line == 'EOF'
+            done = true
+          else
+            send_chunk(prefix + line + suffix)
+          end
+        end
+      end
+    end
+  end
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002678" class="method-detail">
+        <a name="M002678"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002678.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002678.html');return false;">
+          <span class="method-name">render_deferred</span><span class="method-args">(&amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">&amp;blk:</td><td>A proc that should get called outside the mutex, and which will return the
+value to render.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Proc:</td><td>A block that <a href="../Mongrel.html">Mongrel</a> can call later, allowing
+<a href="../Merb.html">Merb</a> to release the thread lock and render
+another request.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002679" class="method-detail">
+        <a name="M002679"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002679.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002679.html');return false;">
+          <span class="method-name">render_then_call</span><span class="method-args">(str, &amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Renders the passed in string, then calls the block outside the mutex and
+after the string has been returned to the client.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">str&lt;<a href="../String.html">String</a>&gt;:</td><td>A <tt><a href="../String.html">String</a></tt> to return to the client.
+
+</td></tr>
+<tr><td valign="top">&amp;blk:</td><td>A block that should get called once the string has been returned.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Proc:</td><td>A block that <a href="../Mongrel.html">Mongrel</a> can call after returning
+the string to the user.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002675" class="method-detail">
+        <a name="M002675"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002675.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002675.html');return false;">
+          <span class="method-name">run_later</span><span class="method-args">(&amp;blk)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Enqueu a block to run in a background thread outside of the request
+response dispatch
+</p>
+<h4>Parameters</h4>
+<p>
+takes a block to run later
+</p>
+<h4>Example</h4>
+<p>
+<a href="ControllerMixin.html#M002675">run_later</a> do
+</p>
+<pre>
+  SomeBackgroundTask.run
+</pre>
+<p>
+end
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002677" class="method-detail">
+        <a name="M002677"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002677.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002677.html');return false;">
+          <span class="method-name">send_chunk</span><span class="method-args">(data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Writes a chunk from <tt><a
+href="ControllerMixin.html#M002676">render_chunked</a></tt> to the response
+that is sent back to the client. This should only be called within a <tt><a
+href="ControllerMixin.html#M002676">render_chunked</a></tt> block.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">data&lt;<a href="../String.html">String</a>&gt;:</td><td>a chunk of data to return.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002683" class="method-detail">
+        <a name="M002683"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002683.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002683.html');return false;">
+          <span class="method-name">send_data</span><span class="method-args">(data, opts={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Send binary data over HTTP to the user as a file download. May set content
+type, apparent file name, and specify whether to show data inline or
+download as an attachment.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">data&lt;<a href="../String.html">String</a>&gt;:</td><td>Path to file to send to the client.
+
+</td></tr>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>Options for sending the data (see below).
+
+</td></tr>
+</table>
+<h4>Options (opts)</h4>
+<table>
+<tr><td valign="top">:disposition&lt;<a href="../String.html">String</a>&gt;:</td><td>The disposition of the file send. Defaults to &quot;attachment&quot;.
+
+</td></tr>
+<tr><td valign="top">:filename&lt;<a href="../String.html">String</a>&gt;:</td><td>The name to use for the file. Defaults to the filename of file.
+
+</td></tr>
+<tr><td valign="top">:type&lt;<a href="../String.html">String</a>&gt;:</td><td>The content type.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002682" class="method-detail">
+        <a name="M002682"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002682.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002682.html');return false;">
+          <span class="method-name">send_file</span><span class="method-args">(file, opts={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sends a file over HTTP. When given a path to a file, it will set the right
+headers so that the static file is served directly.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">file&lt;<a href="../String.html">String</a>&gt;:</td><td>Path to file to send to the client.
+
+</td></tr>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>Options for sending the file (see below).
+
+</td></tr>
+</table>
+<h4>Options (opts)</h4>
+<table>
+<tr><td valign="top">:disposition&lt;<a href="../String.html">String</a>&gt;:</td><td>The disposition of the file send. Defaults to &quot;attachment&quot;.
+
+</td></tr>
+<tr><td valign="top">:filename&lt;<a href="../String.html">String</a>&gt;:</td><td>The name to use for the file. Defaults to the filename of file.
+
+</td></tr>
+<tr><td valign="top">:type&lt;<a href="../String.html">String</a>&gt;:</td><td>The content type.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">IO:</td><td>An I/O stream for the file.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002686" class="method-detail">
+        <a name="M002686"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002686.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002686.html');return false;">
+          <span class="method-name">set_cookie</span><span class="method-args">(name, value, expires)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets a cookie to be included in the response.
+</p>
+<p>
+If you need to set a cookie, then use the <tt>cookies</tt> hash.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">name&lt;~to_s&gt;:</td><td>A name for the cookie.
+
+</td></tr>
+<tr><td valign="top">value&lt;~to_s&gt;:</td><td>A value for the cookie.
+
+</td></tr>
+<tr><td valign="top">expires&lt;~gmtime:~strftime, Hash&gt;:</td><td>An expiration time for the cookie, or a hash of cookie options.
+
+</td></tr>
+</table>
+<hr size="1"></hr><p>
+@public
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002684" class="method-detail">
+        <a name="M002684"></a>
+
+        <div class="method-heading">
+          <a href="ControllerMixin.src/M002684.html" target="Code" class="method-signature"
+            onclick="popupCode('ControllerMixin.src/M002684.html');return false;">
+          <span class="method-name">stream_file</span><span class="method-args">(opts={}, &amp;stream)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Streams a file over HTTP.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>Options for the file streaming (see below).
+
+</td></tr>
+<tr><td valign="top">&amp;stream:</td><td>A block that, when called, will return an object that responds to
+<tt>get_lines</tt> for streaming.
+
+</td></tr>
+</table>
+<h4>Options</h4>
+<table>
+<tr><td valign="top">:disposition&lt;<a href="../String.html">String</a>&gt;:</td><td>The disposition of the file send. Defaults to &quot;attachment&quot;.
+
+</td></tr>
+<tr><td valign="top">:type&lt;<a href="../String.html">String</a>&gt;:</td><td>The content type.
+
+</td></tr>
+<tr><td valign="top">:content_length&lt;Numeric&gt;:</td><td>The length of the content to send.
+
+</td></tr>
+<tr><td valign="top">:filename&lt;<a href="../String.html">String</a>&gt;:</td><td>The name to use for the streamed file.
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<pre>
+  stream_file({ :filename =&gt; file_name, :type =&gt; content_type,
+    :content_length =&gt; content_length }) do |response|
+    AWS::S3::S3Object.stream(user.folder_name + &quot;-&quot; + user_file.unique_id, bucket_name) do |chunk|
+      response.write chunk
+    end
+  end
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

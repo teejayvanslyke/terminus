@@ -1,0 +1,36 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Starts Mongrel as swift.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: Options for Mongrel (see below).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opts)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":host<String>:"
+    body: The hostname that Mongrel should serve.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":port<Fixnum>:"
+    body: The port Mongrel should bind to.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":app<String>>:"
+    body: The application name.
+  type: :NOTE
+full_name: Merb::Rack::SwiftipliedMongrel::start
+is_singleton: true
+name: start
+params: (opts={})
+visibility: public

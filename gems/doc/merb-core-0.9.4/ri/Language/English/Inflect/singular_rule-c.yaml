@@ -1,0 +1,34 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Define a singularization rule.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "singular<String>:"
+    body: ending of the word in singular form
+  - !ruby/struct:SM::Flow::LI 
+    label: "plural<String>:"
+    body: ending of the word in plural form
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::P 
+  body: "Once the following rule is defined: Language::English::Inflector.singular_rule 'o', 'oes'"
+- !ruby/struct:SM::Flow::P 
+  body: "You can see the following results: irb&gt; &quot;heroes&quot;.singular"
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: "&gt; hero"
+full_name: Language::English::Inflect::singular_rule
+is_singleton: true
+name: singular_rule
+params: (singular, plural)
+visibility: public

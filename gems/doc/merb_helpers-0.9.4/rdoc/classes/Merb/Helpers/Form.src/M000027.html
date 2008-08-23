@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>fields_for (Merb::Helpers::Form)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb_helpers/form_helpers.rb, line 153</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fields_for</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">attrs</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+        <span class="ruby-ivar">@_obj</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-ivar">@_block</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-ivar">@_object_name</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">obj</span> = <span class="ruby-identifier">obj_from_ivar_or_sym</span>(<span class="ruby-identifier">obj</span>)
+        <span class="ruby-identifier">old_obj</span>, <span class="ruby-ivar">@_obj</span> = <span class="ruby-ivar">@_obj</span>, <span class="ruby-identifier">obj</span>
+        <span class="ruby-identifier">old_block</span>, <span class="ruby-ivar">@_block</span> = <span class="ruby-ivar">@_block</span>, <span class="ruby-identifier">block</span>
+        <span class="ruby-identifier">old_object_name</span>, <span class="ruby-ivar">@_object_name</span> = <span class="ruby-ivar">@_object_name</span>, <span class="ruby-node">&quot;#{@_obj.class}&quot;</span>.<span class="ruby-identifier">snake_case</span>
+        
+        <span class="ruby-identifier">concat</span>(<span class="ruby-identifier">capture</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>), <span class="ruby-identifier">block</span>.<span class="ruby-identifier">binding</span>)
+
+        <span class="ruby-ivar">@_obj</span>, <span class="ruby-ivar">@_block</span>, <span class="ruby-ivar">@_object_name</span> = <span class="ruby-identifier">old_obj</span>, <span class="ruby-identifier">old_block</span>, <span class="ruby-identifier">old_object_name</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

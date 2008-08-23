@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Merb::Test::ViewHelper</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Merb::Test::ViewHelper</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/merb-core/test/helpers/view_helper_rb.html">
+                lib/merb-core/test/helpers/view_helper.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002693">element</a>&nbsp;&nbsp;
+      <a href="#M002694">elements</a>&nbsp;&nbsp;
+      <a href="#M002695">get_elements</a>&nbsp;&nbsp;
+      <a href="#M002696">process_output</a>&nbsp;&nbsp;
+      <a href="#M002691">tag</a>&nbsp;&nbsp;
+      <a href="#M002692">tags</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="ViewHelper/DocumentOutput.html" class="link">Merb::Test::ViewHelper::DocumentOutput</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002693" class="method-detail">
+        <a name="M002693"></a>
+
+        <div class="method-heading">
+          <a href="ViewHelper.src/M002693.html" target="Code" class="method-signature"
+            onclick="popupCode('ViewHelper.src/M002693.html');return false;">
+          <span class="method-name">element</span><span class="method-args">(css_query, output = process_output)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">css_query&lt;<a href="../../String.html">String</a>&gt;:</td><td>A CSS query to find the <a href="ViewHelper.html#M002693">element</a> for.
+
+</td></tr>
+<tr><td valign="top">output&lt;<a href="ViewHelper/DocumentOutput.html">DocumentOutput</a>&gt;:</td><td>The output to look for the <a href="ViewHelper.html#M002693">element</a>
+in. Defaults to <a href="ViewHelper.html#M002696">process_output</a>.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../../Hpricot/Elem.html">Hpricot::Elem</a>:</td><td>The first <a href="ViewHelper.html#M002691">tag</a> matching the query.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002694" class="method-detail">
+        <a name="M002694"></a>
+
+        <div class="method-heading">
+          <a href="ViewHelper.src/M002694.html" target="Code" class="method-signature"
+            onclick="popupCode('ViewHelper.src/M002694.html');return false;">
+          <span class="method-name">elements</span><span class="method-args">(css_query, output = process_output)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">css_query&lt;<a href="../../String.html">String</a>&gt;:</td><td>A CSS query to find the <a href="ViewHelper.html#M002694">elements</a> for.
+
+</td></tr>
+<tr><td valign="top">output&lt;<a href="ViewHelper/DocumentOutput.html">DocumentOutput</a>&gt;:</td><td>The output to look for the <a href="ViewHelper.html#M002694">elements</a>
+in. Defaults to <a href="ViewHelper.html#M002696">process_output</a>.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Array[<a href="../../Hpricot/Elem.html">Hpricot::Elem</a>]:</td><td>All <a href="ViewHelper.html#M002692">tags</a> matching the query.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002695" class="method-detail">
+        <a name="M002695"></a>
+
+        <div class="method-heading">
+          <a href="ViewHelper.src/M002695.html" target="Code" class="method-signature"
+            onclick="popupCode('ViewHelper.src/M002695.html');return false;">
+          <span class="method-name">get_elements</span><span class="method-args">(css_query, text, output = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">css_query&lt;<a href="../../String.html">String</a>&gt;:</td><td>A CSS query to find the <a href="ViewHelper.html#M002694">elements</a> for.
+
+</td></tr>
+<tr><td valign="top">text&lt;<a href="../../String.html">String</a>, Regexp&gt;:</td><td>A pattern to match <a href="ViewHelper.html#M002691">tag</a> contents for.
+
+</td></tr>
+<tr><td valign="top">output&lt;<a href="ViewHelper/DocumentOutput.html">DocumentOutput</a>&gt;:</td><td>The output to look for the <a href="ViewHelper.html#M002694">elements</a>
+in. Defaults to <a href="ViewHelper.html#M002696">process_output</a>.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Array[<a href="../../Hpricot/Elem.html">Hpricot::Elem</a>]:</td><td>All <a href="ViewHelper.html#M002692">tags</a> matching the query and
+pattern.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002691" class="method-detail">
+        <a name="M002691"></a>
+
+        <div class="method-heading">
+          <a href="ViewHelper.src/M002691.html" target="Code" class="method-signature"
+            onclick="popupCode('ViewHelper.src/M002691.html');return false;">
+          <span class="method-name">tag</span><span class="method-args">(css_query, output = process_output)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">css_query&lt;<a href="../../String.html">String</a>&gt;:</td><td>A CSS query to find the <a href="ViewHelper.html#M002693">element</a> for.
+
+</td></tr>
+<tr><td valign="top">output&lt;<a href="ViewHelper/DocumentOutput.html">DocumentOutput</a>&gt;:</td><td>The output to look for the <a href="ViewHelper.html#M002693">element</a>
+in. Defaults to <a href="ViewHelper.html#M002696">process_output</a>.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../../String.html">String</a>:</td><td>The content of the first <a href="ViewHelper.html#M002691">tag</a> matching
+the query.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002692" class="method-detail">
+        <a name="M002692"></a>
+
+        <div class="method-heading">
+          <a href="ViewHelper.src/M002692.html" target="Code" class="method-signature"
+            onclick="popupCode('ViewHelper.src/M002692.html');return false;">
+          <span class="method-name">tags</span><span class="method-args">(css_query, output = process_output)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">css_query&lt;<a href="../../String.html">String</a>&gt;:</td><td>A CSS query to find the <a href="ViewHelper.html#M002694">elements</a> for.
+
+</td></tr>
+<tr><td valign="top">output&lt;<a href="ViewHelper/DocumentOutput.html">DocumentOutput</a>&gt;:</td><td>The output to look for the <a href="ViewHelper.html#M002693">element</a>
+in. Defaults to <a href="ViewHelper.html#M002696">process_output</a>.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Array[<a href="../../String.html">String</a>]:</td><td>Content of all <a href="ViewHelper.html#M002692">tags</a> matching the
+query.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M002696" class="method-detail">
+        <a name="M002696"></a>
+
+        <div class="method-heading">
+          <a href="ViewHelper.src/M002696.html" target="Code" class="method-signature"
+            onclick="popupCode('ViewHelper.src/M002696.html');return false;">
+          <span class="method-name">process_output</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="ViewHelper/DocumentOutput.html">DocumentOutput</a>:</td><td>Document output from the response body.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

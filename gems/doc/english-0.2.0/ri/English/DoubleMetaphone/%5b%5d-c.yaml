@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the primary and secondary double metaphone tokens (the secondary will be nil if equal to the primary).
+full_name: English::DoubleMetaphone::[]
+is_singleton: true
+name: "[]"
+params: (str)
+visibility: public

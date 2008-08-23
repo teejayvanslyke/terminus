@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ZipUtils::Verbose</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ZipUtils::Verbose</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/more/facets/ziputils_rb.html">
+                lib/more/facets/ziputils.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="Verbose.html">Verbose</a> version of <a
+href="../ZipUtils.html">ZipUtils</a>.
+</p>
+<p>
+This is the same as passing :verbose flag to <a
+href="../ZipUtils.html">ZipUtils</a> methods.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001191">compress</a>&nbsp;&nbsp;
+      <a href="#M001194">tar_bzip2</a>&nbsp;&nbsp;
+      <a href="#M001192">tar_gzip</a>&nbsp;&nbsp;
+      <a href="#M001195">untar_bzip2</a>&nbsp;&nbsp;
+      <a href="#M001193">untar_gzip</a>&nbsp;&nbsp;
+      <a href="#M001197">unzip</a>&nbsp;&nbsp;
+      <a href="#M001196">zip</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001191" class="method-detail">
+        <a name="M001191"></a>
+
+        <div class="method-heading">
+          <a href="#M001191" class="method-signature">
+          <span class="method-name">compress</span><span class="method-args">(format_extension, folder, file=nil, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001191-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001191-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 176</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compress</span>(<span class="ruby-identifier">format_extension</span>, <span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:verbose</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">tar_gzip</span>(<span class="ruby-identifier">format_extension</span>, <span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001194" class="method-detail">
+        <a name="M001194"></a>
+
+        <div class="method-heading">
+          <a href="#M001194" class="method-signature">
+          <span class="method-name">tar_bzip2</span><span class="method-args">(folder, file=nil, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001194-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001194-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 191</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tar_bzip2</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:verbose</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">untar_bzip2</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001192" class="method-detail">
+        <a name="M001192"></a>
+
+        <div class="method-heading">
+          <a href="#M001192" class="method-signature">
+          <span class="method-name">tar_gzip</span><span class="method-args">(folder, file=nil, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001192-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001192-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 181</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tar_gzip</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:verbose</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">tar_gzip</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001195" class="method-detail">
+        <a name="M001195"></a>
+
+        <div class="method-heading">
+          <a href="#M001195" class="method-signature">
+          <span class="method-name">untar_bzip2</span><span class="method-args">(file, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001195-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001195-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 196</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">untar_bzip2</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:verbose</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">untar_bzip2</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001193" class="method-detail">
+        <a name="M001193"></a>
+
+        <div class="method-heading">
+          <a href="#M001193" class="method-signature">
+          <span class="method-name">untar_gzip</span><span class="method-args">(file, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001193-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001193-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 186</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">untar_gzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:verbose</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">untar_gzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001197" class="method-detail">
+        <a name="M001197"></a>
+
+        <div class="method-heading">
+          <a href="#M001197" class="method-signature">
+          <span class="method-name">unzip</span><span class="method-args">(file, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001197-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001197-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 206</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:verbose</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">unzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001196" class="method-detail">
+        <a name="M001196"></a>
+
+        <div class="method-heading">
+          <a href="#M001196" class="method-signature">
+          <span class="method-name">zip</span><span class="method-args">(folder, file=nil, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001196-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001196-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 201</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">zip</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:verbose</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">unzip</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

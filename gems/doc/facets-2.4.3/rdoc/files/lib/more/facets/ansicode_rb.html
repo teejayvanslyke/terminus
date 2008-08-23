@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: ansicode.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>ansicode.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/more/facets/ansicode.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 18 22:34:51 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../../../../classes/ANSICode.html">ANSICode</a></h1>
+<p>
+<a href="../../../../classes/Module.html">Module</a> which makes it very
+easy to use ANSI codes. These are esspecially nice for beautifying shell
+output.
+</p>
+<pre>
+  include ANSICode
+
+  p red, &quot;Hello&quot;, blue, &quot;World&quot;
+  =&gt; &quot;\e[31mHello\e[34mWorld&quot;
+
+  p red { &quot;Hello&quot; } + blue { &quot;World&quot; }
+  =&gt; &quot;\e[31mHello\e[0m\e[34mWorld\e[0m&quot;
+</pre>
+<h2>Supported ANSI Comands</h2>
+<p>
+The following is a list of supported codes.
+</p>
+<pre>
+    save
+    restore
+    clear_screen
+    cls             # synonym for :clear_screen
+    clear_line
+    clr             # synonym for :clear_line
+    move
+    up
+    down
+    left
+    right
+    display
+
+    clear
+    reset           # synonym for :clear
+    bold
+    dark
+    italic          # not widely implemented
+    underline
+    underscore      # synonym for :underline
+    blink
+    rapid_blink     # not widely implemented
+    negative        # no reverse because of String#reverse
+    concealed
+    strikethrough   # not widely implemented
+
+    black
+    red
+    green
+    yellow
+    blue
+    magenta
+    cyan
+    white
+
+    on_black
+    on_red
+    on_green
+    on_yellow
+    on_blue
+    on_magenta
+    on_cyan
+    on_white
+</pre>
+<h2>Authors</h2>
+<ul>
+<li>Florian Frank
+
+</li>
+<li>Thomas Sawyer
+
+</li>
+</ul>
+<h2>Speical Thanks</h2>
+<p>
+Special thanks to Florian Frank. <a
+href="../../../../classes/ANSICode.html">ANSICode</a> is a partial
+adaptation of ANSIColor, Copyright (c) 2002 Florian Frank, LGPL.
+</p>
+<h2>Todo</h2>
+<ul>
+<li>Need to add rest of ANSI codes. Include modes?
+
+</li>
+<li>Re-evaluate how color/yielding methods are defined.
+
+</li>
+<li>Maybe up, down, right, left should have yielding methods too?
+
+</li>
+</ul>
+<h2>Copying</h2>
+<p>
+Copyright (c) 2004 Florian Frank, Thomas Sawyer
+</p>
+<p>
+Ruby License
+</p>
+<p>
+This module is free software. You may use, modify, and/or redistribute this
+software under the same terms as Ruby.
+</p>
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

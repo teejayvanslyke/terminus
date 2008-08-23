@@ -1,0 +1,44 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Register the default MIME types:"
+- !ruby/struct:SM::Flow::P 
+  body: "By default, the mime-types include:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":all:"
+    body: no transform, */*
+  - !ruby/struct:SM::Flow::LI 
+    label: ":yaml:"
+    body: to_yaml, application/x-yaml or text/yaml
+  - !ruby/struct:SM::Flow::LI 
+    label: ":text:"
+    body: to_text, text/plain
+  - !ruby/struct:SM::Flow::LI 
+    label: ":html:"
+    body: to_html, text/html or application/xhtml+xml or application/html
+  - !ruby/struct:SM::Flow::LI 
+    label: ":xml:"
+    body: to_xml, application/xml or text/xml or application/x-xml
+  - !ruby/struct:SM::Flow::LI 
+    label: ":js:"
+    body: to_json, text/javascript ot application/javascript or application/x-javascript
+  - !ruby/struct:SM::Flow::LI 
+    label: ":json:"
+    body: to_json, application/json or text/x-json
+  type: :NOTE
+constants: []
+
+full_name: Merb::BootLoader::MimeTypes
+includes: []
+
+instance_methods: []
+
+name: MimeTypes
+superclass: Merb::BootLoader

@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "env<Hash>:"
+    body: Environment variables to pass on to the server.
+  type: :NOTE
+full_name: Merb::Rack::Static#serve_static
+is_singleton: false
+name: serve_static
+params: (env)
+visibility: public

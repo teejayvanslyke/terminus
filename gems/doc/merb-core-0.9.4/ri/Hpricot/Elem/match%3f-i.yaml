@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: matches?
+block_params: 
+comment: 
+full_name: Hpricot::Elem#match?
+is_singleton: false
+name: match?
+params: (regex)
+visibility: public

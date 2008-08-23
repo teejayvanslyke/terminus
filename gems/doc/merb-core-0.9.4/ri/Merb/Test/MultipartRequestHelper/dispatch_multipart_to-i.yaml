@@ -1,0 +1,45 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Similar to dispatch_to but allows for sending files inside params.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Paramters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "controller_klass<Controller>:"
+    body: The controller class object that the action should be dispatched to.
+  - !ruby/struct:SM::Flow::LI 
+    label: "action<Symbol>:"
+    body: The action name, as a symbol.
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: An optional hash that will end up as params in the controller instance.
+  - !ruby/struct:SM::Flow::LI 
+    label: "env<Hash>:"
+    body: An optional hash that is passed to the fake request. Any request options should go here (see <tt>fake_request</tt>).
+  - !ruby/struct:SM::Flow::LI 
+    label: "&blk:"
+    body: The block is executed in the context of the controller.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  dispatch_multipart_to(MyController, :create, :my_file =&gt; @a_file ) do |controller|\n    controller.stub!(:current_user).and_return(@user)\n  end\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: Set your option to contain a file object to simulate file uploads.
+- !ruby/struct:SM::Flow::P 
+  body: Does not use routes.
+full_name: Merb::Test::MultipartRequestHelper#dispatch_multipart_to
+is_singleton: false
+name: dispatch_multipart_to
+params: (controller_klass, action, params = {}, env = {}, &blk)
+visibility: public

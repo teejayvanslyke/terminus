@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>convert_input (Erubis::Basic::Converter)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/gem_ext/erubis.rb, line 4</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">convert_input</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">input</span>)
+      <span class="ruby-identifier">pat</span> = <span class="ruby-ivar">@pattern</span>
+      <span class="ruby-identifier">regexp</span> = <span class="ruby-identifier">pat</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">pat</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'&lt;% %&gt;'</span> <span class="ruby-operator">?</span> <span class="ruby-constant">DEFAULT_REGEXP</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">pattern_regexp</span>(<span class="ruby-identifier">pat</span>)
+      <span class="ruby-identifier">pos</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">is_bol</span> = <span class="ruby-keyword kw">true</span>     <span class="ruby-comment cmt"># is beginning of line</span>
+      <span class="ruby-identifier">input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-identifier">regexp</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indicator</span>, <span class="ruby-identifier">code</span>, <span class="ruby-identifier">tailch</span>, <span class="ruby-identifier">rspace</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">match</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">last_match</span>()
+        <span class="ruby-identifier">len</span>  = <span class="ruby-identifier">match</span>.<span class="ruby-identifier">begin</span>(<span class="ruby-value">0</span>) <span class="ruby-operator">-</span> <span class="ruby-identifier">pos</span>
+        <span class="ruby-identifier">text</span> = <span class="ruby-identifier">input</span>[<span class="ruby-identifier">pos</span>, <span class="ruby-identifier">len</span>]
+        <span class="ruby-identifier">pos</span>  = <span class="ruby-identifier">match</span>.<span class="ruby-identifier">end</span>(<span class="ruby-value">0</span>)
+        <span class="ruby-identifier">ch</span>   = <span class="ruby-identifier">indicator</span> <span class="ruby-value">? </span><span class="ruby-identifier">indicator</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">lspace</span> = <span class="ruby-identifier">ch</span> <span class="ruby-operator">==</span> <span class="ruby-value">?=</span> <span class="ruby-operator">?</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">detect_spaces_at_bol</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">is_bol</span>)
+        <span class="ruby-identifier">is_bol</span> = <span class="ruby-identifier">rspace</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+        <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">text</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">text</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-comment cmt">## * when '&lt;%= %&gt;', do nothing</span>
+        <span class="ruby-comment cmt">## * when '&lt;% %&gt;' or '&lt;%# %&gt;', delete spaces iff only spaces are around '&lt;% %&gt;'</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ch</span> <span class="ruby-operator">==</span> <span class="ruby-value">?=</span>              <span class="ruby-comment cmt"># &lt;%= %&gt;</span>
+          <span class="ruby-identifier">rspace</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">tailch</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">tailch</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">lspace</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lspace</span>
+          <span class="ruby-identifier">add_expr</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">code</span>, <span class="ruby-identifier">indicator</span>)
+          <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">rspace</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rspace</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">ch</span> <span class="ruby-operator">==</span> <span class="ruby-value">?\#</span>          <span class="ruby-comment cmt"># &lt;%# %&gt;</span>
+          <span class="ruby-identifier">n</span> = <span class="ruby-identifier">code</span>.<span class="ruby-identifier">count</span>(<span class="ruby-value str">&quot;\n&quot;</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">rspace</span> <span class="ruby-value">? </span><span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>)
+          <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@trim</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">lspace</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">rspace</span>
+            <span class="ruby-identifier">add_stmt</span>(<span class="ruby-identifier">src</span>, <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">n</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">lspace</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lspace</span>
+            <span class="ruby-identifier">add_stmt</span>(<span class="ruby-identifier">src</span>, <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">n</span>)
+            <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">rspace</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rspace</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">ch</span> <span class="ruby-operator">==</span> <span class="ruby-value">?%</span>           <span class="ruby-comment cmt"># &lt;%% %&gt;</span>
+          <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{lspace}#{@prefix||='&lt;%'}#{code}#{tailch}#{@postfix||='%&gt;'}#{rspace}&quot;</span>
+          <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">s</span>)
+        <span class="ruby-keyword kw">else</span>                     <span class="ruby-comment cmt"># &lt;% %&gt;</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@trim</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">lspace</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">rspace</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:add_stmt2</span>)
+              <span class="ruby-identifier">add_stmt2</span>(<span class="ruby-identifier">src</span>, <span class="ruby-node">&quot;#{lspace}#{code}#{rspace}&quot;</span>, <span class="ruby-identifier">tailch</span>)
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">add_stmt</span>(<span class="ruby-identifier">src</span>, <span class="ruby-node">&quot;#{lspace}#{code}#{rspace}&quot;</span>)
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">lspace</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lspace</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:add_stmt2</span>)
+              <span class="ruby-identifier">add_stmt2</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">code</span>, <span class="ruby-identifier">tailch</span>)
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">add_stmt</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">code</span>)
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">rspace</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rspace</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-comment cmt">#rest = $' || input                        # ruby1.8</span>
+      <span class="ruby-identifier">rest</span> = <span class="ruby-identifier">pos</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">input</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">input</span>[<span class="ruby-identifier">pos</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]   <span class="ruby-comment cmt"># ruby1.9</span>
+      <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">rest</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

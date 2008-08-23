@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #plural"
+full_name: String#pluralize
+is_singleton: false
+name: pluralize
+params: ()
+visibility: public

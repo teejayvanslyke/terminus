@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Settings</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Settings</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/more/facets/settings_rb.html">
+                lib/more/facets/settings.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="Settings.html">Settings</a></h1>
+<p>
+<a href="Settings.html">Settings</a> holds configuration information
+organized by Owners. An owner is a class that represents the system to be
+configured. An alias for this class is <a
+href="Settings.html">Settings</a>.
+</p>
+<p>
+You can pass strings, constants or symbols as keys for the classes to be
+configured. Passing symbols you can configure classes even before they are
+defined.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000314">add_setting</a>&nbsp;&nbsp;
+      <a href="#M000313">load</a>&nbsp;&nbsp;
+      <a href="#M000316">method_missing</a>&nbsp;&nbsp;
+      <a href="#M000312">parse</a>&nbsp;&nbsp;
+      <a href="#M000315">settings</a>&nbsp;&nbsp;
+      <a href="#M000311">setup</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="Settings/Setting.html" class="link">Settings::Setting</a><br />
+Class <a href="Settings/SettingCollection.html" class="link">Settings::SettingCollection</a><br />
+
+    </div>
+
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">add_setting</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">setting</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">settings</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">all</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">settings</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">[]</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000314" class="method-detail">
+        <a name="M000314"></a>
+
+        <div class="method-heading">
+          <a href="#M000314" class="method-signature">
+          <span class="method-name">add_setting</span><span class="method-args">(owner, name, options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Manually add a <a href="Settings.html">Settings</a> setting. The class key
+can be the actual class name constant or a symbol. If the setting is
+already defined it updates it.
+</p>
+<h3>Examples</h3>
+<p>
+<a href="Settings.html#M000314">Settings.add_setting</a> Compiler,
+:verification, :value =&gt; 12, :doc =&gt; &#8217;&#8230;&#8217;
+Settings.setting :IdPart, :verify_registration_email, :value =&gt; false s
+= Settings.Compiler.verification.value
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000314-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000314-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/settings.rb, line 175</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_setting</span>(<span class="ruby-identifier">owner</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">owner</span> = <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_sym</span>
+      <span class="ruby-ivar">@@owners</span>[<span class="ruby-identifier">owner</span>] <span class="ruby-operator">||=</span> {}
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">s</span> = <span class="ruby-ivar">@@owners</span>[<span class="ruby-identifier">owner</span>][<span class="ruby-identifier">name</span>]
+        <span class="ruby-comment cmt"># The setting already exists, update it.</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-comment cmt"># The setting does not exist, create it.</span>
+        <span class="ruby-ivar">@@owners</span>[<span class="ruby-identifier">owner</span>][<span class="ruby-identifier">name</span>] = <span class="ruby-constant">Setting</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">owner</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000313" class="method-detail">
+        <a name="M000313"></a>
+
+        <div class="method-heading">
+          <a href="#M000313" class="method-signature">
+          <span class="method-name">load</span><span class="method-args">(filename)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Load and <a href="Settings.html#M000312">parse</a> an external yaml <a
+href="Settings.html">Settings</a> file.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000313-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000313-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/settings.rb, line 161</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>(<span class="ruby-identifier">filename</span>)
+      <span class="ruby-identifier">parse</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">filename</span>))
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000316" class="method-detail">
+        <a name="M000316"></a>
+
+        <div class="method-heading">
+          <a href="#M000316" class="method-signature">
+          <span class="method-name">method_missing</span><span class="method-args">(sym)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000316-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000316-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/settings.rb, line 208</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">sym</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sym</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">capitalized?</span>
+         <span class="ruby-identifier">bdl</span> = <span class="ruby-constant">SettingCollection</span>.<span class="ruby-identifier">new</span>
+         <span class="ruby-identifier">bdl</span>.<span class="ruby-identifier">owner</span> = <span class="ruby-identifier">sym</span>
+         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">sym</span>]
+           <span class="ruby-identifier">bdl</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">hash</span>)
+         <span class="ruby-keyword kw">end</span>
+         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">bdl</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000312" class="method-detail">
+        <a name="M000312"></a>
+
+        <div class="method-heading">
+          <a href="#M000312" class="method-signature">
+          <span class="method-name">parse</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Parse <a href="Settings.html">Settings</a> parameters in yaml format.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000312-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000312-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/settings.rb, line 145</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">temp</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">options</span> = <span class="ruby-constant">Dictionary</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-identifier">temp</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\./</span>, <span class="ruby-value str">'::'</span>).<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Object</span>
+          <span class="ruby-identifier">options</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">setup</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000315" class="method-detail">
+        <a name="M000315"></a>
+
+        <div class="method-heading">
+          <a href="#M000315" class="method-signature">
+          <span class="method-name">settings</span><span class="method-args">(owner = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return the <a href="Settings.html#M000315">settings</a> for the given
+owner. The owner is typically the Class that represents the system to be
+configured. If no class is provided, it returns all the registered <a
+href="Settings.html#M000315">settings</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000315-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000315-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/settings.rb, line 193</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">settings</span>(<span class="ruby-identifier">owner</span> = <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">owner</span>
+        <span class="ruby-identifier">owner</span> = <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_sym</span>
+        <span class="ruby-ivar">@@owners</span>[<span class="ruby-identifier">owner</span>]
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@@owners</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">inject</span>([]) { <span class="ruby-operator">|</span><span class="ruby-identifier">memo</span>, <span class="ruby-identifier">obj</span><span class="ruby-operator">|</span> <span class="ruby-identifier">memo</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">values</span>) }
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000311" class="method-detail">
+        <a name="M000311"></a>
+
+        <div class="method-heading">
+          <a href="#M000311" class="method-signature">
+          <span class="method-name">setup</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Inject the <a href="Settings.html">Settings</a> parameters provided as a
+hash (dictionary, ordered) to classes to be configured.
+</p>
+<h3>Warning: Pass an ordered hash (dictionary)</h3>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000311-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000311-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/settings.rb, line 134</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">owner</span>, <span class="ruby-identifier">ss</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">ss</span>
+        <span class="ruby-identifier">ss</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">add_setting</span>(<span class="ruby-identifier">owner</span>, <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">s</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

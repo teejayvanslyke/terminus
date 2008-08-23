@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Merb::BootLoader::MimeTypes)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 540</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run</span>
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">add_mime_type</span>(<span class="ruby-identifier">:all</span>,  <span class="ruby-keyword kw">nil</span>,      <span class="ruby-node">%w[*/*]</span>)
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">add_mime_type</span>(<span class="ruby-identifier">:yaml</span>, <span class="ruby-identifier">:to_yaml</span>, <span class="ruby-node">%w[application/x-yaml text/yaml]</span>, <span class="ruby-identifier">:charset</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;utf-8&quot;</span>)
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">add_mime_type</span>(<span class="ruby-identifier">:text</span>, <span class="ruby-identifier">:to_text</span>, <span class="ruby-node">%w[text/plain]</span>, <span class="ruby-identifier">:charset</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;utf-8&quot;</span>)
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">add_mime_type</span>(<span class="ruby-identifier">:html</span>, <span class="ruby-identifier">:to_html</span>, <span class="ruby-node">%w[text/html application/xhtml+xml application/html]</span>, <span class="ruby-identifier">:charset</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;utf-8&quot;</span>)
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">add_mime_type</span>(<span class="ruby-identifier">:xml</span>,  <span class="ruby-identifier">:to_xml</span>,  <span class="ruby-node">%w[application/xml text/xml application/x-xml]</span>, <span class="ruby-identifier">:charset</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;utf-8&quot;</span>)
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">add_mime_type</span>(<span class="ruby-identifier">:js</span>,   <span class="ruby-identifier">:to_json</span>, <span class="ruby-node">%w[text/javascript application/javascript application/x-javascript]</span>, <span class="ruby-identifier">:charset</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;utf-8&quot;</span>)
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">add_mime_type</span>(<span class="ruby-identifier">:json</span>, <span class="ruby-identifier">:to_json</span>, <span class="ruby-node">%w[application/json text/x-json]</span>, <span class="ruby-identifier">:charset</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;utf-8&quot;</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

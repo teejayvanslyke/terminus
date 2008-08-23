@@ -1,0 +1,65 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Render the specified item, with the specified options.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "thing<String, Symbol, nil>:"
+    body: The thing to render. This will default to the current action
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: An options hash (see below)
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opts)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":format<Symbol>:"
+    body: A registered mime-type format
+  - !ruby/struct:SM::Flow::LI 
+    label: ":template<String>:"
+    body: The path to the template relative to the template root
+  - !ruby/struct:SM::Flow::LI 
+    label: ":status<~to_i>:"
+    body: The status to send to the client. Typically, this would be an integer (200), or a Merb status code (Accepted)
+  - !ruby/struct:SM::Flow::LI 
+    label: ":layout<~to_s, FalseClass>:"
+    body: A layout to use instead of the default. This should be relative to the layout root. By default, the layout will be either the controller_name or application. If you want to use an alternative content-type than the one that the base template was rendered as, you will need to do :layout =&gt; &quot;foo.#{content_type}&quot; (i.e. &quot;foo.json&quot;). If you want to render without layout, use :layout =&gt; false. This overrides layout set by <tt>layout</tt> method.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The rendered template, including layout, if appropriate.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Raises
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "TemplateNotFound:"
+    body: There is no template for the specified location.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If you pass a Hash as the first parameter, it will be moved to opts and &quot;thing&quot; will be the current action
+full_name: Merb::RenderMixin#render
+is_singleton: false
+name: render
+params: (thing = nil, opts = {})
+visibility: public

@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Check whether Merb supports test framework. Currently Merb has plugins to support RSpec and Test::Unit.
+- !ruby/struct:SM::Flow::P 
+  body: "@param test_framework&lt;Symbol&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  The test framework to check. Currently only supports :rspec and :test_unit.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@api plugin"
+full_name: Kernel#supported_test_framework?
+is_singleton: false
+name: supported_test_framework?
+params: (test_framework)
+visibility: public

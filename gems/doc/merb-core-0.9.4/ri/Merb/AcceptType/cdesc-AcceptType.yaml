@@ -1,0 +1,50 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: index
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: media_range
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: quality
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: sub_type
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: type
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Merb::AcceptType
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: <=>
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: eql?
+- !ruby/object:RI::MethodSummary 
+  name: hash
+- !ruby/object:RI::MethodSummary 
+  name: super_range
+- !ruby/object:RI::MethodSummary 
+  name: synonyms
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: to_sym
+name: AcceptType
+superclass: Object

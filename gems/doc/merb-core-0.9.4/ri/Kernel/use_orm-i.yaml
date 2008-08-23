@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Used in Merb.root/config/init.rb to tell Merb which ORM (Object Relational Mapper) you wish to use. Currently Merb has plugins to support ActiveRecord, DataMapper, and Sequel.
+- !ruby/struct:SM::Flow::P 
+  body: "@param orm&lt;#to_s&gt; The ORM to use."
+- !ruby/struct:SM::Flow::P 
+  body: "@example"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  use_orm :datamapper\n\n  # This will use the DataMapper generator for your ORM\n  $ merb-gen model ActivityEvent\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@note"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  If for some reason this is called more than once, latter\n  call takes over other.\n"
+full_name: Kernel#use_orm
+is_singleton: false
+name: use_orm
+params: (orm)
+visibility: public

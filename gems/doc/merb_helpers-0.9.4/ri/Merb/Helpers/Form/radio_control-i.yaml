@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a HTML radio input tag based on a resource attribute.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "    &lt;% form_for :person, :action =&gt; url(:people) do %&gt;\n      &lt;%= radio_control :first_name %&gt;\n    &lt;% end %&gt;\n"
+full_name: Merb::Helpers::Form#radio_control
+is_singleton: false
+name: radio_control
+params: (col, attrs = {})
+visibility: public

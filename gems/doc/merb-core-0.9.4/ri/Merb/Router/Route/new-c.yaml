@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "conditions<Hash>:"
+    body: Conditions for the route.
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: Parameters for the route.
+  - !ruby/struct:SM::Flow::LI 
+    label: "behavior<Merb::Router::Behavior>:"
+    body: The associated behavior. Defaults to nil.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&conditional_block:"
+    body: A block with the conditions to be met for the route to take effect.
+  type: :NOTE
+full_name: Merb::Router::Route::new
+is_singleton: true
+name: new
+params: (conditions, params, behavior = nil, &conditional_block)
+visibility: public

@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a generic HTML checkbox input tag. There are two ways this tag can be generated, based on the option :boolean. If not set to true, a &quot;magic&quot; input is generated. Otherwise, an input is created that can be easily used for passing an array of values to the application.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "    &lt;% checkbox_field :name =&gt; &quot;is_activated&quot;, :value =&gt; &quot;1&quot; %&gt;\n\n    &lt;% checkbox_field :name =&gt; &quot;choices[]&quot;, :boolean =&gt; false, :value =&gt; &quot;dog&quot; %&gt;\n    &lt;% checkbox_field :name =&gt; &quot;choices[]&quot;, :boolean =&gt; false, :value =&gt; &quot;cat&quot; %&gt;\n    &lt;% checkbox_field :name =&gt; &quot;choices[]&quot;, :boolean =&gt; false, :value =&gt; &quot;weasle&quot; %&gt;\n"
+full_name: Merb::Helpers::Form#checkbox_field
+is_singleton: false
+name: checkbox_field
+params: (attrs = {}, hidden_attrs={})
+visibility: public

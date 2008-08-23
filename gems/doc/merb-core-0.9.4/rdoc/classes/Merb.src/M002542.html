@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>merge_env (Merb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core.rb, line 40</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">merge_env</span>(<span class="ruby-identifier">env</span>,<span class="ruby-identifier">use_db</span>=<span class="ruby-keyword kw">false</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment_info</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment_info</span> = {
+          <span class="ruby-identifier">:real_env</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment</span>,
+          <span class="ruby-identifier">:merged_envs</span> =<span class="ruby-operator">&gt;</span> [],
+          <span class="ruby-identifier">:db_env</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment</span>
+        }
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-comment cmt">#Only load if it hasn't been loaded</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment_info</span>[<span class="ruby-identifier">:merged_envs</span>].<span class="ruby-identifier">member?</span> <span class="ruby-identifier">env</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment_info</span>[<span class="ruby-identifier">:merged_envs</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">env</span>
+        
+        <span class="ruby-identifier">env_file</span> = <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:config</span>) <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;environments&quot;</span> <span class="ruby-operator">/</span> (<span class="ruby-node">&quot;#{env}.rb&quot;</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">env_file</span>)
+          <span class="ruby-identifier">load</span>(<span class="ruby-identifier">env_file</span>)
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">warn!</span> <span class="ruby-node">&quot;Environment file does not exist! #{env_file}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-comment cmt"># Mark specific environment to load when ORM loads,</span>
+      <span class="ruby-comment cmt"># if multiple environments are loaded, the last one</span>
+      <span class="ruby-comment cmt"># with use_db as TRUE will be loaded</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">use_db</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment_info</span>[<span class="ruby-identifier">:db_env</span>] = <span class="ruby-identifier">env</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

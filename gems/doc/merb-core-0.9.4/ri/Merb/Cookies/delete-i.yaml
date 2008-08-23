@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Removes the cookie on the client machine by setting the value to an empty string and setting its expiration date into the past.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_s>:"
+    body: Name of the cookie to delete.
+  - !ruby/struct:SM::Flow::LI 
+    label: "options<Hash>:"
+    body: Additional options to pass to <tt>set_cookie</tt>.
+  type: :NOTE
+full_name: Merb::Cookies#delete
+is_singleton: false
+name: delete
+params: (name, options = {})
+visibility: public

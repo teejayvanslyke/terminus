@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Merb::Helpers::Tag</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Merb::Helpers::Tag</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/merb_helpers/tag_helpers_rb.html">
+                lib/merb_helpers/tag_helpers.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000021">close_tag</a>&nbsp;&nbsp;
+      <a href="#M000020">open_tag</a>&nbsp;&nbsp;
+      <a href="#M000022">self_closing_tag</a>&nbsp;&nbsp;
+      <a href="#M000019">tag</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="Tag.src/M000021.html" target="Code" class="method-signature"
+            onclick="popupCode('Tag.src/M000021.html');return false;">
+          <span class="method-name">close_tag</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a closing <a href="Tag.html#M000019">tag</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="Tag.src/M000020.html" target="Code" class="method-signature"
+            onclick="popupCode('Tag.src/M000020.html');return false;">
+          <span class="method-name">open_tag</span><span class="method-args">(name, attrs = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates the opening <a href="Tag.html#M000019">tag</a> with attributes for
+the provided <tt>name</tt> attrs is a hash where all members will be mapped
+to key=&quot;value&quot;
+</p>
+<p>
+Note: This <a href="Tag.html#M000019">tag</a> will need to be closed
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="Tag.src/M000022.html" target="Code" class="method-signature"
+            onclick="popupCode('Tag.src/M000022.html');return false;">
+          <span class="method-name">self_closing_tag</span><span class="method-args">(name, attrs = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a self closing <a href="Tag.html#M000019">tag</a>. Like &lt;br/&gt;
+or &lt;img src=&quot;&#8230;&quot;/&gt;
+</p>
+<p>
+<tt>name</tt> : the name of the <a href="Tag.html#M000019">tag</a> to
+create <tt>attrs</tt> : a hash where all members will be mapped to
+key=&quot;value&quot;
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="Tag.src/M000019.html" target="Code" class="method-signature"
+            onclick="popupCode('Tag.src/M000019.html');return false;">
+          <span class="method-name">tag</span><span class="method-args">(name, contents = nil, attrs = {}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a generic HTML <a href="Tag.html#M000019">tag</a>. You can invoke
+it a variety of ways.
+</p>
+<pre>
+  tag :div
+  # &lt;div&gt;&lt;/div&gt;
+
+  tag :div, 'content'
+  # &lt;div&gt;content&lt;/div&gt;
+
+  tag :div, :class =&gt; 'class'
+  # &lt;div class=&quot;class&quot;&gt;&lt;/div&gt;
+
+  tag :div, 'content', :class =&gt; 'class'
+  # &lt;div class=&quot;class&quot;&gt;content&lt;/div&gt;
+
+  tag :div do
+    'content'
+  end
+  # &lt;div&gt;content&lt;/div&gt;
+
+  tag :div, :class =&gt; 'class' do
+    'content'
+  end
+  # &lt;div class=&quot;class&quot;&gt;content&lt;/div&gt;
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

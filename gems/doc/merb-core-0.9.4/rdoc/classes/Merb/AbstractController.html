@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Merb::AbstractController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Merb::AbstractController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/merb-core/controller/abstract_controller_rb.html">
+                lib/merb-core/controller/abstract_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h4>Why do we use Underscores?</h4>
+<p>
+In <a href="../Merb.html">Merb</a>, views are actually methods on
+controllers. This provides not-insignificant speed benefits, as well as
+preventing us from needing to copy over instance variables, which we think
+is proof that everything belongs in one class to begin with.
+</p>
+<p>
+Unfortunately, this means that view helpers need to be included into the
+&lt;strong&gt;<a href="Controller.html">Controller</a>&lt;/strong&gt;
+class. To avoid causing confusion when your helpers potentially conflict
+with our instance methods, we use an _ to disambiguate. As long as you
+don&#8216;t begin your helper methods with _, you only need to worry about
+conflicts with <a href="../Merb.html">Merb</a> methods that are part of the
+public API.
+</p>
+<h4>Filters</h4>
+<p>
+<a href="AbstractController.html#M002974">before</a> is a class method that
+allows you to specify <a href="AbstractController.html#M002974">before</a>
+filters in your controllers. Filters can either be a symbol or string that
+corresponds to a method name to call, or a proc object. if it is a method
+name that method will be called and if it is a proc it will be called with
+an argument of self where self is the current controller object. When you
+use a proc as a filter it needs to take one parameter.
+</p>
+<p>
+<a href="AbstractController.html#M002973">after</a> is identical, but the
+filters are run <a href="AbstractController.html#M002973">after</a> the
+action is invoked.
+</p>
+<h5>Examples</h5>
+<pre>
+  before :some_filter
+  before :authenticate, :exclude =&gt; [:login, :signup]
+  before :has_role, :with =&gt; [&quot;Admin&quot;], :exclude =&gt; [:index,:show]
+  before Proc.new {|c| c.some_method }, :only =&gt; :foo
+  before :authorize, :unless =&gt; logged_in?
+</pre>
+<p>
+You can use either :only =&gt; :actionname or :exclude =&gt; [:this, :that]
+but not both at once. :only will only run <a
+href="AbstractController.html#M002974">before</a> the listed actions and
+:exclude will run for every action that is not listed.
+</p>
+<p>
+<a href="../Merb.html">Merb</a>&#8216;s <a
+href="AbstractController.html#M002974">before</a> filter chain is very
+flexible. To halt the filter chain you use throw :halt. If throw is called
+with only one argument of :halt the return of the method filters_halted
+will be what is rendered to the view. You can overide filters_halted in
+your own controllers to control what it outputs. But the throw construct is
+much more powerful then just that. throw :halt can also take a second
+argument. Here is what that second arg can be and the behavior each type
+can have:
+</p>
+<ul>
+<li><tt><a href="../String.html">String</a></tt>: when the second arg is a
+string then that string will be what is rendered to the browser. Since
+merb&#8216;s render method returns a string you can render a template or
+just use a plain string:
+
+<pre>
+  throw :halt, &quot;You don't have permissions to do that!&quot;
+  throw :halt, render(:action =&gt; :access_denied)
+</pre>
+</li>
+<li><tt>Symbol</tt>: If the second arg is a symbol then the method named <a
+href="AbstractController.html#M002973">after</a> that symbol will be called
+
+<p>
+throw :halt, :must_click_disclaimer
+</p>
+</li>
+<li><tt>Proc</tt>:
+
+<p>
+If the second arg is a Proc, it will be called and its return value will be
+what is rendered to the browser:
+</p>
+<pre>
+  throw :halt, proc {|c| c.access_denied }
+  throw :halt, proc {|c| Tidy.new(c.index) }
+</pre>
+</li>
+</ul>
+<h5>Filter Options (.<a href="AbstractController.html#M002974">before</a>, .<a href="AbstractController.html#M002973">after</a>, .add_filter, .if, .unless)</h5>
+<table>
+<tr><td valign="top">:only&lt;Symbol, Array[Symbol]&gt;:</td><td>A list of actions that this filter should apply to
+
+</td></tr>
+<tr><td valign="top">:exclude&lt;Symbol, Array[Symbol]:</td><td>A list of actions that this filter should <b>not</b> apply to
+
+</td></tr>
+<tr><td valign="top">:if&lt;Symbol, Proc&gt;:</td><td>Only apply the filter if the method named <a
+href="AbstractController.html#M002973">after</a> the symbol or calling the
+proc evaluates to true
+
+</td></tr>
+<tr><td valign="top">:unless&lt;Symbol, Proc&gt;:</td><td>Only apply the filter if the method named <a
+href="AbstractController.html#M002973">after</a> the symbol or calling the
+proc evaluates to false
+
+</td></tr>
+<tr><td valign="top">:with&lt;Array[<a href="../Object.html">Object</a>]&gt;:</td><td>Arguments to be passed to the filter. Since we are talking method/proc
+calls, filter method or Proc should to have the same arity as number of
+elements in Array you pass to this option.
+
+</td></tr>
+</table>
+<h5>Types (shortcuts for use in this file)</h5>
+<table>
+<tr><td valign="top">Filter:</td><td>&lt;Array[Symbol, (Symbol, <a href="../String.html">String</a>, Proc)]&gt;
+
+</td></tr>
+</table>
+<h4>params[:action] and params[:controller] deprecated</h4>
+<p>
+params[:action] and params[:controller] have been deprecated as of the
+0.9.0 release. They are no longer set during dispatch, and have been
+replaced by action_name and <a
+href="AbstractController.html#M002956">controller_name</a> respectively.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002959">_absolute_template_location</a>&nbsp;&nbsp;
+      <a href="#M002968">_call_action</a>&nbsp;&nbsp;
+      <a href="#M002970">_call_filter_for_action?</a>&nbsp;&nbsp;
+      <a href="#M002969">_call_filters</a>&nbsp;&nbsp;
+      <a href="#M002967">_dispatch</a>&nbsp;&nbsp;
+      <a href="#M002972">_evaluate_condition</a>&nbsp;&nbsp;
+      <a href="#M002971">_filter_condition_met?</a>&nbsp;&nbsp;
+      <a href="#M002977">_filters_halted</a>&nbsp;&nbsp;
+      <a href="#M002961">_reset_template_roots</a>&nbsp;&nbsp;
+      <a href="#M002958">_template_location</a>&nbsp;&nbsp;
+      <a href="#M002960">_template_root=</a>&nbsp;&nbsp;
+      <a href="#M002962">_template_roots</a>&nbsp;&nbsp;
+      <a href="#M002963">_template_roots=</a>&nbsp;&nbsp;
+      <a href="#M002984">absolute_url</a>&nbsp;&nbsp;
+      <a href="#M002980">add_path_to_template_cache</a>&nbsp;&nbsp;
+      <a href="#M002973">after</a>&nbsp;&nbsp;
+      <a href="#M002974">before</a>&nbsp;&nbsp;
+      <a href="#M002985">capture</a>&nbsp;&nbsp;
+      <a href="#M002986">concat</a>&nbsp;&nbsp;
+      <a href="#M002956">controller_name</a>&nbsp;&nbsp;
+      <a href="#M002957">controller_name</a>&nbsp;&nbsp;
+      <a href="#M002979">finalize_session</a>&nbsp;&nbsp;
+      <a href="#M002965">inherited</a>&nbsp;&nbsp;
+      <a href="#M002966">new</a>&nbsp;&nbsp;
+      <a href="#M002983">relative_url</a>&nbsp;&nbsp;
+      <a href="#M002981">reset_template_path_cache!</a>&nbsp;&nbsp;
+      <a href="#M002978">setup_session</a>&nbsp;&nbsp;
+      <a href="#M002975">skip_after</a>&nbsp;&nbsp;
+      <a href="#M002976">skip_before</a>&nbsp;&nbsp;
+      <a href="#M002964">subclasses_list</a>&nbsp;&nbsp;
+      <a href="#M002982">url</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="RenderMixin.html">Merb::RenderMixin</a></span>
+        <span class="include-name"><a href="InlineTemplates.html">Merb::InlineTemplates</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">FILTER_OPTIONS</td>
+          <td>=</td>
+          <td class="context-item-value">[:only, :exclude, :if, :unless, :with]</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">_benchmarks</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">_thrown_content</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">action_name</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">body</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">content_type</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Stub so content-type support in <a href="RenderMixin.html">RenderMixin</a>
+doesn&#8216;t throw errors
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002961" class="method-detail">
+        <a name="M002961"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002961.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002961.html');return false;">
+          <span class="method-name">_reset_template_roots</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M002960" class="method-detail">
+        <a name="M002960"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002960.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002960.html');return false;">
+          <span class="method-name">_template_root=</span><span class="method-args">(root)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M002962" class="method-detail">
+        <a name="M002962"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002962.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002962.html');return false;">
+          <span class="method-name">_template_roots</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">roots&lt;Array[Array]&gt;:</td><td><a href="Template.html">Template</a> roots as pairs of template root path
+and template location method.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002963" class="method-detail">
+        <a name="M002963"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002963.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002963.html');return false;">
+          <span class="method-name">_template_roots=</span><span class="method-args">(roots)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">roots&lt;Array[Array]&gt;:</td><td><a href="Template.html">Template</a> roots as pairs of template root path
+and template location method.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002980" class="method-detail">
+        <a name="M002980"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002980.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002980.html');return false;">
+          <span class="method-name">add_path_to_template_cache</span><span class="method-args">(template)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Handles the template cache (which is used by <a
+href="BootLoader.html">BootLoader</a> to cache the list of all templates).
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">template&lt;<a href="../String.html">String</a>&gt;:</td><td>The full path to a template to add to the list of available templates
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002973" class="method-detail">
+        <a name="M002973"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002973.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002973.html');return false;">
+          <span class="method-name">after</span><span class="method-args">(filter = nil, opts = {}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">filter&lt;Symbol, Proc&gt;:</td><td>The filter to add. Defaults to nil.
+
+</td></tr>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>Filter options (see class documentation under <tt>Filter Options</tt>).
+
+</td></tr>
+<tr><td valign="top">&amp;block:</td><td>A block to use as a filter if filter is nil.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+If the filter already exists, its options will be replaced with opts.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002974" class="method-detail">
+        <a name="M002974"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002974.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002974.html');return false;">
+          <span class="method-name">before</span><span class="method-args">(filter = nil, opts = {}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">filter&lt;Symbol, Proc&gt;:</td><td>The filter to add. Defaults to nil.
+
+</td></tr>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>Filter options (see class documentation under <tt>Filter Options</tt>).
+
+</td></tr>
+<tr><td valign="top">&amp;block:</td><td>A block to use as a filter if filter is nil.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+If the filter already exists, its options will be replaced with opts.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002956" class="method-detail">
+        <a name="M002956"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002956.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002956.html');return false;">
+          <span class="method-name">controller_name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The controller name in path form, e.g. &quot;admin/items&quot;.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002965" class="method-detail">
+        <a name="M002965"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002965.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002965.html');return false;">
+          <span class="method-name">inherited</span><span class="method-args">(klass)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">klass&lt;<a href="AbstractController.html">Merb::AbstractController</a>&gt;:</td><td>The controller that is being <a
+href="AbstractController.html#M002965">inherited</a> from <a
+href="AbstractController.html">Merb::AbstractController</a>
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002966" class="method-detail">
+        <a name="M002966"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002966.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002966.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">*args:</td><td>The args are ignored.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002981" class="method-detail">
+        <a name="M002981"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002981.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002981.html');return false;">
+          <span class="method-name">reset_template_path_cache!</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Resets the template_path_cache to an empty hash
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002975" class="method-detail">
+        <a name="M002975"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002975.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002975.html');return false;">
+          <span class="method-name">skip_after</span><span class="method-args">(filter)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Skip an <a href="AbstractController.html#M002973">after</a> filter that has
+been previously defined (perhaps in a superclass)
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">filter&lt;Symbol&gt;:</td><td>A filter name to skip.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002976" class="method-detail">
+        <a name="M002976"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002976.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002976.html');return false;">
+          <span class="method-name">skip_before</span><span class="method-args">(filter)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Skip a <a href="AbstractController.html#M002974">before</a> filter that has
+been previously defined (perhaps in a superclass).
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">filter&lt;Symbol&gt;:</td><td>A filter name to skip.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002964" class="method-detail">
+        <a name="M002964"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002964.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002964.html');return false;">
+          <span class="method-name">subclasses_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Set:</td><td>The subclasses.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002959" class="method-detail">
+        <a name="M002959"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002959.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002959.html');return false;">
+          <span class="method-name">_absolute_template_location</span><span class="method-args">(template, type)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The location to look for a template - stub method for particular behaviour.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">template&lt;<a href="../String.html">String</a>&gt;:</td><td>The absolute path to a template - without template extension.
+
+</td></tr>
+<tr><td valign="top">type&lt;~to_s&gt;:</td><td>The mime-type of the template that will be rendered. Defaults to nil.
+
+</td></tr>
+</table>
+<p>
+@public
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002968" class="method-detail">
+        <a name="M002968"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002968.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002968.html');return false;">
+          <span class="method-name">_call_action</span><span class="method-args">(action)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method exists to provide an overridable hook for ActionArgs
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">action&lt;~to_s&gt;:</td><td>the action method to dispatch to
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002970" class="method-detail">
+        <a name="M002970"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002970.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002970.html');return false;">
+          <span class="method-name">_call_filter_for_action?</span><span class="method-args">(rule, action_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">rule&lt;Hash&gt;:</td><td>Rules for the filter (see below).
+
+</td></tr>
+<tr><td valign="top">action_name&lt;~to_s&gt;:</td><td>The name of the action to be called.
+
+</td></tr>
+</table>
+<h4>Options (rule)</h4>
+<table>
+<tr><td valign="top">:only&lt;Array&gt;:</td><td>Optional list of actions to fire. If given, action_name must be a part of
+it for this function to return true.
+
+</td></tr>
+<tr><td valign="top">:exclude&lt;Array&gt;:</td><td>Optional list of actions not to fire. If given, action_name must not be a
+part of it for this function to return true.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Boolean:</td><td>True if the action should be called.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002969" class="method-detail">
+        <a name="M002969"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002969.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002969.html');return false;">
+          <span class="method-name">_call_filters</span><span class="method-args">(filter_set)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">filter_set&lt;Array[Filter]&gt;:</td><td>A set of filters in the form [[:filter, rule], [:filter, rule]]
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Symbol:</td><td>:filter_chain_completed.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+Filter rules can be Symbols, Strings, or Procs.
+</p>
+<table>
+<tr><td valign="top">Symbols or Strings:</td><td>Call the method represented by the <tt>Symbol</tt> or <tt><a
+href="../String.html">String</a></tt>.
+
+</td></tr>
+<tr><td valign="top">Procs:</td><td>Execute the <tt>Proc</tt>, in the context of the controller (self will be
+the controller)
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002967" class="method-detail">
+        <a name="M002967"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002967.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002967.html');return false;">
+          <span class="method-name">_dispatch</span><span class="method-args">(action=:to_s)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This will dispatch the request, calling <a
+href="AbstractController.html#M002978">setup_session</a> and <a
+href="AbstractController.html#M002979">finalize_session</a>
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">action&lt;~to_s&gt;:</td><td>The action to dispatch to. This will be send&#8216;ed in <a
+href="AbstractController.html#M002968">_call_action</a>. Defaults to :to_s.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top">MerbControllerError:</td><td>Invalid body content caught.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002972" class="method-detail">
+        <a name="M002972"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002972.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002972.html');return false;">
+          <span class="method-name">_evaluate_condition</span><span class="method-args">(condition)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">condition&lt;Symbol, Proc&gt;:</td><td>The condition to evaluate.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top">ArgumentError:</td><td>condition not a Symbol or Proc.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Boolean:</td><td>True if the condition is met.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+If condition is a symbol, it will be send&#8216;ed. If it is a Proc it will
+be called directly with self as an argument.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002971" class="method-detail">
+        <a name="M002971"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002971.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002971.html');return false;">
+          <span class="method-name">_filter_condition_met?</span><span class="method-args">(rule)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">rule&lt;Hash&gt;:</td><td>Rules for the filter (see below).
+
+</td></tr>
+</table>
+<h4>Options (rule)</h4>
+<table>
+<tr><td valign="top">:if&lt;Array&gt;:</td><td>Optional conditions that must be met for the filter to fire.
+
+</td></tr>
+<tr><td valign="top">:unless&lt;Array&gt;:</td><td>Optional conditions that must not be met for the filter to fire.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Boolean:</td><td>True if the conditions are met.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002977" class="method-detail">
+        <a name="M002977"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002977.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002977.html');return false;">
+          <span class="method-name">_filters_halted</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M002958" class="method-detail">
+        <a name="M002958"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002958.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002958.html');return false;">
+          <span class="method-name">_template_location</span><span class="method-args">(context, type = nil, controller = controller_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is called <a href="AbstractController.html#M002973">after</a> the
+controller is instantiated to figure out where to look for templates under
+the _template_root. Override this to define a <a
+href="AbstractController.html#M002966">new</a> structure for your app.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">context&lt;~to_s&gt;:</td><td>The controller context (the action or template name).
+
+</td></tr>
+<tr><td valign="top">type&lt;~to_s&gt;:</td><td>The content type. Defaults to nil.
+
+</td></tr>
+<tr><td valign="top">controller&lt;~to_s&gt;:</td><td>The name of the controller. Defaults to <a
+href="AbstractController.html#M002956">controller_name</a>.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>Indicating where to look for the template for the current controller,
+context, and content-type.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+The type is irrelevant for controller-types that don&#8216;t support
+content-type negotiation, so we default to not include it in the
+superclass.
+</p>
+<h4>Examples</h4>
+<pre>
+  def _template_location
+    &quot;#{params[:controller]}.#{params[:action]}.#{content_type}&quot;
+  end
+</pre>
+<p>
+This would look for templates at controller.action.mime.type instead of
+controller/action.mime.type
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002984" class="method-detail">
+        <a name="M002984"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002984.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002984.html');return false;">
+          <span class="method-name">absolute_url</span><span class="method-args">(name, rparams={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">name&lt;~to_sym, Hash&gt;:</td><td>The name of the URL to generate.
+
+</td></tr>
+<tr><td valign="top">rparams&lt;Hash&gt;:</td><td>Parameters for the route generation.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The generated <a href="AbstractController.html#M002982">url</a> with
+protocol + hostname + URL.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+If a hash is used as the first argument, a default route will be generated
+based on it and rparams.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002985" class="method-detail">
+        <a name="M002985"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002985.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002985.html');return false;">
+          <span class="method-name">capture</span><span class="method-args">(*args, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Calls the <a href="AbstractController.html#M002985">capture</a> method for
+the selected template engine.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">*args:</td><td>Arguments to pass to the block.
+
+</td></tr>
+<tr><td valign="top">&amp;block:</td><td>The template block to call.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The output of the block.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002986" class="method-detail">
+        <a name="M002986"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002986.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002986.html');return false;">
+          <span class="method-name">concat</span><span class="method-args">(str, binding)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Calls the concatenate method for the selected template engine.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">str&lt;<a href="../String.html">String</a>&gt;:</td><td>The string to concatenate to the buffer.
+
+</td></tr>
+<tr><td valign="top">binding&lt;Binding&gt;:</td><td>The binding to use for the buffer.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002957" class="method-detail">
+        <a name="M002957"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002957.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002957.html');return false;">
+          <span class="method-name">controller_name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The controller name in path form, e.g. &quot;admin/items&quot;.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002979" class="method-detail">
+        <a name="M002979"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002979.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002979.html');return false;">
+          <span class="method-name">finalize_session</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Method stub for finalizing up the session. This will be overriden by
+session modules.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002983" class="method-detail">
+        <a name="M002983"></a>
+
+        <div class="method-heading">
+          <span class="method-name">relative_url</span><span class="method-args">(name, rparams = {}, qparams = {})</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="AbstractController.html#M002982">url</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002978" class="method-detail">
+        <a name="M002978"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002978.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002978.html');return false;">
+          <span class="method-name">setup_session</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Method stub for setting up the session. This will be overriden by session
+modules.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002982" class="method-detail">
+        <a name="M002982"></a>
+
+        <div class="method-heading">
+          <a href="AbstractController.src/M002982.html" target="Code" class="method-signature"
+            onclick="popupCode('AbstractController.src/M002982.html');return false;">
+          <span class="method-name">url</span><span class="method-args">(name, rparams = {}, qparams = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">name&lt;~to_sym, Hash&gt;:</td><td>The name of the URL to generate.
+
+</td></tr>
+<tr><td valign="top">rparams&lt;Hash&gt;:</td><td>Parameters for the route generation.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The generated URL.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+If a hash is used as the first argument, a default route will be generated
+based on it and rparams.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

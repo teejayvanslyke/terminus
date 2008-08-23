@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: seconds
+block_params: 
+comment: 
+full_name: TimeDSL#second
+is_singleton: false
+name: second
+params: ()
+visibility: public

@@ -1,0 +1,23 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Small utility class for working with the Hpricot parser class
+constants: []
+
+full_name: Merb::Test::ViewHelper::DocumentOutput
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: content_for
+- !ruby/object:RI::MethodSummary 
+  name: content_for_all
+name: DocumentOutput
+superclass: Object

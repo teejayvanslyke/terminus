@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: print_warnings
+- !ruby/object:RI::MethodSummary 
+  name: run
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set up the logger.
+- !ruby/struct:SM::Flow::P 
+  body: Place the logger inside of the Merb log directory (set up in Merb::BootLoader::BuildFramework)
+constants: []
+
+full_name: Merb::BootLoader::Logger
+includes: []
+
+instance_methods: []
+
+name: Logger
+superclass: Merb::BootLoader

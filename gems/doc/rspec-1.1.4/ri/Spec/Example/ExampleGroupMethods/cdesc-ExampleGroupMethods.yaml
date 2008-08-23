@@ -1,0 +1,91 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: described_module
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: description_args
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: description_options
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: description_text
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: registration_binding_block
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: spec_path
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: description_text
+comment: 
+constants: []
+
+full_name: Spec::Example::ExampleGroupMethods
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Spec::Plugins::MockFramework
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: after
+- !ruby/object:RI::MethodSummary 
+  name: append_after
+- !ruby/object:RI::MethodSummary 
+  name: append_before
+- !ruby/object:RI::MethodSummary 
+  name: before
+- !ruby/object:RI::MethodSummary 
+  name: context
+- !ruby/object:RI::MethodSummary 
+  name: describe
+- !ruby/object:RI::MethodSummary 
+  name: described_type
+- !ruby/object:RI::MethodSummary 
+  name: description
+- !ruby/object:RI::MethodSummary 
+  name: inherited
+- !ruby/object:RI::MethodSummary 
+  name: it
+- !ruby/object:RI::MethodSummary 
+  name: it_should_behave_like
+- !ruby/object:RI::MethodSummary 
+  name: predicate_matchers
+- !ruby/object:RI::MethodSummary 
+  name: prepend_after
+- !ruby/object:RI::MethodSummary 
+  name: prepend_before
+- !ruby/object:RI::MethodSummary 
+  name: register
+- !ruby/object:RI::MethodSummary 
+  name: registration_backtrace
+- !ruby/object:RI::MethodSummary 
+  name: remove_after
+- !ruby/object:RI::MethodSummary 
+  name: run
+- !ruby/object:RI::MethodSummary 
+  name: run_after_each
+- !ruby/object:RI::MethodSummary 
+  name: run_before_each
+- !ruby/object:RI::MethodSummary 
+  name: set_description
+- !ruby/object:RI::MethodSummary 
+  name: setup
+- !ruby/object:RI::MethodSummary 
+  name: specify
+- !ruby/object:RI::MethodSummary 
+  name: teardown
+- !ruby/object:RI::MethodSummary 
+  name: xit
+- !ruby/object:RI::MethodSummary 
+  name: xspecify
+name: ExampleGroupMethods
+superclass: 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>template_for (Merb::Template)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/controller/template.rb, line 63</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">template_for</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">template_stack</span> = [])
+      <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">path</span>)
+      
+      <span class="ruby-identifier">ret</span> = 
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:reload_templates</span>]
+        <span class="ruby-identifier">file</span> = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{path}.{#{template_extensions.join(',')}}&quot;</span>].<span class="ruby-identifier">first</span>
+        <span class="ruby-constant">METHOD_LIST</span>[<span class="ruby-identifier">path</span>] = <span class="ruby-identifier">file</span> <span class="ruby-value">? </span><span class="ruby-identifier">inline_template</span>(<span class="ruby-identifier">load_template_io</span>(<span class="ruby-identifier">file</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-constant">METHOD_LIST</span>[<span class="ruby-identifier">path</span>] <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">file</span> = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{path}.{#{template_extensions.join(',')}}&quot;</span>].<span class="ruby-identifier">first</span>          
+          <span class="ruby-identifier">file</span> <span class="ruby-value">? </span><span class="ruby-identifier">inline_template</span>(<span class="ruby-identifier">load_template_io</span>(<span class="ruby-identifier">file</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-identifier">ret</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

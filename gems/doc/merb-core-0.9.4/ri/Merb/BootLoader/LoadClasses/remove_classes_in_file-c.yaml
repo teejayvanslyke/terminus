@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: file if block_given?
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "file<String>:"
+    body: The file to remove classes for.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: A block to call with the file that has been removed.
+  type: :NOTE
+full_name: Merb::BootLoader::LoadClasses::remove_classes_in_file
+is_singleton: true
+name: remove_classes_in_file
+params: (file, &block) {|file if block_given?| ...}
+visibility: public

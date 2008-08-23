@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>stream_file (Merb::ControllerMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/controller/mixins/controller.rb, line 219</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stream_file</span>(<span class="ruby-identifier">opts</span>={}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">stream</span>)
+      <span class="ruby-identifier">must_support_streaming!</span>
+      <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Const</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_SEND_FILE_OPTIONS</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">opts</span>))
+      <span class="ruby-identifier">disposition</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:disposition</span>].<span class="ruby-identifier">dup</span> <span class="ruby-operator">||</span> <span class="ruby-value str">'attachment'</span>
+      <span class="ruby-identifier">disposition</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%(; filename=&quot;#{opts[:filename]}&quot;)</span>
+      <span class="ruby-identifier">headers</span>.<span class="ruby-identifier">update</span>(
+        <span class="ruby-value str">'Content-Type'</span>              =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:type</span>].<span class="ruby-identifier">strip</span>,  <span class="ruby-comment cmt"># fixes a problem with extra '\r' with some browsers</span>
+        <span class="ruby-value str">'Content-Disposition'</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">disposition</span>,
+        <span class="ruby-value str">'Content-Transfer-Encoding'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'binary'</span>,
+        <span class="ruby-comment cmt"># Rack specification requires header values to respond to :each</span>
+        <span class="ruby-value str">'CONTENT-LENGTH'</span>            =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:content_length</span>].<span class="ruby-identifier">to_s</span>
+      )
+      <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">response</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">response</span>.<span class="ruby-identifier">send_status</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:content_length</span>])
+        <span class="ruby-identifier">response</span>.<span class="ruby-identifier">send_header</span>
+        <span class="ruby-identifier">stream</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">response</span>)
+      }
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

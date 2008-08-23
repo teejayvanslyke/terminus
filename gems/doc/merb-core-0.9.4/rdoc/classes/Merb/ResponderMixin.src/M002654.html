@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>content_type= (Merb::ResponderMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/controller/mixins/responder.rb, line 333</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">content_type=</span>(<span class="ruby-identifier">type</span>)
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">available_mime_types</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">type</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">ControllerExceptions</span><span class="ruby-operator">::</span><span class="ruby-constant">NotAcceptable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Unknown content_type for response: #{type}&quot;</span>) 
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">mime</span> = <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">available_mime_types</span>[<span class="ruby-identifier">type</span>]
+      
+      <span class="ruby-identifier">headers</span>[<span class="ruby-value str">&quot;Content-Type&quot;</span>] = <span class="ruby-identifier">mime</span>[<span class="ruby-identifier">:content_type</span>]
+      
+      <span class="ruby-comment cmt"># merge any format specific response headers</span>
+      <span class="ruby-identifier">mime</span>[<span class="ruby-identifier">:response_headers</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">headers</span>[<span class="ruby-identifier">k</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">v</span> }
+      
+      <span class="ruby-comment cmt"># if given, use a block to finetune any runtime headers</span>
+      <span class="ruby-identifier">mime</span>[<span class="ruby-identifier">:response_block</span>].<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mime</span>[<span class="ruby-identifier">:response_block</span>]
+
+      <span class="ruby-ivar">@_content_type</span> = <span class="ruby-identifier">type</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

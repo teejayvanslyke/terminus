@@ -1,0 +1,41 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: r
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a namespace for a route. This way you can have logical separation to your routes.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name_or_path<String, Symbol>:"
+    body: The name or path of the namespace.
+  - !ruby/struct:SM::Flow::LI 
+    label: "options<Hash>:"
+    body: Optional hash, set :path if you want to override what appears on the url
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: A new Behavior instance is yielded in the block for nested resources.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Block parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "r<Behavior>:"
+    body: The namespace behavior object.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  r.namespace :admin do |admin|\n    admin.resources :accounts\n    admin.resource :email\n  end\n\n  # /super_admin/accounts\n  r.namespace(:admin, :path=&gt;&quot;super_admin&quot;) do |admin|\n    admin.resources :accounts\n  end\n"
+full_name: Merb::Router::Behavior#namespace
+is_singleton: false
+name: namespace
+params: (name_or_path, options={}, &block) {|r| ...}
+visibility: public

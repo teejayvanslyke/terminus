@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: openobject.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>openobject.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/more/facets/openobject.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 18 22:34:51 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../../../../classes/OpenObject.html">OpenObject</a></h1>
+<p>
+<a href="../../../../classes/OpenObject.html">OpenObject</a> is very
+similar to Ruby&#8216;s own <a
+href="../../../../classes/OpenStruct.html">OpenStruct</a>, but it offers
+some useful advantages. With <a
+href="../../../../classes/OpenStruct.html">OpenStruct</a> slots with the
+same name&#8216;s as predefined Object methods can not be used. With <a
+href="../../../../classes/OpenObject.html">OpenObject</a> any slot can be
+defined, OpendObject is also a bit faster becuase it is based on a Hash,
+not method signitures.
+</p>
+<p>
+Because <a href="../../../../classes/OpenObject.html">OpenObject</a> is a
+subclass of Hash, it can do just about everything a Hash can do, except
+that most public methods have been made protected and thus available only
+internally or via send.
+</p>
+<p>
+<a href="../../../../classes/OpenObject.html">OpenObject</a> will also
+clobber any method for which a slot is defined. Even generally very
+important methods can be clobbered, like instance_eval. So be aware of
+this. <a href="../../../../classes/OpenObject.html">OpenObject</a> should
+be used in well controlled scenarios.
+</p>
+<p>
+If you wish to pass an <a
+href="../../../../classes/OpenObject.html">OpenObject</a> to a routine that
+normal takes a Hash, but are uncertain it can handle the distictions
+properly you can convert easily to a Hash using to_hash! and the result
+will automatically be converted back to an <a
+href="../../../../classes/OpenObject.html">OpenObject</a> on return.
+</p>
+<pre>
+  o = OpenObject.new(:a=&gt;1,:b=&gt;2)
+  o.as_hash!{ |h| h.update(:a=&gt;6) }
+  o #=&gt; #&lt;OpenObject {:a=&gt;6,:b=&gt;2}&gt;
+</pre>
+<p>
+Finally, unlike a regular Hash, all <a
+href="../../../../classes/OpenObject.html">OpenObject</a>&#8216;s keys are
+symbols and all keys are converted to such using to_sym on the fly.
+</p>
+<h2>Authors</h2>
+<ul>
+<li>Thomas Sawyer
+
+</li>
+<li>George Moschovitis
+
+</li>
+</ul>
+<h2>Copying</h2>
+<p>
+Copyright (c) 2005 Thomas Sawyer, George Moschovitis
+</p>
+<p>
+Ruby License
+</p>
+<p>
+This module is free software. You may use, modify, and/or redistribute this
+software under the same terms as Ruby.
+</p>
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.
+</p>
+
+    </div>
+
+    <div id="requires-list">
+      <h3 class="section-bar">Required files</h3>
+
+      <div class="name-list">
+      facets/hash/to_h&nbsp;&nbsp;
+      facets/hash/to_proc&nbsp;&nbsp;
+      facets/kernel/object_class&nbsp;&nbsp;
+      facets/kernel/object_hexid&nbsp;&nbsp;
+      </div>
+    </div>
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

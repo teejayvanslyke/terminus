@@ -1,0 +1,114 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: conditions
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: params
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: parent
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: placeholders
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: redirect_status
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: redirect_url
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: array_to_code
+- !ruby/object:RI::MethodSummary 
+  name: concat_without_endcaps
+- !ruby/object:RI::MethodSummary 
+  name: count_parens_up_to
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The Behavior class is an interim route-building class that ties pattern-matching <tt>conditions</tt> to output parameters, <tt>params</tt>.
+constants: []
+
+full_name: Merb::Router::Behavior
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add
+- !ruby/object:RI::MethodSummary 
+  name: ancestors
+- !ruby/object:RI::MethodSummary 
+  name: compiled_conditions
+- !ruby/object:RI::MethodSummary 
+  name: compiled_params
+- !ruby/object:RI::MethodSummary 
+  name: copy_original_conditions
+- !ruby/object:RI::MethodSummary 
+  name: deduce_placeholders
+- !ruby/object:RI::MethodSummary 
+  name: default_routes
+- !ruby/object:RI::MethodSummary 
+  name: defer_to
+- !ruby/object:RI::MethodSummary 
+  name: find_ancestors
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: many_behaviors_to
+- !ruby/object:RI::MethodSummary 
+  name: match
+- !ruby/object:RI::MethodSummary 
+  name: match!
+- !ruby/object:RI::MethodSummary 
+  name: match_without_path
+- !ruby/object:RI::MethodSummary 
+  name: merged_conditions
+- !ruby/object:RI::MethodSummary 
+  name: merged_original_conditions
+- !ruby/object:RI::MethodSummary 
+  name: merged_params
+- !ruby/object:RI::MethodSummary 
+  name: merged_placeholders
+- !ruby/object:RI::MethodSummary 
+  name: namespace
+- !ruby/object:RI::MethodSummary 
+  name: namespace_to_name_prefix
+- !ruby/object:RI::MethodSummary 
+  name: path_captures
+- !ruby/object:RI::MethodSummary 
+  name: redirect
+- !ruby/object:RI::MethodSummary 
+  name: redirects?
+- !ruby/object:RI::MethodSummary 
+  name: regexp?
+- !ruby/object:RI::MethodSummary 
+  name: resource
+- !ruby/object:RI::MethodSummary 
+  name: resource_behaviors
+- !ruby/object:RI::MethodSummary 
+  name: resources
+- !ruby/object:RI::MethodSummary 
+  name: resources_behaviors
+- !ruby/object:RI::MethodSummary 
+  name: stringify_conditions
+- !ruby/object:RI::MethodSummary 
+  name: to
+- !ruby/object:RI::MethodSummary 
+  name: to_resource
+- !ruby/object:RI::MethodSummary 
+  name: to_resources
+- !ruby/object:RI::MethodSummary 
+  name: to_route
+- !ruby/object:RI::MethodSummary 
+  name: total_previous_captures
+name: Behavior
+superclass: Object

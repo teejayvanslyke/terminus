@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Helpers::Form#submit_field
+is_singleton: false
+name: submit_field
+params: (attrs = {})
+visibility: public

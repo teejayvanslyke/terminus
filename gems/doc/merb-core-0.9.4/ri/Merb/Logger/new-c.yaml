@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: To initialize the logger you create a new object, proxies to set_log.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*args:"
+    body: Arguments to create the log from. See set_logs for specifics.
+  type: :NOTE
+full_name: Merb::Logger::new
+is_singleton: true
+name: new
+params: (*args)
+visibility: public

@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NO_CLOSE_STATUS_FORMAT
+  value: "\"HTTP/1.1 %d %s\\r\\n\".freeze"
+full_name: Mongrel::HttpResponse
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: send_status_no_connection_close
+name: HttpResponse
+superclass: Object

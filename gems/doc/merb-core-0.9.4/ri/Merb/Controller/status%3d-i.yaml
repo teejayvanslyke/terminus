@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set the response status code.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "s<Fixnum, Symbol>:"
+    body: A status-code or named http-status
+  type: :NOTE
+full_name: Merb::Controller#status=
+is_singleton: false
+name: status=
+params: (s)
+visibility: public

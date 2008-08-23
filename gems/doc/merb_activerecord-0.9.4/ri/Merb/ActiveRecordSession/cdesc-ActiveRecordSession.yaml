@@ -1,0 +1,56 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: data
+  rw: W
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: needs_new_cookie
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: create_table!
+- !ruby/object:RI::MethodSummary 
+  name: data_column_size_limit
+- !ruby/object:RI::MethodSummary 
+  name: drop_table!
+- !ruby/object:RI::MethodSummary 
+  name: generate
+- !ruby/object:RI::MethodSummary 
+  name: marshal
+- !ruby/object:RI::MethodSummary 
+  name: persist
+- !ruby/object:RI::MethodSummary 
+  name: reloadable?
+- !ruby/object:RI::MethodSummary 
+  name: unmarshal
+comment: 
+constants: []
+
+full_name: Merb::ActiveRecordSession
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: data
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: each_with_index
+- !ruby/object:RI::MethodSummary 
+  name: empty?
+- !ruby/object:RI::MethodSummary 
+  name: loaded?
+- !ruby/object:RI::MethodSummary 
+  name: refresh_expiration
+- !ruby/object:RI::MethodSummary 
+  name: regenerate
+name: ActiveRecordSession
+superclass: "::ActiveRecord::Base"

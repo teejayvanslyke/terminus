@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>load_classes (Merb::BootLoader::LoadClasses)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 377</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_classes</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">paths</span>)
+      <span class="ruby-identifier">orphaned_classes</span> = []
+      <span class="ruby-identifier">paths</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+        <span class="ruby-constant">Dir</span>[<span class="ruby-identifier">path</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">begin</span>
+            <span class="ruby-identifier">load_file</span> <span class="ruby-identifier">file</span>
+          <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ne</span>
+            <span class="ruby-identifier">orphaned_classes</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">file</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">load_classes_with_requirements</span>(<span class="ruby-identifier">orphaned_classes</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

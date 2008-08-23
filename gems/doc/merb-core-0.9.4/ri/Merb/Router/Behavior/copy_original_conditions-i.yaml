@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Store the conditions as original conditions.
+full_name: Merb::Router::Behavior#copy_original_conditions
+is_singleton: false
+name: copy_original_conditions
+params: ()
+visibility: protected

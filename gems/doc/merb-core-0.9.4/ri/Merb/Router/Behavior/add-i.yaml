@@ -1,0 +1,33 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Register a new route.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<String, Regex>:"
+    body: The url path to match
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: The parameters the new routes maps to.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Route:"
+    body: The resulting Route.
+  type: :NOTE
+full_name: Merb::Router::Behavior#add
+is_singleton: false
+name: add
+params: (path, params = {})
+visibility: public

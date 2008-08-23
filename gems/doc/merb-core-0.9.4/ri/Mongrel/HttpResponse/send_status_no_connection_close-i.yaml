@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sends the status to the client without closing the connection.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "content_length<Fixnum>:"
+    body: The length of the content. Defaults to body length.
+  type: :NOTE
+full_name: Mongrel::HttpResponse#send_status_no_connection_close
+is_singleton: false
+name: send_status_no_connection_close
+params: (content_length=@body.length)
+visibility: public

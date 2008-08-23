@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: actual
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: expected
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Merb::Test::Rspec::RouteMatchers::ParameterMatcher
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: failure_message
+- !ruby/object:RI::MethodSummary 
+  name: matches?
+- !ruby/object:RI::MethodSummary 
+  name: negative_failure_message
+name: ParameterMatcher
+superclass: Object

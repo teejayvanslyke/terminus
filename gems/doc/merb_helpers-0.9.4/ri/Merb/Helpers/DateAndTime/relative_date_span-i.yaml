@@ -1,0 +1,35 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Gives you a relative date span in an attractive format
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "times<~first,~last>:"
+    body: The Dates or Times to test
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The sexy relative date span
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  relative_date([1.second.ago, 10.seconds.ago]) =&gt; &quot;March 10th&quot;\n  relative_date([1.year.ago, 1.year.ago) =&gt; &quot;March 10th, 2007&quot;\n  relative_date([Time.now, 1.day.from_now]) =&gt; &quot;March 10th - 11th&quot;\n  relative_date([Time.now, 1.year.ago]) =&gt; &quot;March 10th, 2007 - March 10th, 2008&quot;\n"
+full_name: Merb::Helpers::DateAndTime#relative_date_span
+is_singleton: false
+name: relative_date_span
+params: (times)
+visibility: public

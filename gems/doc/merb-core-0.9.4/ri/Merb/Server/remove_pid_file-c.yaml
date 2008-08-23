@@ -1,0 +1,26 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Removes a PID file used by the server from the filesystem. This uses :pid_file options from configuration when provided or merb.&lt;port&gt;.pid in log directory by default.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "port<~to_s>:"
+    body: The port of the Merb process to whom the the PID file belongs to.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If Merb::Config[:pid_file] has been specified, that will be used instead of the port based PID file.
+full_name: Merb::Server::remove_pid_file
+is_singleton: true
+name: remove_pid_file
+params: (port)
+visibility: public

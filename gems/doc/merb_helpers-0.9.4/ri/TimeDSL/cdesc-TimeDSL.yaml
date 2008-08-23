@@ -1,0 +1,57 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a a simple way of calling time units and to see the elapsed time between 2 moments
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  142.minutes =&gt; returns a value in seconds\n  7.days =&gt; returns a value in seconds\n  1.week =&gt; returns a value in seconds\n  2.weeks.ago =&gt; returns a date\n  1.year.since(time) =&gt; returns a date\n  5.months.since(2.weeks.from_now) =&gt; returns a date\n"
+constants: []
+
+full_name: TimeDSL
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ago
+- !ruby/object:RI::MethodSummary 
+  name: day
+- !ruby/object:RI::MethodSummary 
+  name: days
+- !ruby/object:RI::MethodSummary 
+  name: from_now
+- !ruby/object:RI::MethodSummary 
+  name: hour
+- !ruby/object:RI::MethodSummary 
+  name: hours
+- !ruby/object:RI::MethodSummary 
+  name: minute
+- !ruby/object:RI::MethodSummary 
+  name: minutes
+- !ruby/object:RI::MethodSummary 
+  name: month
+- !ruby/object:RI::MethodSummary 
+  name: months
+- !ruby/object:RI::MethodSummary 
+  name: second
+- !ruby/object:RI::MethodSummary 
+  name: seconds
+- !ruby/object:RI::MethodSummary 
+  name: since
+- !ruby/object:RI::MethodSummary 
+  name: until
+- !ruby/object:RI::MethodSummary 
+  name: week
+- !ruby/object:RI::MethodSummary 
+  name: weeks
+- !ruby/object:RI::MethodSummary 
+  name: year
+- !ruby/object:RI::MethodSummary 
+  name: years
+name: TimeDSL
+superclass: 

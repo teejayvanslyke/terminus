@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "enabled<Boolean>:"
+    body: True enables fixation on the route.
+  type: :NOTE
+full_name: Merb::Router::Route#fixatable
+is_singleton: false
+name: fixatable
+params: (enable=true)
+visibility: public

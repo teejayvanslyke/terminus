@@ -1,0 +1,35 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An HTTP POST request that operates through the router and uses multipart parameters.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<String>:"
+    body: The path that should go to the router as the request uri.
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: An optional hash that will end up as params in the controller instance.
+  - !ruby/struct:SM::Flow::LI 
+    label: "env<Hash>:"
+    body: An optional hash that is passed to the fake request. Any request options should go here (see <tt>fake_request</tt>).
+  - !ruby/struct:SM::Flow::LI 
+    label: "block<Proc>:"
+    body: The block is executed in the context of the controller.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: To include an uploaded file, put a file object as a value in params.
+full_name: Merb::Test::MultipartRequestHelper#multipart_post
+is_singleton: false
+name: multipart_post
+params: (path, params = {}, env = {}, &block)
+visibility: public

@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sets the cached code for a specific index.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "index<Fixnum>:"
+    body: The index of the cached code to set.
+  - !ruby/struct:SM::Flow::LI 
+    label: "code<CachedProc>:"
+    body: The cached code to set.
+  type: :NOTE
+full_name: Merb::Router::CachedProc::[]=
+is_singleton: true
+name: "[]="
+params: (index, code)
+visibility: public

@@ -1,0 +1,68 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Render a partial template.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "template<~to_s>:"
+    body: The path to the template, relative to the current controller or the template root; absolute path will work too. If the template contains a &quot;/&quot;, Merb will search for it relative to the template root; otherwise, Merb will search for it relative to the current controller.
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: A hash of options (see below)
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opts)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":with<Object, Array>:"
+    body: An object or an array of objects that will be passed into the partial.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":as<~to_sym>:"
+    body: The local name of the :with Object inside of the partial.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":format<Symbol>:"
+    body: The mime format that you want the partial to be in (:js, :html, etc.)
+  - !ruby/struct:SM::Flow::LI 
+    label: "others:"
+    body: A Hash object names and values that will be the local names and values inside the partial.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  partial :foo, :hello =&gt; @object\n"
+- !ruby/struct:SM::Flow::P 
+  body: The &quot;_foo&quot; partial will be called, relative to the current controller, with a local variable of <tt>hello</tt> inside of it, assigned to @object.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  partial :bar, :with =&gt; ['one', 'two', 'three']\n"
+- !ruby/struct:SM::Flow::P 
+  body: "The &quot;_bar&quot; partial will be called once for each element of the array specified by :with for a total of three iterations. Each element of the array will be available in the partial via a local variable named <tt>bar</tt>. Additionally, there will be two extra local variables: <tt>collection_index</tt> and <tt>collection_size</tt>. <tt>collection_index</tt> is the index of the object currently referenced by <tt>bar</tt> in the collection passed to the partial. <tt>collection_size</tt> is the total size of the collection."
+- !ruby/struct:SM::Flow::P 
+  body: By default, the object specified by :with will be available through a local variable with the same name as the partial template. However, this can be changed using the :as option.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  partial :bar, :with =&gt; &quot;one&quot;, :as =&gt; :number\n"
+- !ruby/struct:SM::Flow::P 
+  body: In this case, &quot;one&quot; will be available in the partial through the local variable named <tt>number</tt>.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: "It is important to note that the object being passed to the partial as well as any extra local variables cannot use names of helper methods since any helper method of the same name will take precedence over the passed variable. Example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  partial :bar, :with =&gt; &quot;one&quot;, :as =&gt; :partial\n"
+- !ruby/struct:SM::Flow::P 
+  body: In this case, &quot;one&quot; will not be available in the partial because &quot;partial&quot; is already a helper method.
+full_name: Merb::RenderMixin#partial
+is_singleton: false
+name: partial
+params: (template, opts={})
+visibility: public

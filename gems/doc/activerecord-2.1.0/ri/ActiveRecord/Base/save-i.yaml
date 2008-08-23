@@ -1,0 +1,25 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "No record exists: Creates a new record with values matching those of the object attributes."
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "A record does exist: Updates the record with values matching those of the object attributes."
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: "Note: If your model specifies any validations then the method declaration dynamically changes to:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  save(perform_validation=true)\n"
+- !ruby/struct:SM::Flow::P 
+  body: Calling save(false) saves the model without running validations. See ActiveRecord::Validations for more information.
+full_name: ActiveRecord::Base#save
+is_singleton: false
+name: save
+params: ()
+visibility: public

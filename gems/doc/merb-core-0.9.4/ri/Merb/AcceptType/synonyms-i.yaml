@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[String]:"
+    body: All Accept header values, such as &quot;text/html&quot;, that match this type.
+  type: :NOTE
+full_name: Merb::AcceptType#synonyms
+is_singleton: false
+name: synonyms
+params: ()
+visibility: public

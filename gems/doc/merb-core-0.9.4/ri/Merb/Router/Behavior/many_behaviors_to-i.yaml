@@ -1,0 +1,34 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "behaviors<Array>:"
+    body: The behaviors to create routes from.
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: Optional params for the route generation.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&conditional_block:"
+    body: Optional block for the route generation.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array:"
+    body: The routes matching the behaviors.
+  type: :NOTE
+full_name: Merb::Router::Behavior#many_behaviors_to
+is_singleton: false
+name: many_behaviors_to
+params: (behaviors, params = {}, &conditional_block)
+visibility: protected

@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Merb::Controller</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Merb::Controller</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/merb-core/controller/merb_controller_rb.html">
+                lib/merb-core/controller/merb_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="AbstractController.html">
+                Merb::AbstractController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002873">_absolute_template_location</a>&nbsp;&nbsp;
+      <a href="#M002875">_dispatch</a>&nbsp;&nbsp;
+      <a href="#M002871">_filter_params</a>&nbsp;&nbsp;
+      <a href="#M002872">_template_location</a>&nbsp;&nbsp;
+      <a href="#M002870">callable_actions</a>&nbsp;&nbsp;
+      <a href="#M002879">cookies</a>&nbsp;&nbsp;
+      <a href="#M002868">hide_action</a>&nbsp;&nbsp;
+      <a href="#M002867">inherited</a>&nbsp;&nbsp;
+      <a href="#M002874">new</a>&nbsp;&nbsp;
+      <a href="#M002878">params</a>&nbsp;&nbsp;
+      <a href="#M002881">rack_response</a>&nbsp;&nbsp;
+      <a href="#M002880">session</a>&nbsp;&nbsp;
+      <a href="#M002869">show_action</a>&nbsp;&nbsp;
+      <a href="#M002876">status</a>&nbsp;&nbsp;
+      <a href="#M002877">status=</a>&nbsp;&nbsp;
+      <a href="#M002866">subclasses_list</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="ResponderMixin.html">Merb::ResponderMixin</a></span>
+        <span class="include-name"><a href="ControllerMixin.html">Merb::ControllerMixin</a></span>
+        <span class="include-name"><a href="AuthenticationMixin.html">Merb::AuthenticationMixin</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">headers</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">request</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002871" class="method-detail">
+        <a name="M002871"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002871.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002871.html');return false;">
+          <span class="method-name">_filter_params</span><span class="method-args">(params)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This is a stub method so plugins can implement param filtering if they
+want.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top"><a href="Controller.html#M002878">params</a>&lt;Hash{Symbol =&gt; <a href="../String.html">String</a>}&gt;:</td><td>A list of <a href="Controller.html#M002878">params</a>
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Hash{Symbol =&gt; <a href="../String.html">String</a>}:</td><td>A <a href="Controller.html#M002874">new</a> list of <a
+href="Controller.html#M002878">params</a>, filtered as desired
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002870" class="method-detail">
+        <a name="M002870"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002870.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002870.html');return false;">
+          <span class="method-name">callable_actions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The list of actions that are callable, after taking defaults,
+_hidden_actions and _shown_actions into consideration. It is calculated
+once, the first time an action is dispatched for this controller.
+</p>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">SimpleSet[<a href="../String.html">String</a>]:</td><td>A set of actions that should be callable.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002868" class="method-detail">
+        <a name="M002868"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002868.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002868.html');return false;">
+          <span class="method-name">hide_action</span><span class="method-args">(*names)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Hide each of the given methods from being callable as actions.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">*names&lt;~to-s&gt;:</td><td>Actions that should be added to the list.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Array[<a href="../String.html">String</a>]:</td><td>An array of actions that should not be possible to dispatch to.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002867" class="method-detail">
+        <a name="M002867"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002867.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002867.html');return false;">
+          <span class="method-name">inherited</span><span class="method-args">(klass)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">klass&lt;<a href="Controller.html">Merb::Controller</a>&gt;:</td><td>The <a href="Controller.html">Merb::Controller</a> inheriting from the base
+class.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002874" class="method-detail">
+        <a name="M002874"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002874.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002874.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(request, status=200, headers={'Content-Type' =&gt; 'text/html; charset=utf-8'})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Build a <a href="Controller.html#M002874">new</a> controller.
+</p>
+<p>
+Sets the variables that came in through the dispatch as available to the
+controller.
+</p>
+<p>
+This method uses the :session_id_cookie_only and :query_string_whitelist
+configuration options. See CONFIG for more details.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">request&lt;<a href="Request.html">Merb::Request</a>&gt;:</td><td>The <a href="Request.html">Merb::Request</a> that came in from <a
+href="../Mongrel.html">Mongrel</a>.
+
+</td></tr>
+<tr><td valign="top"><a href="Controller.html#M002876">status</a>&lt;Integer&gt;:</td><td>An integer code for the <a href="Controller.html#M002876">status</a>.
+Defaults to 200.
+
+</td></tr>
+<tr><td valign="top">headers&lt;Hash{header =&gt; value}&gt;:</td><td>A hash of headers to start the controller with. These headers can be
+overridden later by the headers method.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002869" class="method-detail">
+        <a name="M002869"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002869.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002869.html');return false;">
+          <span class="method-name">show_action</span><span class="method-args">(*names)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Makes each of the given methods being callable as actions. You can use this
+to make methods included from modules callable as actions.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">*names&lt;~to-s&gt;:</td><td>Actions that should be added to the list.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Array[<a href="../String.html">String</a>]:</td><td>An array of actions that should be dispatched to even if they would not
+otherwise be.
+
+</td></tr>
+</table>
+<h4>Example</h4>
+<pre>
+  module Foo
+    def self.included(base)
+      base.show_action(:foo)
+    end
+
+    def foo
+      # some actiony stuff
+    end
+
+    def foo_helper
+      # this should not be an action
+    end
+  end
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002866" class="method-detail">
+        <a name="M002866"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002866.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002866.html');return false;">
+          <span class="method-name">subclasses_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002873" class="method-detail">
+        <a name="M002873"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002873.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002873.html');return false;">
+          <span class="method-name">_absolute_template_location</span><span class="method-args">(template, type)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The location to look for a template and mime-type. This is overridden from
+<a href="AbstractController.html">AbstractController</a>, which defines a
+version of this that does not involve mime-types.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">template&lt;<a href="../String.html">String</a>&gt;:</td><td>The absolute path to a template - without mime and template extension. The
+mime-type extension is optional - it will be appended from the current
+content type if it hasn&#8216;t been added already.
+
+</td></tr>
+<tr><td valign="top">type&lt;~to_s&gt;:</td><td>The mime-type of the template that will be rendered. Defaults to nil.
+
+</td></tr>
+</table>
+<p>
+@public
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002875" class="method-detail">
+        <a name="M002875"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002875.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002875.html');return false;">
+          <span class="method-name">_dispatch</span><span class="method-args">(action=:index)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Dispatch the action.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">action&lt;~to_s&gt;:</td><td>An action to dispatch to. Defaults to :index.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The string sent to the logger for time spent.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top">ActionNotFound:</td><td>The requested action was not found in class.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002872" class="method-detail">
+        <a name="M002872"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002872.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002872.html');return false;">
+          <span class="method-name">_template_location</span><span class="method-args">(context, type = nil, controller = controller_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The location to look for a template for a particular controller, context,
+and mime-type. This is overridden from <a
+href="AbstractController.html">AbstractController</a>, which defines a
+version of this that does not involve mime-types.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">context&lt;~to_s&gt;:</td><td>The name of the action or template basename that will be rendered.
+
+</td></tr>
+<tr><td valign="top">type&lt;~to_s&gt;:</td><td>The mime-type of the template that will be rendered. Defaults to nil.
+
+</td></tr>
+<tr><td valign="top">controller&lt;~to_s&gt;:</td><td>The name of the controller that will be rendered. Defaults to
+controller_name.
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+By default, this renders &quot;:controller/:action.:type&quot;. To change
+this, override it in your application class or in individual controllers.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002879" class="method-detail">
+        <a name="M002879"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002879.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002879.html');return false;">
+          <span class="method-name">cookies</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="Cookies.html">Merb::Cookies</a>:</td><td>A <a href="Controller.html#M002874">new</a> <a
+href="Cookies.html">Merb::Cookies</a> instance representing the <a
+href="Controller.html#M002879">cookies</a> that came in from the request
+object
+
+</td></tr>
+</table>
+<h4>Notes</h4>
+<p>
+Headers are passed into the cookie object so that you can do:
+</p>
+<pre>
+  cookies[:foo] = &quot;bar&quot;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002878" class="method-detail">
+        <a name="M002878"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002878.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002878.html');return false;">
+          <span class="method-name">params</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Hash:</td><td>The parameters from the request object
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002881" class="method-detail">
+        <a name="M002881"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002881.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002881.html');return false;">
+          <span class="method-name">rack_response</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+The results of the controller&#8216;s render, to be returned to <a
+href="Rack.html">Rack</a>.
+</p>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Array[Integer, Hash, <a href="../String.html">String</a>]:</td><td>The controller&#8216;s <a href="Controller.html#M002876">status</a> code,
+headers, and body
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002880" class="method-detail">
+        <a name="M002880"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002880.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002880.html');return false;">
+          <span class="method-name">session</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Hash:</td><td>The <a href="Controller.html#M002880">session</a> that was extracted from
+the request object.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002876" class="method-detail">
+        <a name="M002876"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002876.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002876.html');return false;">
+          <span class="method-name">status</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M002877" class="method-detail">
+        <a name="M002877"></a>
+
+        <div class="method-heading">
+          <a href="Controller.src/M002877.html" target="Code" class="method-signature"
+            onclick="popupCode('Controller.src/M002877.html');return false;">
+          <span class="method-name">status=</span><span class="method-args">(s)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set the response <a href="Controller.html#M002876">status</a> code.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">s&lt;Fixnum, Symbol&gt;:</td><td>A <a href="Controller.html#M002876">status</a>-code or named http-<a
+href="Controller.html#M002876">status</a>
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

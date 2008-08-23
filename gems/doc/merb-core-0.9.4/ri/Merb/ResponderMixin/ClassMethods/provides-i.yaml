@@ -1,0 +1,35 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Adds symbols representing formats to the controller's default list of provided_formats. These will apply to every action in the controller, unless modified in the action. If the last argument is a Hash or an Array, these are regarded as arguments to pass to the to_&lt;mime_type&gt; method as needed.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*formats<Symbol>:"
+    body: A list of mime-types that the controller should provide.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[Symbol]:"
+    body: List of formats passed in.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  provides :html, :xml\n"
+full_name: Merb::ResponderMixin::ClassMethods#provides
+is_singleton: false
+name: provides
+params: (*formats)
+visibility: public

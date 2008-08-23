@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Removes formats from the list of provided formats for this particular request. Usually used to remove formats from a single action. See also the controller-level does_not_provide that affects all actions in a controller.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*formats<Symbol>:"
+    body: Registered mime-type
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[Symbol]:"
+    body: List of formats that remain after removing the ones not to provide.
+  type: :NOTE
+full_name: Merb::ResponderMixin#does_not_provide
+is_singleton: false
+name: does_not_provide
+params: (*formats)
+visibility: public

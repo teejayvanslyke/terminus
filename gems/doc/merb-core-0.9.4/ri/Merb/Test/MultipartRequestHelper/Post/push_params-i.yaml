@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Saves the params in an array of multipart params as Param and FileParam objects.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: The params to add to the multipart params.
+  - !ruby/struct:SM::Flow::LI 
+    label: "prefix<~to_s>:"
+    body: An optional prefix for the request string keys.
+  type: :NOTE
+full_name: Merb::Test::MultipartRequestHelper::Post#push_params
+is_singleton: false
+name: push_params
+params: (params, prefix = nil)
+visibility: public

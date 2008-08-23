@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a generic HTML radio input tag. Normally, you would use multipe <tt>radio_field</tt>.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "    &lt;%= radio_field :name =&gt; &quot;radio_options&quot;, :value =&gt; &quot;1&quot;, :label =&gt; &quot;One&quot; %&gt;\n    &lt;%= radio_field :name =&gt; &quot;radio_options&quot;, :value =&gt; &quot;2&quot;, :label =&gt; &quot;Two&quot; %&gt;\n    &lt;%= radio_field :name =&gt; &quot;radio_options&quot;, :value =&gt; &quot;3&quot;, :label =&gt; &quot;Three&quot;, :checked =&gt; true %&gt;\n"
+full_name: Merb::Helpers::Form#radio_field
+is_singleton: false
+name: radio_field
+params: (attrs = {})
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Reload application and framework classes. See Merb::BootLoader::ReloadClasses for details.
+full_name: Merb::reload
+is_singleton: true
+name: reload
+params: ()
+visibility: public

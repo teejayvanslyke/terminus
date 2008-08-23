@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Replaces an existing logger with a new one.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "log<IO, String>:"
+    body: Either an IO object or a name of a logfile.
+  - !ruby/struct:SM::Flow::LI 
+    label: "log_level<~to_sym>:"
+    body: The log level from, e.g. :fatal or :info. Defaults to :error in the production environment and :debug otherwise.
+  - !ruby/struct:SM::Flow::LI 
+    label: "delimiter<String>:"
+    body: Delimiter to use between message sections. Defaults to &quot; ~ &quot;.
+  - !ruby/struct:SM::Flow::LI 
+    label: "auto_flush<Boolean>:"
+    body: Whether the log should automatically flush after new messages are added. Defaults to false.
+  type: :NOTE
+full_name: Merb::Logger#set_log
+is_singleton: false
+name: set_log
+params: (log, log_level = nil, delimiter = " ~ ", auto_flush = false)
+visibility: public

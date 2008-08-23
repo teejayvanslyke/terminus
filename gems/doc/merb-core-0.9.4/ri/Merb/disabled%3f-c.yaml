@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Boolean:"
+    body: True if all components (or just one) are disabled.
+  type: :NOTE
+full_name: Merb::disabled?
+is_singleton: true
+name: disabled?
+params: (*components)
+visibility: public

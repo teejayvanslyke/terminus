@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: duration.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>duration.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/more/facets/duration.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 18 22:34:51 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../../../../classes/Duration.html">Duration</a></h1>
+<p>
+<a href="../../../../classes/Duration.html">Duration</a> is a simple class
+that provides ways of easily manipulating durations (timespans) and
+formatting them as well.
+</p>
+<pre>
+  require 'duration'
+  =&gt; true
+  d = Duration.new(60 * 60 * 24 * 10 + 120 + 30)
+  =&gt; #&lt;Duration: 1 week, 3 days, 2 minutes and 30 seconds&gt;
+  d.to_s
+  =&gt; &quot;1 week, 3 days, 2 minutes and 30 seconds&quot;
+  [d.weeks, d.days]
+  =&gt; [1, 3]
+  d.days = 7; d
+  =&gt; #&lt;Duration: 2 weeks, 2 minutes and 30 seconds&gt;
+  d.strftime('%w w, %d d, %h h, %m m, %s s')
+  =&gt; &quot;2 w, 0 d, 0 h, 2 m, 30 s&quot;
+</pre>
+<h2>Author</h2>
+<ul>
+<li>Matthew Harris (<a
+href="mailto:shugotenshi@gmail.com">shugotenshi@gmail.com</a>)
+
+</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>This library comes from the orginal <a
+href="../../../../classes/Duration.html">Duration</a> project. See: <a
+href="http://www.rubyforge.org/projects/duration">www.rubyforge.org/projects/duration</a>
+
+</li>
+</ul>
+<h2>Copying</h2>
+<p>
+Copyright (c) 2006 Matthew Harris &lt;shugotenshi at gmail.com&gt;
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

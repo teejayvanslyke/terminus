@@ -1,0 +1,51 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Generates a URL based on the default route scheme of &quot;/:controller/:action/:id.:format&quot;.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: The primary parameters to create the route from (see below).
+  - !ruby/struct:SM::Flow::LI 
+    label: "fallback<Hash>:"
+    body: Fallback parameters. Same options as params.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (params)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":controller<~to_s>:"
+    body: The controller name. Required.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":action<~to_s>:"
+    body: The action name. Required.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":id<~to_s>:"
+    body: The ID for use in the action.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":format<~to_s>:"
+    body: The format of the preferred response.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The generated URL.
+  type: :NOTE
+full_name: Merb::Router::generate_for_default_route
+is_singleton: true
+name: generate_for_default_route
+params: (params, fallback)
+visibility: public

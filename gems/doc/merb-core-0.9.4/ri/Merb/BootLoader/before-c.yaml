@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "klass<~to_s>:"
+    body: The boot loader class before which this boot loader should be run.
+  type: :NOTE
+full_name: Merb::BootLoader::before
+is_singleton: true
+name: before
+params: (klass)
+visibility: public

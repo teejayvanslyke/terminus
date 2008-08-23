@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>check_for_secret_key (Merb::BootLoader::MixinSessionContainer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 628</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">check_for_secret_key</span>
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:session_secret_key</span>] <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:session_secret_key</span>].<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">16</span>)
+      <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-value str">&quot;You must specify a session_secret_key in your init file, and it must be at least 16 characters\nbailing out...&quot;</span>)
+      <span class="ruby-identifier">exit!</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Controller</span>.<span class="ruby-identifier">_session_secret_key</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:session_secret_key</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

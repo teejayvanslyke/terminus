@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Calls the concatenate method for the selected template engine.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "str<String>:"
+    body: The string to concatenate to the buffer.
+  - !ruby/struct:SM::Flow::LI 
+    label: "binding<Binding>:"
+    body: The binding to use for the buffer.
+  type: :NOTE
+full_name: Merb::AbstractController#concat
+is_singleton: false
+name: concat
+params: (str, binding)
+visibility: public

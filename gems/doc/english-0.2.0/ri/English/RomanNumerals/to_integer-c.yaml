@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts <tt>roman_string</tt>, a roman numeral, to an integer
+full_name: English::RomanNumerals::to_integer
+is_singleton: true
+name: to_integer
+params: (roman_string)
+visibility: public

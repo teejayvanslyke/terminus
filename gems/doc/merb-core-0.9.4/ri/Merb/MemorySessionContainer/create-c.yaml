@@ -1,0 +1,33 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a new session based on the options.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: The session options (see below).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opts)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":session_id<String>:"
+    body: ID of the session to create in the container.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":data<MemorySession>:"
+    body: The session to create in the container.
+  type: :NOTE
+full_name: Merb::MemorySessionContainer::create
+is_singleton: true
+name: create
+params: (opts={})
+visibility: public

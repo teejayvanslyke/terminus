@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Convert conditions to regular expression string sources for consistency.
+full_name: Merb::Router::Behavior#stringify_conditions
+is_singleton: false
+name: stringify_conditions
+params: ()
+visibility: protected

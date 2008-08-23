@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #second"
+full_name: TimeDSL#seconds
+is_singleton: false
+name: seconds
+params: ()
+visibility: public

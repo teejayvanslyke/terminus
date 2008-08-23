@@ -1,0 +1,43 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_s>:"
+    body: Name of the cookie.
+  - !ruby/struct:SM::Flow::LI 
+    label: "value<~to_s>:"
+    body: Value of the cookie.
+  - !ruby/struct:SM::Flow::LI 
+    label: "options<Hash>:"
+    body: Additional options for the cookie (see below).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (options)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":path<String>:"
+    body: The path for which this cookie applies. Defaults to &quot;/&quot;.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":expires<Time>:"
+    body: Cookie expiry date.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":domain<String>:"
+    body: The domain for which this cookie applies.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":secure<Boolean>:"
+    body: Security flag.
+  type: :NOTE
+full_name: Merb::Cookies#set_cookie
+is_singleton: false
+name: set_cookie
+params: (name, value, options)
+visibility: public

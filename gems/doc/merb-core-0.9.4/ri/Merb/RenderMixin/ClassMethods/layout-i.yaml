@@ -1,0 +1,35 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set the default layout to use or nil/false to disable layout rendering. This is a shortcut for render_options :layout =&gt; false.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "layout<~to_s>:"
+    body: The layout that should be used for this class.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: You can override by passing :layout =&gt; true to render method.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash:"
+    body: The default render options.
+  type: :NOTE
+full_name: Merb::RenderMixin::ClassMethods#layout
+is_singleton: false
+name: layout
+params: (layout)
+visibility: public

@@ -1,0 +1,32 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Accepts a collection (hash, array, enumerable, your type) and returns a string of option tags. Given a collection where the elements respond to first and last (such as a two-element array), the &quot;lasts&quot; serve as option values and the &quot;firsts&quot; as option text. Hashes are turned into this form automatically, so the keys become &quot;firsts&quot; and values become lasts. If selected is specified, the matching &quot;last&quot; or element will get the selected option-tag. Selected may also be an array of values to be selected when using a multiple select.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &lt;%= options_for_select( [['apple','Apple Pie'],['orange','Orange Juice']], :selected =&gt; 'orange' )\n  =&gt; &lt;option value=&quot;apple&quot;&gt;Apple Pie&lt;/option&gt;&lt;option value=&quot;orange&quot; selected=&quot;selected&quot;&gt;Orange Juice&lt;/option&gt;\n\n  &lt;%= options_for_select( [['apple','Apple Pie'],['orange','Orange Juice']], :selected =&gt; ['orange','apple'], :prompt =&gt; 'Select One' )\n  =&gt; &lt;option value=&quot;&quot;&gt;Select One&lt;/option&gt;&lt;option value=&quot;apple&quot; selected=&quot;selected&quot;&gt;Apple Pie&lt;/option&gt;&lt;option value=&quot;orange&quot; selected=&quot;selected&quot;&gt;Orange Juice&lt;/option&gt;\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "+selected+:"
+    body: The value of a selected object, which may be either a string or an array.
+  - !ruby/struct:SM::Flow::LI 
+    label: "+prompt+:"
+    body: Adds an addtional option tag with the provided string with no value.
+  - !ruby/struct:SM::Flow::LI 
+    label: "+include_blank+:"
+    body: Adds an additional blank option tag with no value.
+  type: :NOTE
+full_name: Merb::Helpers::Form#options_for_select
+is_singleton: false
+name: options_for_select
+params: (collection, attrs = {})
+visibility: public

@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Boolean:"
+    body: True if this route is a regexp, i.e. its behavior or one of the behavior's ancestors is a regexp.
+  type: :NOTE
+full_name: Merb::Router::Route#regexp?
+is_singleton: false
+name: regexp?
+params: ()
+visibility: public

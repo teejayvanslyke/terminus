@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: extended
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Time.now.to_ordinalized_s :long
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: "&gt; &quot;February 28th, 2006 21:10&quot;"
+constants: []
+
+full_name: OrdinalizedFormatting
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Merb::Helpers::DateAndTime
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: strftime_ordinalized
+- !ruby/object:RI::MethodSummary 
+  name: to_ordinalized_s
+name: OrdinalizedFormatting
+superclass: 

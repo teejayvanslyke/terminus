@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This is a place holder to allow plugins etc a place to include testing helpers
+constants: []
+
+full_name: Merb::Test::Helpers
+includes: []
+
+instance_methods: []
+
+name: Helpers
+superclass: 

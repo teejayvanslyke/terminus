@@ -1,0 +1,47 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Streams a file over HTTP.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: Options for the file streaming (see below).
+  - !ruby/struct:SM::Flow::LI 
+    label: "&stream:"
+    body: A block that, when called, will return an object that responds to <tt>get_lines</tt> for streaming.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":disposition<String>:"
+    body: The disposition of the file send. Defaults to &quot;attachment&quot;.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":type<String>:"
+    body: The content type.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":content_length<Numeric>:"
+    body: The length of the content to send.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":filename<String>:"
+    body: The name to use for the streamed file.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  stream_file({ :filename =&gt; file_name, :type =&gt; content_type,\n    :content_length =&gt; content_length }) do |response|\n    AWS::S3::S3Object.stream(user.folder_name + &quot;-&quot; + user_file.unique_id, bucket_name) do |chunk|\n      response.write chunk\n    end\n  end\n"
+full_name: Merb::ControllerMixin#stream_file
+is_singleton: false
+name: stream_file
+params: (opts={}, &stream)
+visibility: public

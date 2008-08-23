@@ -1,0 +1,142 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: behavior
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: conditional_block
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: conditions
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: index
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: params
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: segments
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: symbol
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Route instances incapsulate information about particular route definition. Route definition ties number of conditions (URL match, HTTP request method) with resulting hash of route parameters: controller, action, format and named parameters from the URL."
+- !ruby/struct:SM::Flow::P 
+  body: "The following routes definition:"
+- !ruby/struct:SM::Flow::P 
+  body: Merb::Router.prepare do |r|
+- !ruby/struct:SM::Flow::VERB 
+  body: "  r.match(&quot;api/:action/:token.:format&quot;).to(:controller =&gt; &quot;dev&quot;).fixatable\n"
+- !ruby/struct:SM::Flow::P 
+  body: end
+- !ruby/struct:SM::Flow::P 
+  body: maps URL matching pattern to controller named &quot;dev&quot; and specifies fixation for that route. Path and request method are route conditions, controller name, action name, format and value of segment we decided to call :token are route parameters.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: How route definitions are used.
+- !ruby/struct:SM::Flow::P 
+  body: When routes are compiled, each route produces a string with eval-able if/elsif condition statement. This statement together with others constructs body of Merb::Router.match method. Condition statements are Ruby code in form of string.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Segments.
+- !ruby/struct:SM::Flow::P 
+  body: Route definitions use conventional syntax for named parameters. This splits route path into segments. Static (not changing) segments represented internally as strings, named parameters are stored as symbols and called symbol segments. Symbol segments map to groups in regular expression in resulting condition statement.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Route conditions.
+- !ruby/struct:SM::Flow::P 
+  body: Because route conditions include path matching, regular expression is created from string that uses :segment format to fetch groups and assign them to named parameters. This regular expression is used to produce compiled statement mentioned above.
+- !ruby/struct:SM::Flow::P 
+  body: Route conditions may also include user agent. Symbol segments
+- !ruby/struct:SM::Flow::P 
+  body: "Here is example of Route conditions: {"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  :path =&gt; /^\\/continents\\/?(\\.([^\\/.,;?]+))?$/,\n  :method =&gt; /^get$/\n"
+- !ruby/struct:SM::Flow::P 
+  body: "}"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Route parameters.
+- !ruby/struct:SM::Flow::P 
+  body: Route parameters is a Hash with controller name, action name and parameters key/value pairs. It is then merged with request.params hash.
+- !ruby/struct:SM::Flow::P 
+  body: "Example of route parameters:"
+- !ruby/struct:SM::Flow::P 
+  body: "{"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  :action =&gt; &quot;\\&quot;index\\&quot;&quot;,\n  :format =&gt; &quot;path2&quot;,\n  :controller =&gt; &quot;\\&quot;continents\\&quot;&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: "}"
+- !ruby/struct:SM::Flow::P 
+  body: Router takes first matching route and uses it's parameters to dispatch request to certain controller and action.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Behavior
+- !ruby/struct:SM::Flow::P 
+  body: Each route has utility collaborator called behavior that incapsulates additional information about route (like namespace or if route is deferred) and also provides utility methods.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Route registration.
+- !ruby/struct:SM::Flow::P 
+  body: When route is added to set of routes, it is called route registration. Registred route knows it's index in routes set.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Fixation
+- !ruby/struct:SM::Flow::P 
+  body: Fixatable routes allow setting of session key from GET params found in incoming request. This is very useful to allow certain URLs to be used by rich media applications and other kinds of clients that have no other way of passing session identifier.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Conditional block.
+- !ruby/struct:SM::Flow::P 
+  body: Conditional block is anonymous function that is evaluated when deferred routes are processed. Unless route is deferred, it has no condition block.
+constants: []
+
+full_name: Merb::Router::Route
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: allow_fixation?
+- !ruby/object:RI::MethodSummary 
+  name: behavior_trace
+- !ruby/object:RI::MethodSummary 
+  name: compile
+- !ruby/object:RI::MethodSummary 
+  name: fixatable
+- !ruby/object:RI::MethodSummary 
+  name: generate
+- !ruby/object:RI::MethodSummary 
+  name: if_conditions
+- !ruby/object:RI::MethodSummary 
+  name: name
+- !ruby/object:RI::MethodSummary 
+  name: redirect_status
+- !ruby/object:RI::MethodSummary 
+  name: redirect_url
+- !ruby/object:RI::MethodSummary 
+  name: redirects?
+- !ruby/object:RI::MethodSummary 
+  name: regexp?
+- !ruby/object:RI::MethodSummary 
+  name: register
+- !ruby/object:RI::MethodSummary 
+  name: segments_from_path
+- !ruby/object:RI::MethodSummary 
+  name: symbol_segments
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+name: Route
+superclass: Object

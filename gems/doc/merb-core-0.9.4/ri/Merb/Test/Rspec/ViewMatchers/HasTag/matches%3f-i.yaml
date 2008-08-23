@@ -1,0 +1,31 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "stringlike<Hpricot::Elem, StringIO, String>:"
+    body: The thing to search in.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&blk:"
+    body: An optional block for searching in child elements using with_tag.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Boolean:"
+    body: True if there was at least one match.
+  type: :NOTE
+full_name: Merb::Test::Rspec::ViewMatchers::HasTag#matches?
+is_singleton: false
+name: matches?
+params: (stringlike, &blk)
+visibility: public

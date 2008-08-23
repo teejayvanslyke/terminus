@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Erubis::MEruby
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: PercentLineEnhancer
+- !ruby/object:RI::IncludedModule 
+  name: StringBufferEnhancer
+instance_methods: []
+
+name: MEruby
+superclass: Erubis::Eruby

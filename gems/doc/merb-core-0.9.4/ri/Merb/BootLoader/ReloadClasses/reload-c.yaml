@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Reloads all files.
+full_name: Merb::BootLoader::ReloadClasses::reload
+is_singleton: true
+name: reload
+params: ()
+visibility: public

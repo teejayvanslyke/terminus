@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>handle (Merb::Dispatcher)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/dispatcher.rb, line 28</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">handle</span>(<span class="ruby-identifier">request</span>)
+        <span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Started request handling: #{start.to_s}&quot;</span>
+    
+        <span class="ruby-identifier">request</span>.<span class="ruby-identifier">find_route!</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">redirect</span>(<span class="ruby-identifier">request</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">redirects?</span>
+        
+        <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">controller</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;Routed to: #{request.params.inspect}&quot;</span>)
+        
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Controller</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotFound</span>, 
+            <span class="ruby-node">&quot;Controller '#{klass}' not found.\n&quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+            <span class="ruby-value str">&quot;If Merb tries to look for a controller for static files, &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+            <span class="ruby-value str">&quot;you way need to check up your Rackup file, see the Problems &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+            <span class="ruby-value str">&quot;section at: http://wiki.merbivore.com/pages/rack-middleware&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;Application&quot;</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotFound</span>, <span class="ruby-value str">&quot;The 'Application' controller has no public actions&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      
+        <span class="ruby-identifier">controller</span> = <span class="ruby-identifier">dispatch_action</span>(<span class="ruby-identifier">klass</span>, <span class="ruby-identifier">request</span>.<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:action</span>], <span class="ruby-identifier">request</span>)
+        <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">_benchmarks</span>[<span class="ruby-identifier">:dispatch_time</span>] = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">start</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">_benchmarks</span>.<span class="ruby-identifier">inspect</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">flush</span>
+        <span class="ruby-identifier">controller</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Object</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+        <span class="ruby-identifier">dispatch_exception</span>(<span class="ruby-identifier">exception</span>, <span class="ruby-identifier">request</span>) 
+     <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

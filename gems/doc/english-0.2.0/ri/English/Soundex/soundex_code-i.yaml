@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Support function for String#soundex. Returns code for a single character.
+full_name: English::Soundex#soundex_code
+is_singleton: false
+name: soundex_code
+params: (char)
+visibility: public

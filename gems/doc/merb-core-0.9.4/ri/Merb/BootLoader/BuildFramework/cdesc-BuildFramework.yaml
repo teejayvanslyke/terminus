@@ -1,0 +1,69 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: build_framework
+- !ruby/object:RI::MethodSummary 
+  name: run
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Build the framework paths.
+- !ruby/struct:SM::Flow::P 
+  body: "By default, the following paths will be used:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "application:"
+    body: Merb.root/app/controller/application.rb
+  - !ruby/struct:SM::Flow::LI 
+    label: "config:"
+    body: Merb.root/config
+  - !ruby/struct:SM::Flow::LI 
+    label: "lib:"
+    body: Merb.root/lib
+  - !ruby/struct:SM::Flow::LI 
+    label: "log:"
+    body: Merb.root/log
+  - !ruby/struct:SM::Flow::LI 
+    label: "view:"
+    body: Merb.root/app/views
+  - !ruby/struct:SM::Flow::LI 
+    label: "model:"
+    body: Merb.root/app/models
+  - !ruby/struct:SM::Flow::LI 
+    label: "controller:"
+    body: Merb.root/app/controllers
+  - !ruby/struct:SM::Flow::LI 
+    label: "helper:"
+    body: Merb.root/app/helpers
+  - !ruby/struct:SM::Flow::LI 
+    label: "mailer:"
+    body: Merb.root/app/mailers
+  - !ruby/struct:SM::Flow::LI 
+    label: "part:"
+    body: Merb.root/app/parts
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: To override the default, set Merb::Config[:framework] in your initialization file. Merb::Config[:framework] takes a Hash whose key is the name of the path, and whose values can be passed into Merb.push_path (see Merb.push_path for full details).
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: All paths will default to Merb.root, so you can get a flat-file structure by doing Merb::Config[:framework] = {}.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Merb::Config[:framework] = {\n    :view   =&gt; Merb.root / &quot;views&quot;,\n    :model  =&gt; Merb.root / &quot;models&quot;,\n    :lib    =&gt; Merb.root / &quot;lib&quot;,\n    :public =&gt; [Merb.root / &quot;public&quot;, nil]\n    :router =&gt; [Merb.root / &quot;config&quot;, &quot;router.rb&quot;]\n  }\n"
+- !ruby/struct:SM::Flow::P 
+  body: That will set up a flat directory structure with the config files and controller files under Merb.root, but with models, views, and lib with their own folders off of Merb.root.
+constants: []
+
+full_name: Merb::BootLoader::BuildFramework
+includes: []
+
+instance_methods: []
+
+name: BuildFramework
+superclass: Merb::BootLoader

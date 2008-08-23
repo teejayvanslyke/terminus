@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: DatabaseSessions::up
+is_singleton: true
+name: up
+params: ()
+visibility: public

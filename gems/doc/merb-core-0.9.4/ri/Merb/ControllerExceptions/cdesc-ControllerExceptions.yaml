@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::VERB 
+  body: "    def admin_access_required\n      render\n    end\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: In app/views/exceptions/admin_access_required.rhtml
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &lt;h1&gt;You're not an administrator!&lt;/h1&gt;\n  &lt;p&gt;You tried to access &lt;%= @tried_to_access %&gt; but that URL is\n  restricted to administrators.&lt;/p&gt;\n"
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Mapping of status code names to their numeric value.
+  name: STATUS_CODES
+  value: "{}"
+full_name: Merb::ControllerExceptions
+includes: []
+
+instance_methods: []
+
+name: ControllerExceptions
+superclass: 

@@ -1,0 +1,45 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Iterate over the template roots in reverse order, and return the template and template location of the first match.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "context<Object>:"
+    body: The controller action or template (basename or absolute path).
+  - !ruby/struct:SM::Flow::LI 
+    label: "content_type<~to_s>:"
+    body: The content type (like html or json).
+  - !ruby/struct:SM::Flow::LI 
+    label: "controller<~to_s>:"
+    body: The name of the controller. Defaults to nil.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opts)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":template<String>:"
+    body: The location of the template to use. Defaults to whatever matches this context, content_type and controller.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[Symbol, String]:"
+    body: A pair consisting of the template method and location.
+  type: :NOTE
+full_name: Merb::RenderMixin#_template_for
+is_singleton: false
+name: _template_for
+params: (context, content_type, controller=nil, template=nil)
+visibility: public

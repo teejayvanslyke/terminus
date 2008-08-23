@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Define debugger method so that code even works if debugger was not requested. Drops a note to the logs that Debugger was not available.
+full_name: Kernel#debugger
+is_singleton: false
+name: debugger
+params: ()
+visibility: public

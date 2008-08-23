@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Helpers::Form#control_value
+is_singleton: false
+name: control_value
+params: (col)
+visibility: public

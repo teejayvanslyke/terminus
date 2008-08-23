@@ -1,0 +1,53 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_s>:"
+    body: Name of the cookie.
+  - !ruby/struct:SM::Flow::LI 
+    label: "options<Hash, ~to_s>:"
+    body: Options for the cookie being set (see below).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (options)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":value<~to_s>:"
+    body: Value of the cookie
+  - !ruby/struct:SM::Flow::LI 
+    label: ":path<String>:"
+    body: The path for which this cookie applies. Defaults to &quot;/&quot;.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":expires<Time>:"
+    body: Cookie expiry date.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":domain<String>:"
+    body: The domain for which this cookie applies.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":secure<Boolean>:"
+    body: Security flag.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If options is not a hash, it will be used as the cookie value directly.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  cookies[:user] = &quot;dave&quot; # =&gt; Sets a simple session cookie\n  cookies[:token] = { :value =&gt; user.token, :expires =&gt; Time.now + 2.weeks }\n    # =&gt; Will set a cookie that expires in 2 weeks\n"
+full_name: Merb::Cookies#[]=
+is_singleton: false
+name: "[]="
+params: (name, options)
+visibility: public

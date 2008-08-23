@@ -1,0 +1,15 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Merb::ControllerExceptions::RequestRangeNotSatisfiable
+includes: []
+
+instance_methods: []
+
+name: RequestRangeNotSatisfiable
+superclass: Merb::ControllerExceptions::ClientError

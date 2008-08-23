@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "file<String>:"
+    body: The file to reload.
+  type: :NOTE
+full_name: Merb::BootLoader::LoadClasses::reload
+is_singleton: true
+name: reload
+params: (file)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Calculate the behaviors from the conditions and store them.
+full_name: Merb::Router::Behavior#deduce_placeholders
+is_singleton: false
+name: deduce_placeholders
+params: ()
+visibility: protected

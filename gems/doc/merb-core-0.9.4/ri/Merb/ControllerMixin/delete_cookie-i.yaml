@@ -1,0 +1,23 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Marks a cookie as deleted and gives it an expires stamp in the past. This method is used primarily internally in Merb.
+- !ruby/struct:SM::Flow::P 
+  body: Use the <tt>cookies</tt> hash to manipulate cookies instead.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_s>:"
+    body: A name for the cookie to delete.
+  type: :NOTE
+full_name: Merb::ControllerMixin#delete_cookie
+is_singleton: false
+name: delete_cookie
+params: (name)
+visibility: public

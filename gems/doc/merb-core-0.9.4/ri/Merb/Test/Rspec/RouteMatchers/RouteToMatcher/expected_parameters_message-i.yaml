@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Test::Rspec::RouteMatchers::RouteToMatcher#expected_parameters_message
+is_singleton: false
+name: expected_parameters_message
+params: ()
+visibility: public

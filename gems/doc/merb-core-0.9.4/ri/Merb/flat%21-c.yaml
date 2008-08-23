@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: (r)
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Allows flat apps by setting no default framework directories and yielding a Merb::Router instance. This is optional since the router will automatically configure the app with default routes.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Block parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "r<Merb::Router::Behavior>:"
+    body: The root behavior upon which new routes can be added.
+  type: :NOTE
+full_name: Merb::flat!
+is_singleton: true
+name: flat!
+params: (framework = {}) {|r| ...}
+visibility: public

@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The primary media range for this accept type, i.e. either the first synonym or, if none exist, the media range.
+  type: :NOTE
+full_name: Merb::AcceptType#super_range
+is_singleton: false
+name: super_range
+params: ()
+visibility: public

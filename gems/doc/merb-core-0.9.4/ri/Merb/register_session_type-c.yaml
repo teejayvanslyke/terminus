@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_s>:"
+    body: Name of the session type to register.
+  - !ruby/struct:SM::Flow::LI 
+    label: "file<String>:"
+    body: The file that defines this session type.
+  - !ruby/struct:SM::Flow::LI 
+    label: "description<String>:"
+    body: An optional description of the session type.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: Merb currently supports memory, cookie and memcache session types.
+full_name: Merb::register_session_type
+is_singleton: true
+name: register_session_type
+params: (name, file, description = nil)
+visibility: public

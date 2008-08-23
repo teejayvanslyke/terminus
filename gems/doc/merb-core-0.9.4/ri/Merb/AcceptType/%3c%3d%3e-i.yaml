@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Compares two accept types for sorting purposes.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "entry<AcceptType>:"
+    body: The accept type to compare.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Fixnum:"
+    body: -1, 0 or 1, depending on whether entry has a lower, equal or higher priority than the accept type being compared.
+  type: :NOTE
+full_name: Merb::AcceptType#<=>
+is_singleton: false
+name: <=>
+params: (entry)
+visibility: public

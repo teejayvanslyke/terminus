@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Merb::Dispatcher::DefaultExceptionHelper
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: error_codes
+- !ruby/object:RI::MethodSummary 
+  name: frame_details
+- !ruby/object:RI::MethodSummary 
+  name: humanize_exception
+- !ruby/object:RI::MethodSummary 
+  name: listing
+- !ruby/object:RI::MethodSummary 
+  name: render_source
+- !ruby/object:RI::MethodSummary 
+  name: textmate_url
+name: DefaultExceptionHelper
+superclass: 

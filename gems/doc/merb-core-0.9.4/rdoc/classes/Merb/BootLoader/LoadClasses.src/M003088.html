@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>remove_classes_in_file (Merb::BootLoader::LoadClasses)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 408</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_classes_in_file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">klass_hashes</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">protect_keys!</span>}
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klasses</span> = <span class="ruby-constant">LOADED_CLASSES</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">file</span>)
+        <span class="ruby-identifier">klasses</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span> <span class="ruby-identifier">remove_constant</span>(<span class="ruby-identifier">klass</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/Router/</span> }
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">file</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">klass_hashes</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">unprotect_keys!</span>}
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

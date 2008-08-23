@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The list of actions that are callable, after taking defaults, _hidden_actions and _shown_actions into consideration. It is calculated once, the first time an action is dispatched for this controller.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "SimpleSet[String]:"
+    body: A set of actions that should be callable.
+  type: :NOTE
+full_name: Merb::Controller::callable_actions
+is_singleton: true
+name: callable_actions
+params: ()
+visibility: public

@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_generators
+- !ruby/object:RI::MethodSummary 
+  name: add_rakefiles
+- !ruby/object:RI::MethodSummary 
+  name: config
+- !ruby/object:RI::MethodSummary 
+  name: generators
+- !ruby/object:RI::MethodSummary 
+  name: rakefiles
+comment: 
+constants: []
+
+full_name: Merb::Plugins
+includes: []
+
+instance_methods: []
+
+name: Plugins
+superclass: 

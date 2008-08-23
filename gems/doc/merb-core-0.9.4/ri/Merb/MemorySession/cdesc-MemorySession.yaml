@@ -1,0 +1,52 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: data
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: needs_new_cookie
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: session_id
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: generate
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: persist
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sessions stored in memory.
+- !ruby/struct:SM::Flow::P 
+  body: "Set it up by adding the following to your init file:"
+- !ruby/struct:SM::Flow::VERB 
+  body: " Merb::Config.use do |c|\n   c[:session_store]      = :memory\n   c[:memory_session_ttl] = 3600 # in seconds, one hour\n end\n"
+- !ruby/struct:SM::Flow::P 
+  body: Sessions will remain in memory until the server is stopped or the time as set in :memory_session_ttl expires.
+constants: []
+
+full_name: Merb::MemorySession
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: loaded?
+- !ruby/object:RI::MethodSummary 
+  name: refresh_expiration
+- !ruby/object:RI::MethodSummary 
+  name: regenerate
+name: MemorySession
+superclass: Object

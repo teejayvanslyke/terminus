@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>render (Merb::RenderMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/controller/mixins/render.rb, line 87</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">thing</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">opts</span> = {})
+    <span class="ruby-comment cmt"># render :format =&gt; :xml means render nil, :format =&gt; :xml</span>
+    <span class="ruby-identifier">opts</span>, <span class="ruby-identifier">thing</span> = <span class="ruby-identifier">thing</span>, <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">thing</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+
+    <span class="ruby-comment cmt"># Merge with class level default render options</span>
+    <span class="ruby-identifier">opts</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">default_render_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">opts</span>)
+
+    <span class="ruby-comment cmt"># If you don't specify a thing to render, assume they want to render the current action</span>
+    <span class="ruby-identifier">thing</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">action_name</span>.<span class="ruby-identifier">to_sym</span>
+
+    <span class="ruby-comment cmt"># Content negotiation</span>
+    <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:format</span>] <span class="ruby-operator">?</span> (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">content_type</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:format</span>]) <span class="ruby-operator">:</span> <span class="ruby-identifier">content_type</span>
+
+    <span class="ruby-comment cmt"># Handle options (:status)</span>
+    <span class="ruby-identifier">_handle_options!</span>(<span class="ruby-identifier">opts</span>)
+
+    <span class="ruby-comment cmt"># Do we have a template to try to render?</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">thing</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:template</span>]
+
+      <span class="ruby-identifier">template_method</span>, <span class="ruby-identifier">template_location</span> = 
+        <span class="ruby-identifier">_template_for</span>(<span class="ruby-identifier">thing</span>, <span class="ruby-identifier">content_type</span>, <span class="ruby-identifier">controller_name</span>, <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:template</span>])
+
+      <span class="ruby-comment cmt"># Raise an error if there's no template</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">template_method</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">template_method</span>)
+        <span class="ruby-identifier">template_files</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Template</span>.<span class="ruby-identifier">template_extensions</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ext</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{template_location}.#{ext}&quot;</span> }
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">TemplateNotFound</span>, <span class="ruby-node">&quot;Oops! No template found. Merb was looking for #{template_files.join(', ')}&quot;</span> <span class="ruby-operator">+</span> 
+          <span class="ruby-node">&quot;for content type '#{content_type}'. You might have mispelled the template or file name. &quot;</span> <span class="ruby-operator">+</span> 
+          <span class="ruby-node">&quot;Registered template extensions: #{Merb::Template.template_extensions.join(', ')}. &quot;</span> <span class="ruby-operator">+</span>
+          <span class="ruby-value str">&quot;If you use Haml or some other template plugin, make sure you required Merb plugin dependency &quot;</span> <span class="ruby-operator">+</span> 
+          <span class="ruby-value str">&quot;in your init file.&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt"># Call the method in question and throw the content for later consumption by the layout</span>
+      <span class="ruby-identifier">throw_content</span>(<span class="ruby-identifier">:for_layout</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">template_method</span>))
+
+    <span class="ruby-comment cmt"># Do we have a string to render?</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">thing</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+
+      <span class="ruby-comment cmt"># Throw it for later consumption by the layout</span>
+      <span class="ruby-identifier">throw_content</span>(<span class="ruby-identifier">:for_layout</span>, <span class="ruby-identifier">thing</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># If we find a layout, use it. Otherwise, just render the content thrown for layout.</span>
+    (<span class="ruby-identifier">layout</span> = <span class="ruby-identifier">_get_layout</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:layout</span>])) <span class="ruby-operator">?</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">layout</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">catch_content</span>(<span class="ruby-identifier">:for_layout</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Merb::CookieSession</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Merb::CookieSession</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/merb-core/dispatch/session/cookie_rb.html">
+                lib/merb-core/dispatch/session/cookie.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+If you have more than 4K of session data or don&#8216;t want your data to
+be visible to the user, pick another session store.
+</p>
+<p>
+<a href="CookieSession/CookieOverflow.html">CookieOverflow</a> is raised if
+you attempt to store more than 4K of data. <a
+href="CookieSession/TamperedWithCookie.html">TamperedWithCookie</a> is
+raised if the data integrity check fails.
+</p>
+<p>
+A message digest is included with the cookie to ensure data integrity: a
+user cannot alter session data without knowing the secret key included in
+the hash.
+</p>
+<p>
+To use Cookie Sessions, set in config/merb.yml
+</p>
+<pre>
+ :session_secret_key - your secret digest key
+ :session_store: cookie
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002828">[]</a>&nbsp;&nbsp;
+      <a href="#M002827">[]=</a>&nbsp;&nbsp;
+      <a href="#M002830">delete</a>&nbsp;&nbsp;
+      <a href="#M002829">each</a>&nbsp;&nbsp;
+      <a href="#M002825">new</a>&nbsp;&nbsp;
+      <a href="#M002826">read_cookie</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="CookieSession/CookieOverflow.html" class="link">Merb::CookieSession::CookieOverflow</a><br />
+Class <a href="CookieSession/TamperedWithCookie.html" class="link">Merb::CookieSession::TamperedWithCookie</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">MAX</td>
+          <td>=</td>
+          <td class="context-item-value">4096</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+<a href="Cookies.html">Cookies</a> can typically store 4096 bytes.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DIGEST</td>
+          <td>=</td>
+          <td class="context-item-value">OpenSSL::Digest::Digest.new('SHA1')</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">data</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002825" class="method-detail">
+        <a name="M002825"></a>
+
+        <div class="method-heading">
+          <a href="CookieSession.src/M002825.html" target="Code" class="method-signature"
+            onclick="popupCode('CookieSession.src/M002825.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(cookie, secret)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">cookie&lt;<a href="../String.html">String</a>&gt;:</td><td>The cookie.
+
+</td></tr>
+<tr><td valign="top">secret&lt;<a href="../String.html">String</a>&gt;:</td><td>A session secret.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top">ArgumentError:</td><td>Nil or blank secret.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002828" class="method-detail">
+        <a name="M002828"></a>
+
+        <div class="method-heading">
+          <a href="CookieSession.src/M002828.html" target="Code" class="method-signature"
+            onclick="popupCode('CookieSession.src/M002828.html');return false;">
+          <span class="method-name">[]</span><span class="method-args">(k)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">k&lt;~to_s&gt;:</td><td>The key of the session parameter to retrieve.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The value of the session parameter.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002827" class="method-detail">
+        <a name="M002827"></a>
+
+        <div class="method-heading">
+          <a href="CookieSession.src/M002827.html" target="Code" class="method-signature"
+            onclick="popupCode('CookieSession.src/M002827.html');return false;">
+          <span class="method-name">[]=</span><span class="method-args">(k, v)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">k&lt;~to_s&gt;:</td><td>The key of the session parameter to set.
+
+</td></tr>
+<tr><td valign="top">v&lt;~to_s&gt;:</td><td>The value of the session parameter to set.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002830" class="method-detail">
+        <a name="M002830"></a>
+
+        <div class="method-heading">
+          <a href="CookieSession.src/M002830.html" target="Code" class="method-signature"
+            onclick="popupCode('CookieSession.src/M002830.html');return false;">
+          <span class="method-name">delete</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Deletes the session by emptying stored data.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002829" class="method-detail">
+        <a name="M002829"></a>
+
+        <div class="method-heading">
+          <a href="CookieSession.src/M002829.html" target="Code" class="method-signature"
+            onclick="popupCode('CookieSession.src/M002829.html');return false;">
+          <span class="method-name">each</span><span class="method-args">(&amp;b)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Yields the session data to an <a href="CookieSession.html#M002829">each</a>
+block.
+</p>
+<h4>Parameter</h4>
+<table>
+<tr><td valign="top">&amp;b:</td><td>The block to pass to <a href="CookieSession.html#M002829">each</a>.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002826" class="method-detail">
+        <a name="M002826"></a>
+
+        <div class="method-heading">
+          <a href="CookieSession.src/M002826.html" target="Code" class="method-signature"
+            onclick="popupCode('CookieSession.src/M002826.html');return false;">
+          <span class="method-name">read_cookie</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>Cookie value.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top"><a href="CookieSession/CookieOverflow.html">CookieOverflow</a>:</td><td>Session contains too much information.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

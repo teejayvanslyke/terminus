@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>matches? (Merb::Test::Rspec::ControllerMatchers::RedirectTo)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/test/matchers/controller_matchers.rb, line 50</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">target</span>)
+      <span class="ruby-ivar">@target</span>, <span class="ruby-ivar">@location</span> = <span class="ruby-identifier">target</span>, <span class="ruby-identifier">target</span>.<span class="ruby-identifier">headers</span>[<span class="ruby-value str">'Location'</span>]
+      <span class="ruby-ivar">@redirected</span> = <span class="ruby-constant">BeRedirect</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">target</span>.<span class="ruby-identifier">status</span>)
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:message</span>]
+        <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">escape</span>([<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:message</span>])].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;m&quot;</span>))
+        <span class="ruby-ivar">@expected</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;?_message=#{msg}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-ivar">@location</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@expected</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@redirected</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

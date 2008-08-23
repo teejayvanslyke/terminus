@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::BootLoader::Dependencies::load_dependencies
+is_singleton: true
+name: load_dependencies
+params: ()
+visibility: public

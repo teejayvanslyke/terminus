@@ -1,0 +1,33 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "session_id<String:"
+    body: The ID of the session to retrieve.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array:"
+    body: A pair consisting of a MemCacheSession and the session's ID. If no sessions matched session_id, a new MemCacheSession will be generated.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: If there are persiste exceptions callbacks to execute, they all get executed when Memcache library raises an exception.
+full_name: Merb::MemCacheSession::persist
+is_singleton: true
+name: persist
+params: (session_id)
+visibility: public

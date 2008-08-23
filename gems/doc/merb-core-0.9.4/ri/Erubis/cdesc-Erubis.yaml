@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: load_yaml_file
+comment: 
+constants: []
+
+full_name: Erubis
+includes: []
+
+instance_methods: []
+
+name: Erubis
+superclass: 

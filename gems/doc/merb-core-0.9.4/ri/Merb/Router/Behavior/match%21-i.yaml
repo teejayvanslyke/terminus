@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Combines common case of match being used with to({}).
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<Route>:"
+    body: route that uses params from named path segments.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::P 
+  body: r.match!(&quot;/api/:token/:controller/:action/:id&quot;)
+- !ruby/struct:SM::Flow::P 
+  body: is the same thing as
+- !ruby/struct:SM::Flow::P 
+  body: r.match!(&quot;/api/:token/:controller/:action/:id&quot;).to({})
+full_name: Merb::Router::Behavior#match!
+is_singleton: false
+name: match!
+params: (path = '', conditions = {}, &block)
+visibility: public

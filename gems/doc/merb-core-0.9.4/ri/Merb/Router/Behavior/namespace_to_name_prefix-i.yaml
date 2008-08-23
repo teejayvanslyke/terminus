@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name_or_path<~to_s>:"
+    body: The name or path to convert to a form suitable for a prefix.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The prefix.
+  type: :NOTE
+full_name: Merb::Router::Behavior#namespace_to_name_prefix
+is_singleton: false
+name: namespace_to_name_prefix
+params: (name_or_path)
+visibility: protected

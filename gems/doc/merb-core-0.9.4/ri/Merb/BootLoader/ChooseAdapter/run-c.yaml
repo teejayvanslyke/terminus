@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Choose the Rack adapter/server to use and set Merb.adapter.
+full_name: Merb::BootLoader::ChooseAdapter::run
+is_singleton: true
+name: run
+params: ()
+visibility: public

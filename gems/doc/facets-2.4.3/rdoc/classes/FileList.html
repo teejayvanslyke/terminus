@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: FileList</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">FileList</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/more/facets/filelist_rb.html">
+                lib/more/facets/filelist.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="FileList.html">FileList</a></h1>
+<p>
+A <a href="FileList.html">FileList</a> is essentially an array with helper
+methods to make file manipulation easier.
+</p>
+<p>
+FileLists are lazy. When given a list of glob patterns for possible files
+to be included in the file list, instead of searching the file structures
+to find the files, a <a href="FileList.html">FileList</a> holds the pattern
+for latter use.
+</p>
+<p>
+This allows us to define a number of <a href="FileList.html">FileList</a>
+to match any number of files, but only search out the actual files when
+then <a href="FileList.html">FileList</a> itself is actually used. The key
+is that the first time an element of the <a
+href="FileList.html">FileList</a>/Array is requested, the pending patterns
+are resolved into a real list of file names.
+</p>
+<pre>
+  fl = FileList.new
+  fl.include('./**/*')
+  fl.exclude('./*~')
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000103">*</a>&nbsp;&nbsp;
+      <a href="#M000100">==</a>&nbsp;&nbsp;
+      <a href="#M000117">[]</a>&nbsp;&nbsp;
+      <a href="#M000097">add</a>&nbsp;&nbsp;
+      <a href="#M000105">calculate_exclude_regexp</a>&nbsp;&nbsp;
+      <a href="#M000099">clear_exclude</a>&nbsp;&nbsp;
+      <a href="#M000119">clear_ignore_patterns</a>&nbsp;&nbsp;
+      <a href="#M000093">clone</a>&nbsp;&nbsp;
+      <a href="#M000094">dup</a>&nbsp;&nbsp;
+      <a href="#M000113">egrep</a>&nbsp;&nbsp;
+      <a href="#M000098">exclude</a>&nbsp;&nbsp;
+      <a href="#M000115">exclude?</a>&nbsp;&nbsp;
+      <a href="#M000112">ext</a>&nbsp;&nbsp;
+      <a href="#M000109">gsub</a>&nbsp;&nbsp;
+      <a href="#M000111">gsub!</a>&nbsp;&nbsp;
+      <a href="#M000116">import</a>&nbsp;&nbsp;
+      <a href="#M000096">include</a>&nbsp;&nbsp;
+      <a href="#M000095">new</a>&nbsp;&nbsp;
+      <a href="#M000104">resolve</a>&nbsp;&nbsp;
+      <a href="#M000106">resolve_add</a>&nbsp;&nbsp;
+      <a href="#M000107">resolve_exclude</a>&nbsp;&nbsp;
+      <a href="#M000118">select_default_ignore_patterns</a>&nbsp;&nbsp;
+      <a href="#M000108">sub</a>&nbsp;&nbsp;
+      <a href="#M000110">sub!</a>&nbsp;&nbsp;
+      <a href="#M000101">to_a</a>&nbsp;&nbsp;
+      <a href="#M000102">to_ary</a>&nbsp;&nbsp;
+      <a href="#M000114">to_s</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ARRAY_METHODS</td>
+          <td>=</td>
+          <td class="context-item-value">Array.instance_methods - Object.instance_methods</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+List of array methods (that are not in <tt>Object</tt>) that need to be
+delegated.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">MUST_DEFINE</td>
+          <td>=</td>
+          <td class="context-item-value">%w[to_a inspect]</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+List of additional methods that must be delegated.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">MUST_NOT_DEFINE</td>
+          <td>=</td>
+          <td class="context-item-value">%w[to_a to_ary partition *]</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+List of methods that should not be delegated here (we define special
+versions of them explicitly below).
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SPECIAL_RETURN</td>
+          <td>=</td>
+          <td class="context-item-value">%w[     map collect sort sort_by select find_all reject grep     compact flatten uniq values_at     + - &amp; |   ]</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+List of delegated methods that return <a
+href="FileList.html#M000095">new</a> array values which need wrapping.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DELEGATING_METHODS</td>
+          <td>=</td>
+          <td class="context-item-value">(ARRAY_METHODS + MUST_DEFINE - MUST_NOT_DEFINE).sort.uniq</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_IGNORE_PATTERNS</td>
+          <td>=</td>
+          <td class="context-item-value">[     /(^|[\/\\])CVS([\/\\]|$)/,     /(^|[\/\\])\.svn([\/\\]|$)/,     /(^|[\/\\])_darcs([\/\\]|$)/,     /\.bak$/,     /~$/,     /(^|[\/\\])core$/</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000117" class="method-detail">
+        <a name="M000117"></a>
+
+        <div class="method-heading">
+          <a href="#M000117" class="method-signature">
+          <span class="method-name">[]</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a <a href="FileList.html#M000095">new</a> file list including the
+files listed. Similar to:
+</p>
+<pre>
+  FileList.new(*args)
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000117-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000117-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 439</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000119" class="method-detail">
+        <a name="M000119"></a>
+
+        <div class="method-heading">
+          <a href="#M000119" class="method-signature">
+          <span class="method-name">clear_ignore_patterns</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Clear the ignore patterns.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000119-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000119-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 460</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_ignore_patterns</span>
+      <span class="ruby-ivar">@exclude_patterns</span> = [ <span class="ruby-regexp re">/^$/</span> ]
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000095" class="method-detail">
+        <a name="M000095"></a>
+
+        <div class="method-heading">
+          <a href="#M000095" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(*patterns) {|self if block_given?| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a file list from the globbable patterns given. If you wish to
+perform multiple includes or excludes at object build time, use the
+&quot;yield self&quot; pattern.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  file_list = FileList.new['lib/**/*.rb', 'test/test*.rb']
+
+  pkg_files = FileList.new['lib/**/*'] do |fl|
+    fl.exclude(/\bCVS\b/)
+  end
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000095-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000095-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 169</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">patterns</span>)
+    <span class="ruby-ivar">@pending_add</span> = []
+    <span class="ruby-ivar">@pending</span> = <span class="ruby-keyword kw">false</span>
+    <span class="ruby-ivar">@exclude_patterns</span> = <span class="ruby-constant">DEFAULT_IGNORE_PATTERNS</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-ivar">@exclude_re</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-ivar">@items</span> = []
+    <span class="ruby-identifier">patterns</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">pattern</span><span class="ruby-operator">|</span> <span class="ruby-identifier">include</span>(<span class="ruby-identifier">pattern</span>) }
+    <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000118" class="method-detail">
+        <a name="M000118"></a>
+
+        <div class="method-heading">
+          <a href="#M000118" class="method-signature">
+          <span class="method-name">select_default_ignore_patterns</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Set.html">Set</a> the ignore patterns back to the default value.
+The default patterns will ignore files
+</p>
+<ul>
+<li>containing &quot;CVS&quot; in the file path
+
+</li>
+<li>containing &quot;.svn&quot; in the file path
+
+</li>
+<li>containing &quot;_darcs&quot; in the file path
+
+</li>
+<li>ending with &quot;.bak&quot;
+
+</li>
+<li>ending with &quot;~&quot;
+
+</li>
+<li>named &quot;core&quot;
+
+</li>
+</ul>
+<p>
+Note that file names beginning with &quot;.&quot; are automatically ignored
+by Ruby&#8216;s glob patterns and are not specifically listed in the ignore
+patterns.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000118-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000118-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 455</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select_default_ignore_patterns</span>
+      <span class="ruby-ivar">@exclude_patterns</span> = <span class="ruby-constant">DEFAULT_IGNORE_PATTERNS</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000103" class="method-detail">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+          <a href="#M000103" class="method-signature">
+          <span class="method-name">*</span><span class="method-args">(other)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Redefine * to return either a string or a <a
+href="FileList.html#M000095">new</a> file list.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000103-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000103-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 252</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">*</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@items</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">result</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span>
+      <span class="ruby-constant">FileList</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">import</span>(<span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">result</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000100" class="method-detail">
+        <a name="M000100"></a>
+
+        <div class="method-heading">
+          <a href="#M000100" class="method-signature">
+          <span class="method-name">==</span><span class="method-args">(array)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define equality.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000100-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000100-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 235</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>(<span class="ruby-identifier">array</span>)
+    <span class="ruby-identifier">to_ary</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">array</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000097" class="method-detail">
+        <a name="M000097"></a>
+
+        <div class="method-heading">
+          <span class="method-name">add</span><span class="method-args">(*filenames)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="FileList.html#M000096">include</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000105" class="method-detail">
+        <a name="M000105"></a>
+
+        <div class="method-heading">
+          <a href="#M000105" class="method-signature">
+          <span class="method-name">calculate_exclude_regexp</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000105-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000105-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 273</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calculate_exclude_regexp</span>
+    <span class="ruby-identifier">ignores</span> = []
+    <span class="ruby-ivar">@exclude_patterns</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pat</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">pat</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Regexp</span>
+        <span class="ruby-identifier">ignores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">pat</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/[*.]/</span>
+        <span class="ruby-constant">Dir</span>[<span class="ruby-identifier">pat</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ignores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">ignores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">quote</span>(<span class="ruby-identifier">pat</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ignores</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-ivar">@exclude_re</span> = <span class="ruby-regexp re">/^$/</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">re_str</span> = <span class="ruby-identifier">ignores</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-value str">&quot;(&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;)&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;|&quot;</span>)
+      <span class="ruby-ivar">@exclude_re</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">re_str</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000099" class="method-detail">
+        <a name="M000099"></a>
+
+        <div class="method-heading">
+          <a href="#M000099" class="method-signature">
+          <span class="method-name">clear_exclude</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Clear all the <a href="FileList.html#M000098">exclude</a> patterns so that
+we <a href="FileList.html#M000098">exclude</a> nothing.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000099-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000099-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 229</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_exclude</span>
+    <span class="ruby-ivar">@exclude_patterns</span> = []
+    <span class="ruby-identifier">calculate_exclude_regexp</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-ivar">@pending</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000093" class="method-detail">
+        <a name="M000093"></a>
+
+        <div class="method-heading">
+          <a href="#M000093" class="method-signature">
+          <span class="method-name">clone</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="FileList.html#M000096">include</a> <a
+href="Cloneable.html">Cloneable</a>
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000093-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000093-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 85</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clone</span>
+    <span class="ruby-identifier">sibling</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ivar</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">ivar</span>)
+      <span class="ruby-identifier">sibling</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">ivar</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">rake_dup</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">sibling</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000094" class="method-detail">
+        <a name="M000094"></a>
+
+        <div class="method-heading">
+          <span class="method-name">dup</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="FileList.html#M000093">clone</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000113" class="method-detail">
+        <a name="M000113"></a>
+
+        <div class="method-heading">
+          <a href="#M000113" class="method-signature">
+          <span class="method-name">egrep</span><span class="method-args">(pattern) {|fn, count, line| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Grep each of the files in the filelist using the given pattern. If a block
+is given, call the block on each matching line, passing the file name, line
+number, and the matching line of text. If no block is given, a standard
+emac style file:linenumber:line message will be printed to standard out.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000113-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000113-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 369</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">egrep</span>(<span class="ruby-identifier">pattern</span>)
+    <span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">open</span>(<span class="ruby-identifier">fn</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">inf</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">count</span> = <span class="ruby-value">0</span>
+
+        <span class="ruby-identifier">inf</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+              <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">fn</span>, <span class="ruby-identifier">count</span>, <span class="ruby-identifier">line</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{fn}:#{count}:#{line}&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000098" class="method-detail">
+        <a name="M000098"></a>
+
+        <div class="method-heading">
+          <a href="#M000098" class="method-signature">
+          <span class="method-name">exclude</span><span class="method-args">(*patterns)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Register a list of file name patterns that should be excluded from the
+list. Patterns may be regular expressions, glob patterns or regular
+strings.
+</p>
+<p>
+Note that glob patterns are expanded against the file system. If a file is
+explicitly added to a file list, but does not exist in the file system,
+then an glob pattern in the <a href="FileList.html#M000098">exclude</a>
+list will not <a href="FileList.html#M000098">exclude</a> the file.
+</p>
+<p>
+Examples:
+</p>
+<pre>
+  FileList['a.c', 'b.c'].exclude(&quot;a.c&quot;) =&gt; ['b.c']
+  FileList['a.c', 'b.c'].exclude(/^a/)  =&gt; ['b.c']
+</pre>
+<p>
+If &quot;a.c&quot; is a file, then &#8230;
+</p>
+<pre>
+  FileList['a.c', 'b.c'].exclude(&quot;a.*&quot;) =&gt; ['b.c']
+</pre>
+<p>
+If &quot;a.c&quot; is not a file, then &#8230;
+</p>
+<pre>
+  FileList['a.c', 'b.c'].exclude(&quot;a.*&quot;) =&gt; ['a.c', 'b.c']
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000098-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000098-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 219</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exclude</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">patterns</span>)
+    <span class="ruby-identifier">patterns</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pat</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@exclude_patterns</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">pat</span> <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-ivar">@pending</span>
+      <span class="ruby-identifier">calculate_exclude_regexp</span>
+      <span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fn</span> <span class="ruby-operator">=~</span> <span class="ruby-ivar">@exclude_re</span> }
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000115" class="method-detail">
+        <a name="M000115"></a>
+
+        <div class="method-heading">
+          <a href="#M000115" class="method-signature">
+          <span class="method-name">exclude?</span><span class="method-args">(fn)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Should the given file name be excluded?
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000115-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000115-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 415</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exclude?</span>(<span class="ruby-identifier">fn</span>)
+    <span class="ruby-identifier">calculate_exclude_regexp</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@exclude_re</span>
+    <span class="ruby-identifier">fn</span> <span class="ruby-operator">=~</span> <span class="ruby-ivar">@exclude_re</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000112" class="method-detail">
+        <a name="M000112"></a>
+
+        <div class="method-heading">
+          <a href="#M000112" class="method-signature">
+          <span class="method-name">ext</span><span class="method-args">(newext='')</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return a <a href="FileList.html#M000095">new</a> array with
+<tt>String#ext</tt> method applied to each member of the array.
+</p>
+<p>
+This method is a shortcut for:
+</p>
+<pre>
+   array.collect { |item| item.ext(newext) }
+</pre>
+<p>
+<tt><a href="FileList.html#M000112">ext</a></tt> is a user added method for
+the Array class.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000112-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000112-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 360</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ext</span>(<span class="ruby-identifier">newext</span>=<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fn</span>.<span class="ruby-identifier">ext</span>(<span class="ruby-identifier">newext</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000109" class="method-detail">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+          <a href="#M000109" class="method-signature">
+          <span class="method-name">gsub</span><span class="method-args">(pat, rep)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return a <a href="FileList.html#M000095">new</a> <a
+href="FileList.html">FileList</a> with the results of running <tt><a
+href="FileList.html#M000109">gsub</a></tt> against each element of the
+original list.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  FileList['lib/test/file', 'x/y'].gsub(/\//, &quot;\\&quot;)
+     =&gt; ['lib\\test\\file', 'x\\y']
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000109-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000109-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 336</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">gsub</span>(<span class="ruby-identifier">pat</span>, <span class="ruby-identifier">rep</span>)
+    <span class="ruby-identifier">inject</span>(<span class="ruby-constant">FileList</span>.<span class="ruby-identifier">new</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">res</span>, <span class="ruby-identifier">fn</span><span class="ruby-operator">|</span> <span class="ruby-identifier">res</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fn</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-identifier">pat</span>,<span class="ruby-identifier">rep</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000111" class="method-detail">
+        <a name="M000111"></a>
+
+        <div class="method-heading">
+          <a href="#M000111" class="method-signature">
+          <span class="method-name">gsub!</span><span class="method-args">(pat, rep)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Same as <tt><a href="FileList.html#M000109">gsub</a></tt> except that the
+original file list is modified.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000111-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000111-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 347</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">gsub!</span>(<span class="ruby-identifier">pat</span>, <span class="ruby-identifier">rep</span>)
+    <span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">fn</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-identifier">pat</span>,<span class="ruby-identifier">rep</span>) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000116" class="method-detail">
+        <a name="M000116"></a>
+
+        <div class="method-heading">
+          <a href="#M000116" class="method-signature">
+          <span class="method-name">import</span><span class="method-args">(array)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000116-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000116-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 430</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">import</span>(<span class="ruby-identifier">array</span>)
+    <span class="ruby-ivar">@items</span> = <span class="ruby-identifier">array</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000096" class="method-detail">
+        <a name="M000096"></a>
+
+        <div class="method-heading">
+          <a href="#M000096" class="method-signature">
+          <span class="method-name">include</span><span class="method-args">(*filenames)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Add file names defined by glob patterns to the file list. If an array is
+given, <a href="FileList.html#M000097">add</a> each element of the array.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  file_list.include(&quot;*.java&quot;, &quot;*.cfg&quot;)
+  file_list.include %w( math.c lib.h *.o )
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000096-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000096-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 186</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">include</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">filenames</span>)
+    <span class="ruby-comment cmt"># TODO: check for pending</span>
+    <span class="ruby-identifier">filenames</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fn</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:to_ary</span>
+        <span class="ruby-identifier">include</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">fn</span>.<span class="ruby-identifier">to_ary</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-ivar">@pending_add</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fn</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-ivar">@pending</span> = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000104" class="method-detail">
+        <a name="M000104"></a>
+
+        <div class="method-heading">
+          <a href="#M000104" class="method-signature">
+          <span class="method-name">resolve</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Resolve all the pending adds now.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000104-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000104-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 263</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@pending</span>
+      <span class="ruby-ivar">@pending</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-ivar">@pending_add</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span><span class="ruby-operator">|</span> <span class="ruby-identifier">resolve_add</span>(<span class="ruby-identifier">fn</span>) <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@pending_add</span> = []
+      <span class="ruby-identifier">resolve_exclude</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000106" class="method-detail">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+          <a href="#M000106" class="method-signature">
+          <span class="method-name">resolve_add</span><span class="method-args">(fn)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000106-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000106-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 293</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve_add</span>(<span class="ruby-identifier">fn</span>)
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">fn</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span>
+      <span class="ruby-identifier">fn</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">resolve_add</span>(<span class="ruby-identifier">f</span>) }
+    <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">%r{[*?]}</span>
+      <span class="ruby-identifier">add_matching</span>(<span class="ruby-identifier">fn</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fn</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000107" class="method-detail">
+        <a name="M000107"></a>
+
+        <div class="method-heading">
+          <a href="#M000107" class="method-signature">
+          <span class="method-name">resolve_exclude</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000107-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000107-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 304</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve_exclude</span>
+    <span class="ruby-ivar">@exclude_patterns</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pat</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">pat</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Regexp</span>
+        <span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fn</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">pat</span> }
+      <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/[*.]/</span>
+        <span class="ruby-identifier">reject_list</span> = <span class="ruby-constant">Dir</span>[<span class="ruby-identifier">pat</span>]
+        <span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span><span class="ruby-operator">|</span> <span class="ruby-identifier">reject_list</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">fn</span>) }
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fn</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">pat</span> }
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000108" class="method-detail">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+          <a href="#M000108" class="method-signature">
+          <span class="method-name">sub</span><span class="method-args">(pat, rep)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return a <a href="FileList.html#M000095">new</a> <a
+href="FileList.html">FileList</a> with the results of running <tt><a
+href="FileList.html#M000108">sub</a></tt> against each element of the
+oringal list.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  FileList['a.c', 'b.c'].sub(/\.c$/, '.o')  =&gt; ['a.o', 'b.o']
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000108-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000108-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 325</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sub</span>(<span class="ruby-identifier">pat</span>, <span class="ruby-identifier">rep</span>)
+    <span class="ruby-identifier">inject</span>(<span class="ruby-constant">FileList</span>.<span class="ruby-identifier">new</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">res</span>, <span class="ruby-identifier">fn</span><span class="ruby-operator">|</span> <span class="ruby-identifier">res</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fn</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-identifier">pat</span>,<span class="ruby-identifier">rep</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000110" class="method-detail">
+        <a name="M000110"></a>
+
+        <div class="method-heading">
+          <a href="#M000110" class="method-signature">
+          <span class="method-name">sub!</span><span class="method-args">(pat, rep)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Same as <tt><a href="FileList.html#M000108">sub</a></tt> except that the
+oringal file list is modified.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000110-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000110-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 341</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sub!</span>(<span class="ruby-identifier">pat</span>, <span class="ruby-identifier">rep</span>)
+    <span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fn</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">fn</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-identifier">pat</span>,<span class="ruby-identifier">rep</span>) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000101" class="method-detail">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+          <a href="#M000101" class="method-signature">
+          <span class="method-name">to_a</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return the internal array object.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000101-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000101-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 240</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>
+    <span class="ruby-identifier">resolve</span>
+    <span class="ruby-ivar">@items</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000102" class="method-detail">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+          <a href="#M000102" class="method-signature">
+          <span class="method-name">to_ary</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return the internal array object.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000102-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000102-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 246</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_ary</span>
+    <span class="ruby-identifier">resolve</span>
+    <span class="ruby-ivar">@items</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000114" class="method-detail">
+        <a name="M000114"></a>
+
+        <div class="method-heading">
+          <a href="#M000114" class="method-signature">
+          <span class="method-name">to_s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Convert a <a href="FileList.html">FileList</a> to a string by joining all
+elements with a space.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000114-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000114-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filelist.rb, line 401</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">resolve</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@pending</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">' '</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

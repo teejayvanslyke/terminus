@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ActiveSupport::BufferedLogger#set_non_blocking_io
+is_singleton: false
+name: set_non_blocking_io
+params: ()
+visibility: public

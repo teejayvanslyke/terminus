@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: ":error, \"Template Error! Problem while rendering\", false"
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param file&lt;String&gt; The file to read. @param line&lt;Fixnum&gt; The line number to look for. @param size&lt;Fixnum&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Number of lines to include above and below the the line to look for.\n  Defaults to 4.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@return &lt;Array[Array]&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Triplets containing the line number, the line and whether this was the\n  searched line.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@example"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  <em>caller_lines</em>('/usr/lib/ruby/1.8/debug.rb', 122, 2) # =&gt;\n    [\n      [ 120, &quot;  def check_suspend&quot;,                               false ],\n      [ 121, &quot;    return if Thread.critical&quot;,                     false ],\n      [ 122, &quot;    while (Thread.critical = true; @suspend_next)&quot;, true  ],\n      [ 123, &quot;      DEBUGGER__.waiting.push Thread.current&quot;,      false ],\n      [ 124, &quot;      @suspend_next = false&quot;,                       false ]\n    ]\n"
+full_name: Kernel#__caller_lines__
+is_singleton: false
+name: __caller_lines__
+params: (file, line, size = 4) {|:error, "Template Error! Problem while rendering", false| ...}
+visibility: public

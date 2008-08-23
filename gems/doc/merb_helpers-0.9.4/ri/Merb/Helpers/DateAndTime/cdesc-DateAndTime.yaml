@@ -1,0 +1,37 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: date_formats
+- !ruby/object:RI::MethodSummary 
+  name: time_class
+- !ruby/object:RI::MethodSummary 
+  name: time_output
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a number of methods for displaying and dealing with dates and times
+- !ruby/struct:SM::Flow::P 
+  body: Parts were strongly based on http://ar-code.svn.engineyard.com/plugins/relative_time_helpers/, and active_support
+- !ruby/struct:SM::Flow::P 
+  body: The key methods are `relative_date`, `relative_date_span`, and `relative_time_span`. This also gives you the Rails style Time DSL for working with numbers eg. 3.months.ago or 5.days.until(1.year.from_now)
+constants: []
+
+full_name: Merb::Helpers::DateAndTime
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: prettier_time
+- !ruby/object:RI::MethodSummary 
+  name: relative_date
+- !ruby/object:RI::MethodSummary 
+  name: relative_date_span
+- !ruby/object:RI::MethodSummary 
+  name: relative_time_span
+- !ruby/object:RI::MethodSummary 
+  name: time_ago_in_words
+- !ruby/object:RI::MethodSummary 
+  name: time_lost_in_words
+name: DateAndTime
+superclass: 

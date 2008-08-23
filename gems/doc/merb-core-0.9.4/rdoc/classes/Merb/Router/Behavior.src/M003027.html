@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>resources (Merb::Router::Behavior)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/router/behavior.rb, line 401</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resources</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {})
+        <span class="ruby-identifier">namespace</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:namespace</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">merged_params</span>[<span class="ruby-identifier">:namespace</span>]
+
+        <span class="ruby-identifier">next_level</span> = <span class="ruby-identifier">match</span> <span class="ruby-node">&quot;/#{name}&quot;</span>
+
+        <span class="ruby-identifier">name_prefix</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">:name_prefix</span>
+        <span class="ruby-identifier">matched_keys</span> =  <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:keys</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:keys</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;:#{k}&quot;</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;/&quot;</span>)  <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;:id&quot;</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name_prefix</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">nil?</span>
+          <span class="ruby-identifier">name_prefix</span> = <span class="ruby-identifier">namespace_to_name_prefix</span> <span class="ruby-identifier">namespace</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@@parent_resources</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-identifier">parent_resource</span> = <span class="ruby-identifier">namespace_to_name_prefix</span> <span class="ruby-ivar">@@parent_resources</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'_'</span>)
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:controller</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">merged_params</span>[<span class="ruby-identifier">:controller</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+
+        <span class="ruby-identifier">singular</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">singularize</span>
+
+        <span class="ruby-identifier">route_plural_name</span>   = <span class="ruby-node">&quot;#{name_prefix}#{parent_resource}#{name}&quot;</span>
+        <span class="ruby-identifier">route_singular_name</span> = <span class="ruby-node">&quot;#{name_prefix}#{parent_resource}#{singular}&quot;</span>
+
+        <span class="ruby-identifier">behaviors</span> = []
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">member</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:member</span>)
+          <span class="ruby-identifier">member</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">action</span>, <span class="ruby-identifier">methods</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">behaviors</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Behavior</span>.<span class="ruby-identifier">new</span>(
+            { <span class="ruby-identifier">:path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%r{^/#{matched_keys}/#{action}(\.:format)?$}</span>, <span class="ruby-identifier">:method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">/^(#{[methods].flatten * '|'})$/</span> },
+            { <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">action</span>.<span class="ruby-identifier">to_s</span> }, <span class="ruby-identifier">next_level</span>
+            )
+            <span class="ruby-identifier">next_level</span>.<span class="ruby-identifier">match</span>(<span class="ruby-node">&quot;/#{matched_keys}/#{action}&quot;</span>).<span class="ruby-identifier">to_route</span>.<span class="ruby-identifier">name</span>(<span class="ruby-node">&quot;#{action}_#{route_singular_name}&quot;</span><span class="ruby-node">&quot;#{action}_#{route_singular_name}&quot;</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">collection</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:collection</span>)
+          <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">action</span>, <span class="ruby-identifier">methods</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">behaviors</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Behavior</span>.<span class="ruby-identifier">new</span>(
+            { <span class="ruby-identifier">:path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%r{^/#{action}(\.:format)?$}</span>, <span class="ruby-identifier">:method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">/^(#{[methods].flatten * '|'})$/</span> },
+            { <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">action</span>.<span class="ruby-identifier">to_s</span> }, <span class="ruby-identifier">next_level</span>
+            )
+            <span class="ruby-identifier">next_level</span>.<span class="ruby-identifier">match</span>(<span class="ruby-node">&quot;/#{action}&quot;</span>).<span class="ruby-identifier">to_route</span>.<span class="ruby-identifier">name</span>(<span class="ruby-node">&quot;#{action}_#{route_plural_name}&quot;</span><span class="ruby-node">&quot;#{action}_#{route_plural_name}&quot;</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">routes</span> = <span class="ruby-identifier">many_behaviors_to</span>(<span class="ruby-identifier">behaviors</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">next_level</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:resources_behaviors</span>, <span class="ruby-identifier">matched_keys</span>), <span class="ruby-identifier">options</span>)
+
+
+
+        <span class="ruby-comment cmt"># Add names to some routes</span>
+        [[<span class="ruby-value str">''</span>, <span class="ruby-node">&quot;#{route_plural_name}&quot;</span><span class="ruby-node">&quot;#{route_plural_name}&quot;</span>],
+        [<span class="ruby-node">&quot;/#{matched_keys}&quot;</span>, <span class="ruby-node">&quot;#{route_singular_name}&quot;</span><span class="ruby-node">&quot;#{route_singular_name}&quot;</span>],
+        [<span class="ruby-value str">'/new'</span>, <span class="ruby-node">&quot;new_#{route_singular_name}&quot;</span><span class="ruby-node">&quot;new_#{route_singular_name}&quot;</span>],
+        [<span class="ruby-node">&quot;/#{matched_keys}/edit&quot;</span>, <span class="ruby-node">&quot;edit_#{route_singular_name}&quot;</span><span class="ruby-node">&quot;edit_#{route_singular_name}&quot;</span>],
+        [<span class="ruby-node">&quot;/#{matched_keys}/delete&quot;</span>, <span class="ruby-node">&quot;delete_#{route_singular_name}&quot;</span><span class="ruby-node">&quot;delete_#{route_singular_name}&quot;</span>]
+        ].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span>,<span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">next_level</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">to_route</span>.<span class="ruby-identifier">name</span>(<span class="ruby-identifier">name</span>)
+        <span class="ruby-keyword kw">end</span>
+
+
+        <span class="ruby-identifier">parent_keys</span> = (<span class="ruby-identifier">matched_keys</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;:id&quot;</span>) <span class="ruby-operator">?</span> <span class="ruby-node">&quot;:#{singular}_id&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">matched_keys</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+          <span class="ruby-ivar">@@parent_resources</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">singular</span>)
+          <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">next_level</span>.<span class="ruby-identifier">match</span>(<span class="ruby-node">&quot;/#{parent_keys}&quot;</span>)
+          <span class="ruby-ivar">@@parent_resources</span>.<span class="ruby-identifier">pop</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">routes</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

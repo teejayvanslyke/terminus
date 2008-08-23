@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>set_non_blocking_io (ActiveSupport::BufferedLogger)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/active_support/buffered_logger.rb, line 57</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_non_blocking_io</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">RUBY_PLATFORM</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/java|mswin/</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-ivar">@log</span> <span class="ruby-operator">==</span> <span class="ruby-constant">STDOUT</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@log</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:write_nonblock</span>)
+        <span class="ruby-ivar">@no_block</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

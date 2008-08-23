@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: down
+- !ruby/object:RI::MethodSummary 
+  name: up
+comment: 
+constants: []
+
+full_name: DatabaseSessions
+includes: []
+
+instance_methods: []
+
+name: DatabaseSessions
+superclass: ActiveRecord::Migration

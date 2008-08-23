@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: months
+block_params: 
+comment: 
+full_name: TimeDSL#month
+is_singleton: false
+name: month
+params: ()
+visibility: public

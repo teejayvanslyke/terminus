@@ -1,0 +1,23 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Adds a callback to the list of callbacks run when exception is raised on session persisting, so you can recover.
+- !ruby/struct:SM::Flow::P 
+  body: See session mixins documentation for details on session persisting.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Params
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: A block to be added to the callbacks that will be executed if there's exception on session persisting.
+  type: :NOTE
+full_name: Merb::SessionMixin#persist_exception_callbacks
+is_singleton: false
+name: persist_exception_callbacks
+params: (&block)
+visibility: public

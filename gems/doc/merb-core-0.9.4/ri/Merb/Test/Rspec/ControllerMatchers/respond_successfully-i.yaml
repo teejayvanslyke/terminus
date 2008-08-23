@@ -1,0 +1,50 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: be_successful
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Passes if the request that generated the target was successful, or the target is a success (200 level) response code.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # Passes if the controller call was successful\n  controller.should respond_successfully\n\n  # Also works if the target is the response code\n  controller.status.should respond_successfully\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: "valid HTTP Success codes:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "200: OK"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "201: Created"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "202: Accepted"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "203: Non-Authoritative Information"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "204: No Content"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "205: Reset Content"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "206: Partial Content"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "207: Multi-Status"
+  type: :BULLET
+full_name: Merb::Test::Rspec::ControllerMatchers#respond_successfully
+is_singleton: false
+name: respond_successfully
+params: ()
+visibility: public

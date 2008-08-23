@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a self closing tag. Like &lt;br/&gt; or &lt;img src=&quot;...&quot;/&gt;
+- !ruby/struct:SM::Flow::P 
+  body: "<tt>name</tt> : the name of the tag to create <tt>attrs</tt> : a hash where all members will be mapped to key=&quot;value&quot;"
+full_name: Merb::Helpers::Tag#self_closing_tag
+is_singleton: false
+name: self_closing_tag
+params: (name, attrs = nil)
+visibility: public

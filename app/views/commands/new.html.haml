@@ -1,0 +1,16 @@
+:javascript
+  $('.create_link').click(function() {
+    $.terminal.print($('.form'));
+  });
+
+Oops!  That command doesn't exist!
+
+%a{:href => '#', :class => 'create_link'} Create it!
+
+.form{:style => 'display:none;'}
+  - form_for(@command, :action => url(:command)) do
+    %p
+      = text_area_control :code
+    %p
+      = submit_button "Create"
+

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Is the string clear of any matching rules?
+- !ruby/struct:SM::Flow::P 
+  body: Note that running a filter does not necessarily clear a a string of all matches, since the filter could apply edits that would also match the filter expressions.
+full_name: English::Filter#censored?
+is_singleton: false
+name: censored?
+params: (string)
+visibility: public

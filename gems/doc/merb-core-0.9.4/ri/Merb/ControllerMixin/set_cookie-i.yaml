@@ -1,0 +1,33 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sets a cookie to be included in the response.
+- !ruby/struct:SM::Flow::P 
+  body: If you need to set a cookie, then use the <tt>cookies</tt> hash.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_s>:"
+    body: A name for the cookie.
+  - !ruby/struct:SM::Flow::LI 
+    label: "value<~to_s>:"
+    body: A value for the cookie.
+  - !ruby/struct:SM::Flow::LI 
+    label: "expires<~gmtime:~strftime, Hash>:"
+    body: An expiration time for the cookie, or a hash of cookie options.
+  type: :NOTE
+- !ruby/struct:SM::Flow::RULE 
+  width: 1
+- !ruby/struct:SM::Flow::P 
+  body: "@public"
+full_name: Merb::ControllerMixin#set_cookie
+is_singleton: false
+name: set_cookie
+params: (name, value, expires)
+visibility: public

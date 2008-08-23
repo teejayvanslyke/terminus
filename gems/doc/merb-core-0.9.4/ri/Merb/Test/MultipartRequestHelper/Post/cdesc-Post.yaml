@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: BOUNDARY
+  value: "'----------0xKhTmLbOuNdArY'"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CONTENT_TYPE
+  value: "\"multipart/form-data, boundary=\" + BOUNDARY"
+full_name: Merb::Test::MultipartRequestHelper::Post
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: push_params
+- !ruby/object:RI::MethodSummary 
+  name: to_multipart
+name: Post
+superclass: Object

@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Registers a new Rack adapter.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "ids<Array>:"
+    body: Identifiers by which this adapter is recognized by.
+  - !ruby/struct:SM::Flow::LI 
+    label: "adapter_class<Class>:"
+    body: The Rack adapter class.
+  type: :NOTE
+full_name: Merb::Rack::Adapter::register
+is_singleton: true
+name: register
+params: (ids, adapter_class)
+visibility: public

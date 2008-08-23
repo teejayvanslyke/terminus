@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Generates a new session ID and creates a row for the new session in the database.
+full_name: Merb::ActiveRecordSession::generate
+is_singleton: true
+name: generate
+params: ()
+visibility: public

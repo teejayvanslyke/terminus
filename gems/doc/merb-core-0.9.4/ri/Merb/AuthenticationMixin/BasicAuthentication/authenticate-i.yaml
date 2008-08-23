@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::AuthenticationMixin::BasicAuthentication#authenticate
+is_singleton: false
+name: authenticate
+params: (&authenticator)
+visibility: public

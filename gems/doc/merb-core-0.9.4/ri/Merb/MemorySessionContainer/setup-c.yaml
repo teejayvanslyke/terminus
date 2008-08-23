@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "ttl<Fixnum>:"
+    body: Session validity time in seconds. Defaults to 1 hour.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "MemorySessionContainer:"
+    body: The new session container.
+  type: :NOTE
+full_name: Merb::MemorySessionContainer::setup
+is_singleton: true
+name: setup
+params: (ttl=nil)
+visibility: public

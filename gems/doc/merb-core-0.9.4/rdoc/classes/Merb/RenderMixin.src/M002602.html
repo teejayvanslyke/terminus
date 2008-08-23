@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>_get_layout (Merb::RenderMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/controller/mixins/render.rb, line 356</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_get_layout</span>(<span class="ruby-identifier">layout</span> = <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">layout</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">false</span>
+    
+    <span class="ruby-identifier">layout</span> = <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">Symbol</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">layout</span>, <span class="ruby-keyword kw">true</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">layout</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">layout</span>
+    <span class="ruby-identifier">layout</span> = <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">layout</span>
+
+    <span class="ruby-comment cmt"># If a layout was provided, throw an error if it's not found</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">layout</span>      
+      <span class="ruby-identifier">template_method</span>, <span class="ruby-identifier">template_location</span> = 
+        <span class="ruby-identifier">_template_for</span>(<span class="ruby-identifier">layout</span>, <span class="ruby-identifier">layout</span>.<span class="ruby-identifier">index</span>(<span class="ruby-value str">&quot;.&quot;</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">content_type</span>, <span class="ruby-value str">&quot;layout&quot;</span>)
+        
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">TemplateNotFound</span>, <span class="ruby-node">&quot;No layout found at #{template_location}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">template_method</span>
+      <span class="ruby-identifier">template_method</span>
+
+    <span class="ruby-comment cmt"># If a layout was not provided, try the default locations</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">template</span>, <span class="ruby-identifier">location</span> = <span class="ruby-identifier">_template_for</span>(<span class="ruby-identifier">controller_name</span>, <span class="ruby-identifier">content_type</span>, <span class="ruby-value str">&quot;layout&quot;</span>)
+      <span class="ruby-identifier">template</span>, <span class="ruby-identifier">location</span> = <span class="ruby-identifier">_template_for</span>(<span class="ruby-value str">&quot;application&quot;</span>, <span class="ruby-identifier">content_type</span>, <span class="ruby-value str">&quot;layout&quot;</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">template</span>
+      <span class="ruby-identifier">template</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

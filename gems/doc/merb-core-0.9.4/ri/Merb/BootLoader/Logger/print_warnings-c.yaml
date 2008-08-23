@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::BootLoader::Logger::print_warnings
+is_singleton: true
+name: print_warnings
+params: ()
+visibility: public

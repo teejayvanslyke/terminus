@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Merb::Test::Rspec::ControllerMatchers::BeMissing</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Merb::Test::Rspec::ControllerMatchers::BeMissing</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../../files/lib/merb-core/test/matchers/controller_matchers_rb.html">
+                lib/merb-core/test/matchers/controller_matchers.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../../../../Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002770">failure_message</a>&nbsp;&nbsp;
+      <a href="#M002772">inspect_target</a>&nbsp;&nbsp;
+      <a href="#M002769">matches?</a>&nbsp;&nbsp;
+      <a href="#M002771">negative_failure_message</a>&nbsp;&nbsp;
+      <a href="#M002773">status_code</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002770" class="method-detail">
+        <a name="M002770"></a>
+
+        <div class="method-heading">
+          <a href="BeMissing.src/M002770.html" target="Code" class="method-signature"
+            onclick="popupCode('BeMissing.src/M002770.html');return false;">
+          <span class="method-name">failure_message</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../../../../String.html">String</a>:</td><td>The failure message.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002772" class="method-detail">
+        <a name="M002772"></a>
+
+        <div class="method-heading">
+          <a href="BeMissing.src/M002772.html" target="Code" class="method-signature"
+            onclick="popupCode('BeMissing.src/M002772.html');return false;">
+          <span class="method-name">inspect_target</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../../../../String.html">String</a>:</td><td>The controller and action name.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002769" class="method-detail">
+        <a name="M002769"></a>
+
+        <div class="method-heading">
+          <a href="BeMissing.src/M002769.html" target="Code" class="method-signature"
+            onclick="popupCode('BeMissing.src/M002769.html');return false;">
+          <span class="method-name">matches?</span><span class="method-args">(target)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">target&lt;Fixnum, ~status&gt;:</td><td>Either the status code or a controller with a status code.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Boolean:</td><td>True if the status code is in the range 400..417.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002771" class="method-detail">
+        <a name="M002771"></a>
+
+        <div class="method-heading">
+          <a href="BeMissing.src/M002771.html" target="Code" class="method-signature"
+            onclick="popupCode('BeMissing.src/M002771.html');return false;">
+          <span class="method-name">negative_failure_message</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../../../../String.html">String</a>:</td><td>The failure message to be displayed in negative matches.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002773" class="method-detail">
+        <a name="M002773"></a>
+
+        <div class="method-heading">
+          <a href="BeMissing.src/M002773.html" target="Code" class="method-signature"
+            onclick="popupCode('BeMissing.src/M002773.html');return false;">
+          <span class="method-name">status_code</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Returns</h4>
+<table>
+<tr><td valign="top">Fixnum:</td><td>Either the target&#8216;s status or the target itself.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

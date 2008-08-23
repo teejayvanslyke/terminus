@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: engine_for
+- !ruby/object:RI::MethodSummary 
+  name: inline_template
+- !ruby/object:RI::MethodSummary 
+  name: load_template_io
+- !ruby/object:RI::MethodSummary 
+  name: register_extensions
+- !ruby/object:RI::MethodSummary 
+  name: template_extensions
+- !ruby/object:RI::MethodSummary 
+  name: template_for
+- !ruby/object:RI::MethodSummary 
+  name: template_name
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: EXTENSIONS
+  value: "{} unless defined?(EXTENSIONS)"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: METHOD_LIST
+  value: "{} unless defined?(METHOD_LIST)"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MTIMES
+  value: "{} unless defined?(MTIMES)"
+full_name: Merb::Template
+includes: []
+
+instance_methods: []
+
+name: Template
+superclass: 

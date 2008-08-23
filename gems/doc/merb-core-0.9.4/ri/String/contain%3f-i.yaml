@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: contains?
+block_params: 
+comment: 
+full_name: String#contain?
+is_singleton: false
+name: contain?
+params: (value)
+visibility: public

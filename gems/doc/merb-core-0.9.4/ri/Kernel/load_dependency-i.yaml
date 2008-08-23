@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Loads the given string as a gem.
+- !ruby/struct:SM::Flow::P 
+  body: This new version tries to load the file via ROOT/gems first before moving off to the system gems (so if you have a lower version of a gem in ROOT/gems, it'll still get loaded).
+- !ruby/struct:SM::Flow::P 
+  body: "@param name&lt;String&gt; The name of the gem to load. @param *ver&lt;Gem::Requirement, Gem::Version, Array, #to_str&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Version requirements to be passed to Gem.activate.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@note"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  If the gem cannot be found, the method will attempt to require the string\n  as a library.\n"
+full_name: Kernel#load_dependency
+is_singleton: false
+name: load_dependency
+params: (name, *ver)
+visibility: public

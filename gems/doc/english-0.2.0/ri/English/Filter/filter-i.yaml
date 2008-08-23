@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: apply
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Apply the set of rules (regular expression matches) to a string.
+full_name: English::Filter#filter
+is_singleton: false
+name: filter
+params: (string)
+visibility: public

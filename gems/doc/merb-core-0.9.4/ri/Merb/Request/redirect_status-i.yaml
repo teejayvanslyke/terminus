@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Redirect status of route matched this request.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Integer:"
+    body: The URL to redirect to if the route redirects
+  type: :NOTE
+full_name: Merb::Request#redirect_status
+is_singleton: false
+name: redirect_status
+params: ()
+visibility: public

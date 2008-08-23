@@ -1,0 +1,44 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Define a general rule.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "singular<String>:"
+    body: ending of the word in singular form
+  - !ruby/struct:SM::Flow::LI 
+    label: "plural<String>:"
+    body: ending of the word in plural form
+  - !ruby/struct:SM::Flow::LI 
+    label: "whole_word<Boolean>:"
+    body: "for capitalization, since words can be capitalized (Man =&gt; Men) #"
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::P 
+  body: "Once the following rule is defined: Language::English::Inflector.rule 'y', 'ies'"
+- !ruby/struct:SM::Flow::P 
+  body: "You can see the following results: irb&gt; &quot;fly&quot;.plural"
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: "&gt; flies"
+- !ruby/struct:SM::Flow::P 
+  body: irb&gt; &quot;cry&quot;.plural
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: "&gt; cries"
+- !ruby/struct:SM::Flow::P 
+  body: Define a general rule.
+full_name: Language::English::Inflect::rule
+is_singleton: true
+name: rule
+params: (singular, plural, whole_word = false)
+visibility: public

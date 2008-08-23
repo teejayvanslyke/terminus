@@ -1,0 +1,69 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: stem
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "This is the Porter Stemming algorithm, ported to Ruby from the version coded up in Perl. It's easy to follow against the rules in the original paper in:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Porter, 1980, An algorithm for suffix stripping, Program, Vol. 14,\n  no. 3, pp 130-137,\n"
+- !ruby/struct:SM::Flow::P 
+  body: Taken from http://www.tartarus.org/~martin/PorterStemmer (Public Domain)
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: STEP_2_LIST
+  value: "{     'ational' => 'ate', 'tional' => 'tion', 'enci' => 'ence', 'anci' => 'ance',     'izer' => 'ize', 'bli' => 'ble',     'alli' => 'al', 'entli' => 'ent', 'eli' => 'e', 'ousli' => 'ous',     'ization' => 'ize', 'ation' => 'ate',     'ator' => 'ate', 'alism' => 'al', 'iveness' => 'ive', 'fulness' => 'ful',     'ousness' => 'ous', 'aliti' => 'al',     'iviti' => 'ive', 'biliti' => 'ble', 'logi' => 'log'"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: STEP_3_LIST
+  value: "{     'icate' => 'ic', 'ative' => '', 'alize' => 'al', 'iciti' => 'ic',     'ical' => 'ic', 'ful' => '', 'ness' => ''"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SUFFIX_1_REGEXP
+  value: /(                     ational  |                     tional   |                     enci     |                     anci     |                     izer     |                     bli      |                     alli     |                     entli    |                     eli      |                     ousli    |                     ization  |                     ation    |                     ator     |                     alism    |                     iveness  |                     fulness  |                     ousness  |                     aliti    |                     iviti    |                     biliti   |                     logi)$/x
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SUFFIX_2_REGEXP
+  value: /(                       al       |                       ance     |                       ence     |                       er       |                       ic       |                       able     |                       ible     |                       ant      |                       ement    |                       ment     |                       ent      |                       ou       |                       ism      |                       ate      |                       iti      |                       ous      |                       ive      |                       ize)$/x
+- !ruby/object:RI::Constant 
+  comment: 
+  name: C
+  value: "\"[^aeiou]\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: V
+  value: "\"[aeiouy]\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CC
+  value: "\"#{C}(?>[^aeiouy]*)\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: VV
+  value: "\"#{V}(?>[aeiou]*)\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MGR0
+  value: /^(#{CC})?#{VV}#{CC}/o
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MEQ1
+  value: /^(#{CC})?#{VV}#{CC}(#{VV})?$/o
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MGR1
+  value: /^(#{CC})?#{VV}#{CC}#{VV}#{CC}/o
+- !ruby/object:RI::Constant 
+  comment: 
+  name: VOWEL_IN_STEM
+  value: /^(#{CC})?#{V}/o
+full_name: English::PorterStemming
+includes: []
+
+instance_methods: []
+
+name: PorterStemming
+superclass: 

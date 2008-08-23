@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Merb::Test::MultipartRequestHelper
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: dispatch_multipart_to
+- !ruby/object:RI::MethodSummary 
+  name: multipart_fake_request
+- !ruby/object:RI::MethodSummary 
+  name: multipart_post
+- !ruby/object:RI::MethodSummary 
+  name: multipart_put
+name: MultipartRequestHelper
+superclass: 

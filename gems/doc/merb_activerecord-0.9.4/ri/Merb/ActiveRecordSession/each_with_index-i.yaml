@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::ActiveRecordSession#each_with_index
+is_singleton: false
+name: each_with_index
+params: (&b)
+visibility: public

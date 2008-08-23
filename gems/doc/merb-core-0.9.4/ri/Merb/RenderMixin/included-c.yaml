@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "base<Module>:"
+    body: Module that is including RenderMixin (probably a controller)
+  type: :NOTE
+full_name: Merb::RenderMixin::included
+is_singleton: true
+name: included
+params: (base)
+visibility: public

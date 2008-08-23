@@ -1,0 +1,48 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Module that is mixed in to all implemented controllers.
+constants: []
+
+full_name: Merb::ControllerMixin
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: delete_cookie
+- !ruby/object:RI::MethodSummary 
+  name: escape_xml
+- !ruby/object:RI::MethodSummary 
+  name: h
+- !ruby/object:RI::MethodSummary 
+  name: html_escape
+- !ruby/object:RI::MethodSummary 
+  name: message
+- !ruby/object:RI::MethodSummary 
+  name: nginx_send_file
+- !ruby/object:RI::MethodSummary 
+  name: redirect
+- !ruby/object:RI::MethodSummary 
+  name: render_chunked
+- !ruby/object:RI::MethodSummary 
+  name: render_deferred
+- !ruby/object:RI::MethodSummary 
+  name: render_then_call
+- !ruby/object:RI::MethodSummary 
+  name: run_later
+- !ruby/object:RI::MethodSummary 
+  name: send_chunk
+- !ruby/object:RI::MethodSummary 
+  name: send_data
+- !ruby/object:RI::MethodSummary 
+  name: send_file
+- !ruby/object:RI::MethodSummary 
+  name: set_cookie
+- !ruby/object:RI::MethodSummary 
+  name: stream_file
+name: ControllerMixin
+superclass: 

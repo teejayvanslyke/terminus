@@ -1,0 +1,41 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: load_classes
+- !ruby/object:RI::MethodSummary 
+  name: load_file
+- !ruby/object:RI::MethodSummary 
+  name: reload
+- !ruby/object:RI::MethodSummary 
+  name: reload_router!
+- !ruby/object:RI::MethodSummary 
+  name: remove_classes_in_file
+- !ruby/object:RI::MethodSummary 
+  name: remove_constant
+- !ruby/object:RI::MethodSummary 
+  name: run
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Load all classes inside the load paths.
+- !ruby/struct:SM::Flow::P 
+  body: This is used in conjunction with Merb::BootLoader::ReloadClasses to track files that need to be reloaded, and which constants need to be removed in order to reload a file.
+- !ruby/struct:SM::Flow::P 
+  body: This also adds the model, controller, and lib directories to the load path, so they can be required in order to avoid load-order issues.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: LOADED_CLASSES
+  value: "{}"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MTIMES
+  value: "{}"
+full_name: Merb::BootLoader::LoadClasses
+includes: []
+
+instance_methods: []
+
+name: LoadClasses
+superclass: Merb::BootLoader

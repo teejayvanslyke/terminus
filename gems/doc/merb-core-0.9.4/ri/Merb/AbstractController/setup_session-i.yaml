@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Method stub for setting up the session. This will be overriden by session modules.
+full_name: Merb::AbstractController#setup_session
+is_singleton: false
+name: setup_session
+params: ()
+visibility: public

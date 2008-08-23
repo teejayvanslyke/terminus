@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Merb::AuthenticationMixin::BasicAuthentication
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Merb::ControllerExceptions
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: authenticate
+- !ruby/object:RI::MethodSummary 
+  name: authenticate_or_request
+- !ruby/object:RI::MethodSummary 
+  name: request
+name: BasicAuthentication
+superclass: Object

@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Called in templates to get at content thrown in another template. The results of rendering a template are automatically thrown into :for_layout, so catch_content or catch_content(:for_layout) can be used inside layouts to get the content rendered by the action template.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "obj<Object>:"
+    body: The key in the thrown_content hash. Defaults to :for_layout.
+  type: :NOTE
+full_name: Merb::RenderMixin#catch_content
+is_singleton: false
+name: catch_content
+params: (obj = :for_layout)
+visibility: public

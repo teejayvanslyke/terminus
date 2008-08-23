@@ -1,0 +1,32 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: cache
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: index
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: register
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Cache procs for future reference in eval statement
+constants: []
+
+full_name: Merb::Router::CachedProc
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+name: CachedProc
+superclass: Object

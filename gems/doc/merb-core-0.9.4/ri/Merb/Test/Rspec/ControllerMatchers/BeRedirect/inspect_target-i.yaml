@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The controller and action name.
+  type: :NOTE
+full_name: Merb::Test::Rspec::ControllerMatchers::BeRedirect#inspect_target
+is_singleton: false
+name: inspect_target
+params: ()
+visibility: public

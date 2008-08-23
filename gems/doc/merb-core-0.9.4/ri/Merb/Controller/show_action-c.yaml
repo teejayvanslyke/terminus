@@ -1,0 +1,35 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Makes each of the given methods being callable as actions. You can use this to make methods included from modules callable as actions.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*names<~to-s>:"
+    body: Actions that should be added to the list.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[String]:"
+    body: An array of actions that should be dispatched to even if they would not otherwise be.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  module Foo\n    def self.included(base)\n      base.show_action(:foo)\n    end\n\n    def foo\n      # some actiony stuff\n    end\n\n    def foo_helper\n      # this should not be an action\n    end\n  end\n"
+full_name: Merb::Controller::show_action
+is_singleton: true
+name: show_action
+params: (*names)
+visibility: public

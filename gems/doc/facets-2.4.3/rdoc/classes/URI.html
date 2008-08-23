@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: URI</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">URI</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/lore/facets/uri_rb.html">
+                lib/lore/facets/uri.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000882">cgi_escape</a>&nbsp;&nbsp;
+      <a href="#M000884">cgi_parse</a>&nbsp;&nbsp;
+      <a href="#M000883">cgi_unescape</a>&nbsp;&nbsp;
+      <a href="#M000886">chomp_query_string</a>&nbsp;&nbsp;
+      <a href="#M000877">decode</a>&nbsp;&nbsp;
+      <a href="#M000885">get_query_string</a>&nbsp;&nbsp;
+      <a href="#M000880">hash_to_query</a>&nbsp;&nbsp;
+      <a href="#M000881">hash_to_query_string</a>&nbsp;&nbsp;
+      <a href="#M000879">query_string_to_hash</a>&nbsp;&nbsp;
+      <a href="#M000878">query_to_hash</a>&nbsp;&nbsp;
+      <a href="#M000887">update_query_string</a>&nbsp;&nbsp;
+      <a href="#M000888">update_request_uri</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="URI/Hash.html" class="link">URI::Hash</a><br />
+Module <a href="URI/Kernel.html" class="link">URI::Kernel</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000882" class="method-detail">
+        <a name="M000882"></a>
+
+        <div class="method-heading">
+          <a href="#M000882" class="method-signature">
+          <span class="method-name">cgi_escape</span><span class="method-args">(string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+TODO: How does this compare to URI.escape?
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000882-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000882-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 109</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cgi_escape</span>(<span class="ruby-identifier">string</span>)
+    <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/([^ a-zA-Z0-9_.-]+)/n</span>) <span class="ruby-keyword kw">do</span>
+      <span class="ruby-value str">'%'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">$1</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'H2'</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">$1</span>.<span class="ruby-identifier">size</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">'%'</span>).<span class="ruby-identifier">upcase</span>
+    <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-value str">' '</span>, <span class="ruby-value str">'+'</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000884" class="method-detail">
+        <a name="M000884"></a>
+
+        <div class="method-heading">
+          <a href="#M000884" class="method-signature">
+          <span class="method-name">cgi_parse</span><span class="method-args">(query)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000884-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000884-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 125</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cgi_parse</span>(<span class="ruby-identifier">query</span>)
+    <span class="ruby-identifier">params</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>([].<span class="ruby-identifier">freeze</span>)
+
+    <span class="ruby-identifier">query</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[&amp;;]/n</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pairs</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">pairs</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'='</span>,<span class="ruby-value">2</span>).<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cgi_unescape</span>(<span class="ruby-identifier">v</span>) }
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+        <span class="ruby-identifier">params</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">value</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">params</span>[<span class="ruby-identifier">key</span>] = [<span class="ruby-identifier">value</span>]
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">params</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000883" class="method-detail">
+        <a name="M000883"></a>
+
+        <div class="method-heading">
+          <a href="#M000883" class="method-signature">
+          <span class="method-name">cgi_unescape</span><span class="method-args">(string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000883-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000883-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 117</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cgi_unescape</span>(<span class="ruby-identifier">string</span>)
+    <span class="ruby-identifier">string</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-value str">'+'</span>, <span class="ruby-value str">' '</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/((?:%[0-9a-fA-F]{2})+)/n</span>) <span class="ruby-keyword kw">do</span>
+      [<span class="ruby-identifier">$1</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'%'</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'H*'</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000886" class="method-detail">
+        <a name="M000886"></a>
+
+        <div class="method-heading">
+          <a href="#M000886" class="method-signature">
+          <span class="method-name">chomp_query_string</span><span class="method-args">(uri)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Removes the query string from a uri
+</p>
+<p>
+Input: the uri
+</p>
+<p>
+Output: the chomped uri.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000886-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000886-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 169</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">chomp_query_string</span>(<span class="ruby-identifier">uri</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">uri</span>
+    <span class="ruby-identifier">query_string</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_query_string</span>(<span class="ruby-identifier">uri</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-node">&quot;?#{query_string}&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000877" class="method-detail">
+        <a name="M000877"></a>
+
+        <div class="method-heading">
+          <a href="#M000877" class="method-signature">
+          <span class="method-name">decode</span><span class="method-args">(uri)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Decode the uri components.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000877-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000877-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 33</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decode</span>(<span class="ruby-identifier">uri</span>)
+    <span class="ruby-comment cmt"># gmosx: hmm is this needed?</span>
+    <span class="ruby-comment cmt"># guard against invalid filenames for example pictures with</span>
+    <span class="ruby-comment cmt"># spaces uploaded by users</span>
+    <span class="ruby-identifier">escaped_uri</span> = <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/ /</span>, <span class="ruby-value str">&quot;+&quot;</span>)
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">REGEXP</span><span class="ruby-operator">::</span><span class="ruby-constant">REL_URI</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">escaped_uri</span>)
+
+      <span class="ruby-identifier">path</span> = <span class="ruby-node">&quot;#{md[5]}#{md[6]}&quot;</span>
+      <span class="ruby-identifier">type</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>)
+      <span class="ruby-identifier">query_string</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">7</span>]
+
+<span class="ruby-comment cmt">#      real_path = &quot;#{$root_dir}/#{path}&quot;</span>
+
+      <span class="ruby-identifier">parameters</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">query_to_hash</span>(<span class="ruby-identifier">query_string</span>)
+      <span class="ruby-identifier">path</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/\+/</span>, <span class="ruby-value str">&quot; &quot;</span>)
+
+      <span class="ruby-keyword kw">return</span> [<span class="ruby-identifier">path</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">parameters</span>, <span class="ruby-identifier">query_string</span>]
+
+    <span class="ruby-keyword kw">end</span> <span class="ruby-comment cmt"># match</span>
+
+    <span class="ruby-comment cmt"># this is usefull for uncovering bugs!</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;the parameter '#{uri}' is not a valid uri&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000885" class="method-detail">
+        <a name="M000885"></a>
+
+        <div class="method-heading">
+          <a href="#M000885" class="method-signature">
+          <span class="method-name">get_query_string</span><span class="method-args">(uri)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method returns the query string of a uri
+</p>
+<p>
+Input: the uri
+</p>
+<p>
+Output: the query string. returns nil if no query string
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000885-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000885-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 149</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_query_string</span>(<span class="ruby-identifier">uri</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">uri</span>
+    <span class="ruby-comment cmt"># gmosx: INVESTIGATE ruby's URI seems to differently handle</span>
+    <span class="ruby-comment cmt"># abs and rel uris.</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">REGEXP</span><span class="ruby-operator">::</span><span class="ruby-constant">ABS_URI</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">uri</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">md</span>[<span class="ruby-value">8</span>]
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">md</span> = <span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">REGEXP</span><span class="ruby-operator">::</span><span class="ruby-constant">REL_URI</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">uri</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">md</span>[<span class="ruby-value">7</span>]
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000880" class="method-detail">
+        <a name="M000880"></a>
+
+        <div class="method-heading">
+          <a href="#M000880" class="method-signature">
+          <span class="method-name">hash_to_query</span><span class="method-args">(parameters)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Given a hash with parameter/value pairs construct a standard query string.
+</p>
+<pre>
+  URI.hash_to_query(:a =&gt; 1, :b =&gt; 2)
+  =&gt; &quot;a=1&amp;b=2&quot;
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000880-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000880-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 94</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hash_to_query</span>(<span class="ruby-identifier">parameters</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-value str">''</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">parameters</span>
+    <span class="ruby-identifier">pairs</span> = []
+    <span class="ruby-identifier">parameters</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">param</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">pairs</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{param}=#{cgi_escape(value.to_s)}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt">#return pairs.join('&amp;')</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">pairs</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;;&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000881" class="method-detail">
+        <a name="M000881"></a>
+
+        <div class="method-heading">
+          <span class="method-name">hash_to_query_string</span><span class="method-args">(parameters)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="URI.html#M000880">hash_to_query</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000879" class="method-detail">
+        <a name="M000879"></a>
+
+        <div class="method-heading">
+          <span class="method-name">query_string_to_hash</span><span class="method-args">(query_string)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="URI.html#M000878">query_to_hash</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000878" class="method-detail">
+        <a name="M000878"></a>
+
+        <div class="method-heading">
+          <a href="#M000878" class="method-signature">
+          <span class="method-name">query_to_hash</span><span class="method-args">(query_string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Extend the basic query string parser provided by the cgi module. converts
+single valued params (the most common case) to objects instead of arrays
+</p>
+<p>
+Input: the query string
+</p>
+<p>
+Output: hash of parameters, contains arrays for multivalued parameters
+(multiselect, checkboxes , etc) If no query string is provided (nil or
+&quot;&quot;) returns an empty hash.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000878-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000878-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 70</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query_to_hash</span>(<span class="ruby-identifier">query_string</span>)
+    <span class="ruby-keyword kw">return</span> {} <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">query_string</span>
+
+    <span class="ruby-identifier">query_parameters</span> = <span class="ruby-identifier">cgi_parse</span>(<span class="ruby-identifier">query_string</span>)
+
+    <span class="ruby-identifier">query_parameters</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+      <span class="ruby-comment cmt"># replace the array with an object</span>
+      <span class="ruby-identifier">query_parameters</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span>[<span class="ruby-value">0</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-value">1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">length</span>
+    }
+
+    <span class="ruby-comment cmt"># set default value to nil! cgi sets this to []</span>
+    <span class="ruby-identifier">query_parameters</span>.<span class="ruby-identifier">default</span> = <span class="ruby-keyword kw">nil</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">query_parameters</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000887" class="method-detail">
+        <a name="M000887"></a>
+
+        <div class="method-heading">
+          <a href="#M000887" class="method-signature">
+          <span class="method-name">update_query_string</span><span class="method-args">(uri, parameters)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get a uri and a hash of parameters. Inject the hash values as parameters in
+the query sting path. Returns the full uri.
+</p>
+<p>
+Input: the uri to filter (String) hash of parameters to update
+</p>
+<p>
+Output: the full updated query string
+</p>
+<p>
+TODO: optimize
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000887-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000887-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 188</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_query_string</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">parameters</span>)
+    <span class="ruby-identifier">query_string</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get_query_string</span>(<span class="ruby-identifier">uri</span>)
+    <span class="ruby-identifier">rest</span> = <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-node">/\?#{query_string}/</span>, <span class="ruby-value str">&quot;&quot;</span>)
+
+    <span class="ruby-identifier">hash</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">query_string_to_hash</span>(<span class="ruby-identifier">query_string</span>)
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">parameters</span>)
+    <span class="ruby-identifier">query_string</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hash_to_query_string</span>(<span class="ruby-identifier">hash</span>)
+
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">query_string</span>.<span class="ruby-identifier">blank?</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{rest}?#{query_string}&quot;</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rest</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000888" class="method-detail">
+        <a name="M000888"></a>
+
+        <div class="method-heading">
+          <a href="#M000888" class="method-signature">
+          <span class="method-name">update_request_uri</span><span class="method-args">(request, parameters)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+TODO: find a better name. Gets the request uri, injects extra parameters in
+the query string and returns a new uri. The request object is not modified.
+There is always a qs string so an extra test is skipped.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000888-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000888-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/uri.rb, line 208</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_request_uri</span>(<span class="ruby-identifier">request</span>, <span class="ruby-identifier">parameters</span>)
+    <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">parameters</span>.<span class="ruby-identifier">dup</span>()
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">parameters</span>)
+
+    <span class="ruby-comment cmt"># use this in hash_to_querystring.</span>
+    <span class="ruby-identifier">query_string</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-node">&quot;#{k}=#{v}&quot;</span>
+    }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;;&quot;</span>)
+
+    <span class="ruby-comment cmt">#return &quot;#{request.translated_uri}?#{query_string}&quot;</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{request.path}?#{query_string}&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

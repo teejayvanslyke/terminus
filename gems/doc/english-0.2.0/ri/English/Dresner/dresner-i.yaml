@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Scramble the inner characters of words leaving the text still readable (research at Cambridge University, code by KurtDresner).
+- !ruby/struct:SM::Flow::P 
+  body: "For example, the above text may result in:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Srblamce the iennr cchrteaars of wodrs lvenaig the txet stlil rbeaadle\n  (rreceash at Cbamigdre Uverintisy, cdoe by KrneruestDr?)\n"
+full_name: English::Dresner#dresner
+is_singleton: false
+name: dresner
+params: (string)
+visibility: public

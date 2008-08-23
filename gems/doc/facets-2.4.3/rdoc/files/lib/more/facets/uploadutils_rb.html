@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: uploadutils.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>uploadutils.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/more/facets/uploadutils.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 18 22:34:51 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../../../../classes/UploadUtils.html">UploadUtils</a></h1>
+<p>
+Upload files to host. These means of uploading are current supported: ftp,
+sftp, scp and rsync.
+</p>
+<pre>
+    user       Username for host.
+    host       Host server's domain name.
+    root       Document root path on host.
+    copy       Directory of files to publish, or
+               Files to publish using from and to.
+
+    dryrun     If true only pretend to upload.
+    quiet      Supress all output.
+    verbose    Provide extra details.
+</pre>
+<p>
+The copy parameter allows you to simply specify a file or directory which
+will be published to host&#8216;s document root location.
+</p>
+<p>
+If you need more control over which files to publish where, you can use the
+copy parameter instead. Provide an array of pattern strings in the form of
+&quot;{from} {to}&quot;. If the desitination is the host&#8216;s document
+root you do not need to specify the {to} part. For example:
+</p>
+<pre>
+    copy = [ 'web/*', 'doc/api/* doc/api' ]
+</pre>
+<p>
+The first copies the files under your project&#8216;s web directory to the
+host&#8216;s document root. The second copies your projects doc/api files
+to the doc/api location on the host.
+</p>
+<p>
+The internal template used for the outbound destination is
+&#8216;username@host:root/&#8217;.
+</p>
+<h2>AUTHORS</h2>
+<ul>
+<li>Thomas Sawyer
+
+</li>
+</ul>
+<h2>TODOs</h2>
+<ul>
+<li>Needs general improvements.
+
+</li>
+<li>Reduce shelling-out.
+
+</li>
+<li>Incorporate password into scp and ftp ?
+
+</li>
+<li>rsync needs &#8212;delete option
+
+</li>
+</ul>
+<h2>COPYRIGHT</h2>
+<pre>
+  Copyright (c) 2006 Thomas Sawyer
+</pre>
+<h2>LICENSE</h2>
+<pre>
+  Ruby License
+
+  This module is free software. You may use, modify, and/or redistribute this
+  software under the same terms as Ruby.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.
+</pre>
+
+    </div>
+
+    <div id="requires-list">
+      <h3 class="section-bar">Required files</h3>
+
+      <div class="name-list">
+      openssl&nbsp;&nbsp;
+      shellwords&nbsp;&nbsp;
+      tmpdir&nbsp;&nbsp;
+      facets/openobject&nbsp;&nbsp;
+      net/ftp&nbsp;&nbsp;
+      net/sftp&nbsp;&nbsp;
+      </div>
+    </div>
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

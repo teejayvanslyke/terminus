@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>partial (Merb::RenderMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/controller/mixins/render.rb, line 282</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">partial</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">opts</span>={})
+
+    <span class="ruby-comment cmt"># partial :foo becomes &quot;#{controller_name}/_foo&quot;</span>
+    <span class="ruby-comment cmt"># partial &quot;foo/bar&quot; becomes &quot;foo/_bar&quot;</span>
+    <span class="ruby-identifier">template</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">template</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">%r{^/}</span>
+      <span class="ruby-identifier">template_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">template</span>) <span class="ruby-operator">/</span> <span class="ruby-node">&quot;_#{File.basename(template)}&quot;</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">kontroller</span> = (<span class="ruby-identifier">m</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/.*(?=\/)/</span>)) <span class="ruby-operator">?</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">controller_name</span>
+      <span class="ruby-identifier">template</span> = <span class="ruby-node">&quot;_#{File.basename(template)}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">template_method</span>, <span class="ruby-identifier">template_location</span> = 
+      <span class="ruby-identifier">_template_for</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:format</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">content_type</span>, <span class="ruby-identifier">kontroller</span>, <span class="ruby-identifier">template_path</span>)
+
+    (<span class="ruby-ivar">@_old_partial_locals</span> <span class="ruby-operator">||=</span> []).<span class="ruby-identifier">push</span> <span class="ruby-ivar">@_merb_partial_locals</span>
+    
+    <span class="ruby-comment cmt"># This handles no :with as well</span>
+    <span class="ruby-identifier">with</span> = [<span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:with</span>)].<span class="ruby-identifier">flatten</span>
+    <span class="ruby-identifier">as</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:as</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">template_location</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">%r[.*/_([^\.]*)]</span>)[<span class="ruby-value">1</span>]
+    
+    <span class="ruby-ivar">@_merb_partial_locals</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:collection_index</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">-1</span>, <span class="ruby-identifier">:collection_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">with</span>.<span class="ruby-identifier">size</span>)
+    
+    <span class="ruby-comment cmt"># this handles an edge-case where the name of the partial is _foo.* and your opts</span>
+    <span class="ruby-comment cmt"># have :foo as a key.</span>
+    <span class="ruby-identifier">named_local</span> = <span class="ruby-ivar">@_merb_partial_locals</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">as</span>.<span class="ruby-identifier">to_sym</span>)
+    
+    <span class="ruby-identifier">sent_template</span> = <span class="ruby-identifier">with</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">temp</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@_merb_partial_locals</span>[<span class="ruby-identifier">as</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">temp</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">named_local</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">template_method</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">template_method</span>)
+        <span class="ruby-ivar">@_merb_partial_locals</span>[<span class="ruby-identifier">:collection_index</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">send</span>(<span class="ruby-identifier">template_method</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">TemplateNotFound</span>, <span class="ruby-node">&quot;Could not find template at #{template_location}.*&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">join</span>
+    
+    <span class="ruby-ivar">@_merb_partial_locals</span> = <span class="ruby-ivar">@_old_partial_locals</span>.<span class="ruby-identifier">pop</span>
+    <span class="ruby-identifier">sent_template</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>params (Merb::Request)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/request.rb, line 216</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">params</span>
+      <span class="ruby-ivar">@params</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">h</span> = <span class="ruby-identifier">body_and_query_params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">route_params</span>)      
+        <span class="ruby-identifier">h</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">multipart_params</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">parse_multipart_params</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">multipart_params</span>
+        <span class="ruby-identifier">h</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">json_params</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">parse_json_params</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">json_params</span>
+        <span class="ruby-identifier">h</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">xml_params</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">parse_xml_params</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">xml_params</span>
+        <span class="ruby-identifier">h</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

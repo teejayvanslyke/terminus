@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Merb::Test::Rspec::ControllerMatchers::BeRedirect
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: failure_message
+- !ruby/object:RI::MethodSummary 
+  name: inspect_target
+- !ruby/object:RI::MethodSummary 
+  name: matches?
+- !ruby/object:RI::MethodSummary 
+  name: negative_failure_message
+name: BeRedirect
+superclass: Object

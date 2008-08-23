@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method should be overridden in init.rb before Merb.start to set up a different framework structure.
+full_name: Merb::BootLoader::BuildFramework::build_framework
+is_singleton: true
+name: build_framework
+params: ()
+visibility: public

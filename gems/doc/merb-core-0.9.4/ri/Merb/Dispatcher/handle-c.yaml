@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Dispatch the rack environment. ControllerExceptions are rescued here and redispatched.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "rack_env<Rack::Environment>:"
+    body: The rack environment, which is used to instantiate a Merb::Request
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Merb::Controller:"
+    body: The Merb::Controller that was dispatched to
+  type: :NOTE
+full_name: Merb::Dispatcher::handle
+is_singleton: true
+name: handle
+params: (request)
+visibility: public

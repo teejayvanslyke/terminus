@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Cookies are read and written through Merb::Controller#cookies. The cookies you read are those received in request along with those that have been set during the current request. The cookies you write will be sent out with the response. Cookies are read by value (so you won't get the cookie object itself back -- just the value it holds).
+constants: []
+
+full_name: Merb::Cookies
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: set_cookie
+name: Cookies
+superclass: Object

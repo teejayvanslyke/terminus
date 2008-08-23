@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Orms::ActiveRecord::sample_dest
+is_singleton: true
+name: sample_dest
+params: ()
+visibility: public

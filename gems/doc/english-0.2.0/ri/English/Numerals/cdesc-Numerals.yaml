@@ -1,0 +1,31 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Ones
+  value: "%w[ zero one two three four five six seven eight nine ]"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Teen
+  value: "%w[ ten eleven twelve thirteen fourteen fifteen             sixteen seventeen eighteen nineteen ]"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Tens
+  value: "%w[ zero ten twenty thirty forty fifty             sixty seventy eighty ninety ]"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Mega
+  value: "%w[ none thousand million billion ]"
+full_name: English::Numerals
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: name
+name: Numerals
+superclass: 

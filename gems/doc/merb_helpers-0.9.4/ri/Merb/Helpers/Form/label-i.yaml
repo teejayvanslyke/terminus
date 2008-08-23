@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a generic HTML label.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "    &lt;% label &quot;Name&quot;, &quot;&quot;, :for =&gt; &quot;name&quot; %&gt;\n    # =&gt; &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;\n"
+full_name: Merb::Helpers::Form#label
+is_singleton: false
+name: label
+params: (name, contents = "", attrs = {})
+visibility: public

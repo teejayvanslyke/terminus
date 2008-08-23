@@ -1,0 +1,25 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "conditions<Hash>:"
+    body: Conditions to be met for this behavior to take effect.
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: Hash describing the course action to take (Behavior) when the conditions match. The values of the <tt>params</tt> keys must be Strings.
+  - !ruby/struct:SM::Flow::LI 
+    label: "parent<Behavior, Nil>:"
+    body: The parent of this Behavior. Defaults to nil.
+  type: :NOTE
+full_name: Merb::Router::Behavior::new
+is_singleton: true
+name: new
+params: (conditions = {}, params = {}, parent = nil)
+visibility: public

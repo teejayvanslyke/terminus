@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Merb::BootLoader::MixinSessionContainer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 580</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">run</span>
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">register_session_type</span>(<span class="ruby-value str">'memory'</span>,
+      <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">framework_root</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;merb-core&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;dispatch&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;session&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;memory&quot;</span>,
+      <span class="ruby-value str">&quot;Using in-memory sessions; sessions will be lost whenever the server stops.&quot;</span>)
+
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">register_session_type</span>(<span class="ruby-value str">'memcache'</span>,
+      <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">framework_root</span> <span class="ruby-operator">/</span>  <span class="ruby-value str">&quot;merb-core&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;dispatch&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;session&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;memcached&quot;</span>,
+      <span class="ruby-value str">&quot;Using 'memcached' sessions&quot;</span>)
+
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">register_session_type</span>(<span class="ruby-value str">'cookie'</span>, <span class="ruby-comment cmt"># Last session type becomes the default</span>
+      <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">framework_root</span> <span class="ruby-operator">/</span>  <span class="ruby-value str">&quot;merb-core&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;dispatch&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;session&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;cookie&quot;</span>,
+      <span class="ruby-value str">&quot;Using 'share-nothing' cookie sessions (4kb limit per client)&quot;</span>)
+
+
+
+    <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Controller</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">session_store</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:session_store</span>].<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword kw">if</span> [<span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-value str">&quot;false&quot;</span>, <span class="ruby-value str">&quot;none&quot;</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">session_store</span>)
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">warn</span> <span class="ruby-value str">&quot;Not Using Sessions&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">reg</span> = <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">registered_session_types</span>[<span class="ruby-identifier">session_store</span>]
+        <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">BootLoader</span><span class="ruby-operator">::</span><span class="ruby-constant">MixinSessionContainer</span>.<span class="ruby-identifier">check_for_secret_key</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">session_store</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;cookie&quot;</span>
+        <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">BootLoader</span><span class="ruby-operator">::</span><span class="ruby-constant">MixinSessionContainer</span>.<span class="ruby-identifier">check_for_session_id_key</span>
+        <span class="ruby-identifier">require</span> <span class="ruby-identifier">reg</span>[<span class="ruby-identifier">:file</span>]
+        <span class="ruby-identifier">include</span> <span class="ruby-operator">::</span><span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">SessionMixin</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">warn</span> <span class="ruby-identifier">reg</span>[<span class="ruby-identifier">:description</span>]
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Session store not found, '#{Merb::Config[:session_store]}'.&quot;</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">warn</span> <span class="ruby-value str">&quot;Defaulting to CookieStore Sessions&quot;</span>
+        <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">BootLoader</span><span class="ruby-operator">::</span><span class="ruby-constant">MixinSessionContainer</span>.<span class="ruby-identifier">check_for_secret_key</span>
+        <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">BootLoader</span><span class="ruby-operator">::</span><span class="ruby-constant">MixinSessionContainer</span>.<span class="ruby-identifier">check_for_session_id_key</span>
+        <span class="ruby-identifier">require</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">registered_session_types</span>[<span class="ruby-value str">'cookie'</span>][<span class="ruby-identifier">:file</span>]
+        <span class="ruby-identifier">include</span> <span class="ruby-operator">::</span><span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">SessionMixin</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">warn</span> <span class="ruby-value str">&quot;(plugin not installed?)&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">flush</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

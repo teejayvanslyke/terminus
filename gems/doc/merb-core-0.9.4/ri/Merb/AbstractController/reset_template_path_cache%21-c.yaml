@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Resets the template_path_cache to an empty hash
+full_name: Merb::AbstractController::reset_template_path_cache!
+is_singleton: true
+name: reset_template_path_cache!
+params: ()
+visibility: public

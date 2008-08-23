@@ -1,0 +1,39 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: new_behavior if block_given?
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Generates a new child behavior without the path if the path matches an empty string. Yields the new behavior to a block.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "conditions<Hash>:"
+    body: Optional conditions to pass to the new route.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Block parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "new_behavior<Behavior>:"
+    body: The child behavior.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Behavior:"
+    body: The new behavior.
+  type: :NOTE
+full_name: Merb::Router::Behavior#match_without_path
+is_singleton: false
+name: match_without_path
+params: (conditions = {}) {|new_behavior if block_given?| ...}
+visibility: public

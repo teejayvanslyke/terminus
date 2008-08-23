@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>_perform_content_negotiation (Merb::ResponderMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/controller/mixins/responder.rb, line 264</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_perform_content_negotiation</span>
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">fmt</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:format</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">fmt</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">accepts</span> = [<span class="ruby-identifier">fmt</span>.<span class="ruby-identifier">to_sym</span>]
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">accept</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">%r{^(text/html|\*/\*)}</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">_provided_formats</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:html</span>
+        <span class="ruby-comment cmt"># Handle the common case of text/html and :html provided after checking :format</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">:html</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">accepts</span> = <span class="ruby-constant">Responder</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request</span>.<span class="ruby-identifier">accept</span>).<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">to_sym</span>}.<span class="ruby-identifier">compact</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-comment cmt"># no need to make a bunch of method calls to _provided_formats</span>
+      <span class="ruby-identifier">provided_formats</span> = <span class="ruby-identifier">_provided_formats</span>
+      
+      <span class="ruby-identifier">specifics</span> = <span class="ruby-identifier">accepts</span> <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">provided_formats</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">specifics</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">specifics</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">provided_formats</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">accepts</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:all</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">provided_formats</span>.<span class="ruby-identifier">empty?</span>
+      
+      <span class="ruby-identifier">message</span>  = <span class="ruby-value str">&quot;A format (%s) that isn't provided (%s) has been requested. &quot;</span>
+      <span class="ruby-identifier">message</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;Make sure the action provides the format, and be &quot;</span>
+      <span class="ruby-identifier">message</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;careful of before filters which won't recognize &quot;</span>
+      <span class="ruby-identifier">message</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;formats provided within actions.&quot;</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">ControllerExceptions</span><span class="ruby-operator">::</span><span class="ruby-constant">NotAcceptable</span>,
+        (<span class="ruby-identifier">message</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">accepts</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>), <span class="ruby-identifier">provided_formats</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>)])
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

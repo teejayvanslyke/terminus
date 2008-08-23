@@ -1,0 +1,38 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Takes a block and stores it for deferred conditional routes. The block takes the <tt>request</tt> object and the <tt>params</tt> hash as parameters.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: Parameters and conditions associated with this behavior.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&conditional_block:"
+    body: A block with the conditions to be met for the behavior to take effect.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Route :"
+    body: The default route.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  r.defer_to do |request, params|\n    params.merge :controller =&gt; 'here',\n      :action =&gt; 'there' if request.xhr?\n  end\n"
+full_name: Merb::Router::Behavior#defer_to
+is_singleton: false
+name: defer_to
+params: (params = {}, &conditional_block)
+visibility: public

@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "attrs<Hash>:"
+    body: A set of attributes that must not be matched.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "NotMatchTag:"
+    body: A new not match tag matcher.
+  type: :NOTE
+full_name: Merb::Test::Rspec::ViewMatchers#not_match_tag
+is_singleton: false
+name: not_match_tag
+params: (attrs)
+visibility: public

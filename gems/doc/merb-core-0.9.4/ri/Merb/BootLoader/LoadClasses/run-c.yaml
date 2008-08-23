@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Load all classes from Merb's native load paths.
+full_name: Merb::BootLoader::LoadClasses::run
+is_singleton: true
+name: run
+params: ()
+visibility: public

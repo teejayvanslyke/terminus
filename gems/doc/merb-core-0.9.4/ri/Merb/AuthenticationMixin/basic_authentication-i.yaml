@@ -1,0 +1,31 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Attempts to authenticate the user via HTTP Basic authentication. Takes a block with the username and password, if the block yields false the authentication is not accepted and :halt is thrown.
+- !ruby/struct:SM::Flow::P 
+  body: If no block is passed, <tt>basic_authentication</tt>, the <tt>request</tt> and <tt>authenticate</tt> methods can be chained. These can be used to independently request authentication or confirm it, if more control is desired.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "realm<~to_s>:"
+    body: The realm to authenticate against. Defaults to 'Application'.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&authenticator:"
+    body: A block to check if the authentication is valid.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "    class Application &lt; Merb::Controller\n\n      before :authenticate\n\n      protected\n\n      def authenticate\n        basic_authentication(&quot;My App&quot;) do |username, password|\n          password == &quot;secret&quot;\n        end\n      end\n\n    end\n\n    class Application &lt; Merb::Controller\n\n      before :authenticate\n\n      def authenticate\n        user = basic_authentication.authenticate do |username, password|\n          User.authenticate(username, password)\n        end\n\n        if user\n          @current_user = user\n        else\n          basic_authentication.request\n        end\n      end\n\n    end\n"
+full_name: Merb::AuthenticationMixin#basic_authentication
+is_singleton: false
+name: basic_authentication
+params: (realm = "Application", &authenticator)
+visibility: public

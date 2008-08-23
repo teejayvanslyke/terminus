@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Load the init_file specified in Merb::Config or if not specified, the init.rb file from the Merb configuration directory, and any environment files, which register the list of necessary dependencies and any after_app_loads hooks.
+- !ruby/struct:SM::Flow::P 
+  body: Dependencies can hook into the bootloader process itself by using before or after insertion methods. Since these are loaded from this bootloader (Dependencies), they can only adapt the bootloaders that haven't been loaded up until this point.
+full_name: Merb::BootLoader::Dependencies::run
+is_singleton: true
+name: run
+params: ()
+visibility: public

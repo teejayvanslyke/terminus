@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Language::English::Inflect::clear
+is_singleton: true
+name: clear
+params: (type = :all)
+visibility: public

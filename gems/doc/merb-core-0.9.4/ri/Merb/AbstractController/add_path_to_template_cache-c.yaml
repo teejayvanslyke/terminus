@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Handles the template cache (which is used by BootLoader to cache the list of all templates).
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "template<String>:"
+    body: The full path to a template to add to the list of available templates
+  type: :NOTE
+full_name: Merb::AbstractController::add_path_to_template_cache
+is_singleton: true
+name: add_path_to_template_cache
+params: (template)
+visibility: public

@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "klass<~to_s>:"
+    body: The boot loader class after which this boot loader should be run.
+  type: :NOTE
+full_name: Merb::BootLoader::after
+is_singleton: true
+name: after
+params: (klass)
+visibility: public

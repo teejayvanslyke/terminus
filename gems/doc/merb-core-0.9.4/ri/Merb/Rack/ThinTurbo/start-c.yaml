@@ -1,0 +1,40 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: Options for Thin Turbo (see below).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opts)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":host<String>:"
+    body: The hostname that Thin Turbo should serve.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":port<Fixnum>:"
+    body: The port Thin Turbo should bind to.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":socket<Fixnum>>:"
+    body: The socket number that thin should bind to.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":socket_file<String>>:"
+    body: The socket file that thin should attach to.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":app<String>>:"
+    body: The application name.
+  type: :NOTE
+full_name: Merb::Rack::ThinTurbo::start
+is_singleton: true
+name: start
+params: (opts={})
+visibility: public

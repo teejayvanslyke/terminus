@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates the opening tag with attributes for the provided <tt>name</tt> attrs is a hash where all members will be mapped to key=&quot;value&quot;
+- !ruby/struct:SM::Flow::P 
+  body: "Note: This tag will need to be closed"
+full_name: Merb::Helpers::Tag#open_tag
+is_singleton: false
+name: open_tag
+params: (name, attrs = nil)
+visibility: public

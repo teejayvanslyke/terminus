@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>process_queue (Merb::Worker)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/worker.rb, line 10</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_queue</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">blk</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Dispatcher</span>.<span class="ruby-identifier">work_queue</span>.<span class="ruby-identifier">pop</span>
+           <span class="ruby-comment cmt"># we've been blocking on the queue waiting for an item sleeping.</span>
+           <span class="ruby-comment cmt"># when someone pushes an item it wakes up this thread so we </span>
+           <span class="ruby-comment cmt"># immediately pass execution to the scheduler so we don't </span>
+           <span class="ruby-comment cmt"># accidentally run this block before the action finishes </span>
+           <span class="ruby-comment cmt"># it's own processing</span>
+          <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">pass</span>
+          <span class="ruby-identifier">blk</span>.<span class="ruby-identifier">call</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">warn!</span> <span class="ruby-node">%Q!Worker Thread Crashed with Exception:\n#{Merb.exception(e)}\nRestarting Worker Thread!</span>
+        <span class="ruby-keyword kw">retry</span>
+      <span class="ruby-keyword kw">end</span>    
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

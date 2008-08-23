@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: reload
+- !ruby/object:RI::MethodSummary 
+  name: run
+comment: 
+constants: []
+
+full_name: Merb::BootLoader::ReloadClasses
+includes: []
+
+instance_methods: []
+
+name: ReloadClasses
+superclass: Merb::BootLoader

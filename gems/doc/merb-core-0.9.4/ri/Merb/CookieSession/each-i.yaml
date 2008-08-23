@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Yields the session data to an each block.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameter
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "&b:"
+    body: The block to pass to each.
+  type: :NOTE
+full_name: Merb::CookieSession#each
+is_singleton: false
+name: each
+params: (&b)
+visibility: public

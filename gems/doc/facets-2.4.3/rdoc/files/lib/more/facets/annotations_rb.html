@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: annotations.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>annotations.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/more/facets/annotations.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 18 22:34:51 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Annotation</h1>
+<p>
+Annotations allows you to annontate objects, including methods with
+arbitrary &quot;metadata&quot;. These annotations don&#8216;t do anything
+in themselves. They are merely comments. But you can put them to use. For
+instance an attribute validator might check for an annotation called :valid
+and test against it.
+</p>
+<p>
+Annotation is an <a
+href="../../../../classes/OpenObject.html">OpenObject</a>, and is used
+across the board for keeping annotations.
+</p>
+<p>
+Annotation class serves for both simple and inherited cases depending on
+whether a base class is given.
+</p>
+<pre>
+  class X
+    attr :a
+    ann :@a, :valid =&gt; lambda{ |x| x.is_a?(Integer) }
+
+    def validate
+      instance_variables.each { |iv|
+        if validator = self.class.ann(iv)[:valid]
+          value = instance_variable_get(iv)
+          unless validator.call(vale)
+            raise &quot;Invalid value #{value} for #{iv}&quot;
+          end
+        end
+      }
+    end
+
+  end
+</pre>
+<h2>Authors</h2>
+<ul>
+<li>Thomas Sawyer
+
+</li>
+<li>George Moschovitis
+
+</li>
+</ul>
+<h2>History</h2>
+<ul>
+<li>2006-11-07 trans Created this ultra-concise version of annotations.
+
+</li>
+</ul>
+<h2>Todo</h2>
+<ul>
+<li>Might be nice to have a default object of annotation, eg. the next method
+defined, like how <tt>desc</tt> annotates a rake <tt>task</tt>.
+
+</li>
+<li>The ann(x).name notation is kind of nice. Would like to add that back-in if
+reasonable. Basically this require heritage to be an <a
+href="../../../../classes/OpenObject.html">OpenObject</a> rather than just
+a hash.
+
+</li>
+</ul>
+<h2>Copying</h2>
+<p>
+Copyright (c) 2005 Thomas Sawyer, George Moschovitis
+</p>
+<p>
+Ruby License
+</p>
+<p>
+This module is free software. You may use, modify, and/or redistribute this
+software under the same terms as Ruby.
+</p>
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.
+</p>
+
+    </div>
+
+    <div id="requires-list">
+      <h3 class="section-bar">Required files</h3>
+
+      <div class="name-list">
+      facets/hash/to_h&nbsp;&nbsp;
+      facets/hash/rekey&nbsp;&nbsp;
+      facets/hash/op&nbsp;&nbsp;
+      facets/annotations.rb&nbsp;&nbsp;
+      facets/inheritor.rb&nbsp;&nbsp;
+      </div>
+    </div>
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

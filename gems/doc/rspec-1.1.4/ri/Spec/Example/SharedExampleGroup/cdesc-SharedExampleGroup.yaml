@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_shared_example_group
+- !ruby/object:RI::MethodSummary 
+  name: find_shared_example_group
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: shared_example_groups
+comment: 
+constants: []
+
+full_name: Spec::Example::SharedExampleGroup
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: ExampleGroupMethods
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: execute_in_class_hierarchy
+name: SharedExampleGroup
+superclass: Module

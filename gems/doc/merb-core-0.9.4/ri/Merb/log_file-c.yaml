@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The path to the log file. If this Merb instance is running as a daemon this will return <tt>STDOUT</tt>.
+  type: :NOTE
+full_name: Merb::log_file
+is_singleton: true
+name: log_file
+params: ()
+visibility: public

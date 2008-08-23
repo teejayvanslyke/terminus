@@ -1,0 +1,50 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: be_redirection
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Passes if the target was redirected, or the target is a redirection (300 level) response code.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # Passes if the controller was redirected\n  controller.should redirect\n\n  # Also works if the target is the response code\n  controller.status.should redirect\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: "valid HTTP Redirection codes:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "300: Multiple Choices"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "301: Moved Permanently"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "302: Moved Temporarily (HTTP/1.0)"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "302: Found (HTTP/1.1)"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "303: See Other (HTTP/1.1)"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "304: Not Modified"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "305: Use Proxy"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "307: Temporary Redirect"
+  type: :BULLET
+full_name: Merb::Test::Rspec::ControllerMatchers#redirect
+is_singleton: false
+name: redirect
+params: ()
+visibility: public

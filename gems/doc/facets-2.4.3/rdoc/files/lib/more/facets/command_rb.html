@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: command.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>command.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/more/facets/command.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 18 22:34:51 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h2><a href="../../../../classes/CLI/Command.html">CLI::Command</a></h2>
+<p>
+Here is an example of usage:
+</p>
+<pre>
+  # General Options
+
+  module GeneralOptions
+    attr_accessor :dryrun ; alias_accessor :n, :noharm, :dryrun
+    attr_accessor :quiet  ; alias_accessor :q, :quiet
+    attr_accessor :force
+    attr_accessor :trace
+  end
+
+  # Build Subcommand
+
+  class BuildCommand &lt; CLI::Command
+    include GeneralOptions
+
+    # metadata files
+    attr_accessor  :file     ; alias_accessor :f, :file
+    attr_accessor  :manifest ; alias_accessor :m, :manifest
+
+    def call
+      # do stuf here
+    end
+  end
+
+  # Box Master Command
+
+  class BoxCommand &lt; CLI::Command
+    subcommand :build,     BuildCommand
+  end
+
+  BoxCommand.start
+</pre>
+<h2>Authors</h2>
+<ul>
+<li>Trans
+
+</li>
+</ul>
+<h2>Todo</h2>
+<ul>
+<li>Move helpers into core.
+
+</li>
+<li>Add global options to master command, or &quot;all are master options&quot;
+flag (?)
+
+</li>
+<li>Add usage/help/documentation/man features (?)
+
+</li>
+</ul>
+<h2>Copying</h2>
+<p>
+Copyright (c) 2005,2008 Thomas Sawyer
+</p>
+<p>
+Ruby License
+</p>
+<p>
+This module is free software. You may use, modify, and/or redistribute this
+software under the same terms as Ruby.
+</p>
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.
+</p>
+
+    </div>
+
+    <div id="requires-list">
+      <h3 class="section-bar">Required files</h3>
+
+      <div class="name-list">
+      facets/arguments&nbsp;&nbsp;
+      facets/consoleutils&nbsp;&nbsp;
+      facets/array/not_empty&nbsp;&nbsp;
+      </div>
+    </div>
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Boolean:"
+    body: True if Merb environment is testing for instance,
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: Merb is running with RSpec, Test::Unit of other testing facility.
+full_name: Merb::testing?
+is_singleton: true
+name: testing?
+params: ()
+visibility: public

@@ -1,0 +1,32 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: ""
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Takes a block, profiles the results of running the block specified number of times and generates HTML report.
+- !ruby/struct:SM::Flow::P 
+  body: "@param name&lt;#to_s&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  The file name. The result will be written out to\n  Merb.root/&quot;log/#{name}.html&quot;.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param min&lt;Fixnum&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Minimum percentage of the total time a method must take for it to be\n  included in the result. Defaults to 1.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@return &lt;String&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  The result of the profiling.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@note"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Requires ruby-prof (<tt>sudo gem install ruby-prof</tt>)\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@example"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  <em>profile</em>(&quot;MyProfile&quot;, 5, 30) do\n    rand(10)**rand(10)\n    puts &quot;Profile run&quot;\n  end\n\n  Assuming that the total time taken for #puts calls was less than 5% of the\n  total time to run, #puts won't appear in the profile report.\n  The code block will be run 30 times in the example above.\n"
+full_name: Kernel#__profile__
+is_singleton: false
+name: __profile__
+params: (name, min=1, iter=100) {|| ...}
+visibility: public

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: English::Metaphone</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">English::Metaphone</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/english/metaphone_rb.html">
+                lib/english/metaphone.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="Metaphone.html">Metaphone</a> encodes names into a phonetic form
+such that similar-sounding names have the same or similar <a
+href="Metaphone.html">Metaphone</a> encodings.
+</p>
+<p>
+The original system was described by Lawrence Philips in Computer Language
+Vol. 7 No. 12, December 1990, pp 39-43.
+</p>
+<p>
+As there are multiple implementations of <a
+href="Metaphone.html">Metaphone</a>, each with their own quirks, I have
+based this on my interpretation of the algorithm specification. Even
+LP&#8216;s original BASIC implementation appears to contain bugs
+(specifically with the handling of CC and MB), when compared to his
+explanation of the algorithm.
+</p>
+<p>
+I have also compared this implementation with that found in PHP&#8216;s
+standard library, which appears to mimic the behaviour of LP&#8216;s
+original BASIC implementation. For compatibility, these rules can also be
+used by passing :alternate=&gt;true to the methods.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001246">metaphone</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">RULES</td>
+          <td>=</td>
+          <td class="context-item-value">[       # Regexp, replacement       [ /([bcdfhjklmnpqrstvwxyz])\1+/,                           '\1' ],  # Remove doubled consonants except g.                                   # [PHP] remove c from regexp.       [ /^ae/,            'E' ],       [ /^[gkp]n/,        'N' ],       [ /^wr/,            'R' ],       [ /^x/,             'S' ],       [ /^wh/,            'W' ],       [ /mb$/,            'M' ],  # [PHP] remove $ from regexp.       [ /(?!^)sch/,      'SK' ],       [ /th/,             '0' ],       [ /t?ch|sh/,        'X' ],       [ /c(?=ia)/,        'X' ],       [ /[st](?=i[ao])/,  'X' ],       [ /s?c(?=[iey])/,   'S' ],       [ /[cq]/,           'K' ],       [ /dg(?=[iey])/,    'J' ],       [ /d/,              'T' ],       [ /g(?=h[^aeiou])/, ''  ],       [ /gn(ed)?/,        'N' ],       [ /([^g]|^)g(?=[iey])/,                         '\1J' ],       [ /g+/,             'K' ],       [ /ph/,             'F' ],       [ /([aeiou])h(?=\b|[^aeiou])/,                           '\1' ],       [ /[wy](?![aeiou])/, '' ],       [ /z/,              'S' ],       [ /v/,              'F' ],       [ /(?!^)[aeiou]+/,  ''  ],     ]</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+<a href="Metaphone.html">Metaphone</a> rules. These are simply applied in
+order.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">LP_RULES</td>
+          <td>=</td>
+          <td class="context-item-value">RULES.dup</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+The rules for the &#8216;buggy&#8217; alternate implementation used by PHP
+etc.
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001246" class="method-detail">
+        <a name="M001246"></a>
+
+        <div class="method-heading">
+          <a href="Metaphone.src/M001246.html" target="Code" class="method-signature"
+            onclick="popupCode('Metaphone.src/M001246.html');return false;">
+          <span class="method-name">metaphone</span><span class="method-args">(str, alt=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Metaphone.html">Metaphone</a> representation of a
+string. If the string contains multiple words, each word in turn is
+converted into its <a href="Metaphone.html">Metaphone</a> representation.
+Note that only the letters A-Z are supported, so any language-specific
+processing should be done beforehand.
+</p>
+<p>
+If <tt>alt</tt> is set to true, alternate &#8216;buggy&#8217; rules are
+used.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

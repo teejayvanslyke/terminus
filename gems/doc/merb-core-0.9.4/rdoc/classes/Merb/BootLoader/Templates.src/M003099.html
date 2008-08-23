@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>template_paths (Merb::BootLoader::Templates)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 504</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">template_paths</span>
+      <span class="ruby-identifier">extension_glob</span> = <span class="ruby-node">&quot;{#{Merb::Template.template_extensions.join(',')}}&quot;</span>
+
+      <span class="ruby-comment cmt"># This gets all templates set in the controllers template roots</span>
+      <span class="ruby-comment cmt"># We separate the two maps because most of controllers will have</span>
+      <span class="ruby-comment cmt"># the same _template_root, so it's silly to be globbing the same</span>
+      <span class="ruby-comment cmt"># path over and over.</span>
+      <span class="ruby-identifier">controller_view_paths</span> = []
+      <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">AbstractController</span>.<span class="ruby-identifier">_abstract_subclasses</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">const</span> = <span class="ruby-constant">Object</span>.<span class="ruby-identifier">full_const_get</span>(<span class="ruby-identifier">klass</span>)).<span class="ruby-identifier">_template_root</span>.<span class="ruby-identifier">blank?</span>
+        <span class="ruby-identifier">controller_view_paths</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">const</span>.<span class="ruby-identifier">_template_roots</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">pair</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pair</span>.<span class="ruby-identifier">first</span> }
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">template_paths</span> = <span class="ruby-identifier">controller_view_paths</span>.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{path}/**/*.#{extension_glob}&quot;</span>] }
+
+      <span class="ruby-comment cmt"># This gets the templates that might be created outside controllers</span>
+      <span class="ruby-comment cmt"># template roots.  eg app/views/shared/*</span>
+      <span class="ruby-identifier">template_paths</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{Merb.dir_for(:view)}/**/*.#{extension_glob}&quot;</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:view</span>)
+
+      <span class="ruby-identifier">template_paths</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">uniq</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

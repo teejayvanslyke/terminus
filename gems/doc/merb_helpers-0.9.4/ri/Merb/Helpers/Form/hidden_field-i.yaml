@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides a generic HTML hidden input field.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "    &lt;%= hidden_field :name =&gt; &quot;secret&quot;, :value =&gt; &quot;some secret value&quot; %&gt;\n"
+full_name: Merb::Helpers::Form#hidden_field
+is_singleton: false
+name: hidden_field
+params: (attrs = {})
+visibility: public

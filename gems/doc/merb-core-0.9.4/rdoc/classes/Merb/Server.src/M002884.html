@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>kill (Merb::Server)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/server.rb, line 82</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kill</span>(<span class="ruby-identifier">port</span>, <span class="ruby-identifier">sig</span>=<span class="ruby-value">9</span>)
+        <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">BootLoader</span><span class="ruby-operator">::</span><span class="ruby-constant">BuildFramework</span>.<span class="ruby-identifier">run</span>
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">pidfiles</span> = <span class="ruby-identifier">port</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;all&quot;</span> <span class="ruby-operator">?</span>
+            <span class="ruby-identifier">pid_files</span> <span class="ruby-operator">:</span> [ <span class="ruby-identifier">pid_file</span>(<span class="ruby-identifier">port</span>) ]
+
+          <span class="ruby-identifier">pidfiles</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">pid</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">f</span>).<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">to_i</span>
+            <span class="ruby-keyword kw">begin</span>
+              <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span>(<span class="ruby-identifier">sig</span>, <span class="ruby-identifier">pid</span>)
+              <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm</span>(<span class="ruby-identifier">f</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">f</span>)
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;killed PID #{pid} with signal #{sig}&quot;</span>
+            <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EINVAL</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Failed to kill PID #{pid}: '#{sig}' is an invalid or unsupported signal number.&quot;</span>
+            <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EPERM</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Failed to kill PID #{pid}: Insufficient permissions.&quot;</span>
+            <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ESRCH</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Failed to kill PID #{pid}: Process is deceased or zombie.&quot;</span>
+              <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm</span> <span class="ruby-identifier">f</span>
+            <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Failed to kill PID #{pid}: #{e.message}&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">ensure</span>
+          <span class="ruby-identifier">exit</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

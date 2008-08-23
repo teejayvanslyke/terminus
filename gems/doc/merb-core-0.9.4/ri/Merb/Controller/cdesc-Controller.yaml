@@ -1,0 +1,57 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: headers
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: request
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _filter_params
+- !ruby/object:RI::MethodSummary 
+  name: callable_actions
+- !ruby/object:RI::MethodSummary 
+  name: hide_action
+- !ruby/object:RI::MethodSummary 
+  name: inherited
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: show_action
+- !ruby/object:RI::MethodSummary 
+  name: subclasses_list
+comment: 
+constants: []
+
+full_name: Merb::Controller
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Merb::ResponderMixin
+- !ruby/object:RI::IncludedModule 
+  name: Merb::ControllerMixin
+- !ruby/object:RI::IncludedModule 
+  name: Merb::AuthenticationMixin
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _absolute_template_location
+- !ruby/object:RI::MethodSummary 
+  name: _dispatch
+- !ruby/object:RI::MethodSummary 
+  name: _template_location
+- !ruby/object:RI::MethodSummary 
+  name: cookies
+- !ruby/object:RI::MethodSummary 
+  name: params
+- !ruby/object:RI::MethodSummary 
+  name: rack_response
+- !ruby/object:RI::MethodSummary 
+  name: session
+- !ruby/object:RI::MethodSummary 
+  name: status
+- !ruby/object:RI::MethodSummary 
+  name: status=
+name: Controller
+superclass: Merb::AbstractController

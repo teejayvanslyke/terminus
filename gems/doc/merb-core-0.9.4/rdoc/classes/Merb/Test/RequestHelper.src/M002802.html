@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>check_request_for_route (Merb::Test::RequestHelper)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/test/helpers/request_helper.rb, line 343</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_request_for_route</span>(<span class="ruby-identifier">request</span>)
+        <span class="ruby-identifier">match</span> =  <span class="ruby-operator">::</span><span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Router</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">request</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">empty?</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-operator">::</span><span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">ControllerExceptions</span><span class="ruby-operator">::</span><span class="ruby-constant">BadRequest</span>, <span class="ruby-value str">&quot;No routes match the request&quot;</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

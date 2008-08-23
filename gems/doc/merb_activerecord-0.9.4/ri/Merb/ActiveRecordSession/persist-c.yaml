@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Gets the existing session based on the <tt>session_id</tt> available in cookies. If none is found, generates a new session.
+full_name: Merb::ActiveRecordSession::persist
+is_singleton: true
+name: persist
+params: (session_id)
+visibility: public

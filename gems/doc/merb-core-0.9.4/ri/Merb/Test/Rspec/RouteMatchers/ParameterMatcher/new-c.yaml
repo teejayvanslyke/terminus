@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "hash_or_object<Hash, ~to_param>:"
+    body: The parameters to match.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If hash_or_object is an object, then a new expected hash will be constructed with the key :id set to hash_or_object.to_param.
+full_name: Merb::Test::Rspec::RouteMatchers::ParameterMatcher::new
+is_singleton: true
+name: new
+params: (hash_or_object)
+visibility: public

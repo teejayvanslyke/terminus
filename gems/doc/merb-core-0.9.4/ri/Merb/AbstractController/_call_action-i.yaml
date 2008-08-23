@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method exists to provide an overridable hook for ActionArgs
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "action<~to_s>:"
+    body: the action method to dispatch to
+  type: :NOTE
+full_name: Merb::AbstractController#_call_action
+is_singleton: false
+name: _call_action
+params: (action)
+visibility: public

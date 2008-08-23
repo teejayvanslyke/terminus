@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Merb::RenderMixin</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Merb::RenderMixin</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/merb-core/controller/mixins/render_rb.html">
+                lib/merb-core/controller/mixins/render.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002602">_get_layout</a>&nbsp;&nbsp;
+      <a href="#M002601">_handle_options!</a>&nbsp;&nbsp;
+      <a href="#M002603">_template_for</a>&nbsp;&nbsp;
+      <a href="#M002604">_template_method_for</a>&nbsp;&nbsp;
+      <a href="#M002605">catch_content</a>&nbsp;&nbsp;
+      <a href="#M002599">display</a>&nbsp;&nbsp;
+      <a href="#M002597">included</a>&nbsp;&nbsp;
+      <a href="#M002600">partial</a>&nbsp;&nbsp;
+      <a href="#M002598">render</a>&nbsp;&nbsp;
+      <a href="#M002607">throw_content</a>&nbsp;&nbsp;
+      <a href="#M002606">thrown_content?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="ControllerExceptions.html">Merb::ControllerExceptions</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="RenderMixin/ClassMethods.html" class="link">Merb::RenderMixin::ClassMethods</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002597" class="method-detail">
+        <a name="M002597"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002597.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002597.html');return false;">
+          <span class="method-name">included</span><span class="method-args">(base)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">base&lt;Module&gt;:</td><td>Module that is including <a href="RenderMixin.html">RenderMixin</a>
+(probably a controller)
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002602" class="method-detail">
+        <a name="M002602"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002602.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002602.html');return false;">
+          <span class="method-name">_get_layout</span><span class="method-args">(layout = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the layout that should be used. The content-type will be appended to
+the layout unless the layout already contains a &quot;.&quot; in it.
+</p>
+<p>
+If no layout was passed in, this method will look for one with the same
+name as the controller, and finally one in
+&quot;application.#{content_type}&quot;.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">layout&lt;~to_s&gt;:</td><td>A layout, relative to the layout root. Defaults to nil.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The method name that corresponds to the found layout.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top">TemplateNotFound:</td><td>If a layout was specified (either via layout in the class or by passing one
+in to this method), and not found. No error will be raised if no layout was
+specified, and the default layouts were not found.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002601" class="method-detail">
+        <a name="M002601"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002601.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002601.html');return false;">
+          <span class="method-name">_handle_options!</span><span class="method-args">(opts)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Take the options hash and handle it as appropriate.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>The options hash that was passed into <a
+href="RenderMixin.html#M002598">render</a>.
+
+</td></tr>
+</table>
+<h4>Options</h4>
+<table>
+<tr><td valign="top">:status&lt;~to_i&gt;:</td><td>The status of the response will be set to opts[:status].to_i
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Hash:</td><td>The options hash that was passed in.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002603" class="method-detail">
+        <a name="M002603"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002603.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002603.html');return false;">
+          <span class="method-name">_template_for</span><span class="method-args">(context, content_type, controller=nil, template=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Iterate over the template roots in reverse order, and return the template
+and template location of the first match.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">context&lt;<a href="../Object.html">Object</a>&gt;:</td><td>The controller action or template (basename or absolute path).
+
+</td></tr>
+<tr><td valign="top">content_type&lt;~to_s&gt;:</td><td>The content type (like html or json).
+
+</td></tr>
+<tr><td valign="top">controller&lt;~to_s&gt;:</td><td>The name of the controller. Defaults to nil.
+
+</td></tr>
+</table>
+<h4>Options (opts)</h4>
+<table>
+<tr><td valign="top">:template&lt;<a href="../String.html">String</a>&gt;:</td><td>The location of the template to use. Defaults to whatever matches this
+context, content_type and controller.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top">Array[Symbol, <a href="../String.html">String</a>]:</td><td>A pair consisting of the template method and location.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002604" class="method-detail">
+        <a name="M002604"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002604.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002604.html');return false;">
+          <span class="method-name">_template_method_for</span><span class="method-args">(template_location)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return the template method for a location, and check to make sure the
+current controller actually responds to the method.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">template_location&lt;<a href="../String.html">String</a>&gt;:</td><td>The phyical path of the template
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The method, if it exists. Otherwise return nil.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002605" class="method-detail">
+        <a name="M002605"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002605.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002605.html');return false;">
+          <span class="method-name">catch_content</span><span class="method-args">(obj = :for_layout)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Called in templates to get at content thrown in another template. The
+results of rendering a template are automatically thrown into :for_layout,
+so <a href="RenderMixin.html#M002605">catch_content</a> or <a
+href="RenderMixin.html#M002605">catch_content</a>(:for_layout) can be used
+inside layouts to get the content rendered by the action template.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">obj&lt;<a href="../Object.html">Object</a>&gt;:</td><td>The key in the thrown_content hash. Defaults to :for_layout.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002599" class="method-detail">
+        <a name="M002599"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002599.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002599.html');return false;">
+          <span class="method-name">display</span><span class="method-args">(object, thing = nil, opts = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Renders an object using to registered transform method based on the
+negotiated content-type, if a template does not exist. For instance, if the
+content-type is :json, <a href="../Merb.html">Merb</a> will first look for
+current_action.json.*. Failing that, it will run object.to_json.
+</p>
+<h4>Parameter</h4>
+<table>
+<tr><td valign="top">object&lt;<a href="../Object.html">Object</a>&gt;:</td><td>An object that responds_to? the transform method registered for the
+negotiated mime-type.
+
+</td></tr>
+<tr><td valign="top">thing&lt;<a href="../String.html">String</a>, Symbol&gt;:</td><td>The thing to attempt to <a href="RenderMixin.html#M002598">render</a> via
+<a href="RenderMixin.html#M002598">render</a> before calling the transform
+method on the object. Defaults to nil.
+
+</td></tr>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>An options hash that will be used for rendering (passed on to <a
+href="RenderMixin.html#M002598">render</a> or serialization methods like
+to_json or to_xml)
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The rendered template or if no template is found, the transformed object.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top">NotAcceptable:</td><td>If there is no transform method for the specified mime-type or the object
+does not respond to the transform method.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+A string in the second parameter will be interpreted as a template:
+</p>
+<pre>
+  display @object, &quot;path/to/foo&quot;
+  #=&gt; display @object, nil, :template =&gt; &quot;path/to/foo&quot;
+</pre>
+<p>
+A hash in the second parameters will be interpreted as opts:
+</p>
+<pre>
+  display @object, :layout =&gt; &quot;zoo&quot;
+  #=&gt; display @object, nil, :layout =&gt; &quot;zoo&quot;
+</pre>
+<p>
+If you need to pass extra parameters to serialization method, for instance,
+to exclude some of attributes or serialize associations, just pass options
+for it. For instance,
+</p>
+<p>
+<a href="RenderMixin.html#M002599">display</a> @locations, :except =&gt;
+[:locatable_type, :locatable_id], :include =&gt; [:locatable]
+</p>
+<p>
+serializes object with polymorphic association, not raw locatable_*
+attributes.
+</p>
+<h4>Options</h4>
+<p>
+:template a template to use for rendering :layout a layout to use for
+rendering :status the status code to return (defaults to 200) :location the
+value of the Location header
+</p>
+<p>
+all other options options that will be pass to serialization method
+</p>
+<pre>
+                         like #to_json or #to_xml
+</pre>
+<h4>Notes</h4>
+<p>
+The transformed object will not be used in a layout unless a :layout is
+explicitly passed in the opts.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002600" class="method-detail">
+        <a name="M002600"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002600.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002600.html');return false;">
+          <span class="method-name">partial</span><span class="method-args">(template, opts={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Render a <a href="RenderMixin.html#M002600">partial</a> template.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">template&lt;~to_s&gt;:</td><td>The path to the template, relative to the current controller or the
+template root; absolute path will work too. If the template contains a
+&quot;/&quot;, <a href="../Merb.html">Merb</a> will search for it relative
+to the template root; otherwise, <a href="../Merb.html">Merb</a> will
+search for it relative to the current controller.
+
+</td></tr>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>A hash of options (see below)
+
+</td></tr>
+</table>
+<h4>Options (opts)</h4>
+<table>
+<tr><td valign="top">:with&lt;<a href="../Object.html">Object</a>, Array&gt;:</td><td>An object or an array of objects that will be passed into the <a
+href="RenderMixin.html#M002600">partial</a>.
+
+</td></tr>
+<tr><td valign="top">:as&lt;~to_sym&gt;:</td><td>The local name of the :with <a href="../Object.html">Object</a> inside of
+the <a href="RenderMixin.html#M002600">partial</a>.
+
+</td></tr>
+<tr><td valign="top">:format&lt;Symbol&gt;:</td><td>The mime format that you want the <a
+href="RenderMixin.html#M002600">partial</a> to be in (:js, :html, etc.)
+
+</td></tr>
+<tr><td valign="top">others:</td><td>A Hash object names and values that will be the local names and values
+inside the <a href="RenderMixin.html#M002600">partial</a>.
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<pre>
+  partial :foo, :hello =&gt; @object
+</pre>
+<p>
+The &quot;_foo&quot; <a href="RenderMixin.html#M002600">partial</a> will be
+called, relative to the current controller, with a local variable of
+<tt>hello</tt> inside of it, assigned to @object.
+</p>
+<pre>
+  partial :bar, :with =&gt; ['one', 'two', 'three']
+</pre>
+<p>
+The &quot;_bar&quot; <a href="RenderMixin.html#M002600">partial</a> will be
+called once for each element of the array specified by :with for a total of
+three iterations. Each element of the array will be available in the <a
+href="RenderMixin.html#M002600">partial</a> via a local variable named
+<tt>bar</tt>. Additionally, there will be two extra local variables:
+<tt>collection_index</tt> and <tt>collection_size</tt>.
+<tt>collection_index</tt> is the index of the object currently referenced
+by <tt>bar</tt> in the collection passed to the <a
+href="RenderMixin.html#M002600">partial</a>. <tt>collection_size</tt> is
+the total size of the collection.
+</p>
+<p>
+By default, the object specified by :with will be available through a local
+variable with the same name as the <a
+href="RenderMixin.html#M002600">partial</a> template. However, this can be
+changed using the :as option.
+</p>
+<pre>
+  partial :bar, :with =&gt; &quot;one&quot;, :as =&gt; :number
+</pre>
+<p>
+In this case, &quot;one&quot; will be available in the <a
+href="RenderMixin.html#M002600">partial</a> through the local variable
+named <tt>number</tt>.
+</p>
+<h4>Notes</h4>
+<p>
+It is important to note that the object being passed to the <a
+href="RenderMixin.html#M002600">partial</a> as well as any extra local
+variables cannot use names of helper methods since any helper method of the
+same name will take precedence over the passed variable. Example:
+</p>
+<pre>
+  partial :bar, :with =&gt; &quot;one&quot;, :as =&gt; :partial
+</pre>
+<p>
+In this case, &quot;one&quot; will not be available in the <a
+href="RenderMixin.html#M002600">partial</a> because &quot;<a
+href="RenderMixin.html#M002600">partial</a>&quot; is already a helper
+method.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002598" class="method-detail">
+        <a name="M002598"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002598.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002598.html');return false;">
+          <span class="method-name">render</span><span class="method-args">(thing = nil, opts = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Render the specified item, with the specified options.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">thing&lt;<a href="../String.html">String</a>, Symbol, nil&gt;:</td><td>The thing to <a href="RenderMixin.html#M002598">render</a>. This will
+default to the current action
+
+</td></tr>
+<tr><td valign="top">opts&lt;Hash&gt;:</td><td>An options hash (see below)
+
+</td></tr>
+</table>
+<h4>Options (opts)</h4>
+<table>
+<tr><td valign="top">:format&lt;Symbol&gt;:</td><td>A registered mime-type format
+
+</td></tr>
+<tr><td valign="top">:template&lt;<a href="../String.html">String</a>&gt;:</td><td>The path to the template relative to the template root
+
+</td></tr>
+<tr><td valign="top">:status&lt;~to_i&gt;:</td><td>The status to send to the client. Typically, this would be an integer
+(200), or a <a href="../Merb.html">Merb</a> status code (Accepted)
+
+</td></tr>
+<tr><td valign="top">:layout&lt;~to_s, FalseClass&gt;:</td><td>A layout to use instead of the default. This should be relative to the
+layout root. By default, the layout will be either the controller_name or
+application. If you want to use an alternative content-type than the one
+that the base template was rendered as, you will need to do :layout =&gt;
+&quot;foo.#{content_type}&quot; (i.e. &quot;foo.json&quot;). If you want to
+<a href="RenderMixin.html#M002598">render</a> without layout, use :layout
+=&gt; false. This overrides layout set by <tt>layout</tt> method.
+
+</td></tr>
+</table>
+<h4>Returns</h4>
+<table>
+<tr><td valign="top"><a href="../String.html">String</a>:</td><td>The rendered template, including layout, if appropriate.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top">TemplateNotFound:</td><td>There is no template for the specified location.
+
+</td></tr>
+</table>
+<h4>Alternatives</h4>
+<p>
+If you pass a Hash as the first parameter, it will be moved to opts and
+&quot;thing&quot; will be the current action
+</p>
+        </div>
+      </div>
+
+      <div id="method-M002607" class="method-detail">
+        <a name="M002607"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002607.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002607.html');return false;">
+          <span class="method-name">throw_content</span><span class="method-args">(obj, string = nil, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Called in templates to store up content for later use. Takes a string
+and/or a block. First, the string is evaluated, and then the block is
+captured using the capture() helper provided by the template languages. The
+two are concatenated together.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">obj&lt;<a href="../Object.html">Object</a>&gt;:</td><td>The key in the thrown_content hash.
+
+</td></tr>
+<tr><td valign="top">string&lt;<a href="../String.html">String</a>&gt;:</td><td>Textual content. Defaults to nil.
+
+</td></tr>
+<tr><td valign="top">&amp;block:</td><td>A block to be evaluated and concatenated to string.
+
+</td></tr>
+</table>
+<h4>Raises</h4>
+<table>
+<tr><td valign="top">ArgumentError:</td><td>Neither string nor block given.
+
+</td></tr>
+</table>
+<h4>Example</h4>
+<pre>
+  throw_content(:foo, &quot;Foo&quot;)
+  catch_content(:foo) #=&gt; &quot;Foo&quot;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M002606" class="method-detail">
+        <a name="M002606"></a>
+
+        <div class="method-heading">
+          <a href="RenderMixin.src/M002606.html" target="Code" class="method-signature"
+            onclick="popupCode('RenderMixin.src/M002606.html');return false;">
+          <span class="method-name">thrown_content?</span><span class="method-args">(obj = :for_layout)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Called in templates to test for the existence of previously thrown content.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">obj&lt;<a href="../Object.html">Object</a>&gt;:</td><td>The key in the thrown_content hash. Defaults to :for_layout.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

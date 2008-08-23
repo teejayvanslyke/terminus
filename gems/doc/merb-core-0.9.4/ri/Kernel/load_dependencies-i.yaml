@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Loads both gem and library dependencies that are passed in as arguments.
+- !ruby/struct:SM::Flow::P 
+  body: "@param *args&lt;String, Hash, Array&gt; The dependencies to load."
+- !ruby/struct:SM::Flow::P 
+  body: "@note"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Each argument can be:\n  String:: Single dependency.\n  Hash::\n    Multiple dependencies where the keys are names and the values versions.\n  Array:: Multiple string dependencies.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@example dependencies &quot;RedCloth&quot; # Loads the the RedCloth gem @example dependencies &quot;RedCloth&quot;, &quot;merb_helpers&quot; # Loads RedCloth and merb_helpers @example dependencies &quot;RedCloth&quot; =&gt; &quot;3.0&quot; # Loads RedCloth 3.0"
+full_name: Kernel#load_dependencies
+is_singleton: false
+name: load_dependencies
+params: (*args)
+visibility: public

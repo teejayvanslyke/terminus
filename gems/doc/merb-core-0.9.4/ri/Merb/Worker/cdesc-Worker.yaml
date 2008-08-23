@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: thread
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Merb::Worker
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: process_queue
+name: Worker
+superclass: Object

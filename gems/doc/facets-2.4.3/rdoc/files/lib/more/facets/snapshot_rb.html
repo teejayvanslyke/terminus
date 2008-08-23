@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: snapshot.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>snapshot.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/more/facets/snapshot.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Aug 18 22:34:51 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../../../../classes/Snapshot.html">Snapshot</a></h1>
+<p>
+A lightweight single-depth object state capture. The take_snapshot method
+reads the object&#8216;s state, which is generally it&#8216;s collection of
+instance variables, and returns them in a hash. The state can be restored
+with apply_snapshot.
+</p>
+<h2>Usage</h2>
+<pre>
+  Customer = Struct.new(&quot;Customer&quot;, :name, :address, :zip)
+  joe = Customer.new( &quot;Joe Pitare&quot;, &quot;1115 Lila Ln.&quot;, 47634 )
+
+  # simple transactions
+  joe_snap = joe.take_snapshot
+  begin
+    do_something_with( joe )
+  rescue
+    joe.apply_snapshot( joe_snap )
+  end
+
+  joe_snap[:name]     =&gt; &quot;Joe Pitare&quot;
+  joe_snap[:address]  =&gt; &quot;1115 Lila Ln.&quot;
+  joe_snap[:zip]      =&gt; 47634
+</pre>
+<h2>Details</h2>
+<p>
+Class <a href="../../../../classes/Snapshot.html">Snapshot</a> simply
+represents a collection of objects from which snapshots were taken via
+their methods take_snapshot. <a href="../../../../classes/It.html">It</a>
+provides methods to add an object to a snapshot (<a
+href="../../../../classes/Snapshot.html#M000088">Snapshot#add</a>) as well
+as to restore all objects of the snapshot to their state stored in the
+snapshot (method <a
+href="../../../../classes/Snapshot.html#M000089">Snapshot#restore</a>).
+</p>
+<p>
+In Wee, this class is used to backtracking the state of components (or
+decorations/presenters). Components that want an undo-facility to be
+implemented (triggered for example by a browsers back-button), have to
+overwrite the Wee::Component#backtrack_state method.
+</p>
+<h2>Todo</h2>
+<ul>
+<li>Perhaps extend to offer multiple depths.
+
+</li>
+<li>Should key consitancy be enforced? Currently <a
+href="../../../../classes/Struct.html">Struct</a>&#8216;s will have symbol
+keys while other classes will have string keys in the form of
+&quot;@name&quot;.
+
+</li>
+<li>Add other core classes.
+
+</li>
+<li>Convert to Kernel#to_data ?
+
+</li>
+<li>I&#8216;ve been thinking about renaming this to State.
+
+</li>
+</ul>
+<h2>Authors</h2>
+<ul>
+<li>Michael Neumann
+
+</li>
+</ul>
+<h2>Copying</h2>
+<p>
+Copyright (c) 2004 Michael Neumann
+</p>
+<p>
+Ruby License
+</p>
+<p>
+This module is free software. You may use, modify, and/or redistribute this
+software under the same terms as Ruby.
+</p>
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

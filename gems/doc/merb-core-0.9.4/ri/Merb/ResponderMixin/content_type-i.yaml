@@ -1,0 +1,34 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the output format for this request, based on the provided formats, <tt>params[:format]</tt> and the client's HTTP Accept header.
+- !ruby/struct:SM::Flow::P 
+  body: The first time this is called, it triggers content negotiation and caches the value. Once you call <tt>content_type</tt> you can not set or change the list of provided formats.
+- !ruby/struct:SM::Flow::P 
+  body: Called automatically by <tt>render</tt>, so you should only call it if you need the value, not to trigger content negotiation.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "fmt<String>:"
+    body: An optional format to use instead of performing content negotiation. This can be used to pass in the values of opts[:format] from the render function to short-circuit content-negotiation when it's not necessary. This optional parameter should not be considered part of the public API.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Symbol:"
+    body: The content-type that will be used for this controller.
+  type: :NOTE
+full_name: Merb::ResponderMixin#content_type
+is_singleton: false
+name: content_type
+params: (fmt = nil)
+visibility: public

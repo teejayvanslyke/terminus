@@ -1,0 +1,38 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Registers the extensions that will trigger a particular templating engine.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "engine<Class>:"
+    body: The class of the engine that is being registered
+  - !ruby/struct:SM::Flow::LI 
+    label: "extensions<Array[String]>:"
+    body: The list of extensions that will be registered with this templating language
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Raises
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "ArgumentError:"
+    body: engine does not have a compile_template method.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Merb::Template.register_extensions(Merb::Template::Erubis, [&quot;erb&quot;])\n"
+full_name: Merb::Template::register_extensions
+is_singleton: true
+name: register_extensions
+params: (engine, extensions)
+visibility: public

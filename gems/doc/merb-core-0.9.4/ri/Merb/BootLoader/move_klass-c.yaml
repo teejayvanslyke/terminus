@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Move a class that is inside the bootloader to some place in the Array, relative to another class.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "klass<~to_s>:"
+    body: The klass to move the bootloader relative to
+  - !ruby/struct:SM::Flow::LI 
+    label: "where<Integer>:"
+    body: 0 means insert it before; 1 means insert it after
+  type: :NOTE
+full_name: Merb::BootLoader::move_klass
+is_singleton: true
+name: move_klass
+params: (klass, where)
+visibility: public

@@ -1,0 +1,31 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Build a new controller.
+- !ruby/struct:SM::Flow::P 
+  body: Sets the variables that came in through the dispatch as available to the controller.
+- !ruby/struct:SM::Flow::P 
+  body: This method uses the :session_id_cookie_only and :query_string_whitelist configuration options. See CONFIG for more details.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "request<Merb::Request>:"
+    body: The Merb::Request that came in from Mongrel.
+  - !ruby/struct:SM::Flow::LI 
+    label: "status<Integer>:"
+    body: An integer code for the status. Defaults to 200.
+  - !ruby/struct:SM::Flow::LI 
+    label: "headers<Hash{header => value}>:"
+    body: "A hash of headers to start the controller with. These headers can be overridden later by the #headers method."
+  type: :NOTE
+full_name: Merb::Controller::new
+is_singleton: true
+name: new
+params: (request, status=200, headers={'Content-Type' => 'text/html; charset=utf-8'})
+visibility: public

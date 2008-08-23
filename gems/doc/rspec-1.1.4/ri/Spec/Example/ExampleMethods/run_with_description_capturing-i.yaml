@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Spec::Example::ExampleMethods#run_with_description_capturing
+is_singleton: false
+name: run_with_description_capturing
+params: ()
+visibility: public

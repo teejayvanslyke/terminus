@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Used by merb-freezer and other freezers to mark Merb as frozen. See Merb::GlobalHelpers.frozen? for more details on framework freezing.
+full_name: Merb::frozen!
+is_singleton: true
+name: frozen!
+params: ()
+visibility: public

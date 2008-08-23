@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>deduce_placeholders (Merb::Router::Behavior)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/router/behavior.rb, line 757</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">deduce_placeholders</span>
+        <span class="ruby-ivar">@conditions</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">match_key</span>, <span class="ruby-identifier">source</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">match</span> = <span class="ruby-constant">SEGMENT_REGEXP</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">source</span>)
+            <span class="ruby-identifier">source</span>.<span class="ruby-identifier">sub!</span> <span class="ruby-constant">SEGMENT_REGEXP</span>, <span class="ruby-constant">PARENTHETICAL_SEGMENT_STRING</span>
+            <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">':'</span> <span class="ruby-comment cmt"># No need to store anonymous place holders</span>
+              <span class="ruby-identifier">placeholder_key</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">intern</span>
+              <span class="ruby-ivar">@params</span>[<span class="ruby-identifier">placeholder_key</span>] = <span class="ruby-node">&quot;#{match[1]}&quot;</span>
+              <span class="ruby-ivar">@placeholders</span>[<span class="ruby-identifier">placeholder_key</span>] = [
+                <span class="ruby-identifier">match_key</span>, <span class="ruby-constant">Behavior</span>.<span class="ruby-identifier">count_parens_up_to</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">match</span>.<span class="ruby-identifier">offset</span>(<span class="ruby-value">1</span>)[<span class="ruby-value">0</span>])
+              ]
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,77 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Load configuration and assign logger.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "options<Hash>:"
+    body: Options to pass on to the Merb config.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":host<String>:"
+    body: host to bind to, default is 0.0.0.0.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":port<Fixnum>:"
+    body: port to run Merb application on, default is 4000.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":adapter<String>:"
+    body: name of Rack adapter to use, default is &quot;runner&quot;
+  - !ruby/struct:SM::Flow::LI 
+    label: ":rackup<String>:"
+    body: name of Rack init file to use, default is &quot;rack.rb&quot;
+  - !ruby/struct:SM::Flow::LI 
+    label: ":reload_classes<Boolean>:"
+    body: whether Merb should reload classes on each request, default is true
+  - !ruby/struct:SM::Flow::LI 
+    label: ":environment<String>:"
+    body: name of environment to use, default is development
+  - !ruby/struct:SM::Flow::LI 
+    label: ":merb_root<String>:"
+    body: Merb application root, default is Dir.pwd
+  - !ruby/struct:SM::Flow::LI 
+    label: ":use_mutex<Boolean>:"
+    body: turns action dispatch synchronization on or off, default is on (true)
+  - !ruby/struct:SM::Flow::LI 
+    label: ":session_id_key<String>:"
+    body: session identifier, default is _session_id
+  - !ruby/struct:SM::Flow::LI 
+    label: ":session_store<String>:"
+    body: session store to use (one of cookies, memcache or memory)
+  - !ruby/struct:SM::Flow::LI 
+    label: ":log_delimiter<String>:"
+    body: what Merb logger uses as delimiter between message sections, default is &quot; ~ &quot;
+  - !ruby/struct:SM::Flow::LI 
+    label: ":log_auto_flush<Boolean>:"
+    body: whether the log should automatically flush after new messages are added, defaults to true.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":log_file<IO>:"
+    body: IO for logger. Default is STDOUT.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":log_level<Symbol>:"
+    body: logger level, default is :warn
+  - !ruby/struct:SM::Flow::LI 
+    label: ":disabled_components<Array[Symbol]>:"
+    body: array of disabled component names, for instance, to disable json gem, specify :json. Default is empty array.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":deferred_actions<Array(Symbol, String)]>:"
+    body: names of actions that should be deferred no matter what controller they belong to. Default is empty array.
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: Some of these options come from command line on Merb application start, some of them are set in Merb init file or environment-specific.
+full_name: Merb::load_config
+is_singleton: true
+name: load_config
+params: (options = {})
+visibility: public

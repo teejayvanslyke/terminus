@@ -1,0 +1,40 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: controller if block_given?
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The workhorse for the dispatch*to helpers.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "request<Merb::Test::FakeRequest, Merb::Request>:"
+    body: A request object that has been setup for testing.
+  - !ruby/struct:SM::Flow::LI 
+    label: "controller_klass<Merb::Controller>:"
+    body: The class object off the controller to dispatch the action to.
+  - !ruby/struct:SM::Flow::LI 
+    label: "action<Symbol>:"
+    body: The action to dispatch the request to.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&blk:"
+    body: The controller is yielded to the block provided for actions <b>prior</b> to the action being dispatched.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/struct:SM::Flow::P 
+  body: An instance of <tt>controller_klass</tt> based on the parameters.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: Does not use routes.
+full_name: Merb::Test::RequestHelper#dispatch_request
+is_singleton: false
+name: dispatch_request
+params: (request, controller_klass, action, &blk) {|controller if block_given?| ...}
+visibility: public

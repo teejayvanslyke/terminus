@@ -1,0 +1,41 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Get the layout that should be used. The content-type will be appended to the layout unless the layout already contains a &quot;.&quot; in it.
+- !ruby/struct:SM::Flow::P 
+  body: If no layout was passed in, this method will look for one with the same name as the controller, and finally one in &quot;application.#{content_type}&quot;.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "layout<~to_s>:"
+    body: A layout, relative to the layout root. Defaults to nil.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The method name that corresponds to the found layout.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Raises
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "TemplateNotFound:"
+    body: If a layout was specified (either via layout in the class or by passing one in to this method), and not found. No error will be raised if no layout was specified, and the default layouts were not found.
+  type: :NOTE
+full_name: Merb::RenderMixin#_get_layout
+is_singleton: false
+name: _get_layout
+params: (layout = nil)
+visibility: public

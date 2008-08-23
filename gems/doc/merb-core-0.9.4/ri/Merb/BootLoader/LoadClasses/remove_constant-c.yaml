@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "const<Class>:"
+    body: The class to remove.
+  type: :NOTE
+full_name: Merb::BootLoader::LoadClasses::remove_constant
+is_singleton: true
+name: remove_constant
+params: (const)
+visibility: public

@@ -1,0 +1,46 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Kernel
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: __caller_info__
+- !ruby/object:RI::MethodSummary 
+  name: __caller_lines__
+- !ruby/object:RI::MethodSummary 
+  name: __profile__
+- !ruby/object:RI::MethodSummary 
+  name: debugger
+- !ruby/object:RI::MethodSummary 
+  name: dependencies
+- !ruby/object:RI::MethodSummary 
+  name: dependency
+- !ruby/object:RI::MethodSummary 
+  name: enforce!
+- !ruby/object:RI::MethodSummary 
+  name: extract_options_from_args!
+- !ruby/object:RI::MethodSummary 
+  name: load_dependencies
+- !ruby/object:RI::MethodSummary 
+  name: load_dependency
+- !ruby/object:RI::MethodSummary 
+  name: register_orm
+- !ruby/object:RI::MethodSummary 
+  name: register_test_framework
+- !ruby/object:RI::MethodSummary 
+  name: rescue_require
+- !ruby/object:RI::MethodSummary 
+  name: supported_test_framework?
+- !ruby/object:RI::MethodSummary 
+  name: use_orm
+- !ruby/object:RI::MethodSummary 
+  name: use_test
+name: Kernel
+superclass: 

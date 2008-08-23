@@ -1,0 +1,35 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Metaphone encodes names into a phonetic form such that similar-sounding names have the same or similar Metaphone encodings.
+- !ruby/struct:SM::Flow::P 
+  body: The original system was described by Lawrence Philips in Computer Language Vol. 7 No. 12, December 1990, pp 39-43.
+- !ruby/struct:SM::Flow::P 
+  body: As there are multiple implementations of Metaphone, each with their own quirks, I have based this on my interpretation of the algorithm specification. Even LP's original BASIC implementation appears to contain bugs (specifically with the handling of CC and MB), when compared to his explanation of the algorithm.
+- !ruby/struct:SM::Flow::P 
+  body: I have also compared this implementation with that found in PHP's standard library, which appears to mimic the behaviour of LP's original BASIC implementation. For compatibility, these rules can also be used by passing :alternate=&gt;true to the methods.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Metaphone rules. These are simply applied in order.
+  name: RULES
+  value: "[       # Regexp, replacement       [ /([bcdfhjklmnpqrstvwxyz])\\1+/,                           '\\1' ],  # Remove doubled consonants except g.                                   # [PHP] remove c from regexp.       [ /^ae/,            'E' ],       [ /^[gkp]n/,        'N' ],       [ /^wr/,            'R' ],       [ /^x/,             'S' ],       [ /^wh/,            'W' ],       [ /mb$/,            'M' ],  # [PHP] remove $ from regexp.       [ /(?!^)sch/,      'SK' ],       [ /th/,             '0' ],       [ /t?ch|sh/,        'X' ],       [ /c(?=ia)/,        'X' ],       [ /[st](?=i[ao])/,  'X' ],       [ /s?c(?=[iey])/,   'S' ],       [ /[cq]/,           'K' ],       [ /dg(?=[iey])/,    'J' ],       [ /d/,              'T' ],       [ /g(?=h[^aeiou])/, ''  ],       [ /gn(ed)?/,        'N' ],       [ /([^g]|^)g(?=[iey])/,                         '\\1J' ],       [ /g+/,             'K' ],       [ /ph/,             'F' ],       [ /([aeiou])h(?=\\b|[^aeiou])/,                           '\\1' ],       [ /[wy](?![aeiou])/, '' ],       [ /z/,              'S' ],       [ /v/,              'F' ],       [ /(?!^)[aeiou]+/,  ''  ],     ]"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The rules for the 'buggy' alternate implementation used by PHP etc.
+  name: LP_RULES
+  value: RULES.dup
+full_name: English::Metaphone
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: metaphone
+name: Metaphone
+superclass: 

@@ -1,0 +1,36 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: included
+comment: 
+constants: []
+
+full_name: Merb::RenderMixin
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Merb::ControllerExceptions
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _get_layout
+- !ruby/object:RI::MethodSummary 
+  name: _handle_options!
+- !ruby/object:RI::MethodSummary 
+  name: _template_for
+- !ruby/object:RI::MethodSummary 
+  name: _template_method_for
+- !ruby/object:RI::MethodSummary 
+  name: catch_content
+- !ruby/object:RI::MethodSummary 
+  name: display
+- !ruby/object:RI::MethodSummary 
+  name: partial
+- !ruby/object:RI::MethodSummary 
+  name: render
+- !ruby/object:RI::MethodSummary 
+  name: throw_content
+- !ruby/object:RI::MethodSummary 
+  name: thrown_content?
+name: RenderMixin
+superclass: 

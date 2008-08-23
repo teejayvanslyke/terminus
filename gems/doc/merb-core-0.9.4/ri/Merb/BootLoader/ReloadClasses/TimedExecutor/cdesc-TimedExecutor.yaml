@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: every
+comment: 
+constants: []
+
+full_name: Merb::BootLoader::ReloadClasses::TimedExecutor
+includes: []
+
+instance_methods: []
+
+name: TimedExecutor
+superclass: Object

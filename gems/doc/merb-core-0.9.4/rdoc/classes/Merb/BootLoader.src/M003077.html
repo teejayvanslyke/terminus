@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Merb::BootLoader)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 60</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+        <span class="ruby-identifier">subklasses</span> = <span class="ruby-identifier">subclasses</span>.<span class="ruby-identifier">dup</span>
+        <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">subclasses</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-identifier">time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span>
+          <span class="ruby-identifier">bootloader</span> = <span class="ruby-identifier">subclasses</span>.<span class="ruby-identifier">shift</span>
+          <span class="ruby-keyword kw">if</span> (<span class="ruby-constant">ENV</span>[<span class="ruby-value str">'DEBUG'</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">$DEBUG</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:verbose</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>
+            <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug!</span>(<span class="ruby-node">&quot;Loading: #{bootloader}&quot;</span>)
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-constant">Object</span>.<span class="ruby-identifier">full_const_get</span>(<span class="ruby-identifier">bootloader</span>).<span class="ruby-identifier">run</span>
+          <span class="ruby-keyword kw">if</span> (<span class="ruby-constant">ENV</span>[<span class="ruby-value str">'DEBUG'</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">$DEBUG</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:verbose</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>
+            <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug!</span>(<span class="ruby-node">&quot;It took: #{Time.now.to_i - time}&quot;</span>)
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">finished</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">bootloader</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">subclasses</span> = <span class="ruby-identifier">subklasses</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

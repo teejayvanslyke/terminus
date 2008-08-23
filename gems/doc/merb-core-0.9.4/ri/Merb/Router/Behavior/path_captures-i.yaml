@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Fixnum:"
+    body: Number of regexp captures in the :path condition.
+  type: :NOTE
+full_name: Merb::Router::Behavior#path_captures
+is_singleton: false
+name: path_captures
+params: ()
+visibility: protected

@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Reset the list of provides to include only :html.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[Symbol]:"
+    body: "[:html]."
+  type: :NOTE
+full_name: Merb::ResponderMixin::ClassMethods#reset_provides
+is_singleton: false
+name: reset_provides
+params: ()
+visibility: public

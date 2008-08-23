@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Do the content negotiation:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "1."
+    body: if params[:format] is there, and provided, use it
+  - !ruby/struct:SM::Flow::LI 
+    label: "2."
+    body: Parse the Accept header
+  - !ruby/struct:SM::Flow::LI 
+    label: "3."
+    body: If it's */*, use the first provided format
+  - !ruby/struct:SM::Flow::LI 
+    label: "4."
+    body: Look for one that is provided, in order of request
+  - !ruby/struct:SM::Flow::LI 
+    label: "5."
+    body: Raise 406 if none found
+  type: :NUMBER
+full_name: Merb::ResponderMixin#_perform_content_negotiation
+is_singleton: false
+name: _perform_content_negotiation
+params: ()
+visibility: public

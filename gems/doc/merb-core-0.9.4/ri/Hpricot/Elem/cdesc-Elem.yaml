@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "http://yehudakatz.com/2007/01/27/a-better-assert_select-assert_elements/ based on assert_elements Author: Yehuda Katz Email: wycats @nospam@ gmail.com Web: http://www.yehudakatz.com"
+- !ruby/struct:SM::Flow::P 
+  body: "which was based on HpricotTestHelper Author: Luke Redpath Email: contact @nospam@ lukeredpath.co.uk Web: www.lukeredpath.co.uk / opensource.agileevolved.com"
+constants: []
+
+full_name: Hpricot::Elem
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: contain?
+- !ruby/object:RI::MethodSummary 
+  name: contains?
+- !ruby/object:RI::MethodSummary 
+  name: inner_text
+- !ruby/object:RI::MethodSummary 
+  name: match?
+- !ruby/object:RI::MethodSummary 
+  name: matches?
+name: Elem
+superclass: Object

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Dispatcher::DefaultExceptionHelper#error_codes
+is_singleton: false
+name: error_codes
+params: (exception)
+visibility: public

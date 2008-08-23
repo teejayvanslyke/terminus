@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: TimeDSL</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">TimeDSL</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/merb_helpers/time_dsl_rb.html">
+                lib/merb_helpers/time_dsl.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Provides a a simple way of calling time units and to see the elapsed time
+between 2 moments
+</p>
+<h4>Examples</h4>
+<pre>
+  142.minutes =&gt; returns a value in seconds
+  7.days =&gt; returns a value in seconds
+  1.week =&gt; returns a value in seconds
+  2.weeks.ago =&gt; returns a date
+  1.year.since(time) =&gt; returns a date
+  5.months.since(2.weeks.from_now) =&gt; returns a date
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000070">ago</a>&nbsp;&nbsp;
+      <a href="#M000062">day</a>&nbsp;&nbsp;
+      <a href="#M000063">days</a>&nbsp;&nbsp;
+      <a href="#M000073">from_now</a>&nbsp;&nbsp;
+      <a href="#M000060">hour</a>&nbsp;&nbsp;
+      <a href="#M000061">hours</a>&nbsp;&nbsp;
+      <a href="#M000058">minute</a>&nbsp;&nbsp;
+      <a href="#M000059">minutes</a>&nbsp;&nbsp;
+      <a href="#M000066">month</a>&nbsp;&nbsp;
+      <a href="#M000067">months</a>&nbsp;&nbsp;
+      <a href="#M000056">second</a>&nbsp;&nbsp;
+      <a href="#M000057">seconds</a>&nbsp;&nbsp;
+      <a href="#M000072">since</a>&nbsp;&nbsp;
+      <a href="#M000071">until</a>&nbsp;&nbsp;
+      <a href="#M000064">week</a>&nbsp;&nbsp;
+      <a href="#M000065">weeks</a>&nbsp;&nbsp;
+      <a href="#M000068">year</a>&nbsp;&nbsp;
+      <a href="#M000069">years</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
+
+        <div class="method-heading">
+          <a href="TimeDSL.src/M000070.html" target="Code" class="method-signature"
+            onclick="popupCode('TimeDSL.src/M000070.html');return false;">
+          <span class="method-name">ago</span><span class="method-args">(time = ::Time.now)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Reads best without arguments: 10.minutes.<a
+href="TimeDSL.html#M000070">ago</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="TimeDSL.src/M000062.html" target="Code" class="method-signature"
+            onclick="popupCode('TimeDSL.src/M000062.html');return false;">
+          <span class="method-name">day</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+          <span class="method-name">days</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TimeDSL.html#M000062">day</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <span class="method-name">from_now</span><span class="method-args">(time = ::Time.now)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TimeDSL.html#M000072">since</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+          <a href="TimeDSL.src/M000060.html" target="Code" class="method-signature"
+            onclick="popupCode('TimeDSL.src/M000060.html');return false;">
+          <span class="method-name">hour</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <span class="method-name">hours</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TimeDSL.html#M000060">hour</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000058" class="method-detail">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+          <a href="TimeDSL.src/M000058.html" target="Code" class="method-signature"
+            onclick="popupCode('TimeDSL.src/M000058.html');return false;">
+          <span class="method-name">minute</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <span class="method-name">minutes</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TimeDSL.html#M000058">minute</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+          <a href="TimeDSL.src/M000066.html" target="Code" class="method-signature"
+            onclick="popupCode('TimeDSL.src/M000066.html');return false;">
+          <span class="method-name">month</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <span class="method-name">months</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TimeDSL.html#M000066">month</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000056" class="method-detail">
+        <a name="M000056"></a>
+
+        <div class="method-heading">
+          <a href="TimeDSL.src/M000056.html" target="Code" class="method-signature"
+            onclick="popupCode('TimeDSL.src/M000056.html');return false;">
+          <span class="method-name">second</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000057" class="method-detail">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+          <span class="method-name">seconds</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TimeDSL.html#M000056">second</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
+
+        <div class="method-heading">
+          <a href="TimeDSL.src/M000072.html" target="Code" class="method-signature"
+            onclick="popupCode('TimeDSL.src/M000072.html');return false;">
+          <span class="method-name">since</span><span class="method-args">(time = ::Time.now)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Reads best with argument: 10.minutes.<a
+href="TimeDSL.html#M000072">since</a>(time)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000071" class="method-detail">
+        <a name="M000071"></a>
+
+        <div class="method-heading">
+          <span class="method-name">until</span><span class="method-args">(time = ::Time.now)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TimeDSL.html#M000070">ago</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+          <a href="TimeDSL.src/M000064.html" target="Code" class="method-signature"
+            onclick="popupCode('TimeDSL.src/M000064.html');return false;">
+          <span class="method-name">week</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
+
+        <div class="method-heading">
+          <span class="method-name">weeks</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TimeDSL.html#M000064">week</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="TimeDSL.src/M000068.html" target="Code" class="method-signature"
+            onclick="popupCode('TimeDSL.src/M000068.html');return false;">
+          <span class="method-name">year</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+          <span class="method-name">years</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TimeDSL.html#M000068">year</a>
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

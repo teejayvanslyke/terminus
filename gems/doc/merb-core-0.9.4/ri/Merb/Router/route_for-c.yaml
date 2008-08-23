@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Finds route matching URI of the request and returns a tuple of [route index, route params].
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "request<Merb::Request>:"
+    body: request to match.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<Array(Integer, Hash):"
+    body: "Two-tuple: route index and route parameters. Route parameters are :controller, :action and all the named segments of the route."
+  type: :NOTE
+full_name: Merb::Router::route_for
+is_singleton: true
+name: route_for
+params: (request)
+visibility: public

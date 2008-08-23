@@ -1,0 +1,34 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: close_sandbox!
+- !ruby/object:RI::MethodSummary 
+  name: config
+- !ruby/object:RI::MethodSummary 
+  name: config_file
+- !ruby/object:RI::MethodSummary 
+  name: configurations
+- !ruby/object:RI::MethodSummary 
+  name: connect
+- !ruby/object:RI::MethodSummary 
+  name: copy_sample_config
+- !ruby/object:RI::MethodSummary 
+  name: open_sandbox!
+- !ruby/object:RI::MethodSummary 
+  name: register_session_type
+- !ruby/object:RI::MethodSummary 
+  name: sample_dest
+- !ruby/object:RI::MethodSummary 
+  name: sample_source
+comment: 
+constants: []
+
+full_name: Merb::Orms::ActiveRecord
+includes: []
+
+instance_methods: []
+
+name: ActiveRecord
+superclass: 

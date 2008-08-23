@@ -1,0 +1,60 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: data
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: needs_new_cookie
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: session_id
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: generate
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: persist
+- !ruby/object:RI::MethodSummary 
+  name: reloadable?
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sessions stored in memcached.
+- !ruby/struct:SM::Flow::P 
+  body: Requires setup in your +init.rb+.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  require 'memcache'\n  CACHE = MemCache.new('127.0.0.1:11211', { :namespace =&gt; 'my_app' })\n"
+- !ruby/struct:SM::Flow::P 
+  body: "And a setting in +init.rb+:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  c[:session_store] = 'memcache'\n"
+- !ruby/struct:SM::Flow::P 
+  body: "If you are using the memcached gem instead of memcache-client, you must setup like this:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  require 'memcached'\n  CACHE = Memcached.new('127.0.0.1:11211', { :namespace =&gt; 'my_app' })\n"
+constants: []
+
+full_name: Merb::MemCacheSession
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: loaded?
+- !ruby/object:RI::MethodSummary 
+  name: refresh_expiration
+- !ruby/object:RI::MethodSummary 
+  name: regenerate
+name: MemCacheSession
+superclass: Object

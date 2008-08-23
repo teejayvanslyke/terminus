@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Merb::Rack::Console
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: close_sandbox!
+- !ruby/object:RI::MethodSummary 
+  name: open_sandbox!
+- !ruby/object:RI::MethodSummary 
+  name: reload!
+- !ruby/object:RI::MethodSummary 
+  name: show_routes
+- !ruby/object:RI::MethodSummary 
+  name: trace_log!
+- !ruby/object:RI::MethodSummary 
+  name: url
+name: Console
+superclass: Object

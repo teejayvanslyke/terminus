@@ -1,0 +1,34 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "For a given path, get an IO object that responds to #path."
+- !ruby/struct:SM::Flow::P 
+  body: "This is so that plugins can override this if they provide mechanisms for specifying templates that are not just simple files. The plugin is responsible for ensuring that the fake path provided will work with #template_for, and thus the RenderMixin in general."
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<String>:"
+    body: A full path to find a template for. This is the
+  type: :NOTE
+- !ruby/struct:SM::Flow::VERB 
+  body: "  path that the RenderMixin assumes it should find the template\n  in.\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "IO#path:"
+    body: An IO object that responds to path (File or VirtualFile).
+  type: :NOTE
+full_name: Merb::Template::load_template_io
+is_singleton: true
+name: load_template_io
+params: (path)
+visibility: public

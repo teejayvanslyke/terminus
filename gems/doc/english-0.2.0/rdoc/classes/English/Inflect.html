@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: English::Inflect</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">English::Inflect</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/english/inflect_rb.html">
+                lib/english/inflect.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>English Nouns Number Inflection.</h1>
+<p>
+This module provides english <a href="Inflect.html#M001225">singular</a>
+&lt;-&gt; <a href="Inflect.html#M001226">plural</a> noun inflections.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001226">plural</a>&nbsp;&nbsp;
+      <a href="#M001223">plural_of</a>&nbsp;&nbsp;
+      <a href="#M001220">plural_rule</a>&nbsp;&nbsp;
+      <a href="#M001217">plural_word</a>&nbsp;&nbsp;
+      <a href="#M001222">pluralization_rules</a>&nbsp;&nbsp;
+      <a href="#M001218">rule</a>&nbsp;&nbsp;
+      <a href="#M001225">singular</a>&nbsp;&nbsp;
+      <a href="#M001224">singular_of</a>&nbsp;&nbsp;
+      <a href="#M001219">singular_rule</a>&nbsp;&nbsp;
+      <a href="#M001216">singular_word</a>&nbsp;&nbsp;
+      <a href="#M001221">singularization_rules</a>&nbsp;&nbsp;
+      <a href="#M001215">word</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">singular</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">singularize</td>
+        </tr>
+      <tr class="top-aligned-row context-row">
+        <td>&nbsp;</td>
+        <td colspan="2" class="context-item-desc">
+Alias for <a href="Inflect.html#M001225">singular</a> (a Railism).
+
+</td>
+      </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">plural</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">pluralize</td>
+        </tr>
+      <tr class="top-aligned-row context-row">
+        <td>&nbsp;</td>
+        <td colspan="2" class="context-item-desc">
+Alias for <a href="Inflect.html#M001226">plural</a> (a Railism).
+
+</td>
+      </tr>
+                        </table>
+      </div>
+    </div>
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M001226" class="method-detail">
+        <a name="M001226"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001226.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001226.html');return false;">
+          <span class="method-name">plural</span><span class="method-args">(word)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Convert an English <a href="Inflect.html#M001215">word</a> from <a
+href="Inflect.html#M001225">singular</a> to plurel.
+</p>
+<pre>
+  &quot;boy&quot;.plural     #=&gt; boys
+  &quot;tomato&quot;.plural  #=&gt; tomatoes
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M001223" class="method-detail">
+        <a name="M001223"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001223.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001223.html');return false;">
+          <span class="method-name">plural_of</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M001220" class="method-detail">
+        <a name="M001220"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001220.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001220.html');return false;">
+          <span class="method-name">plural_rule</span><span class="method-args">(singular, plural)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define a plurualization <a href="Inflect.html#M001218">rule</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M001217" class="method-detail">
+        <a name="M001217"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001217.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001217.html');return false;">
+          <span class="method-name">plural_word</span><span class="method-args">(singular, plural)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define a pluralization exception.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M001222" class="method-detail">
+        <a name="M001222"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001222.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001222.html');return false;">
+          <span class="method-name">pluralization_rules</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Read prepared pluralization rules.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M001218" class="method-detail">
+        <a name="M001218"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001218.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001218.html');return false;">
+          <span class="method-name">rule</span><span class="method-args">(singular, plural)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define a general <a href="Inflect.html#M001218">rule</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M001225" class="method-detail">
+        <a name="M001225"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001225.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001225.html');return false;">
+          <span class="method-name">singular</span><span class="method-args">(word)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Convert an English <a href="Inflect.html#M001215">word</a> from plurel to
+<a href="Inflect.html#M001225">singular</a>.
+</p>
+<pre>
+  &quot;boys&quot;.singular      #=&gt; boy
+  &quot;tomatoes&quot;.singular  #=&gt; tomato
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M001224" class="method-detail">
+        <a name="M001224"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001224.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001224.html');return false;">
+          <span class="method-name">singular_of</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M001219" class="method-detail">
+        <a name="M001219"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001219.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001219.html');return false;">
+          <span class="method-name">singular_rule</span><span class="method-args">(singular, plural)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define a singularization <a href="Inflect.html#M001218">rule</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M001216" class="method-detail">
+        <a name="M001216"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001216.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001216.html');return false;">
+          <span class="method-name">singular_word</span><span class="method-args">(singular, plural)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define a singularization exception.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M001221" class="method-detail">
+        <a name="M001221"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001221.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001221.html');return false;">
+          <span class="method-name">singularization_rules</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Read prepared singularization rules.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M001215" class="method-detail">
+        <a name="M001215"></a>
+
+        <div class="method-heading">
+          <a href="Inflect.src/M001215.html" target="Code" class="method-signature"
+            onclick="popupCode('Inflect.src/M001215.html');return false;">
+          <span class="method-name">word</span><span class="method-args">(singular, plural=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Define a general exception.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

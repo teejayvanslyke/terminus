@@ -1,0 +1,21 @@
+body {
+  color: #dddddd;
+  background-image: url('/images/background-paisley.jpg');
+  font-family: 'Monaco', 'Courier New', fixed;
+  padding: 0;
+  margin: 0;
+  font-size: 12px; }
+  body #terminal {
+    background-color: #000000;
+    background-image: url('/images/background.png');
+    top: 0;
+    left: 0;
+    overflow: scroll;
+    border-width: 0;
+    border-style: solid;
+    border-top-color: #84b491;
+    border-left-color: #84b491;
+    border-right-color: #5c8868;
+    border-bottom-color: #5c8868; }
+    body #terminal a {
+      color: #ffffff; }

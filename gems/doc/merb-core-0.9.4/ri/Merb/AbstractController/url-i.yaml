@@ -1,0 +1,37 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: relative_url
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_sym, Hash>:"
+    body: The name of the URL to generate.
+  - !ruby/struct:SM::Flow::LI 
+    label: "rparams<Hash>:"
+    body: Parameters for the route generation.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The generated URL.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If a hash is used as the first argument, a default route will be generated based on it and rparams.
+full_name: Merb::AbstractController#url
+is_singleton: false
+name: url
+params: (name, rparams = {}, qparams = {})
+visibility: public

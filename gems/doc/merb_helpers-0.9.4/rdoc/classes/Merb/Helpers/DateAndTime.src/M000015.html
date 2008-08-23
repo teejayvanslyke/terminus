@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>relative_time_span (Merb::Helpers::DateAndTime)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb_helpers/date_time_helpers.rb, line 118</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">relative_time_span</span>(<span class="ruby-identifier">times</span>)
+        <span class="ruby-identifier">times</span> = [<span class="ruby-identifier">times</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">times</span>.<span class="ruby-identifier">last</span>].<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">to_time</span> }
+        <span class="ruby-identifier">times</span>.<span class="ruby-identifier">sort!</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">times</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">times</span>.<span class="ruby-identifier">last</span>
+          <span class="ruby-node">&quot;#{prettier_time(times.first)} #{relative_date(times.first)}&quot;</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">times</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_date</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">times</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">to_date</span>
+            <span class="ruby-identifier">same_half</span> = (<span class="ruby-identifier">times</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">hour</span><span class="ruby-operator">/</span><span class="ruby-value">12</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">times</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">hour</span><span class="ruby-operator">/</span><span class="ruby-value">12</span>)
+            <span class="ruby-node">&quot;#{prettier_time(times.first, !same_half)} - #{prettier_time(times.last)} #{relative_date(times.first)}&quot;</span>
+      
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">first</span> = <span class="ruby-identifier">times</span>.<span class="ruby-identifier">first</span>; <span class="ruby-identifier">last</span> = <span class="ruby-identifier">times</span>.<span class="ruby-identifier">last</span>; <span class="ruby-identifier">now</span> = <span class="ruby-constant">DateAndTime</span>.<span class="ruby-identifier">time_class</span>.<span class="ruby-identifier">now</span>        
+          <span class="ruby-identifier">arr</span> = [<span class="ruby-identifier">prettier_time</span>(<span class="ruby-identifier">first</span>)]
+          <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">' '</span>
+          <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">first</span>.<span class="ruby-identifier">strftime_ordinalized</span>(<span class="ruby-value str">'%b %d'</span>)
+          <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;, #{first.year}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">first</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">year</span>
+          <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">' - '</span>
+          <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">prettier_time</span>(<span class="ruby-identifier">last</span>)
+          <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">' '</span>
+          <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">'%b'</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">' '</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">first</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">first</span>.<span class="ruby-identifier">month</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">month</span>
+          <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">ordinalize</span>
+          <span class="ruby-identifier">arr</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;, #{last.year}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">first</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">year</span>
+          <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

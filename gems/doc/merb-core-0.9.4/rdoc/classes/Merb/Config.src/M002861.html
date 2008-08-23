@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>parse_args (Merb::Config)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/config.rb, line 112</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_args</span>(<span class="ruby-identifier">argv</span> = <span class="ruby-constant">ARGV</span>)
+        <span class="ruby-ivar">@configuration</span> <span class="ruby-operator">||=</span> {}
+        <span class="ruby-comment cmt"># Our primary configuration hash for the length of this method</span>
+        <span class="ruby-identifier">options</span> = {}
+
+        <span class="ruby-comment cmt"># Environment variables always win</span>
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:environment</span>] = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">&quot;MERB_ENV&quot;</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">&quot;MERB_ENV&quot;</span>]
+
+        <span class="ruby-comment cmt"># Build a parser for the command line arguments</span>
+        <span class="ruby-identifier">opts</span> = <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">version</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">VERSION</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">release</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">RELEASE</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">&quot;Usage: merb [uGdcIpPhmailLerkKX] [argument]&quot;</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">define_head</span> <span class="ruby-value str">&quot;Merb. Pocket rocket web framework&quot;</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'*'</span><span class="ruby-operator">*</span><span class="ruby-value">80</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'If no flags are given, Merb starts in the foreground on port 4000.'</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">'*'</span><span class="ruby-operator">*</span><span class="ruby-value">80</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-u&quot;</span>, <span class="ruby-value str">&quot;--user USER&quot;</span>, <span class="ruby-value str">&quot;This flag is for having merb run as a user other than the one currently logged in. Note: if you set this you must also provide a --group option for it to take effect.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:user</span>] = <span class="ruby-identifier">user</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-G&quot;</span>, <span class="ruby-value str">&quot;--group GROUP&quot;</span>, <span class="ruby-value str">&quot;This flag is for having merb run as a group other than the one currently logged in. Note: if you set this you must also provide a --user option for it to take effect.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">group</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:group</span>] = <span class="ruby-identifier">group</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-d&quot;</span>, <span class="ruby-value str">&quot;--daemonize&quot;</span>, <span class="ruby-value str">&quot;This will run a single merb in the background.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">daemon</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:daemonize</span>] = <span class="ruby-keyword kw">true</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-c&quot;</span>, <span class="ruby-value str">&quot;--cluster-nodes NUM_MERBS&quot;</span>, <span class="ruby-value str">&quot;Number of merb daemons to run.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">nodes</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:cluster</span>] = <span class="ruby-identifier">nodes</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-I&quot;</span>, <span class="ruby-value str">&quot;--init-file FILE&quot;</span>, <span class="ruby-value str">&quot;File to use for initialization on load, defaults to config/init.rb&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">init_file</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:init_file</span>] = <span class="ruby-identifier">init_file</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-p&quot;</span>, <span class="ruby-value str">&quot;--port PORTNUM&quot;</span>, <span class="ruby-value str">&quot;Port to run merb on, defaults to 4000.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">port</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:port</span>] = <span class="ruby-identifier">port</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-o&quot;</span>, <span class="ruby-value str">&quot;--socket-file FILE&quot;</span>, <span class="ruby-value str">&quot;Socket file to run merb on, defaults to [Merb.root]/log/merb.sock&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">port</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:socket_file</span>] = <span class="ruby-identifier">port</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-s&quot;</span>, <span class="ruby-value str">&quot;--socket SOCKNUM&quot;</span>, <span class="ruby-value str">&quot;Socket number to run merb on, defaults to 0.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">port</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:socket</span>] = <span class="ruby-identifier">port</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-P&quot;</span>, <span class="ruby-value str">&quot;--pid PIDFILE&quot;</span>, <span class="ruby-value str">&quot;PID file, defaults to [Merb.root]/log/merb.[port_number].pid&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pid_file</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:pid_file</span>] = <span class="ruby-identifier">pid_file</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-h&quot;</span>, <span class="ruby-value str">&quot;--host HOSTNAME&quot;</span>, <span class="ruby-value str">&quot;Host to bind to (default is 0.0.0.0).&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">host</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:host</span>] = <span class="ruby-identifier">host</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-m&quot;</span>, <span class="ruby-value str">&quot;--merb-root /path/to/approot&quot;</span>, <span class="ruby-value str">&quot;The path to the Merb.root for the app you want to run (default is current working dir).&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">root</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:merb_root</span>] = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">root</span>)
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-a&quot;</span>, <span class="ruby-value str">&quot;--adapter mongrel&quot;</span>, <span class="ruby-value str">&quot;The rack adapter to use to run merb[mongrel, emongrel, thin, ebb, fastcgi, webrick, runner, irb]&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">adapter</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:adapter</span>] = <span class="ruby-identifier">adapter</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-R&quot;</span>, <span class="ruby-value str">&quot;--rackup FILE&quot;</span>, <span class="ruby-value str">&quot;Load an alternate Rack config file (default is config/rack.rb)&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rackup</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:rackup</span>] = <span class="ruby-identifier">rackup</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-i&quot;</span>, <span class="ruby-value str">&quot;--irb-console&quot;</span>, <span class="ruby-value str">&quot;This flag will start merb in irb console mode. All your models and other classes will be available for you in an irb session.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">console</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:adapter</span>] = <span class="ruby-value str">'irb'</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-S&quot;</span>, <span class="ruby-value str">&quot;--sandbox&quot;</span>, <span class="ruby-value str">&quot;This flag will enable a sandboxed irb console. If your ORM supports transactions, all edits will be rolled back on exit.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sandbox</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sandbox</span>] = <span class="ruby-keyword kw">true</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-l&quot;</span>, <span class="ruby-value str">&quot;--log-level LEVEL&quot;</span>, <span class="ruby-value str">&quot;Log levels can be set to any of these options: debug &lt; info &lt; warn &lt; error &lt; fatal&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">log_level</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:log_level</span>] = <span class="ruby-identifier">log_level</span>.<span class="ruby-identifier">to_sym</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-L&quot;</span>, <span class="ruby-value str">&quot;--log LOGFILE&quot;</span>, <span class="ruby-value str">&quot;A string representing the logfile to use.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">log_file</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:log_file</span>] = <span class="ruby-identifier">log_file</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-e&quot;</span>, <span class="ruby-value str">&quot;--environment STRING&quot;</span>, <span class="ruby-value str">&quot;Run merb in the correct mode(development, production, testing)&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">env</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:environment</span>] = <span class="ruby-identifier">env</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-r&quot;</span>, <span class="ruby-value str">&quot;--script-runner ['RUBY CODE'| FULL_SCRIPT_PATH]&quot;</span>,
+          <span class="ruby-value str">&quot;Command-line option to run scripts and/or code in the merb app.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">code_or_file</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:runner_code</span>] = <span class="ruby-identifier">code_or_file</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:adapter</span>] = <span class="ruby-value str">'runner'</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-K&quot;</span>, <span class="ruby-value str">&quot;--graceful PORT or all&quot;</span>, <span class="ruby-value str">&quot;Gracefully kill one merb proceses by port number.  Use merb -K all to gracefully kill all merbs.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ports</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:action</span>] = <span class="ruby-identifier">:kill</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:port</span>] = <span class="ruby-identifier">ports</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-k&quot;</span>, <span class="ruby-value str">&quot;--kill PORT or all&quot;</span>, <span class="ruby-value str">&quot;Kill one merb proceses by port number.  Use merb -k all to kill all merbs.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">port</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:action</span>] = <span class="ruby-identifier">:kill_9</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:port</span>] = <span class="ruby-identifier">port</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-X&quot;</span>, <span class="ruby-value str">&quot;--mutex on/off&quot;</span>, <span class="ruby-value str">&quot;This flag is for turning the mutex lock on and off.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">mutex</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mutex</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;off&quot;</span>
+              <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:use_mutex</span>] = <span class="ruby-keyword kw">false</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:use_mutex</span>] = <span class="ruby-keyword kw">true</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-D&quot;</span>, <span class="ruby-value str">&quot;--debugger&quot;</span>, <span class="ruby-value str">&quot;Run merb using rDebug.&quot;</span>) <span class="ruby-keyword kw">do</span>
+            <span class="ruby-keyword kw">begin</span>
+              <span class="ruby-identifier">require</span> <span class="ruby-value str">&quot;ruby-debug&quot;</span>
+              <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">start</span>
+              <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:autoeval</span>] = <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:settings</span>)
+              <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Debugger enabled&quot;</span>
+            <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;You need to install ruby-debug to run the server in debugging mode. With gems, use 'gem install ruby-debug'&quot;</span>
+              <span class="ruby-identifier">exit</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-V&quot;</span>, <span class="ruby-value str">&quot;--verbose&quot;</span>, <span class="ruby-value str">&quot;Print extra information&quot;</span>) <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:verbose</span>] = <span class="ruby-keyword kw">true</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-?&quot;</span>, <span class="ruby-value str">&quot;-H&quot;</span>, <span class="ruby-value str">&quot;--help&quot;</span>, <span class="ruby-value str">&quot;Show this help message&quot;</span>) <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-identifier">opts</span>
+            <span class="ruby-identifier">exit</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt"># Parse what we have on the command line</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">parse!</span>(<span class="ruby-identifier">argv</span>)
+        <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">setup</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

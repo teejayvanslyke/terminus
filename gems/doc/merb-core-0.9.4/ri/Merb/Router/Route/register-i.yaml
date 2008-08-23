@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Registers the route in the Router.routes array. After registration route has index.
+full_name: Merb::Router::Route#register
+is_singleton: false
+name: register
+params: ()
+visibility: public

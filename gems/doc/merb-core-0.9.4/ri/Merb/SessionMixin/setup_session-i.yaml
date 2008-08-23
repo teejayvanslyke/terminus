@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Adds a before and after dispatch hook for setting up the cookie session store.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "base<Class>:"
+    body: The class to which the SessionMixin is mixed into.
+  type: :NOTE
+full_name: Merb::SessionMixin#setup_session
+is_singleton: false
+name: setup_session
+params: ()
+visibility: public

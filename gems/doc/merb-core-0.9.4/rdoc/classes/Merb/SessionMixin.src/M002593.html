@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>rand_uuid (Merb::SessionMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/session.rb, line 19</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_uuid</span>
+      <span class="ruby-identifier">values</span> = [
+        <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x0010000</span>),
+        <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x0010000</span>),
+        <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x0010000</span>),
+        <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x0010000</span>),
+        <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x0010000</span>),
+        <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x1000000</span>),
+        <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x1000000</span>),
+      ]
+      <span class="ruby-value str">&quot;%04x%04x%04x%04x%04x%06x%06x&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">values</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

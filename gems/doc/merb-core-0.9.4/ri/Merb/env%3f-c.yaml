@@ -1,0 +1,26 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Ask the question about which environment you're in.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "env<Symbol, String>:"
+    body: Name of the environment to query
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::P 
+  body: "Merb.env #=&gt; production Merb.env?(:production) #=&gt; true Merb.env?(:development) #=&gt; false"
+full_name: Merb::env?
+is_singleton: true
+name: env?
+params: (env)
+visibility: public

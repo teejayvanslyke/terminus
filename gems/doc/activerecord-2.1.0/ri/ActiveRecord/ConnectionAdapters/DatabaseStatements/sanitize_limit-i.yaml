@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ActiveRecord::ConnectionAdapters::DatabaseStatements#sanitize_limit
+is_singleton: false
+name: sanitize_limit
+params: (limit)
+visibility: public

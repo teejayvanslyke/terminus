@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: courtesy of 'thomas' from the comments of _whys blog - get in touch if you want a better credit!
+full_name: Hpricot::Elem#inner_text
+is_singleton: false
+name: inner_text
+params: ()
+visibility: public

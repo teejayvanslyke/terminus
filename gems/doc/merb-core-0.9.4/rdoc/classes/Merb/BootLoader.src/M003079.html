@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>default_framework (Merb::BootLoader)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/bootloader.rb, line 95</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_framework</span>
+        <span class="ruby-node">%w[view model helper controller mailer part]</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">component</span><span class="ruby-operator">|</span>
+          <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">component</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">root_path</span>(<span class="ruby-node">&quot;app/#{component}s&quot;</span>))
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">:application</span>,  <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">root_path</span>(<span class="ruby-value str">&quot;app&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;controllers&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;application.rb&quot;</span>))
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">:config</span>,       <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">root_path</span>(<span class="ruby-value str">&quot;config&quot;</span>), <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">:router</span>,       <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:config</span>), (<span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>[<span class="ruby-identifier">:router_file</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;router.rb&quot;</span>))
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">:lib</span>,          <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">root_path</span>(<span class="ruby-value str">&quot;lib&quot;</span>), <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">:log</span>,          <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">log_path</span>, <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">:public</span>,       <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">root_path</span>(<span class="ruby-value str">&quot;public&quot;</span>), <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">:stylesheet</span>,   <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:public</span>) <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;stylesheets&quot;</span>, <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">:javascript</span>,   <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:public</span>) <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;javascripts&quot;</span>, <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">push_path</span>(<span class="ruby-identifier">:image</span>,        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:public</span>) <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;images&quot;</span>, <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

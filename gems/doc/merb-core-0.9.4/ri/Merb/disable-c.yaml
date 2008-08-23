@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Disables the given core components, like a Gem for example.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*args:"
+    body: One or more symbols of Merb internal components.
+  type: :NOTE
+full_name: Merb::disable
+is_singleton: true
+name: disable
+params: (*components)
+visibility: public

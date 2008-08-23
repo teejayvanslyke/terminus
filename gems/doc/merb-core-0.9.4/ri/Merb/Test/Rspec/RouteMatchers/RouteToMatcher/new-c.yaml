@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "klass_or_name<Class, String>:"
+    body: The controller class or class name to match routes for.
+  - !ruby/struct:SM::Flow::LI 
+    label: "action<~to_s>:"
+    body: The name of the action to match routes for.
+  type: :NOTE
+full_name: Merb::Test::Rspec::RouteMatchers::RouteToMatcher::new
+is_singleton: true
+name: new
+params: (klass_or_name, action)
+visibility: public

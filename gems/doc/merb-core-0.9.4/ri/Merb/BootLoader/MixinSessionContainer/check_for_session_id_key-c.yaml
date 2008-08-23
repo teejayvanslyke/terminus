@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sets the controller session ID key if it has been set in config.
+full_name: Merb::BootLoader::MixinSessionContainer::check_for_session_id_key
+is_singleton: true
+name: check_for_session_id_key
+params: ()
+visibility: public

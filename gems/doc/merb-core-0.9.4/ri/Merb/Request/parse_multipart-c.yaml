@@ -1,0 +1,43 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "request<IO>:"
+    body: The raw request.
+  - !ruby/struct:SM::Flow::LI 
+    label: "boundary<String>:"
+    body: The boundary string.
+  - !ruby/struct:SM::Flow::LI 
+    label: "content_length<Fixnum>:"
+    body: The length of the content.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Raises
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "ControllerExceptions::MultiPartParseError:"
+    body: Failed to parse request.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash:"
+    body: The parsed request.
+  type: :NOTE
+full_name: Merb::Request::parse_multipart
+is_singleton: true
+name: parse_multipart
+params: (request, boundary, content_length)
+visibility: public

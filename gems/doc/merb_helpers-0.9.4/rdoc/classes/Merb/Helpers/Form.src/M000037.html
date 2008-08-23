@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>checkbox_field (Merb::Helpers::Form)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb_helpers/form_helpers.rb, line 262</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">checkbox_field</span>(<span class="ruby-identifier">attrs</span> = {}, <span class="ruby-identifier">hidden_attrs</span>={})
+        <span class="ruby-identifier">boolbox</span> = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-identifier">boolbox</span> = <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> ( <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">:boolean</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attrs</span>[<span class="ruby-identifier">:boolean</span>] )
+        <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:boolean</span>)
+
+        <span class="ruby-keyword kw">if</span>( <span class="ruby-identifier">boolbox</span> )
+                <span class="ruby-identifier">on</span>            = <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:on</span>)  <span class="ruby-operator">||</span> <span class="ruby-value">1</span>
+                <span class="ruby-identifier">off</span>           = <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:off</span>) <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">attrs</span>[<span class="ruby-identifier">:value</span>] = <span class="ruby-identifier">on</span> <span class="ruby-keyword kw">if</span> ( (<span class="ruby-identifier">v</span> = <span class="ruby-identifier">attrs</span>[<span class="ruby-identifier">:value</span>]).<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;&quot;</span> )
+        <span class="ruby-keyword kw">else</span>
+                <span class="ruby-comment cmt"># HTML-escape the value attribute</span>
+                <span class="ruby-identifier">attrs</span>[<span class="ruby-identifier">:value</span>] = <span class="ruby-identifier">escape_xml</span>( <span class="ruby-identifier">attrs</span>[<span class="ruby-identifier">:value</span>] )
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:checkbox</span>)
+        <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">add_html_class!</span>(<span class="ruby-value str">&quot;checkbox&quot;</span>)
+        (<span class="ruby-identifier">boolbox</span> <span class="ruby-value">? </span><span class="ruby-identifier">hidden_field</span>({<span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">attrs</span>[<span class="ruby-identifier">:name</span>], <span class="ruby-identifier">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">off</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">hidden_attrs</span>)) <span class="ruby-operator">:</span> <span class="ruby-value str">''</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">optional_label</span>(<span class="ruby-identifier">attrs</span>){<span class="ruby-identifier">self_closing_tag</span>(<span class="ruby-value str">&quot;input&quot;</span>, <span class="ruby-identifier">attrs</span>)}
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

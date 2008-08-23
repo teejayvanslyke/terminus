@@ -1,0 +1,40 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A generic request that checks the router for the controller and action. This request goes through the Merb::Router and finishes at the controller.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<String>:"
+    body: The path that should go to the router as the request uri.
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: An optional hash that will end up as params in the controller instance.
+  - !ruby/struct:SM::Flow::LI 
+    label: "env<Hash>:"
+    body: An optional hash that is passed to the fake request. Any request options should go here (see <tt>fake_request</tt>).
+  - !ruby/struct:SM::Flow::LI 
+    label: "&blk:"
+    body: The controller is yielded to the block provided for actions <b>prior</b> to the action being dispatched.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  request(path, { :name =&gt; 'Homer' }, { :request_method =&gt; &quot;PUT&quot; }) do |controller|\n    controller.stub!(:current_user).and_return(@user)\n  end\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: Uses Routes.
+full_name: Merb::Test::RequestHelper#request
+is_singleton: false
+name: request
+params: (path, params = {}, env= {}, &block)
+visibility: public

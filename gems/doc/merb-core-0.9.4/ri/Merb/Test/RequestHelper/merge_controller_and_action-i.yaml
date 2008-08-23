@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Test::RequestHelper#merge_controller_and_action
+is_singleton: false
+name: merge_controller_and_action
+params: (controller_klass, action, params)
+visibility: public

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>delete_button (Merb::Helpers::Form)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb_helpers/form_helpers.rb, line 590</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_button</span>(<span class="ruby-identifier">symbol_or_string</span>, <span class="ruby-identifier">obj</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">contents</span> = <span class="ruby-value str">'Delete'</span>, <span class="ruby-identifier">form_attrs</span> = {}, <span class="ruby-identifier">button_attrs</span> = {})
+        <span class="ruby-identifier">obj</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{symbol_or_string}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">symbol_or_string</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Symbol</span>)
+        
+        <span class="ruby-identifier">button_attrs</span>[<span class="ruby-identifier">:type</span>] = <span class="ruby-identifier">:submit</span>
+        
+        <span class="ruby-identifier">form_attrs</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">symbol_or_string</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Symbol</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">url</span>(<span class="ruby-identifier">symbol_or_string</span>, <span class="ruby-identifier">obj</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">symbol_or_string</span>, <span class="ruby-identifier">:method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:delete</span>
+        
+        <span class="ruby-identifier">fake_form_method</span> = <span class="ruby-identifier">set_form_method</span>(<span class="ruby-identifier">form_attrs</span>, <span class="ruby-identifier">obj</span>)
+        
+        <span class="ruby-identifier">button</span> = <span class="ruby-value str">''</span>
+        <span class="ruby-identifier">button</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">open_tag</span>(<span class="ruby-identifier">:form</span>, <span class="ruby-identifier">form_attrs</span>)
+        <span class="ruby-identifier">button</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">generate_fake_form_method</span>(<span class="ruby-identifier">fake_form_method</span>)
+        <span class="ruby-identifier">button</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">tag</span>(<span class="ruby-identifier">:button</span>, <span class="ruby-identifier">contents</span>, <span class="ruby-identifier">button_attrs</span>)
+        <span class="ruby-identifier">button</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'&lt;/form&gt;'</span>
+        <span class="ruby-identifier">button</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Coroutine</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Coroutine</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/more/facets/coroutine_rb.html">
+                lib/more/facets/coroutine.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="Coroutine.html">Coroutine</a></h1>
+<p>
+Coroutines are program components like subroutines. Coroutines are more
+generic and flexible than subroutines, but are less widely used in
+practice. Coroutines were first introduced natively in Simula. Coroutines
+are well suited for implementing more familiar program components such as
+cooperative tasks, iterators, infinite lists, and pipes.
+</p>
+<p>
+This mixin solely depends on method read(n), which must be defined in the
+class/module where you mix in this module.
+</p>
+<h2>Usage</h2>
+<pre>
+  count = (ARGV.shift || 1000).to_i
+  input = (1..count).map { (rand * 10000).round.to_f / 100}
+
+  Producer = Coroutine.new do |me|
+    loop do
+      1.upto(6) do
+        me[:last_input] = input.shift
+        me.resume(Printer)
+      end
+      input.shift # discard every seventh input number
+    end
+  end
+  Printer = Coroutine.new do |me|
+    loop do
+      1.upto(8) do
+        me.resume(Producer)
+        if Producer[:last_input]
+          print Producer[:last_input], &quot;\t&quot;
+          Producer[:last_input] = nil
+        end
+        me.resume(Controller)
+      end
+      puts
+    end
+  end
+
+  Controller = Coroutine.new do |me|
+    until input.empty? do
+      me.resume(Printer)
+    end
+  end
+
+  Controller.run
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000541">[]</a>&nbsp;&nbsp;
+      <a href="#M000542">[]=</a>&nbsp;&nbsp;
+      <a href="#M000540">continue</a>&nbsp;&nbsp;
+      <a href="#M000536">new</a>&nbsp;&nbsp;
+      <a href="#M000539">resume</a>&nbsp;&nbsp;
+      <a href="#M000537">run</a>&nbsp;&nbsp;
+      <a href="#M000538">stop</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">stopped</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000536" class="method-detail">
+        <a name="M000536"></a>
+
+        <div class="method-heading">
+          <a href="#M000536" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(data = {}) {|self| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000536-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000536-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/coroutine.rb, line 115</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span> = {})
+    <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">data</span>
+    <span class="ruby-identifier">callcc</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-ivar">@continue</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">return</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span>
+    <span class="ruby-identifier">stop</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000541" class="method-detail">
+        <a name="M000541"></a>
+
+        <div class="method-heading">
+          <a href="#M000541" class="method-signature">
+          <span class="method-name">[]</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000541-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000541-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/coroutine.rb, line 147</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">name</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000542" class="method-detail">
+        <a name="M000542"></a>
+
+        <div class="method-heading">
+          <a href="#M000542" class="method-signature">
+          <span class="method-name">[]=</span><span class="method-args">(name, value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000542-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000542-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/coroutine.rb, line 151</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
+    <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000539" class="method-detail">
+        <a name="M000539"></a>
+
+        <div class="method-heading">
+          <a href="#M000539" class="method-signature">
+          <span class="method-name">resume</span><span class="method-args">(other)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000539-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000539-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/coroutine.rb, line 136</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resume</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-identifier">callcc</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-ivar">@continue</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">other</span>.<span class="ruby-identifier">continue</span>(<span class="ruby-keyword kw">self</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000537" class="method-detail">
+        <a name="M000537"></a>
+
+        <div class="method-heading">
+          <a href="#M000537" class="method-signature">
+          <span class="method-name">run</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000537-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000537-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/coroutine.rb, line 126</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+    <span class="ruby-identifier">callcc</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-ivar">@stopped</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">continue</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000538" class="method-detail">
+        <a name="M000538"></a>
+
+        <div class="method-heading">
+          <a href="#M000538" class="method-signature">
+          <span class="method-name">stop</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000538-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000538-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/coroutine.rb, line 132</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stop</span>
+    <span class="ruby-ivar">@stopped</span>.<span class="ruby-identifier">call</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000540" class="method-detail">
+        <a name="M000540"></a>
+
+        <div class="method-heading">
+          <a href="#M000540" class="method-signature">
+          <span class="method-name">continue</span><span class="method-args">(from = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000540-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000540-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/coroutine.rb, line 142</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">continue</span>(<span class="ruby-identifier">from</span> = <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-ivar">@stopped</span> = <span class="ruby-identifier">from</span>.<span class="ruby-identifier">stopped</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@stopped</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">from</span>
+    <span class="ruby-ivar">@continue</span>.<span class="ruby-identifier">call</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

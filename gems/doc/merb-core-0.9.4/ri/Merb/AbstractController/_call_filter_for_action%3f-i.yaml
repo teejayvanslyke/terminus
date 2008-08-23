@@ -1,0 +1,43 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "rule<Hash>:"
+    body: Rules for the filter (see below).
+  - !ruby/struct:SM::Flow::LI 
+    label: "action_name<~to_s>:"
+    body: The name of the action to be called.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (rule)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":only<Array>:"
+    body: Optional list of actions to fire. If given, action_name must be a part of it for this function to return true.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":exclude<Array>:"
+    body: Optional list of actions not to fire. If given, action_name must not be a part of it for this function to return true.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Boolean:"
+    body: True if the action should be called.
+  type: :NOTE
+full_name: Merb::AbstractController#_call_filter_for_action?
+is_singleton: false
+name: _call_filter_for_action?
+params: (rule, action_name)
+visibility: public

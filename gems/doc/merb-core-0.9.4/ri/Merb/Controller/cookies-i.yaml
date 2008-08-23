@@ -1,0 +1,26 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Merb::Cookies:"
+    body: A new Merb::Cookies instance representing the cookies that came in from the request object
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: "Headers are passed into the cookie object so that you can do:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  cookies[:foo] = &quot;bar&quot;\n"
+full_name: Merb::Controller#cookies
+is_singleton: false
+name: cookies
+params: ()
+visibility: public

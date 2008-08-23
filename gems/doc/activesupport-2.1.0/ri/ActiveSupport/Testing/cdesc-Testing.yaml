@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: included
+comment: 
+constants: []
+
+full_name: ActiveSupport::Testing
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: run_with_callbacks_and_mocha
+name: Testing
+superclass: 

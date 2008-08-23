@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Merb::SessionMixin
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: finalize_session
+- !ruby/object:RI::MethodSummary 
+  name: session_store_type
+- !ruby/object:RI::MethodSummary 
+  name: setup_session
+name: SessionMixin
+superclass: 

@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Prepends the generated routes to the current routes.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "&block:"
+    body: A block that generates new routes when yielded a new Behavior.
+  type: :NOTE
+full_name: Merb::Router::prepend
+is_singleton: true
+name: prepend
+params: (&block)
+visibility: public

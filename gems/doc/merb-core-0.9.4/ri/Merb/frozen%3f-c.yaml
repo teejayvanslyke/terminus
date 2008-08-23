@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Boolean:"
+    body: True if Merb is running via merb-freezer or other freezer.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: Freezing means bundling framework libraries with your application making it independent from environment it runs in. This is a good practice to freeze application framework and gems it uses and very useful when application is run in some sort of sandbox, for instance, shared hosting with preconfigured gems.
+full_name: Merb::frozen?
+is_singleton: true
+name: frozen?
+params: ()
+visibility: public

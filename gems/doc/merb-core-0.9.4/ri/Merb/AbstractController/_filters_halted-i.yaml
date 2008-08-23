@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::AbstractController#_filters_halted
+is_singleton: false
+name: _filters_halted
+params: ()
+visibility: public

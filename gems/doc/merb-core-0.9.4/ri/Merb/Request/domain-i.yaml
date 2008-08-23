@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "tld_length<Fixnum>:"
+    body: Number of domains levels to inlclude in the top level domain. Defaults to 1.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The full domain name without the port number.
+  type: :NOTE
+full_name: Merb::Request#domain
+is_singleton: false
+name: domain
+params: (tld_length = 1)
+visibility: public

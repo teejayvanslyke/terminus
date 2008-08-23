@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Initial the request object.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "http_request<~params:~[], ~body:IO>:"
+    body: An object like an HTTP Request.
+  type: :NOTE
+full_name: Merb::Request::new
+is_singleton: true
+name: new
+params: (rack_env)
+visibility: public

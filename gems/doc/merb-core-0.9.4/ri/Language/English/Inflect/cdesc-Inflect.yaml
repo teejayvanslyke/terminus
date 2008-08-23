@@ -1,0 +1,48 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: plural_of
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: singular_of
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: clear
+- !ruby/object:RI::MethodSummary 
+  name: plural
+- !ruby/object:RI::MethodSummary 
+  name: plural_rule
+- !ruby/object:RI::MethodSummary 
+  name: plural_word
+- !ruby/object:RI::MethodSummary 
+  name: pluralization_rules
+- !ruby/object:RI::MethodSummary 
+  name: rule
+- !ruby/object:RI::MethodSummary 
+  name: singular
+- !ruby/object:RI::MethodSummary 
+  name: singular_rule
+- !ruby/object:RI::MethodSummary 
+  name: singular_word
+- !ruby/object:RI::MethodSummary 
+  name: singularization_rules
+- !ruby/object:RI::MethodSummary 
+  name: word
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: English Nouns Number Inflection.
+- !ruby/struct:SM::Flow::P 
+  body: This module provides english singular &lt;-&gt; plural noun inflections.
+constants: []
+
+full_name: Language::English::Inflect
+includes: []
+
+instance_methods: []
+
+name: Inflect
+superclass: 

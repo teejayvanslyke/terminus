@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Spec::Example::ModuleInclusionWarnings::MethodDispatcher::new
+is_singleton: true
+name: new
+params: (mod, target=nil)
+visibility: public

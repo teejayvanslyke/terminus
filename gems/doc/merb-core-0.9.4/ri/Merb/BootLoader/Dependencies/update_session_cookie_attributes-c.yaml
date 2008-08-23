@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::BootLoader::Dependencies::update_session_cookie_attributes
+is_singleton: true
+name: update_session_cookie_attributes
+params: ()
+visibility: public

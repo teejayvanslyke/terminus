@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "env<Hash>:"
+    body: Environment options that override the defaults.
+  - !ruby/struct:SM::Flow::LI 
+    label: "req<StringIO>:"
+    body: The request to set as input for Rack.
+  type: :NOTE
+full_name: Merb::Test::RequestHelper::FakeRequest::new
+is_singleton: true
+name: new
+params: (env = {}, req = StringIO.new)
+visibility: public

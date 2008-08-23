@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>radio_group_control (Merb::Helpers::Form)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb_helpers/form_helpers.rb, line 330</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">radio_group_control</span>(<span class="ruby-identifier">col</span>, <span class="ruby-identifier">options</span> = [], <span class="ruby-identifier">attrs</span> = {})
+        <span class="ruby-identifier">errorify_field</span>(<span class="ruby-identifier">attrs</span>, <span class="ruby-identifier">col</span>)
+        <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@_obj</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">col</span>)
+        <span class="ruby-identifier">ret</span> = <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opt</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">value</span>, <span class="ruby-identifier">label</span> = <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> [<span class="ruby-identifier">opt</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:value</span>), <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:label</span>)] <span class="ruby-operator">:</span> [<span class="ruby-identifier">opt</span>, <span class="ruby-identifier">opt</span>]
+          <span class="ruby-identifier">hash</span> = {<span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{@_object_name}[#{col}]&quot;</span>, <span class="ruby-identifier">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">value</span>, <span class="ruby-identifier">:label</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">label</span>, <span class="ruby-identifier">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{control_id(col)}_#{value}&quot;</span> }
+          <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">opt</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">opt</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+          <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">:checked</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;checked&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>
+          <span class="ruby-identifier">ret</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">radio_field</span>(<span class="ruby-identifier">hash</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">ret</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

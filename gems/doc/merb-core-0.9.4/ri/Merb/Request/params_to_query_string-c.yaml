@@ -1,0 +1,41 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "value<Array, Hash, Dictionary ~to_s>:"
+    body: The value for the query string.
+  - !ruby/struct:SM::Flow::LI 
+    label: "prefix<~to_s>:"
+    body: The prefix to add to the query string keys.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The query string.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If the value is a string, the prefix will be used as the key.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  params_to_query_string(10, &quot;page&quot;)\n    # =&gt; &quot;page=10&quot;\n  params_to_query_string({ :page =&gt; 10, :word =&gt; &quot;ruby&quot; })\n    # =&gt; &quot;page=10&amp;word=ruby&quot;\n  params_to_query_string({ :page =&gt; 10, :word =&gt; &quot;ruby&quot; }, &quot;search&quot;)\n    # =&gt; &quot;search[page]=10&amp;search[word]=ruby&quot;\n  params_to_query_string([ &quot;ice-cream&quot;, &quot;cake&quot; ], &quot;shopping_list&quot;)\n    # =&gt; &quot;shopping_list[]=ice-cream&amp;shopping_list[]=cake&quot;\n"
+full_name: Merb::Request::params_to_query_string
+is_singleton: true
+name: params_to_query_string
+params: (value, prefix = nil)
+visibility: public

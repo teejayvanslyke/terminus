@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Merb::Test::Rspec::ViewMatchers
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: contain
+- !ruby/object:RI::MethodSummary 
+  name: have_selector
+- !ruby/object:RI::MethodSummary 
+  name: have_tag
+- !ruby/object:RI::MethodSummary 
+  name: match_selector
+- !ruby/object:RI::MethodSummary 
+  name: match_tag
+- !ruby/object:RI::MethodSummary 
+  name: not_match_tag
+- !ruby/object:RI::MethodSummary 
+  name: with_tag
+name: ViewMatchers
+superclass: 

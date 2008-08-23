@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Compiles the route to a form used by Merb::Router. This form sometimes referred as condition statement of the route.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "first<Boolean>:"
+    body: True if this is the first route in set of routes. Defaults to false.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The code corresponding to the route in a form suited for eval.
+  type: :NOTE
+full_name: Merb::Router::Route#compile
+is_singleton: false
+name: compile
+params: (first = false)
+visibility: public

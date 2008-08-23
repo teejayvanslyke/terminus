@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Merb::Test::Rspec::ViewMatchers::HasTag
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: attributes_for_error
+- !ruby/object:RI::MethodSummary 
+  name: class_for_error
+- !ruby/object:RI::MethodSummary 
+  name: class_selector
+- !ruby/object:RI::MethodSummary 
+  name: failure_message
+- !ruby/object:RI::MethodSummary 
+  name: id_for_error
+- !ruby/object:RI::MethodSummary 
+  name: id_selector
+- !ruby/object:RI::MethodSummary 
+  name: inner_failure_message
+- !ruby/object:RI::MethodSummary 
+  name: matches?
+- !ruby/object:RI::MethodSummary 
+  name: negative_failure_message
+- !ruby/object:RI::MethodSummary 
+  name: selector
+- !ruby/object:RI::MethodSummary 
+  name: tag_for_error
+- !ruby/object:RI::MethodSummary 
+  name: with_tag
+name: HasTag
+superclass: Object

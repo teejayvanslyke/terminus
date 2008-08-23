@@ -1,0 +1,30 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: "TITLE:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Text Filter\n"
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: "DESCRIPTION:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Reusable class for filtering and rewriting strings.\n"
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: "AUTHORS:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  - George Moschovitis\n  - Trans\n"
+constants: []
+
+full_name: English
+includes: []
+
+instance_methods: []
+
+name: English
+superclass: 

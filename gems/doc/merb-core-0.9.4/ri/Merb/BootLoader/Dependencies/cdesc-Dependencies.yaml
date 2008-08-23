@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: enable_json_gem
+- !ruby/object:RI::MethodSummary 
+  name: load_dependencies
+- !ruby/object:RI::MethodSummary 
+  name: run
+- !ruby/object:RI::MethodSummary 
+  name: update_logger
+- !ruby/object:RI::MethodSummary 
+  name: update_session_cookie_attributes
+comment: 
+constants: []
+
+full_name: Merb::BootLoader::Dependencies
+includes: []
+
+instance_methods: []
+
+name: Dependencies
+superclass: Merb::BootLoader

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Merb::Helpers::DateAndTime#prettier_time
+is_singleton: false
+name: prettier_time
+params: (time, ampm=true, locale=nil)
+visibility: public

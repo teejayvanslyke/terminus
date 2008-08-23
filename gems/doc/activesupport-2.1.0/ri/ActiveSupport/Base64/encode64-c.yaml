@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ActiveSupport::Base64::encode64
+is_singleton: true
+name: encode64
+params: (data)
+visibility: public

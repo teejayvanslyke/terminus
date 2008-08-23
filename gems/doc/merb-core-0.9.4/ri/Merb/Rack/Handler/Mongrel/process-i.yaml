@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "request<Merb::Request>:"
+    body: The HTTP request to handle.
+  - !ruby/struct:SM::Flow::LI 
+    label: "response<HTTPResponse>:"
+    body: The response object to write response to.
+  type: :NOTE
+full_name: Merb::Rack::Handler::Mongrel#process
+is_singleton: false
+name: process
+params: (request, response)
+visibility: public

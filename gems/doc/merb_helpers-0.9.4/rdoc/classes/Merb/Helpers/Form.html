@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Merb::Helpers::Form</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Merb::Helpers::Form</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/merb_helpers/form_helpers_rb.html">
+                lib/merb_helpers/form_helpers.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Provides a number of methods for creating form tags which may be used
+either with or without the presence of ORM specific models. There are two
+types of form helpers: those that specifically work with model attributes
+and those that don&#8216;t. This helper deals with both model attributes
+and generic form tags. Model attributes generally end in
+&quot;_control&quot; such as <tt><a
+href="Form.html#M000032">text_control</a></tt>, and generic tags end with
+&quot;_field&quot;, such as <tt><a
+href="Form.html#M000033">text_field</a></tt>
+</p>
+<p>
+The core method of this helper, <tt><a
+href="Form.html#M000026">form_for</a></tt>, gives you the ability to create
+a form for a resource. For example, let&#8216;s say that you have a model
+<tt>Person</tt> and want to create a new instance of it:
+</p>
+<pre>
+    &lt;% form_for :person, :action =&gt; url(:people) do %&gt;
+      &lt;%= text_control :first_name, :label =&gt; 'First Name' %&gt;
+      &lt;%= text_control :last_name,  :label =&gt; 'Last Name' %&gt;
+      &lt;%= submit_button 'Create' %&gt;
+    &lt;% end %&gt;
+</pre>
+<p>
+The HTML generated for this would be:
+</p>
+<pre>
+    &lt;form action=&quot;/people/create&quot; method=&quot;post&quot;&gt;
+      &lt;label for=&quot;person_first_name&quot;&gt;First Name&lt;/label&gt;
+      &lt;input id=&quot;person_first_name&quot; name=&quot;person[first_name]&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt;
+      &lt;label for=&quot;person_last_name&quot;&gt;Last Name&lt;/label&gt;
+      &lt;input id=&quot;person_last_name&quot; name=&quot;person[last_name]&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt;
+      &lt;button type=&quot;submit&quot;&gt;Create&lt;/button&gt;
+    &lt;/form&gt;
+</pre>
+<p>
+You may also create a normal form using <a
+href="Form.html#M000025">form_tag</a>
+</p>
+<pre>
+    &lt;% form_tag(:action =&gt; url(:controller =&gt; &quot;foo&quot;, :action =&gt; &quot;bar&quot;, :id =&gt; 1)) do %&gt;
+      &lt;%= text_field :name =&gt; 'first_name', :label =&gt; 'First Name' %&gt;
+      &lt;%= submit_button 'Create' %&gt;
+    &lt;% end %&gt;
+</pre>
+<p>
+The HTML generated for this would be:
+</p>
+<pre>
+    &lt;form action=&quot;/foo/bar/1&quot; method=&quot;post&quot;&gt;
+      &lt;label for=&quot;first_name&quot;&gt;First Name&lt;/label&gt;&lt;input id=&quot;first_name&quot; name=&quot;first_name&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt;
+      &lt;button type=&quot;submit&quot;&gt;Create&lt;/button&gt;
+    &lt;/form&gt;
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000036">checkbox_control</a>&nbsp;&nbsp;
+      <a href="#M000037">checkbox_field</a>&nbsp;&nbsp;
+      <a href="#M000029">control_id</a>&nbsp;&nbsp;
+      <a href="#M000028">control_name</a>&nbsp;&nbsp;
+      <a href="#M000031">control_name_value</a>&nbsp;&nbsp;
+      <a href="#M000030">control_value</a>&nbsp;&nbsp;
+      <a href="#M000055">delete_button</a>&nbsp;&nbsp;
+      <a href="#M000023">error_messages_for</a>&nbsp;&nbsp;
+      <a href="#M000027">fields_for</a>&nbsp;&nbsp;
+      <a href="#M000051">fieldset</a>&nbsp;&nbsp;
+      <a href="#M000052">file_control</a>&nbsp;&nbsp;
+      <a href="#M000053">file_field</a>&nbsp;&nbsp;
+      <a href="#M000026">form_for</a>&nbsp;&nbsp;
+      <a href="#M000025">form_tag</a>&nbsp;&nbsp;
+      <a href="#M000038">hidden_control</a>&nbsp;&nbsp;
+      <a href="#M000039">hidden_field</a>&nbsp;&nbsp;
+      <a href="#M000046">label</a>&nbsp;&nbsp;
+      <a href="#M000024">obj_from_ivar_or_sym</a>&nbsp;&nbsp;
+      <a href="#M000049">options_for_select</a>&nbsp;&nbsp;
+      <a href="#M000050">options_from_collection_for_select</a>&nbsp;&nbsp;
+      <a href="#M000034">password_control</a>&nbsp;&nbsp;
+      <a href="#M000035">password_field</a>&nbsp;&nbsp;
+      <a href="#M000040">radio_control</a>&nbsp;&nbsp;
+      <a href="#M000042">radio_field</a>&nbsp;&nbsp;
+      <a href="#M000041">radio_group_control</a>&nbsp;&nbsp;
+      <a href="#M000048">select_control</a>&nbsp;&nbsp;
+      <a href="#M000047">select_field</a>&nbsp;&nbsp;
+      <a href="#M000045">submit_button</a>&nbsp;&nbsp;
+      <a href="#M000054">submit_field</a>&nbsp;&nbsp;
+      <a href="#M000043">text_area_control</a>&nbsp;&nbsp;
+      <a href="#M000044">text_area_field</a>&nbsp;&nbsp;
+      <a href="#M000032">text_control</a>&nbsp;&nbsp;
+      <a href="#M000033">text_field</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000036.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000036.html');return false;">
+          <span class="method-name">checkbox_control</span><span class="method-args">(col, attrs = {}, hidden_attrs={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a HTML checkbox input based on a resource attribute. This is
+generally used within a resource block such as <tt><a
+href="Form.html#M000026">form_for</a></tt>.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;%= checkbox_control :is_activated, :label =&gt; &quot;Activated?&quot; %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000037.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000037.html');return false;">
+          <span class="method-name">checkbox_field</span><span class="method-args">(attrs = {}, hidden_attrs={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a generic HTML checkbox input tag. There are two ways this tag can
+be generated, based on the option :boolean. If not set to true, a
+&quot;magic&quot; input is generated. Otherwise, an input is created that
+can be easily used for passing an array of values to the application.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% checkbox_field :name =&gt; &quot;is_activated&quot;, :value =&gt; &quot;1&quot; %&gt;
+
+    &lt;% checkbox_field :name =&gt; &quot;choices[]&quot;, :boolean =&gt; false, :value =&gt; &quot;dog&quot; %&gt;
+    &lt;% checkbox_field :name =&gt; &quot;choices[]&quot;, :boolean =&gt; false, :value =&gt; &quot;cat&quot; %&gt;
+    &lt;% checkbox_field :name =&gt; &quot;choices[]&quot;, :boolean =&gt; false, :value =&gt; &quot;weasle&quot; %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000029.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000029.html');return false;">
+          <span class="method-name">control_id</span><span class="method-args">(col)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000028.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000028.html');return false;">
+          <span class="method-name">control_name</span><span class="method-args">(col)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000031.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000031.html');return false;">
+          <span class="method-name">control_name_value</span><span class="method-args">(col, attrs)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000030.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000030.html');return false;">
+          <span class="method-name">control_value</span><span class="method-args">(col)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000055" class="method-detail">
+        <a name="M000055"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000055.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000055.html');return false;">
+          <span class="method-name">delete_button</span><span class="method-args">(symbol_or_string, obj = nil, contents = 'Delete', form_attrs = {}, button_attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generates a delete button inside of a form.
+</p>
+<pre>
+    &lt;%= delete_button :news_post, @news_post, 'Remove' %&gt;
+    &lt;%= delete_button('/posts/24/comments/10') %&gt;
+</pre>
+<p>
+The HTML generated for this would be:
+</p>
+<pre>
+    &lt;form method=&quot;post&quot; action=&quot;/news_posts/4&quot;&gt;
+      &lt;input type=&quot;hidden&quot; value=&quot;delete&quot; name=&quot;_method&quot;/&gt;
+      &lt;button type=&quot;submit&quot;&gt;Remove&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;form method=&quot;post&quot; action=&quot;/posts/24/comments/10&quot;&gt;
+      &lt;input type=&quot;hidden&quot; value=&quot;delete&quot; name=&quot;_method&quot;/&gt;
+      &lt;button type=&quot;submit&quot;&gt;Remove&lt;/button&gt;
+    &lt;/form&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000023.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000023.html');return false;">
+          <span class="method-name">error_messages_for</span><span class="method-args">(obj, build_li = nil, html_class='error') {|obj.errors| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a HTML formatted display of resource errors in an unordered list
+with a h2 form submission error
+</p>
+<h4>Options</h4>
+<table>
+<tr><td valign="top"><tt>build_li</tt>:</td><td>Block for generating a list item for an error. It receives an instance of
+the error.
+
+</td></tr>
+<tr><td valign="top"><tt>html_class</tt>:</td><td>Set for custom error div class default is
+&lt;tt&gt;submission_failed&lt;tt&gt;
+
+</td></tr>
+</table>
+<h4>Examples</h4>
+<pre>
+  &lt;%= error_messages_for :person %&gt;
+  &lt;%= error_messages_for :person {|errors| &quot;You can has probs nao: #{errors.size} of em!&quot;}
+  &lt;%= error_messages_for :person, lambda{|error| &quot;&lt;li class='aieeee'&gt;#{error.join(' ')}&quot;} %&gt;
+  &lt;%= error_messages_for :person, nil, 'bad_mojo' %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000027.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000027.html');return false;">
+          <span class="method-name">fields_for</span><span class="method-args">(obj, attrs=nil, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a scope around a specific resource object like <a
+href="Form.html#M000026">form_for</a>, but doesnt create the form tags
+themselves. This makes <a href="Form.html#M000027">fields_for</a> suitable
+for specifying additional resource objects in the same form.
+</p>
+<h4>Examples</h4>
+<pre>
+    &lt;% form_for :person, :action =&gt; url(:people) do %&gt;
+      &lt;%= text_control :first_name, :label =&gt; 'First Name' %&gt;
+      &lt;%= text_control :last_name,  :label =&gt; 'Last Name' %&gt;
+      &lt;% fields_for :permission do %&gt;
+        &lt;%= checkbox_control :is_admin, :label =&gt; 'Administrator' %&gt;
+      &lt;% end %&gt;
+      &lt;%= submit_button 'Create' %&gt;
+    &lt;% end %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000051.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000051.html');return false;">
+          <span class="method-name">fieldset</span><span class="method-args">(attrs={}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides the ability to create quick fieldsets as blocks for your forms.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% fieldset :legend =&gt; 'Customer Options' do -%&gt;
+    ...your form elements
+    &lt;% end -%&gt;
+
+    =&gt; &lt;fieldset&gt;&lt;legend&gt;Customer Options&lt;/legend&gt;...your form elements&lt;/fieldset&gt;
+</pre>
+<h4>Options</h4>
+<table>
+<tr><td valign="top"><tt>legend</tt>:</td><td>The name of this <a href="Form.html#M000051">fieldset</a> which will be
+provided in a HTML legend tag.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000052.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000052.html');return false;">
+          <span class="method-name">file_control</span><span class="method-args">(col, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a HTML file input for a resource attribute. This is generally used
+within a resource block such as <tt><a
+href="Form.html#M000026">form_for</a></tt>.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% file_control :file, :label =&gt; &quot;File&quot; %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000053.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000053.html');return false;">
+          <span class="method-name">file_field</span><span class="method-args">(attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a HTML file input
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% file_field :name =&gt; &quot;file&quot;, :label =&gt; &quot;File&quot; %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000026.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000026.html');return false;">
+          <span class="method-name">form_for</span><span class="method-args">(obj, attrs={}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generates a resource specific form tag which accepts a block, this also
+provides automatic resource routing.
+</p>
+<pre>
+    &lt;% form_for :person, :action =&gt; url(:people) do %&gt;
+      &lt;%= text_control :first_name, :label =&gt; 'First Name' %&gt;
+      &lt;%= text_control :last_name,  :label =&gt; 'Last Name' %&gt;
+      &lt;%= submit_button 'Create' %&gt;
+    &lt;% end %&gt;
+</pre>
+<p>
+The HTML generated for this would be:
+</p>
+<pre>
+    &lt;form action=&quot;/people/create&quot; method=&quot;post&quot;&gt;
+      &lt;label for=&quot;person[first_name]&quot;&gt;First Name&lt;/label&gt;&lt;input id=&quot;person_first_name&quot; name=&quot;person[first_name]&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt;
+      &lt;label for=&quot;person[last_name]&quot;&gt;Last Name&lt;/label&gt;&lt;input id=&quot;person_last_name&quot; name=&quot;person[last_name]&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt;
+      &lt;input name=&quot;commit&quot; type=&quot;submit&quot; value=&quot;Create&quot; /&gt;
+    &lt;/form&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000025.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000025.html');return false;">
+          <span class="method-name">form_tag</span><span class="method-args">(attrs = {}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generates a form tag, which accepts a block that is not directly based on
+resource attributes
+</p>
+<pre>
+    &lt;% form_tag(:action =&gt; url(:controller =&gt; &quot;foo&quot;, :action =&gt; &quot;bar&quot;, :id =&gt; 1)) do %&gt;
+      &lt;%= text_field :name =&gt; 'first_name', :label =&gt; 'First Name' %&gt;
+      &lt;%= submit_button 'Create' %&gt;
+    &lt;% end %&gt;
+</pre>
+<p>
+The HTML generated for this would be:
+</p>
+<pre>
+    &lt;form action=&quot;/foo/bar/1&quot; method=&quot;post&quot;&gt;
+      &lt;label for=&quot;first_name&quot;&gt;First Name&lt;/label&gt;&lt;input id=&quot;first_name&quot; name=&quot;first_name&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt;
+      &lt;input name=&quot;commit&quot; type=&quot;submit&quot; value=&quot;Create&quot; /&gt;
+    &lt;/form&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000038.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000038.html');return false;">
+          <span class="method-name">hidden_control</span><span class="method-args">(col, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a hidden input tag tailored for accessing a specified attribute
+(identified by <tt>col</tt>) on an object resource within a <tt><a
+href="Form.html#M000026">form_for</a></tt> resource block. Additional
+options on the input tag can be passed as a hash with <tt>attrs</tt>. These
+options will be tagged onto the HTML as an HTML element attribute as in the
+example shown.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;%= hidden_control :identifier %&gt;
+    # =&gt; &lt;input id=&quot;person_identifier&quot; name=&quot;person[identifier]&quot; type=&quot;hidden&quot; value=&quot;#{@person.identifier}&quot; /&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000039.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000039.html');return false;">
+          <span class="method-name">hidden_field</span><span class="method-args">(attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a generic HTML hidden input field.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;%= hidden_field :name =&gt; &quot;secret&quot;, :value =&gt; &quot;some secret value&quot; %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000046.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000046.html');return false;">
+          <span class="method-name">label</span><span class="method-args">(name, contents = &quot;&quot;, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a generic HTML <a href="Form.html#M000046">label</a>.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% label &quot;Name&quot;, &quot;&quot;, :for =&gt; &quot;name&quot; %&gt;
+    # =&gt; &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000024.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000024.html');return false;">
+          <span class="method-name">obj_from_ivar_or_sym</span><span class="method-args">(obj)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000049.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000049.html');return false;">
+          <span class="method-name">options_for_select</span><span class="method-args">(collection, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Accepts a collection (hash, array, enumerable, your type) and returns a
+string of option tags. Given a collection where the elements respond to
+first and last (such as a two-element array), the &quot;lasts&quot; serve
+as option values and the &quot;firsts&quot; as option text. Hashes are
+turned into this form automatically, so the keys become &quot;firsts&quot;
+and values become lasts. If selected is specified, the matching
+&quot;last&quot; or element will get the selected option-tag. Selected may
+also be an array of values to be selected when using a multiple select.
+</p>
+<h4>Examples</h4>
+<pre>
+  &lt;%= options_for_select( [['apple','Apple Pie'],['orange','Orange Juice']], :selected =&gt; 'orange' )
+  =&gt; &lt;option value=&quot;apple&quot;&gt;Apple Pie&lt;/option&gt;&lt;option value=&quot;orange&quot; selected=&quot;selected&quot;&gt;Orange Juice&lt;/option&gt;
+
+  &lt;%= options_for_select( [['apple','Apple Pie'],['orange','Orange Juice']], :selected =&gt; ['orange','apple'], :prompt =&gt; 'Select One' )
+  =&gt; &lt;option value=&quot;&quot;&gt;Select One&lt;/option&gt;&lt;option value=&quot;apple&quot; selected=&quot;selected&quot;&gt;Apple Pie&lt;/option&gt;&lt;option value=&quot;orange&quot; selected=&quot;selected&quot;&gt;Orange Juice&lt;/option&gt;
+</pre>
+<h4>Options</h4>
+<table>
+<tr><td valign="top"><tt>selected</tt>:</td><td>The value of a selected object, which may be either a string or an array.
+
+</td></tr>
+<tr><td valign="top"><tt>prompt</tt>:</td><td>Adds an addtional option tag with the provided string with no value.
+
+</td></tr>
+<tr><td valign="top"><tt>include_blank</tt>:</td><td>Adds an additional blank option tag with no value.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000050.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000050.html');return false;">
+          <span class="method-name">options_from_collection_for_select</span><span class="method-args">(collection, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a string of option tags that have been compiled by iterating over
+the collection and assigning the the result of a call to the value_method
+as the option value and the text_method as the option text. If
+selected_value is specified, the element returning a match on the
+value_method option will get the selected option tag.
+</p>
+<p>
+This method also also supports the automatic generation of optgroup tags by
+using a hash.
+</p>
+<h4>Examples</h4>
+<p>
+If we had a collection of people within a @project object, and want to use
+&#8216;id&#8217; as the value, and &#8216;name&#8217; as the option content
+we could do something similar to this;
+</p>
+<pre>
+  &lt;%= options_from_collection_for_select(@project.people, :value_method =&gt; &quot;id&quot;, :text_method =&gt; &quot;name&quot;) %&gt;
+  The iteration of the collection would create options in this manner;
+  =&gt;  &lt;option value=&quot;#{person.id}&quot;&gt;#{person.name}&lt;/option&gt;
+
+  &lt;% @people = Person.find(:all).group_by( &amp;:state )
+  &lt;%= options_for_select(@people, :text_method =&gt; 'full_name', :value_method =&gt; 'id', :selected =&gt; 3) %&gt;
+  =&gt; &lt;optgroup label=&quot;Washington&quot;&gt;&lt;option value=&quot;1&quot;&gt;Josh Martin&lt;/option&gt;&lt;option value=&quot;2&quot;&gt;John Doe&lt;/option&gt;&lt;/optgroup&gt;
+  =&gt; &lt;optgroup label=&quot;Idaho&quot;&gt;&lt;option value=&quot;3&quot; selected=&quot;selected&quot;&gt;Jane Doe&lt;/option&gt;
+</pre>
+<h4>Options</h4>
+<table>
+<tr><td valign="top"><tt>text_method</tt>:</td><td>Defines the method which will be used to provide the text of the option
+tags (required)
+
+</td></tr>
+<tr><td valign="top"><tt>value_method</tt>:</td><td>Defines the method which will be used to provide the value of the option
+tags (required)
+
+</td></tr>
+<tr><td valign="top"><tt>selected</tt>:</td><td>The value of a selected object, may be either a string or an array.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000034" class="method-detail">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000034.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000034.html');return false;">
+          <span class="method-name">password_control</span><span class="method-args">(col, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a HTML password input based on a resource attribute. This is
+generally used within a resource block such as <tt><a
+href="Form.html#M000026">form_for</a></tt>.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;%= password_control :password, :label =&gt; 'New Password' %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000035.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000035.html');return false;">
+          <span class="method-name">password_field</span><span class="method-args">(attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a generic HTML password input tag.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;%= password_field :name =&gt; :password, :label =&gt; &quot;Password&quot; %&gt;
+    # =&gt; &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot;/&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000040.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000040.html');return false;">
+          <span class="method-name">radio_control</span><span class="method-args">(col, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a HTML radio input tag based on a resource attribute.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% form_for :person, :action =&gt; url(:people) do %&gt;
+      &lt;%= radio_control :first_name %&gt;
+    &lt;% end %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000042.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000042.html');return false;">
+          <span class="method-name">radio_field</span><span class="method-args">(attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a generic HTML radio input tag. Normally, you would use multipe
+<tt><a href="Form.html#M000042">radio_field</a></tt>.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;%= radio_field :name =&gt; &quot;radio_options&quot;, :value =&gt; &quot;1&quot;, :label =&gt; &quot;One&quot; %&gt;
+    &lt;%= radio_field :name =&gt; &quot;radio_options&quot;, :value =&gt; &quot;2&quot;, :label =&gt; &quot;Two&quot; %&gt;
+    &lt;%= radio_field :name =&gt; &quot;radio_options&quot;, :value =&gt; &quot;3&quot;, :label =&gt; &quot;Three&quot;, :checked =&gt; true %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000041.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000041.html');return false;">
+          <span class="method-name">radio_group_control</span><span class="method-args">(col, options = [], attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a radio group based on a resource attribute. This is generally
+used within a resource block such as <tt><a
+href="Form.html#M000026">form_for</a></tt>.
+</p>
+<h4>Examples</h4>
+<pre>
+    &lt;%# the labels are the options %&gt;
+    &lt;%= radio_group_control :my_choice, [5,6,7] %&gt;
+
+    &lt;%# custom labels %&gt;
+    &lt;%= radio_group_control :my_choice, [{:value =&gt; 5, :label =&gt; &quot;five&quot;}] %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000048.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000048.html');return false;">
+          <span class="method-name">select_control</span><span class="method-args">(col, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a HTML select based on a resource attribute. This is generally
+used within a resource block such as <tt><a
+href="Form.html#M000026">form_for</a></tt>.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% select_control :name, :collection =&gt; %w(one two three four) %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000047.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000047.html');return false;">
+          <span class="method-name">select_field</span><span class="method-args">(attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a generic HTML select.
+</p>
+<h4>Options</h4>
+<table>
+<tr><td valign="top"><tt>prompt</tt>:</td><td>Adds an additional option tag with the provided string with no value.
+
+</td></tr>
+<tr><td valign="top"><tt>selected</tt>:</td><td>The value of a selected object, which may be either a string or an array.
+
+</td></tr>
+<tr><td valign="top"><tt>include_blank</tt>:</td><td>Adds an additional blank option tag with no value.
+
+</td></tr>
+<tr><td valign="top"><tt>collection</tt>:</td><td>The collection for the select options
+
+</td></tr>
+<tr><td valign="top"><tt>text_method</tt>:</td><td>Method to determine text of an option (as a symbol). Ex: :text_method =&gt;
+:name will call .name on your record object for what text to display.
+
+</td></tr>
+<tr><td valign="top"><tt>value_method</tt>:</td><td>Method to determine value of an option (as a symbol).
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000045.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000045.html');return false;">
+          <span class="method-name">submit_button</span><span class="method-args">(contents, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a generic HTML submit button.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% submit_button &quot;Process&quot; %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000054" class="method-detail">
+        <a name="M000054"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000054.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000054.html');return false;">
+          <span class="method-name">submit_field</span><span class="method-args">(attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000043.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000043.html');return false;">
+          <span class="method-name">text_area_control</span><span class="method-args">(col, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a HTML textarea based on a resource attribute This is generally
+used within a resource block such as <tt><a
+href="Form.html#M000026">form_for</a></tt>
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% text_area_control :comments, :label =&gt; &quot;Comments&quot;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000044.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000044.html');return false;">
+          <span class="method-name">text_area_field</span><span class="method-args">(val, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a generic HTML textarea tag.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% text_area_field &quot;my comments&quot;, :name =&gt; &quot;comments&quot;, :label =&gt; &quot;Comments&quot; %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000032.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000032.html');return false;">
+          <span class="method-name">text_control</span><span class="method-args">(col, attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a HTML text input tag based on a resource attribute.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;% form_for :person, :action =&gt; url(:people) do %&gt;
+      &lt;%= text_control :first_name, :label =&gt; 'First Name' %&gt;
+    &lt;% end %&gt;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+          <a href="Form.src/M000033.html" target="Code" class="method-signature"
+            onclick="popupCode('Form.src/M000033.html');return false;">
+          <span class="method-name">text_field</span><span class="method-args">(attrs = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Provides a generic HTML text input tag. Provides a HTML text input tag
+based on a resource attribute.
+</p>
+<h4>Example</h4>
+<pre>
+    &lt;%= text_field :name =&gt; :fav_color, :label =&gt; 'Your Favorite Color' %&gt;
+    # =&gt; &lt;label for=&quot;fav_color&quot;&gt;Your Favorite Color&lt;/label&gt;&lt;input type=&quot;text&quot; name=&quot;fav_color&quot; id=&quot;fav_color&quot;/&gt;
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

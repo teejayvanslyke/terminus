@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "conditions<Hash>:"
+    body: The conditions to compile. Defaults to merged_conditions.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Hash:"
+    body: The compiled conditions, with each value as a Regexp object.
+  type: :NOTE
+full_name: Merb::Router::Behavior#compiled_conditions
+is_singleton: false
+name: compiled_conditions
+params: (conditions = merged_conditions)
+visibility: protected

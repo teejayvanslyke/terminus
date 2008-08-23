@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Merb::Rack::Handler::Mongrel</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Merb::Rack::Handler::Mongrel</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/merb-core/rack/handler/mongrel_rb.html">
+                lib/merb-core/rack/handler/mongrel.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                ::Mongrel::HttpHandler
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M002613">new</a>&nbsp;&nbsp;
+      <a href="#M002614">process</a>&nbsp;&nbsp;
+      <a href="#M002612">run</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M002613" class="method-detail">
+        <a name="M002613"></a>
+
+        <div class="method-heading">
+          <a href="Mongrel.src/M002613.html" target="Code" class="method-signature"
+            onclick="popupCode('Mongrel.src/M002613.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(app)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">app&lt;<a href="../Application.html">Merb::Rack::Application</a>&gt;:</td><td>The app that <a href="Mongrel.html">Mongrel</a> should handle.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M002612" class="method-detail">
+        <a name="M002612"></a>
+
+        <div class="method-heading">
+          <a href="Mongrel.src/M002612.html" target="Code" class="method-signature"
+            onclick="popupCode('Mongrel.src/M002612.html');return false;">
+          <span class="method-name">run</span><span class="method-args">(app, options={}) {|server if block_given?| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Runs the server and yields it to a block.
+</p>
+<h4>Parameters</h4>
+<table>
+<tr><td valign="top">app&lt;<a href="../Application.html">Merb::Rack::Application</a>&gt;:</td><td>The app that <a href="Mongrel.html">Mongrel</a> should handle.
+
+</td></tr>
+<tr><td valign="top">options&lt;Hash&gt;:</td><td>Options to pass to <a href="Mongrel.html">Mongrel</a> (see below).
+
+</td></tr>
+</table>
+<h4>Block parameters</h4>
+<table>
+<tr><td valign="top">server&lt;Mongrel::HttpServer&gt;:</td><td>The server to <a href="Mongrel.html#M002612">run</a>.
+
+</td></tr>
+</table>
+<h4>Options (options)</h4>
+<table>
+<tr><td valign="top">:Host&lt;<a href="../../../String.html">String</a>&gt;:</td><td>The hostname on which the app should <a
+href="Mongrel.html#M002612">run</a>. Defaults to &quot;0.0.0.0&quot;
+
+</td></tr>
+<tr><td valign="top">:Port&lt;Fixnum&gt;:</td><td>The port for the app. Defaults to 8080.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M002614" class="method-detail">
+        <a name="M002614"></a>
+
+        <div class="method-heading">
+          <a href="Mongrel.src/M002614.html" target="Code" class="method-signature"
+            onclick="popupCode('Mongrel.src/M002614.html');return false;">
+          <span class="method-name">process</span><span class="method-args">(request, response)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <h4>Parameters</h4>
+<table>
+<tr><td valign="top">request&lt;<a href="../../Request.html">Merb::Request</a>&gt;:</td><td>The HTTP request to handle.
+
+</td></tr>
+<tr><td valign="top">response&lt;HTTPResponse&gt;:</td><td>The response object to write response to.
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

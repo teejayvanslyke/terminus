@@ -1,0 +1,146 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DEFAULT_SEND_FILE_OPTIONS
+  value: "{       :type         => 'application/octet-stream'.freeze,       :disposition  => 'attachment'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SET_COOKIE
+  value: "\" %s=%s; path=/; expires=%s\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: COOKIE_EXPIRATION_FORMAT
+  value: "\"%a, %d-%b-%Y %H:%M:%S GMT\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: COOKIE_SPLIT
+  value: /[;,] */n.freeze
+- !ruby/object:RI::Constant 
+  comment: 
+  name: COOKIE_REGEXP
+  value: /\s*(.+)=(.*)\s*/.freeze
+- !ruby/object:RI::Constant 
+  comment: 
+  name: COOKIE_EXPIRED_TIME
+  value: Time.at(0).freeze
+- !ruby/object:RI::Constant 
+  comment: 
+  name: HOUR
+  value: 60 * 60
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DAY
+  value: HOUR * 24
+- !ruby/object:RI::Constant 
+  comment: 
+  name: WEEK
+  value: DAY * 7
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MULTIPART_REGEXP
+  value: /\Amultipart\/form-data.*boundary=\"?([^\";,]+)/n.freeze
+- !ruby/object:RI::Constant 
+  comment: 
+  name: HTTP_COOKIE
+  value: "'HTTP_COOKIE'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: QUERY_STRING
+  value: "'QUERY_STRING'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: JSON_MIME_TYPE_REGEXP
+  value: "%r{^application/json|^text/x-json}.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: XML_MIME_TYPE_REGEXP
+  value: "%r{^application/xml|^text/xml}.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: FORM_URL_ENCODED_REGEXP
+  value: "%r{^application/x-www-form-urlencoded}.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: UPCASE_CONTENT_TYPE
+  value: "'CONTENT_TYPE'.freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CONTENT_TYPE
+  value: "\"Content-Type\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: LAST_MODIFIED
+  value: "\"Last-Modified\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SLASH
+  value: "\"/\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REQUEST_METHOD
+  value: "\"REQUEST_METHOD\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: GET
+  value: "\"GET\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: POST
+  value: "\"POST\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: HEAD
+  value: "\"HEAD\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: CONTENT_LENGTH
+  value: "\"CONTENT_LENGTH\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: HTTP_X_FORWARDED_FOR
+  value: "\"HTTP_X_FORWARDED_FOR\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: HTTP_IF_MODIFIED_SINCE
+  value: "\"HTTP_IF_MODIFIED_SINCE\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: HTTP_IF_NONE_MATCH
+  value: "\"HTTP_IF_NONE_MATCH\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: UPLOAD_ID
+  value: "\"upload_id\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: PATH_INFO
+  value: "\"PATH_INFO\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SCRIPT_NAME
+  value: "\"SCRIPT_NAME\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REQUEST_URI
+  value: "\"REQUEST_URI\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REQUEST_PATH
+  value: "\"REQUEST_PATH\".freeze"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: REMOTE_ADDR
+  value: "\"REMOTE_ADDR\".freeze"
+full_name: Merb::Const
+includes: []
+
+instance_methods: []
+
+name: Const
+superclass: 

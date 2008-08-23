@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>dispatch_request (Merb::Test::RequestHelper)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/test/helpers/request_helper.rb, line 317</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dispatch_request</span>(<span class="ruby-identifier">request</span>, <span class="ruby-identifier">controller_klass</span>, <span class="ruby-identifier">action</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+        <span class="ruby-identifier">controller</span> = <span class="ruby-identifier">controller_klass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">request</span>)
+        <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">controller</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+        <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">_dispatch</span>(<span class="ruby-identifier">action</span>)
+
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">_benchmarks</span>.<span class="ruby-identifier">inspect</span>
+        <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">flush</span>
+
+        <span class="ruby-identifier">controller</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

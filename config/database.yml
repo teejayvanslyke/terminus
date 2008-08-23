@@ -1,0 +1,19 @@
+:development: &defaults
+  :adapter: mysql
+  :database: webterm_development
+  :username: webterm
+  :password: webterm
+  :host: localhost
+  :socket: /tmp/mysql.sock
+  :encoding: utf8
+
+:test:
+  <<: *defaults
+  :database: webterm_test
+
+:production:
+  <<: *defaults
+  :database: webterm_production
+  
+:rake:
+  <<: *defaults

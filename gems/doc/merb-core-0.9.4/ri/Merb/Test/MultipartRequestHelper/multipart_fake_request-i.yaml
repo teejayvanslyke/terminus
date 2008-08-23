@@ -1,0 +1,31 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "env<Hash>:"
+    body: An optional hash that is passed to the fake request. Any request options should go here (see <tt>fake_request</tt>).
+  - !ruby/struct:SM::Flow::LI 
+    label: "params<Hash>:"
+    body: An optional hash that will end up as params in the controller instance.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "FakeRequest:"
+    body: A multipart Request object that is built based on the parameters.
+  type: :NOTE
+full_name: Merb::Test::MultipartRequestHelper#multipart_fake_request
+is_singleton: false
+name: multipart_fake_request
+params: (env = {}, params = {})
+visibility: public

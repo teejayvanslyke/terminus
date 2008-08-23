@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Registers the default MIME types.
+full_name: Merb::BootLoader::MimeTypes::run
+is_singleton: true
+name: run
+params: ()
+visibility: public

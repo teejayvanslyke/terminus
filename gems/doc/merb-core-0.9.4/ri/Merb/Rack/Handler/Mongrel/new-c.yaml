@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "app<Merb::Rack::Application>:"
+    body: The app that Mongrel should handle.
+  type: :NOTE
+full_name: Merb::Rack::Handler::Mongrel::new
+is_singleton: true
+name: new
+params: (app)
+visibility: public

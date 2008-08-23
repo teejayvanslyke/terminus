@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Starts the timer that will eventually reap outdated sessions.
+full_name: Merb::MemorySessionContainer::start_timer
+is_singleton: true
+name: start_timer
+params: ()
+visibility: public

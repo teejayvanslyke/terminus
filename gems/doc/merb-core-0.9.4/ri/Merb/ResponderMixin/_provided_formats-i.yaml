@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[Symbol]:"
+    body: The current list of formats provided for this instance of the controller. It starts with what has been set in the controller (or :html by default) but can be modifed on a per-action basis.
+  type: :NOTE
+full_name: Merb::ResponderMixin#_provided_formats
+is_singleton: false
+name: _provided_formats
+params: ()
+visibility: public

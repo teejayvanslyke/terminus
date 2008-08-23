@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "DocumentOutput:"
+    body: Document output from the response body.
+  type: :NOTE
+full_name: Merb::Test::ViewHelper#process_output
+is_singleton: false
+name: process_output
+params: ()
+visibility: protected

@@ -1,0 +1,33 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Renders the passed in string, then calls the block outside the mutex and after the string has been returned to the client.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "str<String>:"
+    body: A <tt>String</tt> to return to the client.
+  - !ruby/struct:SM::Flow::LI 
+    label: "&blk:"
+    body: A block that should get called once the string has been returned.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Proc:"
+    body: A block that Mongrel can call after returning the string to the user.
+  type: :NOTE
+full_name: Merb::ControllerMixin#render_then_call
+is_singleton: false
+name: render_then_call
+params: (str, &blk)
+visibility: public

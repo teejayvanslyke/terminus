@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "css_query<String>:"
+    body: A CSS query to find the element for, e.g. &quot;ul.links&quot;.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The content of the first tag matching the query.
+  type: :NOTE
+full_name: Merb::Test::ViewHelper::DocumentOutput#content_for
+is_singleton: false
+name: content_for
+params: (css_query)
+visibility: public

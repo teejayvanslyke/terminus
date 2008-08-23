@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>push_params (Merb::Test::MultipartRequestHelper::Post)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/test/helpers/multipart_request_helper.rb, line 61</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">push_params</span>(<span class="ruby-identifier">params</span>, <span class="ruby-identifier">prefix</span> = <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">params</span>.<span class="ruby-identifier">sort_by</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>}.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">param_key</span> = <span class="ruby-identifier">prefix</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-identifier">key</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;#{prefix}[#{key}]&quot;</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:read</span>)
+          <span class="ruby-ivar">@multipart_params</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">FileParam</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">param_key</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">path</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">read</span>)
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Mash</span>)
+            <span class="ruby-identifier">value</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">push_params</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">param_key</span>)
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-ivar">@multipart_params</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Param</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">param_key</span>, <span class="ruby-identifier">value</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

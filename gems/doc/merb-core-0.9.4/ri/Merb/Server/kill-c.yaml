@@ -1,0 +1,27 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "port<~to_s>:"
+    body: The port of the Merb process to kill.
+  - !ruby/struct:SM::Flow::LI 
+    label: "sig<~to_s>:"
+    body: The signal to send to the process. Defaults to 9.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Alternatives
+- !ruby/struct:SM::Flow::P 
+  body: If you pass &quot;all&quot; as the port, the signal will be sent to all Merb processes.
+full_name: Merb::Server::kill
+is_singleton: true
+name: kill
+params: (port, sig=9)
+visibility: public

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>set_cookie (Merb::Cookies)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/dispatch/cookies.rb, line 90</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_cookie</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:path</span>] = <span class="ruby-value str">'/'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:path</span>]
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">expiry</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:expires</span>]
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:expires</span>] = <span class="ruby-identifier">expiry</span>.<span class="ruby-identifier">gmtime</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Const</span><span class="ruby-operator">::</span><span class="ruby-constant">COOKIE_EXPIRATION_FORMAT</span>)
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">domain</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:domain</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Controller</span>.<span class="ruby-identifier">_session_cookie_domain</span>
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:domain</span>] = <span class="ruby-identifier">domain</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">secure</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:secure</span>)
+      
+      <span class="ruby-ivar">@_headers</span>[<span class="ruby-value str">'Set-Cookie'</span>] <span class="ruby-operator">||=</span>[]
+      
+      <span class="ruby-identifier">kookie</span> = <span class="ruby-node">&quot;#{name}=#{value}; &quot;</span>
+      <span class="ruby-comment cmt"># options are sorted for testing purposes:</span>
+      <span class="ruby-comment cmt"># Hash is unsorted so string is spec is random every run</span>
+      <span class="ruby-identifier">kookie</span> <span class="ruby-operator">&lt;&lt;</span>  <span class="ruby-identifier">options</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}=#{v};&quot;</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">' '</span>)
+      <span class="ruby-identifier">kookie</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">' secure'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">secure</span>
+      
+      <span class="ruby-ivar">@_headers</span>[<span class="ruby-value str">'Set-Cookie'</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">kookie</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

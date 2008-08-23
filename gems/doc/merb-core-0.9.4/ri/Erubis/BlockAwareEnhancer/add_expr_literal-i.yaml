@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Erubis::BlockAwareEnhancer#add_expr_literal
+is_singleton: false
+name: add_expr_literal
+params: (src, code)
+visibility: public

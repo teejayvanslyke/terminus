@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Reload the router to regenerate all routes.
+full_name: Merb::BootLoader::LoadClasses::reload_router!
+is_singleton: true
+name: reload_router!
+params: ()
+visibility: public

@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This class should not provide any of this list of formats, despite any. other definitions previously or in superclasses.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*formats<Symbol>:"
+    body: Registered mime-types.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[Symbol]:"
+    body: List of formats that remain after removing the ones not to provide.
+  type: :NOTE
+full_name: Merb::ResponderMixin::ClassMethods#does_not_provide
+is_singleton: false
+name: does_not_provide
+params: (*formats)
+visibility: public

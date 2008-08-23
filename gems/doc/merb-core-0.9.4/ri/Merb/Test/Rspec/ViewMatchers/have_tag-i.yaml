@@ -1,0 +1,39 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: with_tag
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: RSpec matcher to test for the presence of tags.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "tag<~to_s>:"
+    body: The name of the tag.
+  - !ruby/struct:SM::Flow::LI 
+    label: "attributes<Hash>:"
+    body: Tag attributes.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "HasTag:"
+    body: A new has tag matcher.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # Check for &lt;div&gt;\n  body.should have_tag(&quot;div&quot;)\n\n  # Check for &lt;span id=&quot;notice&quot;&gt;\n  body.should have_tag(&quot;span&quot;, :id =&gt; :notice)\n\n  # Check for &lt;h1 id=&quot;foo&quot; class=&quot;bar&quot;&gt;\n  body.should have_tag(:h2, :class =&gt; &quot;bar&quot;, :id =&gt; &quot;foo&quot;)\n\n  # Check for &lt;div attr=&quot;val&quot;&gt;\n  body.should have_tag(:div, :attr =&gt; :val)\n"
+full_name: Merb::Test::Rspec::ViewMatchers#have_tag
+is_singleton: false
+name: have_tag
+params: (tag, attributes = {}, &blk)
+visibility: public

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>config (Merb::Orms::ActiveRecord)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb/orms/active_record/connection.rb, line 33</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config</span>
+          <span class="ruby-comment cmt">#If Merb#runs_like specifies a differnt db env, use it.</span>
+          <span class="ruby-identifier">env_sym</span> = (<span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment_info</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-operator">?</span>
+            <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-operator">:</span>
+            <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">environment_info</span>[<span class="ruby-identifier">:db_env</span>].<span class="ruby-identifier">to_sym</span>
+
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;missing environment :#{Merb.environment} in config file #{config_file}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">configurations</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">env_sym</span>)
+          <span class="ruby-ivar">@config</span> <span class="ruby-operator">||=</span> (<span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:merb_active_record</span>] = <span class="ruby-identifier">configurations</span>[<span class="ruby-identifier">env_sym</span>])
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

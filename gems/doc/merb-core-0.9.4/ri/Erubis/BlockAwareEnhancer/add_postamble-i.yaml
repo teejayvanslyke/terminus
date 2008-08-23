@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Erubis::BlockAwareEnhancer#add_postamble
+is_singleton: false
+name: add_postamble
+params: (src)
+visibility: public

@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: xspecify
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Use this to temporarily disable an example.
+full_name: Spec::Example::ExampleGroupMethods#xit
+is_singleton: false
+name: xit
+params: (description=nil, opts={}, &block)
+visibility: public

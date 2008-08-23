@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Checks that the given objects quack like the given conditions.
+- !ruby/struct:SM::Flow::P 
+  body: "@param opts&lt;Hash&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Conditions to enforce. Each key will receive a quacks_like? call with the\n  value (see Object#quacks_like? for details).\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@raise &lt;ArgumentError&gt;"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  An object failed to quack like a condition.\n"
+full_name: Kernel#enforce!
+is_singleton: false
+name: enforce!
+params: (opts = {})
+visibility: public

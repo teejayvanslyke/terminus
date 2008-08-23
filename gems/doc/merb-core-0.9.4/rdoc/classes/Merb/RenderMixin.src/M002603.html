@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>_template_for (Merb::RenderMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-core/controller/mixins/render.rb, line 394</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_template_for</span>(<span class="ruby-identifier">context</span>, <span class="ruby-identifier">content_type</span>, <span class="ruby-identifier">controller</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">template</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-identifier">template_method</span>, <span class="ruby-identifier">template_location</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
+
+    <span class="ruby-comment cmt"># absolute path to a template (:template =&gt; &quot;/foo/bar&quot;)</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">template</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">template</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">%r{^/}</span>
+      <span class="ruby-identifier">template_location</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">_absolute_template_location</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">content_type</span>)
+      <span class="ruby-keyword kw">return</span> [<span class="ruby-identifier">_template_method_for</span>(<span class="ruby-identifier">template_location</span>), <span class="ruby-identifier">template_location</span>]
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">_template_roots</span>.<span class="ruby-identifier">reverse_each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">root</span>, <span class="ruby-identifier">template_meth</span><span class="ruby-operator">|</span>
+      <span class="ruby-comment cmt"># :template =&gt; &quot;foo/bar.html&quot; where root / &quot;foo/bar.html.*&quot; exists</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">template</span>
+        <span class="ruby-identifier">template_location</span> = <span class="ruby-identifier">root</span> <span class="ruby-operator">/</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">template_meth</span>, <span class="ruby-identifier">template</span>, <span class="ruby-identifier">content_type</span>, <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-comment cmt"># :layout =&gt; &quot;foo&quot; where root / &quot;layouts&quot; / &quot;#{controller}.html.*&quot; exists        </span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">template_location</span> = <span class="ruby-identifier">root</span> <span class="ruby-operator">/</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">template_meth</span>, <span class="ruby-identifier">context</span>, <span class="ruby-identifier">content_type</span>, <span class="ruby-identifier">controller</span>)
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">template_method</span> = <span class="ruby-identifier">_template_method_for</span>(<span class="ruby-identifier">template_location</span>.<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># template_location is a Pathname</span>
+    [<span class="ruby-identifier">template_method</span>, <span class="ruby-identifier">template_location</span>.<span class="ruby-identifier">to_s</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

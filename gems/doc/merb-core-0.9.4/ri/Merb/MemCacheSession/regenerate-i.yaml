@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Regenerate the session ID.
+full_name: Merb::MemCacheSession#regenerate
+is_singleton: false
+name: regenerate
+params: ()
+visibility: public

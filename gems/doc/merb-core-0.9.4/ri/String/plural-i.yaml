@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: pluralize
+block_params: 
+comment: 
+full_name: String#plural
+is_singleton: false
+name: plural
+params: ()
+visibility: public

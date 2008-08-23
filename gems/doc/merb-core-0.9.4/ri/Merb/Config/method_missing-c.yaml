@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Allows retrieval of single key config values via Merb.config.&lt;key&gt; Allows single key assignment via Merb.config.&lt;key&gt; = ...
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "method<~to_s>:"
+    body: Method name as hash key value.
+  - !ruby/struct:SM::Flow::LI 
+    label: "*args:"
+    body: Value to set the configuration parameter to.
+  type: :NOTE
+full_name: Merb::Config::method_missing
+is_singleton: true
+name: method_missing
+params: (method, *args)
+visibility: public

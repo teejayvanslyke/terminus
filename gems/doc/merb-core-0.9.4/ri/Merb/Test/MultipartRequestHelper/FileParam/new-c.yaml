@@ -1,0 +1,25 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "key<~to_s>:"
+    body: The parameter key.
+  - !ruby/struct:SM::Flow::LI 
+    label: "filename<~to_s>:"
+    body: Name of the file for this parameter.
+  - !ruby/struct:SM::Flow::LI 
+    label: "content<~to_s>:"
+    body: Content of the file for this parameter.
+  type: :NOTE
+full_name: Merb::Test::MultipartRequestHelper::FileParam::new
+is_singleton: true
+name: new
+params: (key, filename, content)
+visibility: public

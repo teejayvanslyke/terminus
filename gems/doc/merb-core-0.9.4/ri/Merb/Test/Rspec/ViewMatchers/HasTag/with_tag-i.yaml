@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Search for a child tag within a have_tag block.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "tag<~to_s>:"
+    body: The tag to look for.
+  - !ruby/struct:SM::Flow::LI 
+    label: "attributes<Hash>:"
+    body: Attributes for the tag (see below).
+  type: :NOTE
+full_name: Merb::Test::Rspec::ViewMatchers::HasTag#with_tag
+is_singleton: false
+name: with_tag
+params: (name, attrs={})
+visibility: public

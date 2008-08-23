@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Merb::Controller
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Merb::Helpers::DateAndTime
+- !ruby/object:RI::IncludedModule 
+  name: Merb::Helpers::Form
+- !ruby/object:RI::IncludedModule 
+  name: Merb::Helpers::Tag
+instance_methods: []
+
+name: Controller
+superclass: Object

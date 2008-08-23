@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a generic HTML tag. You can invoke it a variety of ways.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  tag :div\n  # &lt;div&gt;&lt;/div&gt;\n\n  tag :div, 'content'\n  # &lt;div&gt;content&lt;/div&gt;\n\n  tag :div, :class =&gt; 'class'\n  # &lt;div class=&quot;class&quot;&gt;&lt;/div&gt;\n\n  tag :div, 'content', :class =&gt; 'class'\n  # &lt;div class=&quot;class&quot;&gt;content&lt;/div&gt;\n\n  tag :div do\n    'content'\n  end\n  # &lt;div&gt;content&lt;/div&gt;\n\n  tag :div, :class =&gt; 'class' do\n    'content'\n  end\n  # &lt;div class=&quot;class&quot;&gt;content&lt;/div&gt;\n"
+full_name: Merb::Helpers::Tag#tag
+is_singleton: false
+name: tag
+params: (name, contents = nil, attrs = {}, &block)
+visibility: public

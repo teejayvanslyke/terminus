@@ -1,0 +1,28 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "parent<Merb::Router::Behavior>:"
+    body: The parent behavior for the generated resource behaviors.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array:"
+    body: Behaviors for a singular RESTful resource.
+  type: :NOTE
+full_name: Merb::Router::Behavior#resource_behaviors
+is_singleton: false
+name: resource_behaviors
+params: (parent = self)
+visibility: protected

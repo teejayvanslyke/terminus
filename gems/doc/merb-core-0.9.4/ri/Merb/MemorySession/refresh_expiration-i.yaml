@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Recreates the cookie with the default expiration time. Useful during log in for pushing back the expiration date.
+full_name: Merb::MemorySession#refresh_expiration
+is_singleton: false
+name: refresh_expiration
+params: ()
+visibility: public

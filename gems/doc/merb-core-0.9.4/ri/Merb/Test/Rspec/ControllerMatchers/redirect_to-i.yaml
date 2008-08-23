@@ -1,0 +1,27 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: be_redirection_to
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Passes if the target was redirected to the expected location.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Paramters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "expected<String>:"
+    body: A relative or absolute url.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # Passes if the controller was redirected to http://example.com/\n  controller.should redirect_to('http://example.com/')\n"
+full_name: Merb::Test::Rspec::ControllerMatchers#redirect_to
+is_singleton: false
+name: redirect_to
+params: (expected, options = {})
+visibility: public

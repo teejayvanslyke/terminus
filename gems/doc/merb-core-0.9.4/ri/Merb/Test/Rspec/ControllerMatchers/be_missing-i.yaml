@@ -1,0 +1,83 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: be_client_error
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Passes if the request that generated the target was missing, or the target is a client-side error (400 level) response code.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # Passes if the controller call was unknown or not understood\n  controller.should be_missing\n\n  # Also passes if the target is a response code\n  controller.status.should be_missing\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: "valid HTTP Client Error codes:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "400: Bad Request"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "401: Unauthorized"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "402: Payment Required"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "403: Forbidden"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "404: Not Found"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "405: Method Not Allowed"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "406: Not Acceptable"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "407: Proxy Authentication Required"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "408: Request Timeout"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "409: Conflict"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "410: Gone"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "411: Length Required"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "412: Precondition Failed"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "413: Request Entity Too Large"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "414: Request-URI Too Long"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "415: Unsupported Media Type"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "416: Requested Range Not Satisfiable"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "417: Expectation Failed"
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "422: Unprocessable Entity"
+  type: :BULLET
+full_name: Merb::Test::Rspec::ControllerMatchers#be_missing
+is_singleton: false
+name: be_missing
+params: ()
+visibility: public
