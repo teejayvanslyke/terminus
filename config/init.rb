@@ -1,3 +1,6 @@
+module Terminus
+  VERSION = '0.0.1'
+end
 #
 # ==== Structure of Merb initializer
 #

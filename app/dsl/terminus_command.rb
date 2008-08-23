@@ -34,6 +34,10 @@ module Terminus
 
       def response; @builder.target!; end
 
+      def image(url)
+        @builder.img(:src => url)
+      end
+
       def line(*args)
         @builder.p do
           args.each do |arg| 
