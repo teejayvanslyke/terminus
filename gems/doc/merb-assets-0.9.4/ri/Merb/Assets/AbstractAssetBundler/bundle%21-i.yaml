@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates the new bundled file, executing all the callbacks.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Symbol:"
+    body: Name of the bundle.
+  type: :NOTE
+full_name: Merb::Assets::AbstractAssetBundler#bundle!
+is_singleton: false
+name: bundle!
+params: ()
+visibility: public

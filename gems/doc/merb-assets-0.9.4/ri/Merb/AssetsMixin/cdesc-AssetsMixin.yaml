@@ -1,0 +1,53 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The AssetsMixin module provides a number of helper methods to views for linking to assets and other pages, dealing with JavaScript and CSS.
+constants: []
+
+full_name: Merb::AssetsMixin
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Merb::Assets::AssetHelpers
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: auto_link
+- !ruby/object:RI::MethodSummary 
+  name: css_include_tag
+- !ruby/object:RI::MethodSummary 
+  name: escape_js
+- !ruby/object:RI::MethodSummary 
+  name: image_tag
+- !ruby/object:RI::MethodSummary 
+  name: include_required_css
+- !ruby/object:RI::MethodSummary 
+  name: include_required_js
+- !ruby/object:RI::MethodSummary 
+  name: js
+- !ruby/object:RI::MethodSummary 
+  name: js_include_tag
+- !ruby/object:RI::MethodSummary 
+  name: link_to
+- !ruby/object:RI::MethodSummary 
+  name: require_css
+- !ruby/object:RI::MethodSummary 
+  name: require_js
+- !ruby/object:RI::MethodSummary 
+  name: required_css
+- !ruby/object:RI::MethodSummary 
+  name: required_js
+- !ruby/object:RI::MethodSummary 
+  name: uniq_css_path
+- !ruby/object:RI::MethodSummary 
+  name: uniq_css_tag
+- !ruby/object:RI::MethodSummary 
+  name: uniq_js_path
+- !ruby/object:RI::MethodSummary 
+  name: uniq_js_tag
+- !ruby/object:RI::MethodSummary 
+  name: uniq_path
+name: AssetsMixin
+superclass: 

@@ -1,0 +1,45 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*stylesheets:"
+    body: The stylesheets to include. If the last element is a Hash, it will be used as options (see below). If &quot;.css&quot; is left out from the stylesheet names, it will be added to them.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":bundle<~to_s>:"
+    body: The name of the bundle the stylesheets should be combined into.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":media<~to_s>:"
+    body: The media attribute for the generated link element. Defaults to :all.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The CSS include tag(s).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  css_include_tag 'style'\n  # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;\n\n  css_include_tag 'style.css', 'layout'\n  # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;\n  #    &lt;link href=&quot;/stylesheets/layout.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;\n\n  css_include_tag :menu\n  # =&gt; &lt;link href=&quot;/stylesheets/menu.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;\n\n  css_include_tag :style, :screen\n  # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;\n  #    &lt;link href=&quot;/stylesheets/screen.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;\n\n css_include_tag :style, :media =&gt; :print\n # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;print&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;\n\n css_include_tag :style, :charset =&gt; 'iso-8859-1'\n # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;print&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;\n"
+full_name: Merb::AssetsMixin#css_include_tag
+is_singleton: false
+name: css_include_tag
+params: (*stylesheets)
+visibility: public

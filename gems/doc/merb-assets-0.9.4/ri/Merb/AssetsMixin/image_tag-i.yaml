@@ -1,0 +1,38 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "img<~to_s>:"
+    body: The image path.
+  - !ruby/struct:SM::Flow::LI 
+    label: "opts<Hash>:"
+    body: Additional options for the image tag (see below).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options (opts)
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":path<String>:"
+    body: Sets the path prefix for the image. Defaults to &quot;/images/&quot; or whatever is specified in Merb::Config. This is ignored if img is an absolute path or full URL.
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: All other options set HTML attributes on the tag.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  image_tag('foo.gif')\n  # =&gt; &lt;img src='/images/foo.gif' /&gt;\n\n  image_tag('foo.gif', :class =&gt; 'bar')\n  # =&gt; &lt;img src='/images/foo.gif' class='bar' /&gt;\n\n  image_tag('foo.gif', :path =&gt; '/files/')\n  # =&gt; &lt;img src='/files/foo.gif' /&gt;\n\n  image_tag('http://test.com/foo.gif')\n  # =&gt; &lt;img src=&quot;http://test.com/foo.gif&quot;&gt;\n\n  image_tag('charts', :path =&gt; '/dynamic/')\n  or\n  image_tag('/dynamic/charts')\n  # =&gt; &lt;img src=&quot;/dynamic/charts&quot;&gt;\n"
+full_name: Merb::AssetsMixin#image_tag
+is_singleton: false
+name: image_tag
+params: (img, opts={})
+visibility: public

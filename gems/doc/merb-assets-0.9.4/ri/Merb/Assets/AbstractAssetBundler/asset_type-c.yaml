@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The type of asset for which the bundler is responsible. Override this method in your bundler code.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Raises
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "NotImplementedError:"
+    body: This method is implemented by the bundler.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Symbol:"
+    body: The type of the asset
+  type: :NOTE
+full_name: Merb::Assets::AbstractAssetBundler::asset_type
+is_singleton: true
+name: asset_type
+params: ()
+visibility: public

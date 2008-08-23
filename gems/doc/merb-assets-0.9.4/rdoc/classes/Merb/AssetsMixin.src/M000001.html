@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>auto_link (Merb::AssetsMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-assets/assets_mixin.rb, line 26</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">auto_link</span>
+      <span class="ruby-identifier">html</span>    = <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-identifier">prefix</span>  = <span class="ruby-value str">&quot;&quot;</span>
+      (<span class="ruby-identifier">controller_name</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">action_name</span>).<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;/&quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">path</span> = <span class="ruby-identifier">prefix</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">path</span>
+
+        <span class="ruby-identifier">css_path</span>  = <span class="ruby-identifier">path</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;.css&quot;</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">root</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;public&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;stylesheets&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">css_path</span>
+          <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%{&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/stylesheets/#{css_path}&quot; /&gt; }</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">js_path</span>   = <span class="ruby-identifier">path</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;.js&quot;</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">root</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;public&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;javascripts&quot;</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">js_path</span>
+          <span class="ruby-identifier">html</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%{&lt;script type=&quot;text/javascript&quot; language=&quot;javascript&quot; src=&quot;/javascripts/#{js_path}&quot;&gt;&lt;/script&gt;}</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-comment cmt">#Update the prefix for the next iteration</span>
+        <span class="ruby-identifier">prefix</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt">#Return the generated HTML</span>
+      <span class="ruby-identifier">html</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

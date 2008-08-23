@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "javascript<String>:"
+    body: Text to escape for use in JavaScript.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  escape_js(&quot;'Lorem ipsum!' -- Some guy&quot;)\n    # =&gt; &quot;\\'Lorem ipsum!\\' -- Some guy&quot;\n\n  escape_js(&quot;Please keep text\\nlines as skinny\\nas possible.&quot;)\n    # =&gt; &quot;Please keep text\\nlines as skinny\\nas possible.&quot;\n"
+full_name: Merb::AssetsMixin#escape_js
+is_singleton: false
+name: escape_js
+params: (javascript)
+visibility: public

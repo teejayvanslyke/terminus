@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: All css files to include, without duplicates.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "options<Hash>:"
+    body: Default options to pass to css_include_tag.
+  type: :NOTE
+full_name: Merb::AssetsMixin#required_css
+is_singleton: false
+name: required_css
+params: (options = {})
+visibility: public

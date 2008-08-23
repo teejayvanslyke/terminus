@@ -1,0 +1,21 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Helpers for handling asset files.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: ASSET_FILE_EXTENSIONS
+  value: "{         :javascript => \".js\",         :stylesheet => \".css\""
+full_name: Merb::Assets::AssetHelpers
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: asset_path
+name: AssetHelpers
+superclass: 

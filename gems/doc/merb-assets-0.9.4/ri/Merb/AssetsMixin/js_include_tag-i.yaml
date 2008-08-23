@@ -1,0 +1,42 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*scripts:"
+    body: The scripts to include. If the last element is a Hash, it will be used as options (see below). If &quot;.js&quot; is left out from the script names, it will be added to them.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":bundle<~to_s>:"
+    body: The name of the bundle the scripts should be combined into.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The JavaScript include tag(s).
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  js_include_tag 'jquery'\n  # =&gt; &lt;script src=&quot;/javascripts/jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;\n\n  js_include_tag 'moofx.js', 'upload'\n  # =&gt; &lt;script src=&quot;/javascripts/moofx.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;\n  #    &lt;script src=&quot;/javascripts/upload.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;\n\n  js_include_tag :effects\n  # =&gt; &lt;script src=&quot;/javascripts/effects.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;\n\n  js_include_tag :jquery, :validation\n  # =&gt; &lt;script src=&quot;/javascripts/jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;\n  #    &lt;script src=&quot;/javascripts/validation.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;\n"
+full_name: Merb::AssetsMixin#js_include_tag
+is_singleton: false
+name: js_include_tag
+params: (*scripts)
+visibility: public

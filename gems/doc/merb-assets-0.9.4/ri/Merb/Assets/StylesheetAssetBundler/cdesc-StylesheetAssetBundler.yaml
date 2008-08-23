@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: asset_type
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Bundles stylesheets into a single file:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  stylesheets/#{name}.css\n"
+constants: []
+
+full_name: Merb::Assets::StylesheetAssetBundler
+includes: []
+
+instance_methods: []
+
+name: StylesheetAssetBundler
+superclass: AbstractAssetBundler

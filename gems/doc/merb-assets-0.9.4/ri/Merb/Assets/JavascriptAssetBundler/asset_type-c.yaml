@@ -1,0 +1,19 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Symbol:"
+    body: The asset type, i.e. :javascript.
+  type: :NOTE
+full_name: Merb::Assets::JavascriptAssetBundler::asset_type
+is_singleton: true
+name: asset_type
+params: ()
+visibility: public

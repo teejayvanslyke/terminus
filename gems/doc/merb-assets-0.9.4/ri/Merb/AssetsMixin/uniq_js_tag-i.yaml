@@ -1,0 +1,36 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*assets:"
+    body: As js_include_tag but has unique path
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array:"
+    body: Full unique paths to assets OR
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: if only a single path is requested
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: " uniq_js_tag(&quot;my&quot;)\n #=&gt; &lt;script type=&quot;text/javascript&quot; src=&quot;http://assets2.my-awesome-domain.com/javascripts/my.js&quot;&gt;&lt;/script&gt;\n"
+full_name: Merb::AssetsMixin#uniq_js_tag
+is_singleton: false
+name: uniq_js_tag
+params: (*assets)
+visibility: public

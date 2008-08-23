@@ -1,0 +1,47 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A method used in the layout of an application to create +&lt;link&gt;+ tags for CSS stylesheets required in in templates and subtemplates using require_css.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "options<Hash>:"
+    body: Options to pass to css_include_tag.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The CSS tag.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Options
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: ":bundle<~to_s>:"
+    body: The name of the bundle the stylesheets should be combined into.
+  - !ruby/struct:SM::Flow::LI 
+    label: ":media<~to_s>:"
+    body: The media attribute for the generated link element. Defaults to :all.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # my_action.herb has a call to require_css 'style'\n  # File: layout/application.html.erb\n  include_required_css\n  # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;\n\n  # my_action.herb has a call to require_css 'style', 'ie-specific'\n  # File: layout/application.html.erb\n  include_required_css\n  # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;\n  #    &lt;link href=&quot;/stylesheets/ie-specific.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;\n"
+full_name: Merb::AssetsMixin#include_required_css
+is_singleton: false
+name: include_required_css
+params: (options = {})
+visibility: public

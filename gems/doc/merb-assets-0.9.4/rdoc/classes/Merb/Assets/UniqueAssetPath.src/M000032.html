@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>build (Merb::Assets::UniqueAssetPath)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-assets/assets.rb, line 75</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build</span>(<span class="ruby-identifier">filename</span>)
+          <span class="ruby-identifier">config</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:asset_helpers</span>]
+          <span class="ruby-comment cmt">#%{#{(USE_SSL ? 'https' : 'http')}://#{sprintf(config[:asset_domain],self.calculate_host_id(file))}.#{config[:domain]}/#{filename}}</span>
+          <span class="ruby-identifier">path</span> = <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:use_ssl</span>] <span class="ruby-operator">?</span> <span class="ruby-value str">'https://'</span> <span class="ruby-operator">:</span> <span class="ruby-value str">'http://'</span>
+          <span class="ruby-identifier">path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:asset_domain</span>],<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">calculate_host_id</span>(<span class="ruby-identifier">filename</span>)) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;.#{config[:domain]}&quot;</span>
+          <span class="ruby-identifier">path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;/&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">filename</span>.<span class="ruby-identifier">index</span>(<span class="ruby-value str">'/'</span>) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">filename</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>asset_path (Merb::Assets::AssetHelpers)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-assets/assets.rb, line 42</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">asset_path</span>(<span class="ruby-identifier">asset_type</span>, <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">local_path</span> = <span class="ruby-keyword kw">false</span>)
+        <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">filename</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">filename</span> <span class="ruby-operator">!~</span> <span class="ruby-node">/#{'\\' + ASSET_FILE_EXTENSIONS[asset_type]}\Z/</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">filename</span>.<span class="ruby-identifier">index</span>(<span class="ruby-value str">'?'</span>).<span class="ruby-identifier">nil?</span>
+          <span class="ruby-identifier">filename</span> = <span class="ruby-node">&quot;#{filename}#{ASSET_FILE_EXTENSIONS[asset_type]}&quot;</span> <span class="ruby-comment cmt"># don't modify receiver</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">filename</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">%r{^(/|https?://)}</span>
+          <span class="ruby-identifier">filename</span> = <span class="ruby-node">&quot;/#{asset_type}s/#{filename}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">local_path</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;public#{filename}&quot;</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{Merb::Config[:path_prefix]}#{filename}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

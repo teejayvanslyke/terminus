@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: asset_type
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Bundles javascripts into a single file:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  javascripts/#{name}.js\n"
+constants: []
+
+full_name: Merb::Assets::JavascriptAssetBundler
+includes: []
+
+instance_methods: []
+
+name: JavascriptAssetBundler
+superclass: AbstractAssetBundler

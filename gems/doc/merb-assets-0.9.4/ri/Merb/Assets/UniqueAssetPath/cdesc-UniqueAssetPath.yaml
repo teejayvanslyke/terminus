@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: build
+- !ruby/object:RI::MethodSummary 
+  name: calculate_host_id
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Helper for creating unique paths to a file name Can increase speend for browsers that are limited to a certain number of connections per host for downloading static files (css, js, images...)
+constants: []
+
+full_name: Merb::Assets::UniqueAssetPath
+includes: []
+
+instance_methods: []
+
+name: UniqueAssetPath
+superclass: Object

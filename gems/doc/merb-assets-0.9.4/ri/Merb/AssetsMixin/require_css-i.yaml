@@ -1,0 +1,26 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The require_css method can be used to require any CSS file anywhere in your templates. Regardless of how many times a single stylesheet is included with require_css, Merb will only include it once in the header.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*css<~to_s>:"
+    body: CSS files to include.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &lt;% require_css('style') %&gt;\n  # A subsequent call to include_required_css will render...\n  # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;\n\n  &lt;% require_css('style', 'ie-specific') %&gt;\n  # A subsequent call to include_required_css will render...\n  # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;\n  #    &lt;link href=&quot;/stylesheets/ie-specific.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;\n"
+full_name: Merb::AssetsMixin#require_css
+is_singleton: false
+name: require_css
+params: (*css)
+visibility: public

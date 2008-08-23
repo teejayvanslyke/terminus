@@ -1,0 +1,41 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the URI path to a particular asset file. If <tt>local_path</tt> is true, returns the path relative to the Merb.root, not the public directory. Uses the path_prefix, if any is configured.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "asset_type<Symbol>:"
+    body: Type of the asset (e.g. :javascript).
+  - !ruby/struct:SM::Flow::LI 
+    label: "filename<~to_s>:"
+    body: The path to the file.
+  - !ruby/struct:SM::Flow::LI 
+    label: "local_path<Boolean>:"
+    body: If true, the returned path will be relative to the Merb.root, otherwise it will be the public URI path. Defaults to false.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: The path to the asset.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  asset_path(:javascript, :dingo)\n  # =&gt; &quot;/javascripts/dingo.js&quot;\n\n  asset_path(:javascript, :dingo, true)\n  # =&gt; &quot;public/javascripts/dingo.js&quot;\n"
+full_name: Merb::Assets::AssetHelpers#asset_path
+is_singleton: false
+name: asset_path
+params: (asset_type, filename, local_path = false)
+visibility: public

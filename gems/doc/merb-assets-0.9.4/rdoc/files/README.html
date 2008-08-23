@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sun Aug 24 00:03:19 +0200 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+merb-assets
+</p>
+<h6>=====</h6>
+<p>
+Provides extra functionality related to assets:
+</p>
+<pre>
+        # Assets bundling.
+        # Assets hosts.
+        # Helpers to add asset links to views.
+        # Deployment-time assets processing (for instance, with YUI Compressor).
+</pre>
+<p>
+Quick overview of the API
+</p>
+<h6>========================</h6>
+<pre>
+  # asset_path generates path for asset taking type and name.
+        # UniqueAssetPath class handles generation of paths using subdomains.
+        # AbstractAssetBundler is the base asset bundlers class.
+
+        # auto_link generates conventional asset tags based on controller/action.
+        # link_to creates anchor tag (a tag).
+        # image_tag creates img tag.
+
+        # escape_js escapes JavaScript.
+        # js method translates object into JSON.
+
+        # require_js is smart(-er) way to do includes just once per page no matter
+          how many times partial use it.
+        # require_css is like require_js but for JavaScript.
+
+        # js_include_tag is used when you need to include script tag with bundling.
+        # css_include_tag works like js_include_tag but for stylesheets.
+        # include_required_js generates script tags for previously included files.
+        # include_required_css generates link tags for previously included files.
+
+        # uniq_js_path generates a script tag for path with asset subdomain.
+        # uniq_css_path generates a link tag for path with asset subdomain.
+</pre>
+<p>
+Examples
+</p>
+<h6>=====</h6>
+<p>
+auto_link to include asset tags using convention:
+</p>
+<pre>
+  We want all possible matches in the FileSys up to the action name
+     Given:  controller_name = &quot;namespace/controller&quot;
+             action_name     = &quot;action&quot;
+  If all files are present should generate link/script tags for:
+     namespace.(css|js)
+     namespace/controller.(css|js)
+     namespace/controller/action.(css|js)
+</pre>
+<p>
+link_to and image_tag to make anchor and image tags:
+</p>
+<pre>
+  image_tag('foo.gif')
+  # =&gt; &lt;img src='/images/foo.gif' /&gt;
+
+  image_tag('foo.gif', :class =&gt; 'bar')
+  # =&gt; &lt;img src='/images/foo.gif' class='bar' /&gt;
+
+  image_tag('foo.gif', :path =&gt; '/files/')
+  # =&gt; &lt;img src='/files/foo.gif' /&gt;
+
+  image_tag('http://test.com/foo.gif')
+  # =&gt; &lt;img src=&quot;http://test.com/foo.gif&quot;&gt;
+
+  image_tag('charts', :path =&gt; '/dynamic/')
+  or
+  image_tag('/dynamic/charts')
+  # =&gt; &lt;img src=&quot;/dynamic/charts&quot;&gt;
+
+  link_to(&quot;The Merb home page&quot;, &quot;http://www.merbivore.com/&quot;)
+    # =&gt; &lt;a href=&quot;http://www.merbivore.com/&quot;&gt;The Merb home page&lt;/a&gt;
+
+  link_to(&quot;The Ruby home page&quot;, &quot;http://www.ruby-lang.org&quot;, {'class' =&gt; 'special', 'target' =&gt; 'blank'})
+    # =&gt; &lt;a href=&quot;http://www.ruby-lang.org&quot; class=&quot;special&quot; target=&quot;blank&quot;&gt;The Ruby home page&lt;/a&gt;
+
+  link_to p.title, &quot;/blog/show/#{p.id}&quot;
+    # =&gt; &lt;a href=&quot;/blog/show/13&quot;&gt;The Entry Title&lt;/a&gt;
+</pre>
+<p>
+uniq_css_tag and uniq_js_tag for paths with asset subdomains:
+</p>
+<pre>
+  uniq_css_tag(&quot;my&quot;)
+  #=&gt; &lt;link href=&quot;http://assets2.my-awesome-domain.com/stylesheets/my.css&quot; type=&quot;text/css&quot; /&gt;
+
+  uniq_js_tag(&quot;my&quot;)
+  #=&gt; &lt;script type=&quot;text/javascript&quot; src=&quot;http://assets2.my-awesome-domain.com/javascripts/my.js&quot;&gt;&lt;/script&gt;
+
+  uniq_js_path(&quot;my&quot;)
+  #=&gt; &quot;http://assets2.my-awesome-domain.com/javascripts/my.js&quot;
+
+  uniq_js_path([&quot;admin/secrets&quot;,&quot;home/signup&quot;])
+  #=&gt; [&quot;http://assets2.my-awesome-domain.com/javascripts/admin/secrets.js&quot;,
+         &quot;http://assets1.my-awesome-domain.com/javascripts/home/signup.js&quot;]
+</pre>
+<p>
+re_js and require_css, include_required_js and include_requried_css quire
+assets in parts/partials just once:
+</p>
+<pre>
+ In your application layout:
+
+   js_include_tag :prototype, :lowpro, :bundle =&gt; :base
+
+ In your controller layout:
+
+   require_js :bundle =&gt; :posts
+
+ The require_js method can be used to require any JavaScript file anywhere
+ in your templates. Regardless of how many times a single script is
+ included with require_js, Merb will only include it once in the header.
+
+   # File: app/views/layouts/application.html.erb
+
+   &lt;html&gt;
+     &lt;head&gt;
+       &lt;%= include_required_js %&gt;
+       &lt;%= include_required_css %&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+       &lt;%= catch_content :layout %&gt;
+     &lt;/body&gt;
+   &lt;/html&gt;
+
+   # File: app/views/whatever/_part1.herb
+
+   &lt;% require_js  'this' -%&gt;
+   &lt;% require_css 'that', 'another_one' -%&gt;
+
+   # File: app/views/whatever/_part2.herb
+
+   &lt;% require_js 'this', 'something_else' -%&gt;
+   &lt;% require_css 'that' -%&gt;
+
+   # File: app/views/whatever/index.herb
+
+   &lt;%= partial(:part1) %&gt;
+   &lt;%= partial(:part2) %&gt;
+
+   # Will generate the following in the final page...
+   &lt;html&gt;
+     &lt;head&gt;
+       &lt;script src=&quot;/javascripts/this.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+       &lt;script src=&quot;/javascripts/something_else.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+       &lt;link href=&quot;/stylesheets/that.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;
+       &lt;link href=&quot;/stylesheets/another_one.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;
+     &lt;/head&gt;
+     .
+     .
+     .
+   &lt;/html&gt;
+
+   # my_action.herb has a call to require_css 'style'
+   # File: layout/application.html.erb
+   include_required_css
+   # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;
+
+   # my_action.herb has a call to require_css 'style', 'ie-specific'
+   # File: layout/application.html.erb
+   include_required_css
+   # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;
+   #    &lt;link href=&quot;/stylesheets/ie-specific.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;
+
+   # my_action.herb has a call to require_js 'jquery'
+   # File: layout/application.html.erb
+   include_required_js
+   # =&gt; &lt;script src=&quot;/javascripts/jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+   # my_action.herb has a call to require_js 'jquery', 'effects', 'validation'
+   # File: layout/application.html.erb
+   include_required_js
+   # =&gt; &lt;script src=&quot;/javascripts/jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+   #    &lt;script src=&quot;/javascripts/effects.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+   #    &lt;script src=&quot;/javascripts/validation.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+   &lt;% require_css('style') %&gt;
+   # A subsequent call to include_required_css will render...
+   # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;
+
+   &lt;% require_css('style', 'ie-specific') %&gt;
+   # A subsequent call to include_required_css will render...
+   # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;
+   #    &lt;link href=&quot;/stylesheets/ie-specific.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot;/&gt;
+
+   &lt;% require_js 'jquery' %&gt;
+   # A subsequent call to include_required_js will render...
+   # =&gt; &lt;script src=&quot;/javascripts/jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+   &lt;% require_js 'jquery', 'effects' %&gt;
+   # A subsequent call to include_required_js will render...
+   # =&gt; &lt;script src=&quot;/javascripts/jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+   #    &lt;script src=&quot;/javascripts/effects.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</pre>
+<p>
+css_include_tag and js_include_tag that do not use asset subdomains:
+</p>
+<pre>
+   css_include_tag 'style'
+   # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;
+
+   css_include_tag 'style.css', 'layout'
+   # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;
+   #    &lt;link href=&quot;/stylesheets/layout.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;
+
+   css_include_tag :menu
+   # =&gt; &lt;link href=&quot;/stylesheets/menu.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;
+
+   css_include_tag :style, :screen
+   # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;
+   #    &lt;link href=&quot;/stylesheets/screen.css&quot; media=&quot;all&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;
+
+  css_include_tag :style, :media =&gt; :print
+  # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;print&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot; /&gt;
+
+  css_include_tag :style, :charset =&gt; 'iso-8859-1'
+  # =&gt; &lt;link href=&quot;/stylesheets/style.css&quot; media=&quot;print&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+   js_include_tag 'jquery'
+   # =&gt; &lt;script src=&quot;/javascripts/jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+   js_include_tag 'moofx.js', 'upload'
+   # =&gt; &lt;script src=&quot;/javascripts/moofx.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+   #    &lt;script src=&quot;/javascripts/upload.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+   js_include_tag :effects
+   # =&gt; &lt;script src=&quot;/javascripts/effects.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+   js_include_tag :jquery, :validation
+   # =&gt; &lt;script src=&quot;/javascripts/jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+   #    &lt;script src=&quot;/javascripts/validation.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</pre>
+<p>
+Utility methods examples
+</p>
+<h6>====================</h6>
+<pre>
+  uniq_css_path(&quot;my&quot;)
+  #=&gt; &quot;http://assets2.my-awesome-domain.com/stylesheets/my.css&quot;
+
+  uniq_css_path([&quot;admin/secrets&quot;,&quot;home/signup&quot;])
+  #=&gt; [&quot;http://assets2.my-awesome-domain.com/stylesheets/admin/secrets.css&quot;,
+         &quot;http://assets1.my-awesome-domain.com/stylesheets/home/signup.css&quot;]
+
+  uniq_path(&quot;/javascripts/my.js&quot;,&quot;/javascripts/my.css&quot;)
+  #=&gt; [&quot;http://assets2.my-awesome-domain.com/javascripts/my.js&quot;, &quot;http://assets1.my-awesome-domain.com/javascripts/my.css&quot;]
+
+  uniq_path([&quot;/javascripts/my.js&quot;,&quot;/stylesheets/my.css&quot;])
+  #=&gt; [&quot;http://assets2.my-awesome-domain.com/javascripts/my.js&quot;, &quot;http://assets1.my-awesome-domain.com/stylesheets/my.css&quot;]
+
+  uniq_path(%w(/javascripts/my.js /stylesheets/my.css))
+  #=&gt; [&quot;http://assets2.my-awesome-domain.com/javascripts/my.js&quot;, &quot;http://assets1.my-awesome-domain.com/stylesheets/my.css&quot;]
+
+  uniq_path('/stylesheets/somearbitrary.css')
+  #=&gt; &quot;http://assets3.my-awesome-domain.com/stylesheets/somearbitrary.css&quot;
+
+  uniq_path('/images/hostsexypicture.jpg')
+  #=&gt;&quot;http://assets1.my-awesome-domain.com/images/hostsexypicture.jpg&quot;
+</pre>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

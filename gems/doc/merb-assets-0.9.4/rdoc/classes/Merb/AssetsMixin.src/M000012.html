@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>js_include_tag (Merb::AssetsMixin)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-assets/assets_mixin.rb, line 427</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">js_include_tag</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">scripts</span>)
+      <span class="ruby-identifier">options</span> = <span class="ruby-identifier">scripts</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">scripts</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">scripts</span>.<span class="ruby-identifier">empty?</span>
+
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">bundle_name</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:bundle</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Assets</span>.<span class="ruby-identifier">bundle?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">scripts</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">bundler</span> = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Assets</span><span class="ruby-operator">::</span><span class="ruby-constant">JavascriptAssetBundler</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundle_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">scripts</span>)
+        <span class="ruby-identifier">bundled_asset</span> = <span class="ruby-identifier">bundler</span>.<span class="ruby-identifier">bundle!</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">js_include_tag</span>(<span class="ruby-identifier">bundled_asset</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">tags</span> = <span class="ruby-value str">&quot;&quot;</span>
+
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">script</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">scripts</span>
+        <span class="ruby-identifier">attrs</span> = {
+          <span class="ruby-identifier">:src</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">asset_path</span>(<span class="ruby-identifier">:javascript</span>, <span class="ruby-identifier">script</span>),
+          <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;text/javascript&quot;</span>
+        }
+        <span class="ruby-identifier">tags</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q{&lt;script #{attrs.to_xml_attributes}&gt;&lt;/script&gt;}</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">tags</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

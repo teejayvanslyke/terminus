@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Bundle all the files into one.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "filename<String>:"
+    body: Name of the bundle file.
+  - !ruby/struct:SM::Flow::LI 
+    label: "*files<String>:"
+    body: Filenames to be bundled.
+  type: :NOTE
+full_name: Merb::Assets::AbstractAssetBundler#bundle_files
+is_singleton: false
+name: bundle_files
+params: (filename, *files)
+visibility: protected

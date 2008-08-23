@@ -1,0 +1,36 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*assets:"
+    body: As uniq_css_tag but has unique path
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array:"
+    body: Full unique paths to assets OR
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: if only a single path is requested
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: " uniq_css_tag(&quot;my&quot;)\n #=&gt; &lt;link href=&quot;http://assets2.my-awesome-domain.com/stylesheets/my.css&quot; type=&quot;text/css&quot; /&gt;\n"
+full_name: Merb::AssetsMixin#uniq_css_tag
+is_singleton: false
+name: uniq_css_tag
+params: (*assets)
+visibility: public

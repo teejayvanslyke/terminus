@@ -1,0 +1,34 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_callback
+- !ruby/object:RI::MethodSummary 
+  name: asset_type
+- !ruby/object:RI::MethodSummary 
+  name: cache_bundle
+- !ruby/object:RI::MethodSummary 
+  name: cached_bundle?
+- !ruby/object:RI::MethodSummary 
+  name: callbacks
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: purge_bundle
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An abstract class for bundling text assets into single files.
+constants: []
+
+full_name: Merb::Assets::AbstractAssetBundler
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Merb::Assets::AssetHelpers
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: bundle!
+- !ruby/object:RI::MethodSummary 
+  name: bundle_files
+name: AbstractAssetBundler
+superclass: Object

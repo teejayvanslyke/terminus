@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>bundle! (Merb::Assets::AbstractAssetBundler)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/merb-assets/assets.rb, line 180</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bundle!</span>
+        <span class="ruby-comment cmt"># TODO: push it out to the helper level so we don't have to create the helper object.</span>
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">cached_bundle?</span>(<span class="ruby-ivar">@bundle_name</span>)
+          <span class="ruby-comment cmt"># skip regeneration of new bundled files - preventing multiple merb apps stepping on eachother</span>
+          <span class="ruby-comment cmt"># file needs to be older than 60 seconds to be regenerated</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-ivar">@bundle_filename</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">mtime</span>(<span class="ruby-ivar">@bundle_filename</span>) <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-value">60</span>
+            <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@bundle_name</span> <span class="ruby-comment cmt"># serve the old file for now - to be regenerated later</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">bundle_files</span>(<span class="ruby-ivar">@bundle_filename</span>, <span class="ruby-operator">*</span><span class="ruby-ivar">@files</span>)
+          <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-ivar">@bundle_filename</span>)
+            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">callbacks</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">call</span>(<span class="ruby-ivar">@bundle_filename</span>) }
+            <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;Assets: bundled :#{@bundle_name} into #{File.basename(@bundle_filename)}&quot;</span>)
+            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">cache_bundle</span>(<span class="ruby-ivar">@bundle_name</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@bundle_name</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

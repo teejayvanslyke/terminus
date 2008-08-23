@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Check whether the assets should be bundled.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Boolean:"
+    body: True if the assets should be bundled (e.g., production mode or :bundle_assets is explicitly enabled).
+  type: :NOTE
+full_name: Merb::Assets::bundle?
+is_singleton: true
+name: bundle?
+params: ()
+visibility: public

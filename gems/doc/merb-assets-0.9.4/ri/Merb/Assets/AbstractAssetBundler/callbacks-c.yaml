@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Retrieve existing callbacks.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array[Proc]:"
+    body: An array of existing callbacks.
+  type: :NOTE
+full_name: Merb::Assets::AbstractAssetBundler::callbacks
+is_singleton: true
+name: callbacks
+params: ()
+visibility: public

@@ -1,0 +1,36 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*assets:"
+    body: The assets to include. These should be the full paths to any static served file
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Array:"
+    body: Full unique paths to assets OR
+  - !ruby/struct:SM::Flow::LI 
+    label: "String:"
+    body: if only a single path is requested
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: " uniq_path(&quot;/javascripts/my.js&quot;,&quot;/javascripts/my.css&quot;)\n #=&gt; [&quot;http://assets2.my-awesome-domain.com/javascripts/my.js&quot;, &quot;http://assets1.my-awesome-domain.com/javascripts/my.css&quot;]\n\n uniq_path([&quot;/javascripts/my.js&quot;,&quot;/stylesheets/my.css&quot;])\n #=&gt; [&quot;http://assets2.my-awesome-domain.com/javascripts/my.js&quot;, &quot;http://assets1.my-awesome-domain.com/stylesheets/my.css&quot;]\n\n uniq_path(%w(/javascripts/my.js /stylesheets/my.css))\n #=&gt; [&quot;http://assets2.my-awesome-domain.com/javascripts/my.js&quot;, &quot;http://assets1.my-awesome-domain.com/stylesheets/my.css&quot;]\n\n uniq_path('/stylesheets/somearbitrary.css')\n #=&gt; &quot;http://assets3.my-awesome-domain.com/stylesheets/somearbitrary.css&quot;\n\n uniq_path('/images/hostsexypicture.jpg')\n #=&gt;&quot;http://assets1.my-awesome-domain.com/images/hostsexypicture.jpg&quot;\n"
+full_name: Merb::AssetsMixin#uniq_path
+is_singleton: false
+name: uniq_path
+params: (*assets)
+visibility: public

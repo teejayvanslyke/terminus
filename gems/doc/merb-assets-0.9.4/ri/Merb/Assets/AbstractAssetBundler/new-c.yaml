@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "name<~to_s>:"
+    body: Name of the bundle. If name is true, it will be converted to :all.
+  - !ruby/struct:SM::Flow::LI 
+    label: "*files<String>:"
+    body: Names of the files to bundle.
+  type: :NOTE
+full_name: Merb::Assets::AbstractAssetBundler::new
+is_singleton: true
+name: new
+params: (name, *files)
+visibility: public
