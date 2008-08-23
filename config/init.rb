@@ -53,6 +53,7 @@ Gem.path.unshift(Merb.root / "gems")
 # here.
 #
 dependencies "merb-assets", "haml", "merb-haml", "merb_helpers", "merb-jquery", "activesupport", "activerecord"
+dependency 'builder'
 # OR
 # dependency "RedCloth", "> 3.0"
 # OR
@@ -61,6 +62,7 @@ Merb::BootLoader.after_app_loads do
   # Add dependencies here that must load after the application loads:
 
   # dependency "magic_admin" # this gem uses the app's model classes
+  Command.load_native(Merb.root + '/app/dsl/')
   Command.load_native(Merb.root + '/app/commands/')
 end
 

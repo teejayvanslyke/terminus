@@ -8,11 +8,10 @@ class Commands < Application
   end
 
   def show
-    klass = $COMMANDS[params[:id]]
+    @command = $COMMANDS[params[:id]]
     args  = params['args'] || []
-    if klass
-      @command = klass.new(@buffer)
-      @command.execute(args)
+    if @command 
+      @command.execute(args, @buffer)
     else
       @buffer.puts "Oops!  I don't know the command #{params[:id]}"
     end

@@ -5,6 +5,10 @@ body {
   padding: 0;
   margin: 0;
   font-size: 12px; }
+  body #logo {
+    position: absolute;
+    top: 0;
+    left: 30px; }
   body #terminal {
     background-color: #000000;
     background-image: url('/images/background.png');
@@ -19,3 +23,6 @@ body {
     border-bottom-color: #5c8868; }
     body #terminal a {
       color: #ffffff; }
+    body #terminal p {
+      padding: 0;
+      margin: 0; }

@@ -7,6 +7,10 @@ class Command < ActiveRecord::Base
     @buffer = buffer 
   end
 
+  def command_url(command, args=[])
+    '#'+command
+  end
+
   def self.name(name)
     puts " ~ loading command '#{name}'"
     $COMMANDS[name] = self

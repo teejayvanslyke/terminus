@@ -1,7 +1,7 @@
 Webterm = {};
 Webterm.Terminal = function(element, options) {
   options = $.extend({
-    greeting: '%+rDETERMIN.DE v0.1 %-r',
+    greeting: '%+rt.ermin.us v0.1 %-r',
     ps:       '%+r$%-r'
   }, options);
 
@@ -13,12 +13,13 @@ Webterm.Terminal = function(element, options) {
   var $this = this;
   $this.fit();
   $(window).resize(function() { $this.fit(); });
+
 };
 
 $.extend(Webterm.Terminal.prototype, MouseApp.Terminal.prototype, {
   fit: function() {
     var padding = 10;
-    var margin  = 40;
+    var margin  = 20;
     var border  = 5;
     
     var subtractor = padding*2 + margin*2 + border*2;
@@ -67,12 +68,28 @@ $.extend(Webterm.Terminal.prototype, MouseApp.Terminal.prototype, {
             if ( str.substr(str.length - 1, 1) != "\n" ) {
                 str += "\n";
             }
-            terminal.write(str);
+            terminal.writeHTML(str);
+            terminal.prompt();
         }
-        terminal.prompt();
       });
     }
   },
+  writeHTML: function(html) {
+
+    var new_id = 'terminal_' + this.rpos++;
+    this.element.append('<div id="'+new_id+'">' + html + '</div>');
+
+    // Callbacks
+    var $this = this;
+    $('a.execute').click(function() {
+      var command = $(this).attr('href').substr(1);
+      $this.onCommand(command);
+    });
+
+    this.advanceLine();
+    this.scrollAllTheWayDown();
+  },
+    
   scrollAllTheWayDown: function() {
     var scrollHeight = this.element.attr('scrollHeight');
     var clientHeight = this.element.attr('clientHeight');
