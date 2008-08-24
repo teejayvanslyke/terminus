@@ -1,15 +1,16 @@
-class Echo < Command
-  name "echo"
+include Terminus::DSL
 
-  def execute(args)
-    if args.empty?
-      buffer.puts 'usage: echo "some string"'
-      return
-    end
+terminus_command 'echo' do
 
-    args.each do |arg|
-      buffer.puts arg
+  on_execute do 
+    respond_to do
+      args.each do |arg|
+        line arg
+      end
     end
   end
 
 end
+
+
+
