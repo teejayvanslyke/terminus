@@ -22,8 +22,10 @@ task :after_symlink do
   run "ln -nfs #{shared_path}/log #{release_path}/log" 
 end
 
-desc "Merb it up" 
-task :restart do
-  run "cd #{current_path};./script/stop_merb" 
-  run "cd #{current_path}; merb -e production -c 1" # plain old mongrel
+namespace :deploy do
+  desc "Merb it up" 
+  task :restart do
+    run "cd #{current_path}; merb -k 4000"
+    run "cd #{current_path}; merb -e production -c 1" # plain old mongrel
+  end
 end

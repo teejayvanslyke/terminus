@@ -75,9 +75,8 @@ $.extend(Webterm.Terminal.prototype, MouseApp.Terminal.prototype, {
     }
   },
   writeHTML: function(html) {
-
-    var new_id = 'terminal_' + this.rpos++;
-    this.element.append('<div id="'+new_id+'">' + html + '</div>');
+    var new_id = '#terminal_' + (this.rpos++);
+    this.element.find(new_id).html(html);
 
     // Callbacks
     var $this = this;
@@ -100,30 +99,3 @@ $.extend(Webterm.Terminal.prototype, MouseApp.Terminal.prototype, {
 
 });
 
-/*
-    function execute(command) {
-    }
-    (function fadeCursor() {
-      $('#cursor').fadeOut('fast', function() { 
-        $('#cursor').fadeIn('fast', fadeCursor); 
-      });
-    })()
-    $(window).resize(fit);
-
-    var readBuffer = "";
-    $(window).keydown(function(e) {
-      if (e.keyCode == 13)
-      {
-        var command = readBuffer;
-        println('$ ' + command);
-        execute(command);
-        readBuffer = "";
-      }
-      else {
-        var char = String.fromCharCode(e.keyCode);
-        readBuffer += char;
-        $.terminal.putc(char);
-      }
-    });
-    fit();
-    */
