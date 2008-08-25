@@ -1,19 +1,19 @@
 :development: &defaults
   :adapter: mysql
-  :database: webterm_development
-  :username: webterm
-  :password: webterm
+  :database: terminus_development
+  :username: terminus
+  :password: terminus
   :host: localhost
   :socket: /tmp/mysql.sock
   :encoding: utf8
 
 :test:
   <<: *defaults
-  :database: webterm_test
+  :database: terminus_test
 
 :production:
   <<: *defaults
-  :database: webterm_production
+  :database: terminus_production
   
 :rake:
   <<: *defaults

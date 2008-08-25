@@ -1,37 +1,52 @@
-Webterm = {};
-Webterm.Terminal = function(element, options) {
+Terminus = {};
+
+$.extend(MouseApp.Manager, {
+    releaseTerm: function() {
+      this.activeTerm = null;
+    }
+  }
+);
+
+Terminus.Terminal = function(terminalElement, dialogElement, options) {
   options = $.extend({
     greeting: '%+rt.ermin.us v0.1 %-r',
     ps:       '%+r$%-r'
   }, options);
 
-  this.element = $(element);
+  this.element         = $(terminalElement);
+  this.terminalElement = $(terminalElement);
+  this.dialogElement   = $(dialogElement);
   this.setOptions(options);
   this.initWindow();
   this.setup();
 
+  this.dialogElement.hide();
+
   var $this = this;
   $this.fit();
   $(window).resize(function() { $this.fit(); });
-
 };
 
-$.extend(Webterm.Terminal.prototype, MouseApp.Terminal.prototype, {
+$.extend(Terminus.Terminal.prototype, MouseApp.Terminal.prototype, {
+  padding: 10, 
+  margin:  20,
+  border:  5,
+  subtractor: function() { return this.padding*2 + this.margin*2 + this.border*2 },
   fit: function() {
-    var padding = 10;
-    var margin  = 20;
-    var border  = 5;
-    
-    var subtractor = padding*2 + margin*2 + border*2;
+    var $this = this;
 
     var width   = $(window).width();
     var height  = $(window).height();
-    this.element.width(width - subtractor); 
-    this.element.height(height - subtractor);
 
-    this.element.css('padding',      padding+'px');
-    this.element.css('border-width', border+'px');
-    this.element.css('margin',       margin+'px');
+    var elements = [this.terminalElement, this.dialogElement];
+    $(elements).each(function(i) {
+      elements[i].width(width - $this.subtractor()); 
+      elements[i].height(height - $this.subtractor());
+
+      elements[i].css('padding',      $this.padding+'px');
+      elements[i].css('border-width', $this.border+'px');
+      elements[i].css('margin',       $this.margin+'px');
+    });
   },
 
   onKeyEnter: function() {
@@ -54,6 +69,8 @@ $.extend(Webterm.Terminal.prototype, MouseApp.Terminal.prototype, {
         this.prompt();
     } else if ( line == "reload" ) {
       window.location.reload();
+    } else if ( line == "newcommand" ) {
+      this.showModal('/commands/new');
     } else {
       args    = line.split(' ');
       id      = args[0];
@@ -76,7 +93,7 @@ $.extend(Webterm.Terminal.prototype, MouseApp.Terminal.prototype, {
   },
   writeHTML: function(html) {
     var new_id = '#terminal_' + (this.rpos++);
-    this.element.find(new_id).html(html);
+    this.terminalElement.find(new_id).html(html);
 
     // Callbacks
     var $this = this;
@@ -90,12 +107,31 @@ $.extend(Webterm.Terminal.prototype, MouseApp.Terminal.prototype, {
   },
     
   scrollAllTheWayDown: function() {
-    var scrollHeight = this.element.attr('scrollHeight');
-    var clientHeight = this.element.attr('clientHeight');
+    var scrollHeight = this.terminalElement.attr('scrollHeight');
+    var clientHeight = this.terminalElement.attr('clientHeight');
     if ( scrollHeight > clientHeight ) {
-        this.element.attr('scrollTop', scrollHeight - clientHeight);
+        this.terminalElement.attr('scrollTop', scrollHeight - clientHeight);
     }
+  },
+
+  showModal: function(url) {
+    var $this = this;
+    MouseApp.Manager.releaseTerm();
+    $.get(url, function(data) {
+      $this.dialogElement.html(data);
+
+      $this.terminalElement.slideUp('fast', function() {
+        $this.dialogElement.slideDown();
+      });
+    });
+  },
+
+  hideModal: function() {
+    var $this = this;
+    MouseApp.Manager.observeTerm(this);
+    $this.dialogElement.slideUp('fast', function() {
+      $this.terminalElement.slideDown();
+      $this.prompt();
+    });
   }
-
 });
-

@@ -39,6 +39,10 @@ module Terminus
         @builder.img(:src => url)
       end
 
+      def js(code)
+        @builder.script(:type => 'text/javascript')
+      end
+
       def line(*args)
         @builder.p do
           args.each do |arg| 
@@ -56,7 +60,11 @@ module Terminus
 
     class NativeCommand < Command
 
-      attr_reader :response
+      attr_reader :response, :name
+
+      def initialize(name)
+        @name = name
+      end
 
       def args
         return [] unless @on_execute
@@ -73,7 +81,6 @@ module Terminus
         respond_to.instance_eval(&block)
         @response = respond_to.response
       end
-
 
       def on_execute(&block)
         @on_execute = OnExecute.new(self, &block)

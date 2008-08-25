@@ -9,29 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 1) do
 
   create_table "commands", :force => true do |t|
     t.string   "name"
-    t.text     "code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "elements", :force => true do |t|
-    t.integer  "page_id",    :limit => 11
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "pages", :force => true do |t|
-    t.integer  "zine_id",    :limit => 11
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "zines", :force => true do |t|
-    t.string   "title"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

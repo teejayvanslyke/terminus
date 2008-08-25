@@ -1,5 +1,6 @@
 - throw_content :jquery do
   :plain
-    new Webterm.Terminal('#terminal');
+    terminal = new Terminus.Terminal('#terminal', '#dialog');
 = image_tag "logo.png", :id => 'logo'
 #terminal
+#dialog

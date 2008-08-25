@@ -9,14 +9,15 @@ body {
     position: absolute;
     top: 0;
     left: 30px; }
-  body #terminal {
-    background-color: #000000;
-    background-image: url('/images/background.png');
+  body #terminal, body #dialog {
     top: 0;
     left: 0;
     overflow: scroll;
     border-width: 0;
-    border-style: solid;
+    border-style: solid; }
+  body #terminal {
+    background-color: #000000;
+    background-image: url('/images/background.png');
     border-top-color: #84b491;
     border-left-color: #84b491;
     border-right-color: #5c8868;
@@ -26,3 +27,26 @@ body {
     body #terminal p {
       padding: 0;
       margin: 0; }
+  body #dialog {
+    color: #333;
+    background: #663358 url('/images/background-reverse.png'); }
+    body #dialog h1, body #dialog h2, body #dialog h3, body #dialog h4, body #dialog h5, body #dialog h6 {
+      font-family: Georgia, Helvetica, Sans-serif;
+      padding: 0;
+      margin: 0; }
+    body #dialog img {
+      border-width: 0; }
+    body #dialog form label {
+      font-weight: bold;
+      color: #5c8868;
+      font-size: 1.2em; }
+    body #dialog form input[type='text'] {
+      width: 30em;
+      padding: 0.5em;
+      font-size: 1.2em;
+      border-style: solid;
+      border-width: 2px;
+      border-top-color: #84b491;
+      border-left-color: #84b491;
+      border-right-color: #5c8868;
+      border-bottom-color: #5c8868; }

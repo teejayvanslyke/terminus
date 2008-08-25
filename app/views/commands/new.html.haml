@@ -1,16 +1,31 @@
 :javascript
-  $('.create_link').click(function() {
-    $.terminal.print($('.form'));
+  $(function() {
+    var form = $('#new_command_form');
+    form.ajaxForm(function() {
+      terminal.write("I just added your new command!\n");
+      terminal.hideModal();
+    });
   });
 
-Oops!  That command doesn't exist!
+%h1 Add a new command to the t.ermin.us repository!
 
-%a{:href => '#', :class => 'create_link'} Create it!
+%p 
+  Enter your command's name and web API URL.  For more information about creating new commands, see the 
+  = link_to "API Guide", "#"
+  ='.'
 
-.form{:style => 'display:none;'}
-  - form_for(@command, :action => url(:command)) do
-    %p
-      = text_area_control :code
-    %p
-      = submit_button "Create"
+- form_for(@command, :action => url(:command, @command), :id => 'new_command_form') do
 
+  %p
+    = label 'Name:'
+    %br/
+    = text_control :name
+
+  %p
+    = label 'URL:'
+    %br/
+    = text_control :url
+
+  %p
+    = image_submit("submit-button.png", :class => "button")
+    = link_to image_tag("cancel-button.png"), "javascript:terminal.hideModal();"

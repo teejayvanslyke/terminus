@@ -20,8 +20,7 @@ class Commands < Application
 
   def new
     only_provides :html
-    @command = Command.new({:code => 
-      "command \"my-command\" do |*args|\n  puts Hello, World!\nend"})
+    @command = Command.new
     render
   end
 

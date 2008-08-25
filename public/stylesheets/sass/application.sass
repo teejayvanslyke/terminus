@@ -14,14 +14,15 @@ body
     :position absolute
     :top 0
     :left 30px
-  #terminal
-    :background-color = !background 
-    :background-image url('/images/background.png')
+  #terminal, #dialog
     :top 0 
     :left 0 
     :overflow scroll
     :border-width 0
     :border-style solid 
+  #terminal
+    :background-color = !background 
+    :background-image url('/images/background.png')
     :border-top-color #84b491
     :border-left-color #84b491
     :border-right-color #5c8868
@@ -31,3 +32,28 @@ body
     p
       :padding 0
       :margin 0
+  #dialog
+    :color #333
+    :background #663358 url('/images/background-reverse.png')
+    h1, h2, h3, h4, h5, h6
+      :font-family Georgia, Helvetica, Sans-serif
+      :padding 0
+      :margin 0
+    img
+      :border-width 0
+    form
+      p
+      label
+        :font-weight bold 
+        :color #5c8868
+        :font-size 1.2em
+      input[type='text']
+        :width 30em
+        :padding 0.5em
+        :font-size 1.2em
+        :border-style solid
+        :border-width 2px
+        :border-top-color #84b491
+        :border-left-color #84b491
+        :border-right-color #5c8868
+        :border-bottom-color #5c8868

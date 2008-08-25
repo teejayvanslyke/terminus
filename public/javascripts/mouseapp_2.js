@@ -116,6 +116,7 @@ $.extend(MouseApp.Manager, {
 
     sendKeyPress: function(e) {
         var term = MouseApp.Manager.activeTerm;
+        if (term == null) return;
         term.cursorOff();
         b = term.onKeyPress(e);
         term.cursorOn();
@@ -182,12 +183,16 @@ $.extend(MouseApp.Window.prototype, (new MouseApp.Base()), {
     typingOff: function() { this.typing = false; },
 
     cursorOn: function() {
+        if (MouseApp.Manager.activeTerm == null) return;
         if ( this.blinker ) {
             clearInterval( this.blinker );
         }
         this.underblink = this.screen[this.rpos][this.cpos][1];
         MouseApp.Manager.activeTerm.blink();
-        this.blinker = setInterval(function(){MouseApp.Manager.activeTerm.blink();}, this.options.blinkRate);
+        this.blinker = setInterval(function(){
+          if (MouseApp.Manager.activeTerm == null) return;
+          MouseApp.Manager.activeTerm.blink();
+        }, this.options.blinkRate);
         this.cursor = true;
     },
 

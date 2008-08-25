@@ -67,6 +67,27 @@ describe Terminus::DSL do
       $COMMANDS['mycommand'].response.should == '<p>test</p>'
     end
 
+    describe "js" do
+      before(:each) do
+        @builder = mock(:builder)
+        Builder::XmlMarkup.should_receive(:new).and_return(@builder)
+
+        terminus_command 'mycommand' do
+          on_execute do 
+            respond_to do
+              js 'foobar();'
+            end
+          end
+        end
+      end
+
+      it "creates a script tag" do
+        @builder.should_receive(:script).with(:type => 'text/javascript')
+        $COMMANDS['mycommand'].execute([], @buffer)
+      end
+        
+    end
+
   end
 
 end
